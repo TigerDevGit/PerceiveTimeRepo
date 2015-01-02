@@ -84,14 +84,6 @@ module.exports = (grunt) ->
       #   }
       # ]
 
-      dist:
-        options:
-          root: "<%= yeoman.dist %>"
-
-      serve:
-        options:
-          root: "<%= yeoman.app %>"
-
     compress:
       options:
         mode: "gzip"
@@ -115,5 +107,7 @@ module.exports = (grunt) ->
     "clean"
     "copy"
   ]
+
+  grunt.registerTask "deployInfo", []
 
   grunt.registerTask "default", ["build"]
