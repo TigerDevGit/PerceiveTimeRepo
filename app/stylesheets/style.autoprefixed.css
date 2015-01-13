@@ -83,8 +83,7 @@ body.body--white {
   background-color: white;
 }
 .no-transitions * {
-  -webkit-transition: none !important;
-          transition: none !important;
+  transition: none !important;
 }
 @media screen and (max-width: 1450px) {
   html, body, .page {
@@ -107,8 +106,8 @@ body.body--white {
   -webkit-transform: translate3d(0,0,0);
           transform: translate3d(0,0,0);
   position: relative;
-  -webkit-transition: -webkit-transform 500ms ease;
-          transition: transform 500ms ease;
+  transition: -webkit-transform 500ms ease;
+  transition: transform 500ms ease;
 }
 .page:after {
   content: '';
@@ -119,8 +118,7 @@ body.body--white {
   position: absolute;
   right: 0;
   top: 0;
-  -webkit-transition: opacity 500ms ease, width 100ms ease 0.5s, height 100ms ease 0.5s;
-          transition: opacity 500ms ease, width 100ms ease 0.5s, height 100ms ease 0.5s;
+  transition: opacity 500ms ease, width 100ms ease 0.5s, height 100ms ease 0.5s;
   z-index: 1;
 }
 @media screen and (max-width: 800px) {
@@ -131,8 +129,7 @@ body.body--white {
   .nav-visible .page:after {
     height: 100%;
     opacity: 1;
-    -webkit-transition: opacity 500ms ease;
-            transition: opacity 500ms ease;
+    transition: opacity 500ms ease;
     width: 100%;
   }
 }
@@ -322,8 +319,7 @@ a {
         padding-top: 15px;
         padding-bottom: 15px;
         display: inline-block;
-        -webkit-transition: color 200ms ease-out;
-                transition: color 200ms ease-out;
+        transition: color 200ms ease-out;
       }
 
       .main-nav .cta-button {
@@ -351,8 +347,8 @@ a {
       top: 0;
       -webkit-transform: translate3d(250px, 0, 0);
               transform: translate3d(250px, 0, 0);
-      -webkit-transition: -webkit-transform 500ms ease, width 500ms ease;
-              transition: transform 500ms ease, width 500ms ease;
+      transition: -webkit-transform 500ms ease, width 500ms ease;
+      transition: transform 500ms ease, width 500ms ease;
       overflow: scroll;
       -webkit-overflow-scrolling: touch;
     }
@@ -461,7 +457,6 @@ a {
     height: 100%;
     left: 0;
     top: 0;
-    background: -webkit-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,.35));
     background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.35));
   }
 
@@ -483,7 +478,6 @@ a {
     }
 
     .hero--front .hero__background video {
-      background: -webkit-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,.35)), url('../photos/landing-bg.jpg?1') right center;
       background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.35)), url('../photos/landing-bg.jpg?1') right center;
       background-size: cover;
     }
@@ -499,7 +493,6 @@ a {
 
     .hero--front .hero__background video {
       background-position: 75% center;
-      background-image: -webkit-linear-gradient(right, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../photos/landing-bg.jpg?1');
       background-image: linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../photos/landing-bg.jpg?1');
     }
   }
@@ -685,23 +678,20 @@ a {
         -webkit-transform: scale(0.6) translate(42px, 68px);
             -ms-transform: scale(0.6) translate(42px, 68px);
                 transform: scale(0.6) translate(42px, 68px);
-        -webkit-transition: -webkit-transform 0.2s linear 0s, opacity 0.2s linear 0s;
-                transition: transform 0.2s linear 0s, opacity 0.2s linear 0s;
+        transition: -webkit-transform 0.2s linear 0s, opacity 0.2s linear 0s;
+        transition: transform 0.2s linear 0s, opacity 0.2s linear 0s;
       }
 
       .video-mute-button .audio-waves path.first {
-        -webkit-transition-delay: 0s;
-                transition-delay: 0s;
+        transition-delay: 0s;
       }
 
       .video-mute-button .audio-waves path.second {
-        -webkit-transition-delay: 0.05s;
-                transition-delay: 0.05s;
+        transition-delay: 0.05s;
       }
 
       .video-mute-button .audio-waves path.third {
-        -webkit-transition-delay: 0.1s;
-                transition-delay: 0.1s;
+        transition-delay: 0.1s;
       }
 
       .video-mute-button.active .audio-waves path {
@@ -712,18 +702,15 @@ a {
       }
 
       .video-mute-button.active .audio-waves path.first {
-        -webkit-transition-delay: 0.1s;
-                transition-delay: 0.1s;
+        transition-delay: 0.1s;
       }
 
       .video-mute-button.active .audio-waves path.second {
-        -webkit-transition-delay: 0.05s;
-                transition-delay: 0.05s;
+        transition-delay: 0.05s;
       }
 
       .video-mute-button.active .audio-waves path.third {
-        -webkit-transition-delay: 0s;
-                transition-delay: 0s;
+        transition-delay: 0s;
       }
     @media screen and (max-width: 580px) {
       .video-mute-button {
@@ -870,7 +857,6 @@ a {
   }
 
   .content-section--bottom-gradient {
-    background: -webkit-linear-gradient(bottom, rgba(0,0,0,.6), rgba(0,0,0,0) 200px);
     background: linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,0) 200px);
   }
   @media screen and (max-width: 580px) {
@@ -884,8 +870,8 @@ a {
     -webkit-transform: translateY(-30px);
         -ms-transform: translateY(-30px);
             transform: translateY(-30px);
-    -webkit-transition: opacity linear 300ms, -webkit-transform linear 300ms;
-            transition: opacity linear 300ms, transform linear 300ms;
+    transition: opacity linear 300ms, -webkit-transform linear 300ms;
+    transition: opacity linear 300ms, transform linear 300ms;
   }
 
     img.scroll-revealed {
@@ -951,8 +937,8 @@ a {
       left: 280px;
       top: 60px;
       white-space: nowrap;
-      -webkit-transition: opacity linear 300ms, -webkit-transform linear 300ms;
-              transition: opacity linear 300ms, transform linear 300ms;
+      transition: opacity linear 300ms, -webkit-transform linear 300ms;
+      transition: opacity linear 300ms, transform linear 300ms;
       opacity: 0;
       -webkit-transform: translateY(-10px);
           -ms-transform: translateY(-10px);
@@ -1072,7 +1058,7 @@ a {
       position: absolute;
       right: 0;
       left: 0;
-      top: 50%;
+      top: 70%;
       padding: 0 8%;
       -webkit-transform: translateY(-50%);
           -ms-transform: translateY(-50%);
@@ -1218,8 +1204,7 @@ a {
           color: #f30c16;
           display: block;
           padding-top: 20px;
-          -webkit-transition: color 200ms linear;
-                  transition: color 200ms linear;
+          transition: color 200ms linear;
         }
 
         .signup-form__oauth a:hover {
@@ -1349,8 +1334,7 @@ a {
     .twitter-btn {
       color: #6fb8e4;
       text-transform: uppercase;
-      -webkit-transition: color 200ms linear;
-              transition: color 200ms linear;
+      transition: color 200ms linear;
     }
 
     .twitter-btn:hover {
@@ -1400,7 +1384,6 @@ a {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: -webkit-linear-gradient(right, rgba(0,0,0,1), rgba(0,0,0,0));
     background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
     opacity: 0.5;
     left: 0;
@@ -1409,7 +1392,6 @@ a {
   }
 
   .team__member:nth-child(2n):before {
-    background: -webkit-linear-gradient(left, rgba(0,0,0,1), rgba(0,0,0,0));
     background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
   }
 
@@ -1437,8 +1419,7 @@ a {
         -webkit-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
-        -webkit-transition: opacity 300ms linear;
-                transition: opacity 300ms linear;
+        transition: opacity 300ms linear;
       }
 
       .team__member__background .team__member__background__hover {
@@ -1493,8 +1474,7 @@ a {
       pointer-events: none;
       z-index: 3;
       opacity: 0;
-      -webkit-transition: opacity 200ms linear 200ms;
-              transition: opacity 200ms linear 200ms;
+      transition: opacity 200ms linear 200ms;
     }
 
     .no-pointerevents .team__member__description {
@@ -1605,7 +1585,6 @@ a {
   }
 
   .team__member:before {
-    background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,0));
     background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
     opacity: 0.6;
   }
@@ -1845,8 +1824,7 @@ a {
     height: 19px;
     margin-top: 0;
     color: #999;
-    -webkit-transition: color 200ms linear;
-            transition: color 200ms linear;
+    transition: color 200ms linear;
   }
 
   .page > footer .logo:hover {
@@ -1889,8 +1867,7 @@ a {
           color: #494949;
           text-transform: uppercase;
           letter-spacing: 0.2em;
-          -webkit-transition: color 200ms ease-out;
-                  transition: color 200ms ease-out;
+          transition: color 200ms ease-out;
           display: block;
           padding: 14px 10px;
         }
@@ -1922,8 +1899,7 @@ a {
       background: no-repeat center;
       background-size: contain;
       color: #999999;
-      -webkit-transition: color 200ms linear;
-              transition: color 200ms linear;
+      transition: color 200ms linear;
     }
 
     .social a:hover {
@@ -1989,8 +1965,7 @@ a {
     cursor: pointer;
     line-height: 1;
     outline: none;
-    -webkit-transition: background-color 200ms ease-out;
-            transition: background-color 200ms ease-out;
+    transition: background-color 200ms ease-out;
   }
 
     .timer__button--stop {
@@ -2072,8 +2047,7 @@ a {
   width: 286px;
   cursor: pointer;
   outline: none;
-  -webkit-transition: background-color linear 200ms, color linear 200ms, border-color linear 200ms;
-          transition: background-color linear 200ms, color linear 200ms, border-color linear 200ms;
+  transition: background-color linear 200ms, color linear 200ms, border-color linear 200ms;
 }
 
   .cta-button:hover {
@@ -2247,8 +2221,8 @@ a {
     -webkit-transform: translateY(-30px);
         -ms-transform: translateY(-30px);
             transform: translateY(-30px);
-    -webkit-transition: opacity linear 300ms, -webkit-transform linear 300ms;
-            transition: opacity linear 300ms, transform linear 300ms;
+    transition: opacity linear 300ms, -webkit-transform linear 300ms;
+    transition: opacity linear 300ms, transform linear 300ms;
   }
 
   .scroll-revealed .platform:hover {
@@ -2264,25 +2238,21 @@ a {
 
   .platform--android {
     background-image: url('../images/platform-android.svg?1');
-    -webkit-transition-delay: 100ms;
-            transition-delay: 100ms;
+    transition-delay: 100ms;
   }
 
   .platform--windows {
     background-image: url('../images/platform-windows.svg?1');
-    -webkit-transition-delay: 200ms;
-            transition-delay: 200ms;
+    transition-delay: 200ms;
   }
 
   .platform--macos {
-    -webkit-transition-delay: 300ms;
-            transition-delay: 300ms;
+    transition-delay: 300ms;
   }
 
   .platform--extra {
     background-image: url('../images/platform-extra.svg?1');
-    -webkit-transition-delay: 400ms;
-            transition-delay: 400ms;
+    transition-delay: 400ms;
   }
 
   .scroll-revealed .platform {
@@ -2361,8 +2331,7 @@ a {
   background: rgba(43, 37, 37, .95);
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: opacity 100ms linear;
-          transition: opacity 100ms linear;
+  transition: opacity 100ms linear;
 }
 
 .no-pointerevents .modal-overlay {
