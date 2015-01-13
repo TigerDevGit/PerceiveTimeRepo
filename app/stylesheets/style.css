@@ -1461,7 +1461,7 @@ a {
       top: 50%;
       bottom: auto;
       transform: translateY(-50%);
-      pointer-events: default;
+      pointer-events: auto;
     }
 
     .team--checkered .team__member:nth-child(2n) .team__member__description {

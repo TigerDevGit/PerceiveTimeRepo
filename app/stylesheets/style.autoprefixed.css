@@ -1515,7 +1515,7 @@ a {
       -webkit-transform: translateY(-50%);
           -ms-transform: translateY(-50%);
               transform: translateY(-50%);
-      pointer-events: default;
+      pointer-events: auto;
     }
 
     .team--checkered .team__member:nth-child(2n) .team__member__description {
