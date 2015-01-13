@@ -1399,7 +1399,7 @@ a {
   }
 
   .team--checkered .team__member:before {
-    width: 50%;
+    content: none;
   }
 
   .team__member:nth-child(2n):before {
@@ -1619,10 +1619,6 @@ a {
   .team--checkered .team__member {
     padding-top: 0;
     height: auto;
-  }
-
-  .team--checkered .team__member:before {
-    width: 100%;
   }
 
     .team--checkered .team__member__background,
