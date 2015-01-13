@@ -1379,6 +1379,13 @@ a {
     cursor: pointer;
   }
 
+  .team--checkered .team__member {
+    float: none;
+    width: auto;
+    background: white;
+    cursor: default;
+  }
+
   .team__member:before {
     content: '';
     width: 100%;
@@ -1391,8 +1398,17 @@ a {
     z-index: 3;
   }
 
+  .team--checkered .team__member:before {
+    width: 50%;
+  }
+
   .team__member:nth-child(2n):before {
     background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+
+  .team--checkered .team__member:nth-child(2n):before {
+    left: auto;
+    right: 0;
   }
 
   .team__member--expanded,
@@ -1408,6 +1424,15 @@ a {
       top: 0;
       position: absolute;
       overflow: hidden;
+    }
+
+    .team--checkered .team__member__background {
+      width: 50%;
+    }
+
+    .team--checkered .team__member:nth-child(2n) .team__member__background {
+      left: auto;
+      right: 0;
     }
 
       .team__member__background img {
@@ -1477,6 +1502,27 @@ a {
       transition: opacity 200ms linear 200ms;
     }
 
+    .team--checkered .team__member__description {
+      opacity: 1;
+      width: 50%;
+      box-sizing: border-box;
+      padding: 0 113px;
+      position: absolute;
+      left: auto;
+      right: 0;
+      top: 50%;
+      bottom: auto;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      pointer-events: default;
+    }
+
+    .team--checkered .team__member:nth-child(2n) .team__member__description {
+      left: 0;
+      right: auto;
+    }
+
     .no-pointerevents .team__member__description {
       display: none;
     }
@@ -1514,6 +1560,18 @@ a {
       pointer-events: none;
     }
 
+      .team--checkered .team__member__description h2 {
+        padding: 0;
+        margin: 0;
+      }
+
+      .team--checkered .team__member__position {
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 16px;
+        margin-top: 0;
+      }
+
       .team__member__description p {
         margin: 0;
         padding: 0 113px;
@@ -1523,12 +1581,33 @@ a {
             -ms-transform: translateY(-50%);
                 transform: translateY(-50%);
       }
-@media screen and (max-width: 1024px) {
-  .team__member__description p {
-    font-size: 15px;
-    line-height: 1.5em;
-    padding: 0 16px;
+
+      .team--checkered .team__member__description p {
+        position: static;
+        -webkit-transform: none;
+            -ms-transform: none;
+                transform: none;
+        padding: 0;
+      }
+@media screen and (max-width: 1450px) {
+  .team--checkered .team__member {
+    padding-top: 30%;
   }
+
+    .team--checkered .team__member__description {
+      padding: 0 50px;
+    }
+}
+@media screen and (max-width: 1024px) {
+  .team--checkered .team__member {
+    padding-top: 40%;
+  }
+
+    .team__member__description p {
+      font-size: 15px;
+      line-height: 1.5em;
+      padding: 0 16px;
+    }
 }
 @media screen and (max-width: 800px) {
   .team__member {
@@ -1537,6 +1616,26 @@ a {
     padding-top: 48%;
   }
 
+  .team--checkered .team__member {
+    padding-top: 0;
+    height: auto;
+  }
+
+  .team--checkered .team__member:before {
+    width: 100%;
+  }
+
+    .team--checkered .team__member__background,
+    .team--checkered .team__member:nth-child(2n) .team__member__background {
+      position: relative;
+      width: 100%;
+      height: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding-top: 34%;
+    }
+
     .team__member__description,
     .team__member:nth-child(2n) .team__member__description {
       left: 0;
@@ -1544,6 +1643,19 @@ a {
       top: 100%;
       bottom: auto;
       height: 100%;
+    }
+
+    .team--checkered .team__member__description,
+    .team--checkered .team__member:nth-child(2n) .team__member__description {
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 50px;
+      width: auto;
+      -webkit-transform: none;
+          -ms-transform: none;
+              transform: none;
     }
 
     .team__member:last-child .team__member__description {
@@ -1562,10 +1674,21 @@ a {
       right: auto;
     }
 
+    .team--checkered .team__member:nth-child(2n) .team__member__description:before {
+      left: auto;
+      right: 62px;
+    }
+
     .team__member:last-child .team__member__description:before {
       bottom: auto;
       top: 100%;
       border-width: 13px 13px 0;
+    }
+
+    .team--checkered .team__member:last-child .team__member__description:before {
+      bottom: 100%;
+      top: auto;
+      border-width: 0 13px 13px;
     }
 
   .team__member__description p {
@@ -1588,6 +1711,12 @@ a {
     background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
     opacity: 0.6;
   }
+
+    .team--checkered .team__member__background,
+    .team--checkered .team__member:nth-child(2n) .team__member__background {
+      height: 320px;
+      padding-top: 0;
+    }
 
     .team__member__background img {
       width: auto;
