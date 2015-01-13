@@ -25,7 +25,7 @@ module.exports = (grunt) ->
 
       dist:
         options:
-          keepalive: true
+          keepalive: false
 
     clean:
       dist: [
@@ -97,9 +97,20 @@ module.exports = (grunt) ->
         ]
         dest: "."
 
+    autoprefixer:
+      css:
+        src: "<%= yeoman.app %>/stylesheets/style.css"
+        dest: "<%= yeoman.app %>/stylesheets/style.autoprefixed.css"
+
+    watch:
+      css:
+        files: "<%= yeoman.app %>/stylesheets/style.css"
+        tasks: ["autoprefixer"]
+
   grunt.registerTask "serve", [
     "build"
-    "connect:dist:keepalive"
+    "connect:dist"
+    "watch:css"
   ]
 
   #Do this dynamically After version were bumped.
