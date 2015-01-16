@@ -458,7 +458,7 @@ a {
       width: 100%;
     }
 
-    .hero--front .hero__background video {
+    .video-suspended .hero--front .hero__background video {
       background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.35)), url('../photos/landing-bg.jpg?1') right center;
       background-size: cover;
     }
@@ -472,7 +472,7 @@ a {
       background: rgba(0,0,0,.5);
     }
 
-    .hero--front .hero__background video {
+    .video-suspended  .hero--front .hero__background video {
       background-position: 75% center;
       background-image: linear-gradient(to left, rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../photos/landing-bg.jpg?1');
     }
