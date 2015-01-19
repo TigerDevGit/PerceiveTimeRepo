@@ -61,6 +61,12 @@ module.exports = (grunt) ->
         src: '**/*'
         dest: "<%= yeoman.dist %>/"
 
+      appjs:
+        expand: true
+        cwd: "<%= yeoman.app %>"
+        src: 'lib/**/*.js'
+        dest: ".tmp/app"
+
     togglRelease:
       staging: [
         host: "hubert"
@@ -145,8 +151,9 @@ module.exports = (grunt) ->
     "clean"
     "coffee"
     "handlebars"
+    "copy:appjs"
     "browserify"
-    "copy"
+    "copy:dist"
   ]
 
   grunt.registerTask "deployInfo", []

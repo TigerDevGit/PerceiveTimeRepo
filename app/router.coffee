@@ -1,7 +1,4 @@
-$ = require 'jquery'
 Backbone = require 'Backbone'
-Backbone.$ = $
-
 routes = require './routes'
 
 # Create a new backbone router with the routes specified
@@ -21,4 +18,4 @@ routes.forEach (route) ->
     return
   return
 
-Backbone.history.start()
+module.exports = router
