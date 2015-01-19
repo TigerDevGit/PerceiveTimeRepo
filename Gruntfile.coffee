@@ -57,7 +57,7 @@ module.exports = (grunt) ->
     copy:
       dist:
         expand: true
-        cwd: "<%= yeoman.app %>"
+        cwd: "<%= yeoman.app %>/assets"
         src: '**/*'
         dest: "<%= yeoman.dist %>/"
 
@@ -107,6 +107,33 @@ module.exports = (grunt) ->
         files: "<%= yeoman.app %>/stylesheets/style.css"
         tasks: ["autoprefixer"]
 
+    coffee:
+      dist:
+        files: [{
+          expand: true
+          cwd: "<%= yeoman.app %>"
+          src: "**/*.coffee"
+          dest: ".tmp/app"
+          ext: ".js"
+        }]
+
+    browserify:
+      dist:
+        src: [".tmp/app/**/*.js"]
+        dest: "<%= yeoman.dist %>/javascripts/toggl.js"
+
+    handlebars:
+      dist:
+        options:
+          namespace: false
+          commonjs: true
+          processName: (f) -> f.replace("app/templates/", "").replace(".hbs", "")
+          partialRegex: /.*/,
+          partialsPathRegex: /\/partials\//
+
+        src: "<%= yeoman.app %>/templates/**/*.hbs"
+        dest: ".tmp/app/templates/compiled.js"
+
   grunt.registerTask "serve", [
     "build"
     "connect:dist"
@@ -116,6 +143,9 @@ module.exports = (grunt) ->
   #Do this dynamically After version were bumped.
   grunt.registerTask "build", [
     "clean"
+    "coffee"
+    "handlebars"
+    "browserify"
     "copy"
   ]
 
