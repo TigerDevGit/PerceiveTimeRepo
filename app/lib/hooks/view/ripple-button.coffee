@@ -1,5 +1,5 @@
 $ = require 'jquery'
-util = require '../../util'
+animationEnd = require '../../animation-end'
 
 # Ripple button behaviour
 #
@@ -22,4 +22,4 @@ module.exports = ($el) ->
         left: e.clientX - rect.left
       })
 
-    $ripple.on util.animationEndEventName(), -> $ripple.removeClass active
+    $ripple.on animationEnd(), -> $ripple.removeClass active

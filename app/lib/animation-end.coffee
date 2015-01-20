@@ -2,7 +2,7 @@ _ = require 'underscore'
 
 # Returns the name of the event that's trigger for the current browser
 # when an animation ends. Results are cached using _.once.
-module.exports.animationEndEventName = _.once ->
+module.exports = _.once ->
   fakeElement = document.createElement 'fake'
   animationEventNames =
     animation: 'animationend'

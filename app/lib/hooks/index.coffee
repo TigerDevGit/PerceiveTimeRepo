@@ -10,6 +10,7 @@ module.exports =
   view: [
     require './view/ripple-button'
     require './view/nav-opener'
+    require './view/login-popup'
   ]
   page: {
     frontvideo: require './page/frontvideo'
