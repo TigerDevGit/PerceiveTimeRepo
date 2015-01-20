@@ -14,4 +14,6 @@ module.exports =
   page: {
     frontvideo: require './page/frontvideo'
     timer: require './page/timer'
+    piechart: require './page/piechart'
+    reveal: require './page/reveal'
   }

@@ -105,12 +105,12 @@ module.exports = (grunt) ->
 
     autoprefixer:
       css:
-        src: "<%= yeoman.app %>/stylesheets/style.css"
-        dest: "<%= yeoman.app %>/stylesheets/style.autoprefixed.css"
+        src: "<%= yeoman.app %>/assets/stylesheets/style.css"
+        dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
 
     watch:
       css:
-        files: "<%= yeoman.app %>/stylesheets/style.css"
+        files: "<%= yeoman.app %>/assets/stylesheets/style.css"
         tasks: ["autoprefixer"]
 
     coffee:
@@ -153,6 +153,7 @@ module.exports = (grunt) ->
     "handlebars"
     "copy:appjs"
     "browserify"
+    "autoprefixer"
     "copy:dist"
   ]
 

@@ -1,7 +1,7 @@
 /**
  * Video playback for the homepage video.
  */
-module.exports = function() {
+module.exports = function($page, view) {
   var video = document.querySelector('.hero__background video'),
       firstTimerHeading = document.querySelectorAll('.hero-timer-heading')[0],
       secondTimerHeading = document.querySelectorAll('.hero-timer-heading')[1],
@@ -63,7 +63,8 @@ module.exports = function() {
         }
       ],
       lastBreakpoint = 0,
-      referenceTime;
+      referenceTime,
+      running = true;
 
   function hideTimer() {
     document.querySelector('.hero-timer').style.opacity = 0;
@@ -94,6 +95,10 @@ module.exports = function() {
   }
 
   function loop() {
+    if (!running) {
+      return;
+    }
+
     updateTimerHeadings();
     updateTimer();
     window.requestAnimationFrame(loop);
@@ -188,6 +193,9 @@ module.exports = function() {
     }
   }
 
+  view.on('destroy', function () {
+    running = false;
+  });
 
   document.querySelector('.video-mute-button').addEventListener('click', handleMuteButtonClick);
   detect_autoplay();

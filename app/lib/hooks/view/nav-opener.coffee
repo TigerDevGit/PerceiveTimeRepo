@@ -7,6 +7,7 @@ $ = require 'jquery'
 # in mobile view.
 module.exports = ($el) ->
   $body = $ 'body'
+  $page = $ '.page'
   $main = $ '.main-nav'
   $btn = $el.find '.nav-opener'
 
@@ -16,15 +17,14 @@ module.exports = ($el) ->
     opened = $body.toggleClass('nav-visible').is('.nav-visible')
 
     if opened
-      $body.on 'click', navSideClick
+      $page.on 'click', navSideClick
       $main.css 'height', window.innerHeight
     else
-      $body.off 'click', navSideClick
+      $page.off 'click', navSideClick
 
   navSideClick = (e) ->
-    $body.removeClass 'nav-visible'
-    $body.off 'click', navSideClick
-
-  $main.on 'click', (e) -> e.stopPropagation()
+    if not $main.get(0).contains e.target
+      $body.removeClass 'nav-visible'
+      $page.off 'click', navSideClick
 
   $btn.on 'click', navOpenerClick

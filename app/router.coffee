@@ -1,5 +1,6 @@
 Backbone = require 'Backbone'
 routes = require './routes'
+$ = require 'jquery'
 
 # Create a new backbone router with the routes specified
 Router = Backbone.Router.extend
@@ -11,10 +12,13 @@ Router = Backbone.Router.extend
     return out
 
 router = new Router()
+currentView = null
 # Then listen for navigation to those routes and render accordingly
 routes.forEach (route) ->
   router.on 'route:' + route.name, ->
-    new route.view().render()
+    $(window).scrollTop 0
+    currentView?.trigger 'destroy'
+    currentView = new route.view().render()
     return
   return
 

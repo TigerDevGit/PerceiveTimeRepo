@@ -25,13 +25,13 @@ class View extends Backbone.View
         document.title = @title
 
       # Run view cooks
-      hook(@$el) for hook in hooks.view
+      hook(@$el, @) for hook in hooks.view
       # Run page hooks
-      hooks.page[hook](@$el) for hook in @hooks if @hooks?
+      hooks.page[hook](@$el, @) for hook in @hooks if @hooks?
 
       # Postrender if necessary
       @postRender?()
 
-      return
+      return @
 
 module.exports = View

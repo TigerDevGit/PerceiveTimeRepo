@@ -5,11 +5,11 @@ module.exports = function() {
 
   function startTimer() {
     interval = setInterval(timerLoop, 1000);
-  };
+  }
 
   function pauseTimer() {
     clearInterval(interval);
-  };
+  }
 
   function timerLoop() {
     var components = [],
@@ -50,11 +50,11 @@ module.exports = function() {
     components.push(seconds);
 
     timerTimeElement.textContent = components.join(':') + (typeof minutes != 'undefined'?hours?'':' min':' sec');
-  };
+  }
 
   function attachListeners() {
     document.querySelector('.timer__button').addEventListener('click', handleTimerButtonClick);
-  };
+  }
 
   function handleTimerButtonClick(event) {
     var resumed = event.target.classList.toggle('timer__button--stop');
@@ -68,7 +68,7 @@ module.exports = function() {
 
       event.target.innerHTML = event.target.innerHTML.replace('Stop', 'Start');
     }
-  };
+  }
 
 
   timerTimeElement = document.querySelector('.timer__time');
