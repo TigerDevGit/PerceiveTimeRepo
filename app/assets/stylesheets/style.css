@@ -1012,7 +1012,10 @@ a {
       right: 0;
       left: 0;
       top: 70%;
-      padding: 0 8%;
+      /* horizontal padding is half the width of .content-section__centered-block
+         to prevent overlapping over text */
+      padding: 0 162px;
+      max-width: 84%;
       transform: translateY(-50%);
     }
 
