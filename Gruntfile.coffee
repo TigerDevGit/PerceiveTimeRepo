@@ -7,6 +7,7 @@ module.exports = (grunt) ->
 
   # load all grunt tasks
   require("matchdep").filterDev("grunt-*").forEach grunt.loadNpmTasks
+  grunt.loadNpmTasks "grunt-modernizr"
 
   # configurable paths
   yeomanConfig =
@@ -143,6 +144,17 @@ module.exports = (grunt) ->
         options:
           require: external
 
+    modernizr:
+      dist:
+        devFile: "remote"
+        outputFile: "<%= yeoman.dist %>/javascripts/modernizr.js"
+        parseFiles: false
+        uglify: false
+        extra:
+          shiv: true
+          load: true
+          cssclasses: true
+
     handlebars:
       dist:
         options:
@@ -169,6 +181,7 @@ module.exports = (grunt) ->
     "copy:appjs"
     "browserify"
     "autoprefixer"
+    "modernizr"
     "copy:dist"
   ]
 
