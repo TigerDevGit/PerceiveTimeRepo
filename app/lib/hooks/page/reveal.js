@@ -1,7 +1,7 @@
 var $ = require('jquery');
 
 module.exports = function ($page, view) {
-  var elements = [];
+  var elements = $('.js-scroll-reveal').toArray();
 
   function checkScroll() {
     var index = 0;
@@ -20,11 +20,6 @@ module.exports = function ($page, view) {
     }
 
     requestAnimationFrame(checkScroll);
-  }
-
-  elementsNodeList = document.querySelectorAll('.js-scroll-reveal');
-  for (var index = 0, element; element = elementsNodeList[index]; ++index) {
-    elements.push(element);
   }
 
   $(document).on('scroll', checkScroll);

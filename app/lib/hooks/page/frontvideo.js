@@ -1,12 +1,14 @@
+var $ = require('jquery');
+
 /**
  * Video playback for the homepage video.
  */
 module.exports = function($page, view) {
-  var video = document.querySelector('.hero__background video'),
-      firstTimerHeading = document.querySelectorAll('.hero-timer-heading')[0],
-      secondTimerHeading = document.querySelectorAll('.hero-timer-heading')[1],
-      timerSeconds = document.querySelector('.hero-timer .seconds'),
-      timerMilliseconds = document.querySelector('.hero-timer .milliseconds'),
+  var video = $('.hero__background video').get(0),
+      firstTimerHeading = $('.hero-timer-heading').get(0),
+      secondTimerHeading = $('.hero-timer-heading').get(1),
+      timerSeconds = $('.hero-timer .seconds').get(0),
+      timerMilliseconds = $('.hero-timer .milliseconds').get(0),
       breakpoints = [
         {
           time: 0
@@ -67,11 +69,11 @@ module.exports = function($page, view) {
       running = true;
 
   function hideTimer() {
-    document.querySelector('.hero-timer').style.opacity = 0;
+    $('.hero-timer').css('opacity', 0);
   }
 
   function showTimer() {
-    document.querySelector('.hero-timer').style.opacity = 1;
+    $('.hero-timer').css('opacity', 1);
   }
 
   function updateTimer() {
@@ -197,6 +199,6 @@ module.exports = function($page, view) {
     running = false;
   });
 
-  document.querySelector('.video-mute-button').addEventListener('click', handleMuteButtonClick);
+  $('.video-mute-button').on('click', handleMuteButtonClick);
   detect_autoplay();
 };

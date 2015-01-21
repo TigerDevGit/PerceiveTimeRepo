@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 module.exports = function() {
   var secondsTracked = 0,
       interval,
@@ -49,11 +51,11 @@ module.exports = function() {
 
     components.push(seconds);
 
-    timerTimeElement.textContent = components.join(':') + (typeof minutes != 'undefined'?hours?'':' min':' sec');
+    timerTimeElement.text(components.join(':') + (typeof minutes != 'undefined'?hours?'':' min':' sec'));
   }
 
   function attachListeners() {
-    document.querySelector('.timer__button').addEventListener('click', handleTimerButtonClick);
+    $('.timer__button').on('click', handleTimerButtonClick);
   }
 
   function handleTimerButtonClick(event) {
@@ -71,7 +73,7 @@ module.exports = function() {
   }
 
 
-  timerTimeElement = document.querySelector('.timer__time');
+  timerTimeElement = $('.timer__time');
   startTimer();
   attachListeners();
 };
