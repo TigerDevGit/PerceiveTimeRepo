@@ -1,4 +1,4 @@
-Backbone = require 'Backbone'
+Backbone = require 'backbone'
 routes = require './routes'
 $ = require 'jquery'
 

@@ -1,7 +1,9 @@
 {
   "name": "toggl-next-website",
   "version": "0.49.15",
-  "dependencies": {},
+  "dependencies": {
+    "backbone": "^1.1.2"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-autoprefixer": "^2.1.0",

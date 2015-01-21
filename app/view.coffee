@@ -1,5 +1,5 @@
 $ = require 'jquery'
-Backbone = require 'Backbone'
+Backbone = require 'backbone'
 Backbone.$ = $
 
 # Import the precompiled templates

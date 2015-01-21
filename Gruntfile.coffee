@@ -21,7 +21,7 @@ module.exports = (grunt) ->
       options:
         port: 9001
         hostname: "localhost"
-        base: "<%= yeoman.app %>"
+        base: "<%= yeoman.dist %>"
 
       dist:
         options:
