@@ -1,0 +1,21 @@
+<header>
+  <div class="wrapper">
+    <a href="/" class="logo">Toggl</a>
+    <button class="nav-opener"></button>
+    {{#if navLight }}
+    <nav class="main-nav main-nav--light">
+    {{ else }}
+    <nav class="main-nav">
+    {{/if}}
+      <ol>
+        <li><a href="/features">Features</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="#" class="js-login-button">Log in</a></li>
+        <li><a href="/signup" class="cta-button cta-button--small cta-button--inline cta-button--filled cta-button--no-arrow js-ripple-button">Sign up</a></li>
+      </ol>
+      <ol class="secondary">
+        {{> 'secondary-nav' }}
+      </ol>
+    </nav>
+  </div>
+</header>

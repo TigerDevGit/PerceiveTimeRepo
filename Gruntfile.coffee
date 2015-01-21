@@ -7,12 +7,21 @@ module.exports = (grunt) ->
 
   # load all grunt tasks
   require("matchdep").filterDev("grunt-*").forEach grunt.loadNpmTasks
+  grunt.loadNpmTasks "grunt-modernizr"
 
   # configurable paths
   yeomanConfig =
     app: "app"
     dist: "dist"
     tmp: ".tmp"
+
+  # external packages to be put in the "vendor" browserify bundle
+  external = [
+    "jquery"
+    "backbone"
+    "underscore"
+    "handlebars"
+  ]
 
   pkg = grunt.file.readJSON("package.json")
   grunt.initConfig
@@ -21,7 +30,7 @@ module.exports = (grunt) ->
       options:
         port: 9001
         hostname: "localhost"
-        base: "<%= yeoman.app %>"
+        base: "<%= yeoman.dist %>"
 
       dist:
         options:
@@ -57,9 +66,15 @@ module.exports = (grunt) ->
     copy:
       dist:
         expand: true
-        cwd: "<%= yeoman.app %>"
+        cwd: "<%= yeoman.app %>/assets"
         src: '**/*'
         dest: "<%= yeoman.dist %>/"
+
+      appjs:
+        expand: true
+        cwd: "<%= yeoman.app %>"
+        src: 'lib/**/*.js'
+        dest: ".tmp/app"
 
     togglRelease:
       staging: [
@@ -99,13 +114,58 @@ module.exports = (grunt) ->
 
     autoprefixer:
       css:
-        src: "<%= yeoman.app %>/stylesheets/style.css"
-        dest: "<%= yeoman.app %>/stylesheets/style.autoprefixed.css"
+        src: "<%= yeoman.app %>/assets/stylesheets/style.css"
+        dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
 
     watch:
       css:
-        files: "<%= yeoman.app %>/stylesheets/style.css"
+        files: "<%= yeoman.app %>/assets/stylesheets/style.css"
         tasks: ["autoprefixer"]
+
+    coffee:
+      dist:
+        files: [{
+          expand: true
+          cwd: "<%= yeoman.app %>"
+          src: "**/*.coffee"
+          dest: ".tmp/app"
+          ext: ".js"
+        }]
+
+    browserify:
+      app:
+        src: [".tmp/app/**/*.js"]
+        dest: "<%= yeoman.dist %>/javascripts/toggl.js"
+        options:
+          external: external
+      vendor:
+        src: []
+        dest: "<%= yeoman.dist %>/javascripts/vendor.js"
+        options:
+          require: external
+
+    modernizr:
+      dist:
+        devFile: "remote"
+        outputFile: "<%= yeoman.dist %>/javascripts/modernizr.js"
+        parseFiles: false
+        uglify: false
+        extra:
+          shiv: true
+          load: true
+          cssclasses: true
+
+    handlebars:
+      dist:
+        options:
+          namespace: false
+          commonjs: true
+          processName: (f) -> f.replace("app/templates/", "").replace(".hbs", "")
+          partialRegex: /.*/,
+          partialsPathRegex: /\/partials\//
+
+        src: "<%= yeoman.app %>/templates/**/*.hbs"
+        dest: ".tmp/app/templates/compiled.js"
 
   grunt.registerTask "serve", [
     "build"
@@ -116,7 +176,13 @@ module.exports = (grunt) ->
   #Do this dynamically After version were bumped.
   grunt.registerTask "build", [
     "clean"
-    "copy"
+    "coffee"
+    "handlebars"
+    "copy:appjs"
+    "browserify"
+    "autoprefixer"
+    "modernizr"
+    "copy:dist"
   ]
 
   grunt.registerTask "deployInfo", []
