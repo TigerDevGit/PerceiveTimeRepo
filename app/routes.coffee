@@ -20,6 +20,11 @@ module.exports = [
     view: require './views/page/about'
   }
   {
+    route: 'landing'
+    name: 'landing'
+    view: require './views/page/landing'
+  }
+  {
     route: 'legal/privacy'
     name: 'privacy'
     view: require './views/page/privacy'
