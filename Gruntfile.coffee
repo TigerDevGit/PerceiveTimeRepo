@@ -14,6 +14,14 @@ module.exports = (grunt) ->
     dist: "dist"
     tmp: ".tmp"
 
+  # external packages to be put in the "vendor" browserify bundle
+  external = [
+    "jquery"
+    "backbone"
+    "underscore"
+    "handlebars"
+  ]
+
   pkg = grunt.file.readJSON("package.json")
   grunt.initConfig
     yeoman: yeomanConfig
@@ -124,9 +132,16 @@ module.exports = (grunt) ->
         }]
 
     browserify:
-      dist:
+      app:
         src: [".tmp/app/**/*.js"]
         dest: "<%= yeoman.dist %>/javascripts/toggl.js"
+        options:
+          external: external
+      vendor:
+        src: []
+        dest: "<%= yeoman.dist %>/javascripts/vendor.js"
+        options:
+          require: external
 
     handlebars:
       dist:
