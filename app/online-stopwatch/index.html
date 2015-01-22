@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="Toggl, Online Timer, Timetracking">
+    <meta name="description" content="Online stopwatch that covers the whole screen. Best for quick time tracking. Features start, pause and reset buttons. You need to bookmark this page!">
+    <meta name="author" content="toggl.com">
+
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" id="viewport-meta" name="viewport">
+
+    <title>Online Stopwatch</title>
+
+    <meta property="og:site_name" content="Toggl" />
+    <meta property="og:title" content="Online Stopwatch" />
+    <meta property="og:description" content="Online stopwatch that covers the whole screen. Best for quick time tracking. Features start, pause and reset buttons. You need to bookmark this page!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.toggl.com/online-stopwatch" />
+    <meta property="og:image" content="http://blog.toggl.com/wp-content/uploads/sites/5/2014/08/toggl-online-timer-stopwatch.png" />
+
+    <link href="./includes/style.css" rel="stylesheet" type="text/css">
+    <script src="./includes/modernizr.min.js"></script>
+</head>
+
+<body>
+    <div id="video-container"></div>
+    <div id="wrap">
+        <a href="#" id="bookmarkme"><img src="./images/bm.png"></a>
+        <div id="main">
+            <div class="wrap">
+                <a href="https://www.toggl.com/" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'toggl logo click']);"  id="logo" target="_blank"></a>
+
+                <div class="top">
+                    <h1>Online <span class="colored">Stopwatch</span></h1>
+                </div><!-- //top -->
+
+                <div id="timesheet">
+                    <p id="time">00:00:00</p>
+
+                    <div class="cfx cfx" id="controlwrap">
+                        <button class="tcontrol prim" id="start">START</button>
+
+                        <div class="vsep">
+                            <br>
+                        </div><button class="tcontrol sec" id="reset">RESET</button>
+                    </div>
+                </div>
+
+                <div id="bottom">
+                    <h2><a target="_blank" href="https://www.toggl.com/" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'get toggl click']);"><span>Get Toggl</span></a> for more stopwatch features!</h2>
+
+                    <div class="cfx" id="linkswrap">
+                        <ul class="cfx" id="links">
+                            <li>
+                              <a target="_blank" href="https://www.toggl.com" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'free time tracking click']);">
+                                <span> ■ </span>
+                                Free Time Tracking Software
+                              </a>
+                            </li>
+                            <li>
+                              <a target="_blank" href="https://www.teamweek.com" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'free project planning click']);">
+                                <span> ■ </span>
+                                Free Project Planning Software
+                              </a>
+                            </li>
+                            <li>
+                              <a target="_blank" href="https://www.toggl.com/timesheet-generator" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'timesheet generator click']);">
+                                <span> ■ </span>
+                                Timesheet Generator
+                              </a>
+                            </li>
+                            <li>
+                              <a target="_blank" href="https://www.toggl.com/online-timer" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'online timer click']);">
+                                <span> ■ </span>
+                                Online Timer
+                              </a>
+                            </li>
+                            <li>
+                              <a target="_blank" href="https://www.toggl.com/employee-timesheet-template/" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'employee timesheet template click']);">
+                                <span> ■ </span>
+                                Employee Timesheet Template
+                              </a>
+                            </li>
+                            <li>
+                              <a target="_blank" href="https://www.toggl.com/timesheet-template" onClick="_gaq.push(['_trackEvent', 'online stopwatch', 'click', 'timesheet template click']);">
+                                <span> ■ </span>
+                                Timesheet Template
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="share">
+                        <div class="h-sep"></div>
+                            <a class="twitter" href="https://twitter.com/home?status=www.toggl.com/online-stopwatch%20Best%20quick%20online%20stopwatch%20available.%20You%20need%20to%20bookmark%20this!" target="_blank">
+                                <span></span>
+                            </a>
+                            <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.toggl.com/online-stopwatch/" target="_blank">
+                                <span></span>
+                            </a>
+                            <a class="google" href="https://plus.google.com/share?url=https://www.toggl.com/online-stopwatch" target="_blank"><span></span></a>
+                            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.toggl.com/online-stopwatch&title=Online%20stopwatch&summary=Online%20stopwatch%20that%20covers%20the%20whole%20screen.%20Best%20for%20quick%20time%20tracking.%20Features%20start,%20pause%20and%20reset%20buttons.&source=" target="_blank">
+                                <span></span>
+                            </a>
+                    </div><!-- //share -->
+                </div><!-- //bottom -->
+            </div><!-- //wrap -->
+        </div><!-- //main -->
+    </div><!-- //wrap -->
+    <script src="./includes/jquery.min.js"></script>
+    <script src="./includes/scripts.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-3215787-2']);
+        _gaq.push(['_setDomainName', 'toggl.com']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+    </script>
+    <script type="text/javascript">
+$(function() {
+    $("#bookmarkme").click(function() {
+        // Mozilla Firefox Bookmark
+        if ('sidebar' in window && 'addPanel' in window.sidebar) {
+        window.sidebar.addPanel(location.href,document.title,"");
+        } else if( /*@cc_on!@*/false) { // IE Favorite
+        window.external.AddFavorite(location.href,document.title);
+        } else { // webkit - safari/chrome
+        alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+        }
+    });
+});
+    </script>
+</body>
+</html>
