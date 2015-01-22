@@ -1,3 +1,3 @@
 module.exports =
-    auth: require './authentication'
-    user: require './user'
+  auth: require './authentication'
+  user: require './user'
