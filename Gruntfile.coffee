@@ -132,6 +132,8 @@ module.exports = (grunt) ->
           dest: ".tmp/app"
           ext: ".js"
         }]
+        options:
+          bare: true
 
     browserify:
       app:
