@@ -21,6 +21,7 @@ module.exports = (grunt) ->
     "backbone"
     "underscore"
     "handlebars"
+    "es6-promise"
   ]
 
   pkg = grunt.file.readJSON("package.json")
