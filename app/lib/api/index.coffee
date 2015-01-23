@@ -38,8 +38,8 @@ class TogglApi
     # from the path.
     if @endpoint.slice(-1) is '/'
       @endpoint = @endpoint.slice 0, -1
-    if @path.slice(0, 1) is '/'
-      @path = @path.slice 1
+    if path.slice(0, 1) is '/'
+      path = path.slice 1
 
     return [ @endpoint, path ].join '/'
 

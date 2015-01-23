@@ -1,5 +1,7 @@
 View = require '../../view'
 uniqueId = require '../../lib/unique-id'
+formData = require '../../lib/form-data'
+API = require '../../lib/api'
 $ = require 'jquery'
 _ = require 'underscore'
 
@@ -20,25 +22,25 @@ class LoginPopup extends View
 
     return
 
-  # Before rending, insert an element on the page for the popup to
-  # be drawn into.
-  preRender: ->
-    @el = '#' + uniqueId()
-    @$el = $ '<div id="' + @el.slice(1) + '" />'
-    $('body').append @$el
+  bindLoginForm: ->
+    $error = @error
+    $form = $('.login-form', @modal)
+    $form.on 'submit', (e) ->
+      e.preventDefault()
+      $error.hide()
+      data = formData $form
 
-    return
+      new API().auth.session data.username, data.password
+        .then ->
+          alert 'You\'re logged in! Todo: do something :P'
+        .catch ->
+          $error.show()
 
-  # Then bind hooks appropriately.
-  postRender: ->
-    # Add body styling
-    $('body').addClass 'with-modal-overlay'
-
+  # Binds teardown event handlers
+  bindTeardown: ->
     # Teardown handlers
     teardown = => @trigger 'teardown'
     teardownKeypress = (e) => if e.keyCode is 27 then teardown()
-
-    @modal = $('.modal-overlay', @$el)
 
     # Make the overlay visible and bind events to close when hit
     @modal.on 'click', (e) =>
@@ -53,6 +55,28 @@ class LoginPopup extends View
 
     # When the element is removed, clean up after itself.
     @on 'destroy', -> $(document).off 'keypress', teardownKeypress
+
+  # Finds a adds jquery objects for re-used elements on the lgoin view.
+  findElements: ->
+    @error = $ '.login-form__error', @$el
+    @modal = $ '.modal-overlay', @$el
+
+  # Before rending, insert an element on the page for the popup to
+  # be drawn into.
+  preRender: ->
+    @el = '#' + uniqueId()
+    @$el = $ '<div id="' + @el.slice(1) + '" />'
+    $('body').append @$el
+
+    return
+
+  # Then bind hooks appropriately.
+  postRender: ->
+    $('body').addClass 'with-modal-overlay'
+
+    @findElements()
+    @bindLoginForm()
+    @bindTeardown()
 
     return
 

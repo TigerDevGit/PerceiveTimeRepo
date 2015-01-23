@@ -8,10 +8,10 @@ module.exports = (api) ->
         .request 'get', 'me'
 
     # Attempts a cookie-based authentication for the session.
-    session: (username, password) ->
+    session: (username, password, remember = false) ->
       return api
         .setAuth username, password
-        .request 'get', 'me'
+        .request 'post', 'sessions', { data: { remember_me: remember }}
         .then (args...) ->
           # on successful responses we no longer need auth data,
           # so remove it from the API
