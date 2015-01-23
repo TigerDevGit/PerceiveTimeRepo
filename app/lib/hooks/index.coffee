@@ -11,6 +11,7 @@ module.exports =
     require './view/ripple-button'
     require './view/nav-opener'
     require './view/login-popup'
+    require './view/ga-track'
   ]
   page: {
     frontvideo: require './page/frontvideo'
