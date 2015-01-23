@@ -77,6 +77,12 @@ module.exports = (grunt) ->
         src: 'lib/**/*.js'
         dest: ".tmp/app"
 
+      statics:
+        expand: true
+        cwd: "<%= yeoman.app %>/static-pages"
+        src: '**/*'
+        dest: "<%= yeoman.dist %>/"
+
     togglRelease:
       staging: [
         host: "hubert"
@@ -186,6 +192,7 @@ module.exports = (grunt) ->
     "autoprefixer"
     "modernizr"
     "copy:dist"
+    "copy:statics"
   ]
 
   grunt.registerTask "deployInfo", []
