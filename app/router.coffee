@@ -19,6 +19,7 @@ routes.forEach (route) ->
     $(window).scrollTop 0
     currentView?.trigger 'destroy'
     currentView = new route.view().render()
+    window._gaq?.push [ '_trackPageview', route.route ]
     return
   return
 

@@ -8,8 +8,8 @@ _ = require 'underscore'
 #   Makes: _gaq.push('signup', 'home_click')
 module.exports = ($el) ->
   tag = 'ga-track'
-  $('[' + tag + ']', $el).on 'click', ->
-    return unless window._gaq?
 
-    props = $(@).attr(tag).split(',')
-    _gaq.push.apply _gaq, _.invoke(props, 'trim')
+  $('[' + tag + ']', $el).on 'click', ->
+    props = _.invoke $(@).attr(tag).split(','), 'trim'
+    _gaq?.push [ '_trackEvent' ].concat(props)
+    return
