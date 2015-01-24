@@ -7,18 +7,32 @@ class LoginPopup extends Modal
   template: 'component/login'
 
   bindLoginForm: ->
-    $error = $ '.login-form__error', @modal
+    $message = $ '.login-form__error', @modal
     $form = $ '.login-form', @modal
-    $form.on 'submit', (e) ->
+    data = null
+
+    startSubmit = (e) ->
       e.preventDefault()
-      $error.hide()
+      $message.hide()
       data = formData $form
+
+    $form.on 'submit', (e) ->
+      startSubmit e
 
       new API().auth.session data.username, data.password
         .then ->
           alert 'You\'re logged in! Todo: do something :P'
         .catch ->
-          $error.show()
+          $message.html('Couldn\'t log you in. Please try again!').show()
+
+    $('.js-forgot-password', @modal).on 'click', (e) ->
+      startSubmit e
+
+      new API().user.forgot  data.username
+        .then ->
+          $message.html('An email containing instructions to reset your password has been sent.').show()
+        .catch ->
+          $message.html('Unknown email, please check that it\'s entered correctly!').show()
 
   # Then bind hooks appropriately.
   postRender: ->
