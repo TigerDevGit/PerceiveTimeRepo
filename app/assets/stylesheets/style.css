@@ -1134,6 +1134,15 @@ a {
       margin: 0 auto;
     }
 
+      .signup-form__error {
+        background: #f30c16;
+        color: white;
+        font-size: 14px;
+        padding: 23px 26px;
+        margin-bottom: 12px;
+        -webkit-font-smoothing: subpixel-antialiased;
+      }
+
       .signup-form__field {
         margin-bottom: 12px;
       }

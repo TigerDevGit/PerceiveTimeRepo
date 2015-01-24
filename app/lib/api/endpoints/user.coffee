@@ -4,10 +4,11 @@ module.exports = (api) ->
     signup: (email, password, tz) ->
       return api.request 'post', 'signups',
         data:
-          email: email
-          password: password
-          timezone: timezone
-          created_with: api.name
+          user:
+            email: email
+            password: password
+            timezone: tz
+            created_with: api.name
 
     # Forgot a password functionality. Causes an email to be sent
     # to the user with reset instructions.
