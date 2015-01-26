@@ -4,6 +4,7 @@ path       = require 'path'
 timerStart = Date.now()
 
 module.exports = (grunt) ->
+LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
 
   # load all grunt tasks
   require("matchdep").filterDev("grunt-*").forEach grunt.loadNpmTasks
@@ -132,9 +133,18 @@ module.exports = (grunt) ->
         dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
 
     watch:
+      coffee:
+        options: livereload: LIVERELOAD_PORT
+        files: "<%= yeoman.app %>/{,**/}*.coffee"
+        tasks: [ "build" ]
+      handlebars:
+        options: livereload: LIVERELOAD_PORT
+        files: "<%= yeoman.app %>/templates/{,**/}*.hbs"
+        tasks: [ "build" ]
       css:
+        options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/assets/stylesheets/style.css"
-        tasks: ["autoprefixer"]
+        tasks: [ "build" ]
 
     coffee:
       dist:
