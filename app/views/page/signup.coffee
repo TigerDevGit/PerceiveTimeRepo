@@ -13,7 +13,7 @@ class SignupView extends View
     $('.signup-form', @$el).on 'submit', (e) ->
       e.preventDefault()
       $message.hide()
-      data = formData $(@)
+      data = formData $(this)
 
       new API().user.signup data.username, data.password, jstz.determine()?.name()
         .then ->

@@ -17,7 +17,7 @@ class TogglApi
 
     # attach endpoints to the api instance
     for key, module of endpoints
-      @[key] = module @
+      @[key] = module this
 
   # Sets the authentication username (or API token) and password, if not
   # using the token, of the toggl API.
@@ -26,7 +26,7 @@ class TogglApi
       username: username
       password: password
 
-    return @
+    return this
 
   # Constructs a new URL to the API endpoint, where `path` is relative.
   url: (path) ->

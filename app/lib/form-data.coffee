@@ -5,7 +5,7 @@ $ = require 'jquery'
 module.exports = ($form) ->
   out = {}
   $form.find('input').each ->
-    $el = $ @
+    $el = $ this
     out[$el] = $el.val()
 
 
