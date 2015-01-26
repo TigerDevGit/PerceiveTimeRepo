@@ -37,6 +37,13 @@ module.exports = (grunt) ->
         options:
           keepalive: false
 
+    coffeelint:
+      options:
+        configFile: 'coffeelint.json'
+      app: [
+        "<%= yeoman.app %>/{,**/}*.coffee"
+      ]
+
     clean:
       dist: [
         ".tmp"
