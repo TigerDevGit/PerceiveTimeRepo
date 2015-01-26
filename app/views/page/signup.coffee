@@ -15,7 +15,8 @@ class SignupView extends View
       $message.hide()
       data = formData $(this)
 
-      new API().user.signup data.username, data.password, jstz.determine()?.name()
+      new API('dev', null, null, '/api/v8/')
+        .user.signup data.email, data.password, jstz.determine()?.name()
         .then ->
           alert 'You\'re registered! Todo: do something :P'
         .catch ->

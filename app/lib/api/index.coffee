@@ -7,8 +7,9 @@ class TogglApi
   # Toggl API constructor. "Name" is required in several endpoints.
   # Username (or API token) and password (not necessary if using token)
   # can be passed here, or you can call auth.basic later.
-  constructor: (name, username, password) ->
-    @endpoint = 'https://www.toggl.com/api/v8'
+  constructor: (name, username, password,
+                endpoint = 'https://www.toggl.com/api/v8') ->
+    @endpoint = endpoint
     @name = name
     @auth = null
 
@@ -56,6 +57,7 @@ class TogglApi
     # Create a new promise for a jquery xhr
     return new Promise (resolve, reject) ->
       $.ajax _.extend({
+        type: method.toUpperCase()
         dataType: 'json'
         url: url
         success: resolve
