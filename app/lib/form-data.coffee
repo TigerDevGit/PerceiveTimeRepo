@@ -5,8 +5,7 @@ $ = require 'jquery'
 module.exports = ($form) ->
   out = {}
   $form.find('input').each ->
+    # TODO wouldn't `this.type` and `this.value` cut it? Without JQuery?
     $el = $ this
-    out[$el] = $el.val()
-
-
+    out[$el.attr('type')] = $el.val()
   return out
