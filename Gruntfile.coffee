@@ -1,13 +1,22 @@
 "use strict"
-request    = require 'request'
-path       = require 'path'
+fs = require 'fs'
+path = require 'path'
+connectLiveReload = require 'connect-livereload'
+gruntConnectProxyUtils = require 'grunt-connect-proxy/lib/utils'
+matchdep = require 'matchdep'
+request = require 'request'
+_ = require 'underscore'
+
+{proxyRequest} = gruntConnectProxyUtils
 timerStart = Date.now()
 
-module.exports = (grunt) ->
+API_HOST = "https://next.toggl.com" || process.env.API_HOST
+API_HOST_USES_SSL = API_HOST.indexOf("https") == 0
 LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
 
+module.exports = (grunt) ->
   # load all grunt tasks
-  require("matchdep").filterDev("grunt-*").forEach grunt.loadNpmTasks
+  matchdep.filterDev("grunt-*").forEach(grunt.loadNpmTasks)
   grunt.loadNpmTasks "grunt-modernizr"
 
   # configurable paths
@@ -28,15 +37,44 @@ LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
   pkg = grunt.file.readJSON("package.json")
   grunt.initConfig
     yeoman: yeomanConfig
-    connect:
-      options:
-        port: 9001
-        hostname: "localhost"
-        base: "<%= yeoman.dist %>"
 
-      dist:
+    connect:
+      server:
+        proxies: [
+          {
+            context: "/api/v8/"
+            host: API_HOST['https://'.length..]
+            https: API_HOST_USES_SSL
+            protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
+            port: if API_HOST_USES_SSL then 443 else 80
+          }
+        ]
         options:
-          keepalive: false
+          port: 9001
+          hostname: "localhost"
+          debug: true
+          livereload: LIVERELOAD_PORT
+          base: "dist"
+          middleware: (connect, options) ->
+            # Make sure we can iterate through the `base` directories
+            if not Array.isArray options.base
+              options.base = [options.base]
+
+            # Try serving static files first
+            serveStaticFiles = options.base.map (dir) -> connect.static dir
+
+            # Set-up the proxy
+            proxyApiRequests = proxyRequest
+
+            # Fallback to serving `index.html` so routing is handled by Backbone
+            # in the client
+            fallbackToIndex = (req, res, next) ->
+              indexPath = path.join(__dirname, "dist/index.html")
+              indexStream = fs.createReadStream indexPath
+              indexStream.pipe res
+
+            # Return the generated middleware Array
+            serveStaticFiles.concat(proxyApiRequests, fallbackToIndex)
 
     coffeelint:
       options:
@@ -194,12 +232,13 @@ LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
         dest: ".tmp/app/templates/compiled.js"
 
   grunt.registerTask "serve", [
-    "build"
-    "connect:dist"
-    "watch:css"
+    'build'
+    'configureProxies:server'
+    'connect:server'
+    'watch'
   ]
 
-  #Do this dynamically After version were bumped.
+  # Do this dynamically After version were bumped.
   grunt.registerTask "build", [
     "clean"
     "coffee"
