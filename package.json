@@ -45,7 +45,8 @@
     "karma-phantomjs-launcher": "^0.1.4",
     "karma-sinon": "^1.0.4",
     "karma-sinon-expect": "^0.1.4",
-    "matchdep": "^0.3.0"
+    "matchdep": "^0.3.0",
+    "pretender": "^0.4.2"
   },
   "engines": {
     "node": ">=0.8.0"
