@@ -19,13 +19,11 @@ class SignupView extends View
         .user.signup data.email, data.password, jstz.determine()?.name()
         .then ->
           alert 'You\'re registered! Todo: do something :P'
-        .catch ->
-          message = 'Failed to sign up. Please check your e-mail and password and make sure you\'re online.'
-          try
-            message = jqXHR.responseText
-          catch e
-            #ignore
-
-          $message.html(message).show()
+        .catch (err) ->
+          $message.html(
+            err?.responseText ||
+            'Failed to sign up.<br />'+
+            'Please check your e-mail and password and make sure you\'re online.'
+          ).show()
 
 module.exports = SignupView

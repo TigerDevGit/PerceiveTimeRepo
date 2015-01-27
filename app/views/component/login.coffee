@@ -19,11 +19,14 @@ class LoginPopup extends Modal
     $form.on 'submit', (e) ->
       startSubmit e
 
-      new API().auth.session data.username, data.password
+      new API('dev', null, null, '/api/v8')
+        .auth.session data.email, data.password
         .then ->
           alert 'You\'re logged in! Todo: do something :P'
-        .catch ->
-          $message.html('Couldn\'t log you in. Please try again!').show()
+        .catch (err) ->
+          $message.html(
+            err?.responseText || 'Couldn\'t log you in. Please try again!'
+          ).show()
 
     $('.js-forgot-password', @modal).on 'click', (e) ->
       startSubmit e
