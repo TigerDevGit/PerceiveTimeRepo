@@ -1,4 +1,5 @@
 require('es6-promise').polyfill()
+Base64 = require 'Base64'
 $ = require 'jquery'
 _ = require 'underscore'
 endpoints = require './endpoints'
@@ -46,11 +47,14 @@ class TogglApi
   request: (method, path, options = {}) ->
     url = @url path
 
-    # If we have auth set, add it as defaults to the options.
+    # If we have auth settings, add the `Authorization` header
     if @username and @password
-      _.defaults options,
-        username: @username
-        password: @password
+      {username, password} = this
+      originalBeforeSend = options.beforeSend
+      options.beforeSend = (xhr) ->
+        authHeader = "Basic #{Base64.btoa(username + ':' + password)}"
+        xhr.setRequestHeader 'Authorization', authHeader
+        originalBeforeSend(xhr) if originalBeforeSend
 
     # Create a new promise for a jquery xhr
     return new Promise (resolve, reject) ->
