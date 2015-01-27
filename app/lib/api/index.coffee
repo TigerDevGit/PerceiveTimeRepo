@@ -13,7 +13,7 @@ class TogglApi
     @name = name
     @auth = null
 
-    if username?
+    if !!username
       @setAuth username, password
 
     # attach endpoints to the api instance
@@ -23,10 +23,8 @@ class TogglApi
   # Sets the authentication username (or API token) and password, if not
   # using the token, of the toggl API.
   setAuth: (username, password = 'api_token') ->
-    @auth =
-      username: username
-      password: password
-
+    @username = username
+    @password = password
     return this
 
   # Constructs a new URL to the API endpoint, where `path` is relative.
@@ -49,10 +47,10 @@ class TogglApi
     url = @url path
 
     # If we have auth set, add it as defaults to the options.
-    if @auth
+    if @username and @password
       _.defaults options,
-        username: @auth.username
-        password: @auth.password
+        username: @username
+        password: @password
 
     # Create a new promise for a jquery xhr
     return new Promise (resolve, reject) ->
