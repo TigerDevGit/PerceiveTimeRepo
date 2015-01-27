@@ -38,6 +38,16 @@ module.exports = (grunt) ->
   grunt.initConfig
     yeoman: yeomanConfig
 
+    karma:
+      options:
+        configFile: 'karma.conf.coffee'
+      spec:
+        singleRun: true
+      watch:
+        reporters: [ 'progress' ]
+        singleRun: false
+        watch: true
+
     connect:
       server:
         proxies: [
