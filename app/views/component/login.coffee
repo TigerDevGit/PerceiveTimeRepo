@@ -6,42 +6,58 @@ $ = require 'jquery'
 class LoginPopup extends Modal
   template: 'component/login'
 
-  bindLoginForm: ->
-    $message = $ '.login-form__error', @modal
-    $form = $ '.login-form', @modal
-    data = null
+  submitLogin: (data) ->
+    new API('dev', null, null, '/api/v8')
+      .auth.session data.email, data.password
+      .then ->
+        alert 'You\'re logged in! Todo: do something :P'
+      .catch (err) ->
+        $message.html(
+          err?.responseText || 'Couldn\'t log you in. Please try again!'
+        ).show()
 
-    startSubmit = (e) ->
-      e.preventDefault()
-      $message.hide()
-      data = formData $form
+  forgotPassword: (data) ->
+    if not data.email
+      @message.html('Please enter an email bellow.').show()
+      return
 
-    $form.on 'submit', (e) ->
-      startSubmit e
+    handleError = (err) =>
+      message = switch err.responseText
+        when 'E-mail address does not exist\n'
+          'Unknown email, please check that it\'s entered correctly!'
+        else
+          if err.responseText
+            err.responseText
+          else
+            'Failed to trigger a password reset.\n\
+            Make sure you\'re connected to the internet'
 
-      new API('dev', null, null, '/api/v8')
-        .auth.session data.email, data.password
-        .then ->
-          alert 'You\'re logged in! Todo: do something :P'
-        .catch (err) ->
-          $message.html(
-            err?.responseText || 'Couldn\'t log you in. Please try again!'
-          ).show()
+      @message.html(message).show()
 
-    $('.js-forgot-password', @modal).on 'click', (e) ->
-      startSubmit e
+    new API('dev', null, null, '/api/v8')
+      .user.forgot  data.email
+      .then =>
+        @message.html(
+          'An email containing instructions to reset your password has been sent.'
+        ).show()
+      .catch handleError
 
-      new API().user.forgot  data.username
-        .then ->
-          $message.html('An email containing instructions to reset your password has been sent.').show()
-        .catch ->
-          $message.html('Unknown email, please check that it\'s entered correctly!').show()
+  startSubmit: (e) =>
+    e.preventDefault()
+    @message.hide()
 
   # Then bind hooks appropriately.
   postRender: ->
     super()
-    @bindLoginForm()
+    @message = $('.login-form__error', @modal)
+    @form = $('.login-form', @modal)
 
-    return
+    @form.on 'submit', (e) =>
+      @startSubmit e
+      @submitLogin(formData @form)
+
+    $('.js-forgot-password', @modal).on 'click', (e) =>
+      @startSubmit e
+      @forgotPassword(formData @form)
 
 module.exports = LoginPopup

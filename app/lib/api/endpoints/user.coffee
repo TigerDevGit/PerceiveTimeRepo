@@ -19,8 +19,11 @@ module.exports = (api) ->
     # to the user with reset instructions.
     forgot: (email) ->
       return api.request 'post', 'lost_passwords',
-        data:
+        processData: false
+        contentType: 'application/json'
+        data: JSON.stringify(
           email: email
+        )
 
     # Creates an user with Google OAuth. This will trigger a redirect to an
     # OAuth page, which redirect back to the app on success, and should be
