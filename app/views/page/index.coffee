@@ -14,17 +14,20 @@ class IndexView extends View
     @attributes =
       navLight: true
 
-    code = @getCode()
-    if code?
+    query = parseQuery(window.location.search)
 
+    if not query.code
+      return
 
-      new Api('dev', null, null, '/api/v8')
-        .user.completeGoogleSignup(code, jstz.determine()?.name())
+    if query.state == 'signup'
+      return new Api('dev', null, null, '/api/v8')
+        .user.completeGoogleSignup(query.code, jstz.determine()?.name())
 
-    return
-
-  getCode: ->
-    q = parseQuery(window.location.search.slice(1))
-    q?.code
+    new Api('dev', null, null, '/api/v8')
+      .auth.session query.code, 'oauth_code', query.state == 'remember_me'
+      .then ->
+        alert 'Signed-in'
+      .catch (err) ->
+        alert 'Failed with: ' + err && err.responseText
 
 module.exports = IndexView

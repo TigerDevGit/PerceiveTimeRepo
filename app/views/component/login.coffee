@@ -6,19 +6,27 @@ $ = require 'jquery'
 class LoginPopup extends Modal
   template: 'component/login'
 
+  googleLogin: ->
+    new API('dev', null, null, '/api/v8/')
+      .request 'get', 'oauth_url',
+        # see the `endpoints/user` module (this will be factored out soon)
+        dataType: undefined
+      .then (result) ->
+        document.location = result
+
   submitLogin: (data) ->
     new API('dev', null, null, '/api/v8')
       .auth.session data.email, data.password
       .then ->
         alert 'You\'re logged in! Todo: do something :P'
-      .catch (err) ->
-        $message.html(
+      .catch (err) =>
+        @errorMessage.html(
           err?.responseText || 'Couldn\'t log you in. Please try again!'
         ).show()
 
   forgotPassword: (data) ->
     if not data.email
-      @message.html('Please enter an email bellow.').show()
+      @errorMessage.html('Please enter an email bellow.').show()
       return
 
     handleError = (err) =>
@@ -32,24 +40,24 @@ class LoginPopup extends Modal
             'Failed to trigger a password reset.\n\
             Make sure you\'re connected to the internet'
 
-      @message.html(message).show()
+      @errorMessage.html(message).show()
 
     new API('dev', null, null, '/api/v8')
       .user.forgot  data.email
       .then =>
-        @message.html(
+        @errorMessage.html(
           'An email containing instructions to reset your password has been sent.'
         ).show()
       .catch handleError
 
   startSubmit: (e) =>
     e.preventDefault()
-    @message.hide()
+    @errorMessage.hide()
 
   # Then bind hooks appropriately.
   postRender: ->
     super()
-    @message = $('.login-form__error', @modal)
+    @errorMessage = $('.login-form__error', @modal)
     @form = $('.login-form', @modal)
 
     @form.on 'submit', (e) =>
@@ -59,5 +67,9 @@ class LoginPopup extends Modal
     $('.js-forgot-password', @modal).on 'click', (e) =>
       @startSubmit e
       @forgotPassword(formData @form)
+
+    $('.login-form__oauth__google', @modal).on 'click', (e) =>
+      @startSubmit e
+      @googleLogin()
 
 module.exports = LoginPopup
