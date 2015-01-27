@@ -39,4 +39,9 @@ module.exports = [
     name: 'terms'
     view: require './views/page/terms'
   }
+  {
+    route: '*notFound'
+    name: 'notFound'
+    view: require './views/page/not-found'
+  }
 ]

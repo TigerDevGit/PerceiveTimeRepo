@@ -1,0 +1,59 @@
+<style>
+@font-face {
+  font-family: 'Bariol';
+  font-weight: bold;
+  src: url('../fonts/Bariol_Bold.otf');
+}
+
+@font-face {
+  font-family: 'Bariol';
+  font-weight: lighter;
+  src: url('../fonts/Bariol_Light.otf');
+}
+
+@font-face {
+  font-family: 'Bariol';
+  font-weight: normal;
+  src: url('../fonts/Bariol_Regular.otf');
+}
+
+.hero--not-found {
+  text-align: left;
+}
+
+.hero--not-found .not-found-text {
+  display: inline-block;
+}
+
+.hero--not-found .not-found-comic {
+  width: 30%;
+}
+
+.hero--not-found h1 {
+  font-family: 'Bariol', sans-serif;
+  font-weight: normal;
+}
+
+.hero--not-found h2 {
+  font-family: 'Bariol', sans-serif;
+  font-weight: lighter;
+}
+</style>
+
+<header>
+  <div class="wrapper">
+    <a href="/" class="logo">Toggl</a>
+  </div>
+</header>
+<section class="hero hero--front">
+  <div class="hero__content hero--not-found">
+    <img class="not-found-comic" src="/images/404-comic.png" />
+    <div class="not-found-text">
+      <h1><b>404:</b> Can't find page.</h1>
+      <h2>Maybe I left it in the kitchen?</h2>
+    </div>
+  </div>
+  <a href="/" class="cta-button cta-button--filled cta-button--back-arrow js-ripple-button">
+    Back to home
+  </a>
+</section>
