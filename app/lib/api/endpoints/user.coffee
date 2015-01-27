@@ -1,5 +1,3 @@
-Base64 = require 'Base64'
-
 module.exports = (api) ->
   return {
     # Creates a new user with the email, password, and timezone.
@@ -48,12 +46,9 @@ module.exports = (api) ->
               timezone: tz
               created_with: api.name
           )
-          beforeSend: (xhr) ->
-            authHeader = "Basic #{Base64.btoa(code + ':api_token')}"
-            xhr.setRequestHeader 'Authorization', authHeader
         .then ->
           alert 'You\'re registered! Todo: do something :P'
         .catch (err) ->
           # TODO Error handling should be done by the callee (IndexView).
-          alert 'Failed with: ' + err.responseText
+          alert 'Failed with: ' + err.responseText + '\nPlease try again'
   }
