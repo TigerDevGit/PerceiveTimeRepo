@@ -7,18 +7,13 @@ class LoginPopup extends Modal
   template: 'component/login'
 
   googleLogin: ->
-    new API('dev', null, null, '/api/v8/')
-      .request 'get', 'oauth_url',
-        # see the `endpoints/user` module (this will be factored out soon)
-        dataType: undefined
-      .then (result) ->
-        document.location = result
+    new API('dev', null, null, '/api/v8/').user.initGoogleLogin()
 
   submitLogin: (data) ->
     new API('dev', null, null, '/api/v8')
       .auth.session data.email, data.password
       .then ->
-        alert 'You\'re logged in! Todo: do something :P'
+        document.location = '/app'
       .catch (err) =>
         @errorMessage.html(
           err?.responseText || 'Couldn\'t log you in. Please try again!'
@@ -57,8 +52,8 @@ class LoginPopup extends Modal
   # Then bind hooks appropriately.
   postRender: ->
     super()
-    @errorMessage = $('.login-form__error', @modal)
-    @form = $('.login-form', @modal)
+    @errorMessage = @modal.find('.login-form__error')
+    @form = @modal.find('.login-form')
 
     @form.on 'submit', (e) =>
       @startSubmit e

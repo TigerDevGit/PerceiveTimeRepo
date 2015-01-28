@@ -19,14 +19,36 @@ class IndexView extends View
     if not query.code
       return
 
+    api = new Api('dev', null, null, '/api/v8')
     if query.state == 'signup'
-      return new Api('dev', null, null, '/api/v8')
+      return api
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())
+        # Ignore the error and just authenticate with Google, if the account is
+        # already associated
+        # TODO Tell the user about doing this
+        #
+        # This isn't working properly yet.
+        #.catch (err) ->
+          #alreadyAssociatedErr = 'Your Google account is already associated
+                                  #with another Toggl account.\n'
+          #if(err && err.responseText == alreadyAssociatedErr)
+            #return
+          #else
+            #alert 'Failed with: ' + err && err.responseText
+            #throw err
+        .then ->
+          api.user.completeGoogleLogin query.code
+        .then ->
+          document.location = '/app'
+        # TODO Factor out `signup -> login -> redirect` logic and remove
+        # duplication; see the `signup` view
+        .catch (err) ->
+          alert 'Failed with: ' + err && err.responseText
 
-    new Api('dev', null, null, '/api/v8')
-      .auth.session query.code, 'oauth_code', query.state == 'remember_me'
+    api
+      .user.completeGoogleLogin query.code, query.state == 'remember_me'
       .then ->
-        alert 'Signed-in'
+        document.location = '/app'
       .catch (err) ->
         alert 'Failed with: ' + err && err.responseText
 

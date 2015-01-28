@@ -23,6 +23,24 @@ module.exports = (api) ->
           email: email
         )
 
+    # Initializes a google login
+    initGoogleLogin: ->
+      api
+        .request 'get', 'oauth_url', dataType: undefined
+        .then (result) ->
+          document.location = result
+
+    # Completes a google login
+    completeGoogleLogin: (code, remember_me) ->
+      api
+        .setAuth code, 'oauth_code'
+        .request 'post', 'sessions',
+          contentType: 'application/json'
+          data: JSON.stringify(
+            remember_me: remember_me
+            created_with: api.name
+          )
+
     # Creates an user with Google OAuth. This will trigger a redirect to an
     # OAuth page, which redirect back to the app on success, and should be
     # handled with `completeGoogleSignup`.
@@ -46,9 +64,4 @@ module.exports = (api) ->
               timezone: tz
               created_with: api.name
           )
-        .then ->
-          alert 'You\'re registered! Todo: do something :P'
-        .catch (err) ->
-          # TODO Error handling should be done by the callee (IndexView).
-          alert 'Failed with: ' + err.responseText + '\nPlease try again'
   }

@@ -23,16 +23,26 @@ class SignupView extends View
     @errorMessage.hide()
     data = formData $(@$el)
 
-    new API('dev', null, null, '/api/v8/')
+    api = new API('dev', null, null, '/api/v8/')
+
+    api
       .user.signup data.email, data.password, jstz.determine()?.name()
-      .then ->
-        alert 'You\'re registered! Todo: do something :P'
       .catch (err) =>
         @errorMessage.html(
           err?.responseText ||
           'Failed to sign up.<br />'+
           'Please check your e-mail and password and make sure you\'re online.'
         ).show()
+      .then ->
+        api.auth.session data.email, data.password
+      .catch (err) =>
+        @errorMessage.html(
+          err?.responseText ||
+          'Failed to log-in<br />'+
+          'Please try using the \'Log in\' button above'
+        ).show()
+      .then ->
+        document.location = '/app'
 
   postRender: ->
     @errorMessage = $ '.signup-form__error', @$el
