@@ -4,7 +4,6 @@ $ = require 'jquery'
 # an object with their values.
 module.exports = ($form) ->
   out = {}
-  debugger
   $form.find('input').each ->
     # TODO wouldn't `this.type` and `this.value` cut it? Without JQuery?
     $el = $ this
