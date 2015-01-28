@@ -2,41 +2,65 @@
 @font-face {
   font-family: 'Bariol';
   font-weight: bold;
-  src: url('../fonts/Bariol_Bold.otf');
+  src: url('../fonts/Bariol_Bold.otf') format("opentype");
 }
 
 @font-face {
   font-family: 'Bariol';
-  font-weight: lighter;
-  src: url('../fonts/Bariol_Light.otf');
+  font-weight: 200;
+  src: url('../fonts/Bariol_Light.otf') format("opentype");
 }
 
 @font-face {
   font-family: 'Bariol';
   font-weight: normal;
-  src: url('../fonts/Bariol_Regular.otf');
+  src: url('../fonts/Bariol_Regular.otf') format("opentype");
+}
+
+.hero--not-found-wrapper {
+  background: #f9f9f9;
 }
 
 .hero--not-found {
+  height: 100%;
+  position: relative;
   text-align: left;
 }
 
-.hero--not-found .not-found-text {
-  display: inline-block;
+.not-found {
+  margin: -15% 0 0 -460px;
+  max-width: 940px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: left;
 }
 
-.hero--not-found .not-found-comic {
-  width: 30%;
+.not-found-text {
+  float: right;
+  margin-left: 45px;
+  margin-top: 90px;
 }
 
-.hero--not-found h1 {
+.not-found-comic {
+  width: 410px;
+}
+
+.not-found h1, h2 {
   font-family: 'Bariol', sans-serif;
+  text-transform: none;
+}
+
+.not-found h1 {
+  font-size: 55px;
   font-weight: normal;
+  line-height: 50px;
 }
 
-.hero--not-found h2 {
-  font-family: 'Bariol', sans-serif;
-  font-weight: lighter;
+.not-found h2 {
+  font-size: 41px;
+  font-weight: 200;
+  padding-left: 0;
 }
 </style>
 
@@ -45,12 +69,14 @@
     <a href="/" class="logo">Toggl</a>
   </div>
 </header>
-<section class="hero hero--front">
-  <div class="hero__content hero--not-found">
-    <img class="not-found-comic" src="/images/404-comic.png" />
-    <div class="not-found-text">
-      <h1><b>404:</b> Can't find page.</h1>
-      <h2>Maybe I left it in the kitchen?</h2>
+<section class="hero hero--front hero--not-found-wrapper">
+  <div class="hero--not-found">
+    <div class="not-found">
+      <img class="not-found-comic" src="/images/404-comic.png" />
+      <div class="not-found-text">
+        <h1><b>404:</b> Can't find page.</h1>
+        <h2>Maybe I left it in the kitchen?</h2>
+      </div>
     </div>
   </div>
   <a href="/" class="cta-button cta-button--filled cta-button--back-arrow js-ripple-button">
