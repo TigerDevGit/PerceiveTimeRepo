@@ -11,6 +11,14 @@ describe "form-data", ->
       form = document.createElement 'form'
       formData($(form)).should.eql {}
 
+    it "ignores input elements without a `name` attribute", ->
+      form = document.createElement 'form'
+      i = document.createElement 'input'
+      i.type = 'number'
+      i.value = 10
+      form.appendChild i
+      formData($(form)).should.eql {}
+
     it "gets data from input elements in a form and returns it as an object", ->
       testData =
         email: 'joe@doe.com'
@@ -19,7 +27,7 @@ describe "form-data", ->
       form = document.createElement 'form'
       inputs = _.map testData, (value, key) ->
         input = document.createElement 'input'
-        input.type = key
+        input.name = key
         input.value = value
         input
 
