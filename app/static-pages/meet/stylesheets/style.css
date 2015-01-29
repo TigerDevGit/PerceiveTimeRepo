@@ -470,7 +470,7 @@ p {
   .top {
     padding: 110px 20px 0;
     font-size: 16px;
-    height: 450px; }
+    height: 280px; }
 
   .grid-holder {
     text-align: center; }
@@ -503,18 +503,18 @@ p {
 
   .btn {
     width: 100%; } }
-#request-specifics {
+.request-specifics {
   float: left; }
-  #request-specifics .btn {
+  .request-specifics .btn {
     width: 120px;
     padding: 20px; }
-    #request-specifics .btn::after {
+    .request-specifics .btn::after {
       content: ""; }
-    #request-specifics .btn:hover {
+    .request-specifics .btn:hover {
       transition: background 0.05s ease-in, color 0.05s ease-in;
       background: #f21c25;
       color: white; }
-  #request-specifics input[type=text] {
+  .request-specifics input[type=text] {
     width: 200px;
     border: 0;
     border-bottom: 1px solid #f21c25;
@@ -522,12 +522,12 @@ p {
     font-family: 'clearsans_thin', sans-serif;
     font-size: 20px;
     margin-right: 20px; }
-    #request-specifics input[type=text]:focus {
+    .request-specifics input[type=text]:focus {
       outline: 0; }
-  #request-specifics input[type=submit] {
+  .request-specifics input[type=submit] {
     background: #fff; }
 
-#request-done {
+.request-done {
   color: #f21c25;
   font: 'clearsans_thin', sans-serif 16px;
   font-weight: bold; }

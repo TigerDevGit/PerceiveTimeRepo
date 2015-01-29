@@ -417,7 +417,7 @@ p { margin: 0 0 28px 0; padding: 0; }
 
   h1 { font-size: 45px; }
 
-  .top { padding: 110px 20px 0; font-size: 16px; height: 450px; }
+  .top { padding: 110px 20px 0; font-size: 16px; height: 280px; }
 
   .grid-holder {
     text-align: center;
@@ -452,7 +452,7 @@ p { margin: 0 0 28px 0; padding: 0; }
   .btn { width: 100%; }
 }
 
-#request-specifics {
+.request-specifics {
     float: left;
     .btn {
         width: 120px;
@@ -483,7 +483,7 @@ p { margin: 0 0 28px 0; padding: 0; }
     }
 }
 
-#request-done {
+.request-done {
     color: $second-color;
     font: 'clearsans_thin', sans-serif 16px;
     font-weight: bold;

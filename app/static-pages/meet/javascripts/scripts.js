@@ -100,10 +100,8 @@ $(function() {
 
 (function($) {
     'use strict';
-    var $request   = $('#request-meeting'),
-        $specifics = $('#request-specifics'),
-        $done      = $('#request-done'),
-        $failed    = $('#request-failed');
+    var $request   = $('.request-meeting'),
+        $specifics = $('.request-specifics');
 
     function postRequest(location, email) {
         return $.ajax({
@@ -125,24 +123,35 @@ $(function() {
         });
     }
 
+    function findFromClosest (e, selector) {
+        return $(e.currentTarget).closest('.content').find(selector);
+    }
+
     $request.on('click', 'a', function(e) {
         e.preventDefault();
-        fadeTransition($request, $specifics, function() {
-            $specifics.find('input').select();
+        var $req = findFromClosest(e, '.request-meeting'),
+            $spe = findFromClosest(e, '.request-specifics');
+
+        fadeTransition($req, $spe, function() {
+            $spe.find('input').select();
         });
     });
 
     $specifics.on('submit', function(e) {
         e.preventDefault();
-        var email    = $.trim($specifics.find('input').val()),
+        var $failed = findFromClosest(e, '.request-failed'),
+            $done   = findFromClosest(e, '.request-done'),
+            $spe    = $(this);
+
+        var email    = $.trim($spe.find('input').val()),
             location = $(e.target).data('location');
 
         if (!email.length) { return; }
 
         postRequest(location, email).done(function() {
-            fadeTransition($specifics, $done);
+            fadeTransition($spe, $done);
         }).fail(function() {
-            fadeTransition($specifics, $failed);
+            fadeTransition($spe, $failed);
         });
     });
 
