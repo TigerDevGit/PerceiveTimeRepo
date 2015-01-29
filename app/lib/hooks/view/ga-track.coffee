@@ -10,6 +10,6 @@ module.exports = ($el) ->
   tag = 'ga-track'
 
   $('[' + tag + ']', $el).on 'click', ->
-    props = _.invoke $(@).attr(tag).split(','), 'trim'
+    props = _.invoke $(this).attr(tag).split(','), 'trim'
     _gaq?.push [ '_trackEvent' ].concat(props)
     return

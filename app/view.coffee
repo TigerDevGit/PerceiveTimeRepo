@@ -12,30 +12,30 @@ hooks = require './lib/hooks'
 # This serves as a basis for our other views, doing the "heavy lifting" of
 # templating behind the scenes for us.
 class View extends Backbone.View
-    el: '.page'
-    render: ->
-      # Prerender actions
-      @preRender?()
+  el: '.page'
+  render: ->
+    # Prerender actions
+    @preRender?()
 
-      # Inject the compiled page
-      @$el.html templates[@template](@attributes)
+    # Inject the compiled page
+    @$el.html templates[@template](@attributes)
 
-      # Update document title.
-      if @title?
-        document.title = @title
+    # Update document title.
+    if @title?
+      document.title = @title
 
-      # Attach hooks
-      @bindHooks()
+    # Attach hooks
+    @bindHooks()
 
-      # Postrender if necessary
-      @postRender?()
+    # Postrender if necessary
+    @postRender?()
 
-      return @
+    return this
 
-    bindHooks: ->
-      # Run view cooks
-      hook(@$el, @) for hook in hooks.view
-      # Run page hooks
-      hooks.page[hook](@$el, @) for hook in @hooks if @hooks?
+  bindHooks: ->
+    # Run view cooks
+    hook(@$el, this) for hook in hooks.view
+    # Run page hooks
+    hooks.page[hook](@$el, this) for hook in @hooks if @hooks?
 
 module.exports = View

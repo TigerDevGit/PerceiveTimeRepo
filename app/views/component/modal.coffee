@@ -25,12 +25,12 @@ class ModalView extends View
   bindTeardown: ->
     # Teardown handlers
     teardown = => @trigger 'teardown'
-    teardownKeypress = (e) => if e.keyCode is 27 then teardown()
+    teardownKeypress = (e) -> if e.keyCode is 27 then teardown()
 
     # Make the overlay visible and bind events to close when hit
-    @modal.on 'click', (e) =>
-        if e.target.classList.contains 'modal-overlay'
-          teardown()
+    @modal.on 'click', (e) ->
+      if e.target.classList.contains 'modal-overlay'
+        teardown()
 
     _.defer => @modal.addClass 'modal-overlay--visible'
 

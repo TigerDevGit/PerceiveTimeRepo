@@ -2194,6 +2194,29 @@ a {
     padding-right: 55px;
   }
 
+  .cta-button--back-arrow:after {
+    display: none;
+  }
+
+  .cta-button--back-arrow:before {
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 9px;
+    width: 16px;
+    height: 14px;
+    transform: rotate(180deg);
+  }
+
+  .cta-button--back-arrow.cta-button--empty:before {
+    content: url('../images/cta-button-arrow-red.svg?1');
+  }
+
+  .cta-button--back-arrow.cta-button--filled:before {
+    content: url('../images/cta-button-arrow-white.svg?1');
+  }
+
+
   .cta-button--no-arrow:after {
     display: none;
   }

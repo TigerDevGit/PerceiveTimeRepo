@@ -9,11 +9,11 @@ $ = require 'jquery'
 # When the animation end event is fired, the class is removed from the .js-ripple-button__ripple.
 module.exports = ($el) ->
   $el.find('.js-ripple-button').on 'click', (e) ->
-      rect = e.target.getBoundingClientRect()
-      $('.js-ripple-button__ripple', @).remove()
+    rect = e.target.getBoundingClientRect()
+    $('.js-ripple-button__ripple', this).remove()
 
-      $ripple = $ '<span class="js-ripple-button__ripple js-ripple-button__ripple--active" />'
-        .appendTo @
-        .css
-          top: e.clientY - rect.top
-          left: e.clientX - rect.left
+    $ripple = $ '<span class="js-ripple-button__ripple js-ripple-button__ripple--active" />'
+      .appendTo this
+      .css
+        top: e.clientY - rect.top
+        left: e.clientX - rect.left
