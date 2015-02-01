@@ -246,14 +246,13 @@ module.exports = (grunt) ->
         dest: ".tmp/app/templates/compiled.js"
 
   grunt.registerTask "serve", [
-    'build'
+    'build:serve'
     'configureProxies:server'
     'connect:server'
     'watch'
   ]
 
-  # Do this dynamically After version were bumped.
-  grunt.registerTask "build", [
+  grunt.registerTask "build:serve", [
     "clean"
     "coffee"
     "handlebars"
@@ -265,8 +264,8 @@ module.exports = (grunt) ->
     "copy:statics"
   ]
 
-  grunt.registerTask "build:dist", [
-    "build"
+  grunt.registerTask "build", [
+    "build:serve"
     "htmlmin"
     "imagemin"
     "cssmin"
