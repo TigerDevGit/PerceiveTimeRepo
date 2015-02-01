@@ -105,6 +105,16 @@ module.exports = (grunt) ->
           dest: "<%= yeoman.dist %>"
         ]
 
+    compress:
+      dist:
+        options:
+          mode: "gzip"
+        files: [
+          { src: '<%= yeoman.dist %>/**/*.js', expand: true, ext: '.js.gz' }
+          { src: '<%= yeoman.dist %>/**/*.html', expand: true, ext: '.html.gz' }
+          { src: '<%= yeoman.dist %>/**/*.css', expand: true, ext: '.css.gz' }
+        ]
+
     cssmin:
       dist:
         files: [
@@ -113,7 +123,6 @@ module.exports = (grunt) ->
           src: "**/*.css"
           dest: "<%= yeoman.dist %>"
         ]
-
 
     htmlmin:
       dist:
@@ -126,7 +135,6 @@ module.exports = (grunt) ->
           src: "**/*.html"
           dest: "<%= yeoman.dist %>"
         ]
-
 
     # Put files not handled in other tasks here
     copy:
@@ -170,19 +178,6 @@ module.exports = (grunt) ->
       #     root: "/home/toggl/toggl_website"
       #   }
       # ]
-
-    compress:
-      options:
-        mode: "gzip"
-
-      dist:
-        expand: true
-        src: [
-          "<%= yeoman.dist %>/**/*.js"
-          "<%= yeoman.dist %>/**/*.css"
-          "<%= yeoman.dist %>/**/*.html"
-        ]
-        dest: "."
 
     autoprefixer:
       css:
@@ -275,6 +270,7 @@ module.exports = (grunt) ->
     "htmlmin"
     "imagemin"
     "cssmin"
+    "compress"
   ]
 
   grunt.registerTask "deployInfo", []
