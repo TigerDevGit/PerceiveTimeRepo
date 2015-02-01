@@ -1,13 +1,13 @@
 "use strict"
-fs = require 'fs'
-path = require 'path'
-connectLiveReload = require 'connect-livereload'
-gruntConnectProxyUtils = require 'grunt-connect-proxy/lib/utils'
-matchdep = require 'matchdep'
-request = require 'request'
-_ = require 'underscore'
 
-{proxyRequest} = gruntConnectProxyUtils
+fs                = require 'fs'
+path              = require 'path'
+connectLiveReload = require 'connect-livereload'
+matchdep          = require 'matchdep'
+request           = require 'request'
+_                 = require 'underscore'
+{proxyRequest}    = require 'grunt-connect-proxy/lib/utils'
+
 timerStart = Date.now()
 
 API_HOST = "https://next.toggl.com" || process.env.API_HOST
@@ -17,7 +17,6 @@ LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
 module.exports = (grunt) ->
   # load all grunt tasks
   matchdep.filterDev("grunt-*").forEach(grunt.loadNpmTasks)
-  grunt.loadNpmTasks "grunt-modernizr"
 
   # configurable paths
   yeomanConfig =
@@ -34,7 +33,6 @@ module.exports = (grunt) ->
     "es6-promise"
   ]
 
-  pkg = grunt.file.readJSON("package.json")
   grunt.initConfig
     yeoman: yeomanConfig
 
@@ -89,9 +87,7 @@ module.exports = (grunt) ->
     coffeelint:
       options:
         configFile: 'coffeelint.json'
-      app: [
-        "<%= yeoman.app %>/{,**/}*.coffee"
-      ]
+      app: [ "<%= yeoman.app %>/{,**/}*.coffee" ]
 
     clean:
       dist: [
@@ -104,17 +100,30 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          cwd: "<%= yeoman.app %>/images"
-          src: "{,*/}*.{png,jpg,jpeg}"
-          dest: "<%= yeoman.dist %>/images"
+          cwd: "<%= yeoman.dist %>"
+          src: "**/*.{png,jpg,jpeg}"
+          dest: "<%= yeoman.dist %>"
         ]
 
-    htmlmin:
+    cssmin:
       dist:
         files: [
           expand: true
-          cwd: "<%= yeoman.app %>"
-          src: "*.html"
+          cwd: "<%= yeoman.dist %>"
+          src: "**/*.css"
+          dest: "<%= yeoman.dist %>"
+        ]
+
+
+    htmlmin:
+      dist:
+        options:
+          removeComments: true
+          collapseWhitespace: true
+        files: [
+          expand: true
+          cwd: "<%= yeoman.dist %>"
+          src: "**/*.html"
           dest: "<%= yeoman.dist %>"
         ]
 
@@ -259,6 +268,13 @@ module.exports = (grunt) ->
     "modernizr"
     "copy:dist"
     "copy:statics"
+  ]
+
+  grunt.registerTask "build:dist", [
+    "build"
+    "htmlmin"
+    "imagemin"
+    "cssmin"
   ]
 
   grunt.registerTask "deployInfo", []
