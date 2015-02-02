@@ -195,15 +195,15 @@ module.exports = (grunt) ->
       coffee:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/{,**/}*.coffee"
-        tasks: [ "build" ]
+        tasks: [ "build:serve" ]
       handlebars:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/templates/{,**/}*.hbs"
-        tasks: [ "build" ]
+        tasks: [ "build:serve" ]
       css:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/assets/stylesheets/style.css"
-        tasks: [ "build" ]
+        tasks: [ "build:serve" ]
 
     coffee:
       dist:

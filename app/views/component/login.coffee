@@ -1,31 +1,38 @@
-Modal = require './modal'
+Modal    = require './modal'
+API      = require '../../lib/api'
 formData = require '../../lib/form-data'
-API = require '../../lib/api'
-$ = require 'jquery'
+$        = require 'jquery'
+
 
 class LoginPopup extends Modal
   template: 'component/login'
 
   googleLogin: ->
-    new API('dev', null, null, '/api/v8/').user.initGoogleLogin()
+    new API('dev', null, null).user.initGoogleLogin()
+
+  redirectToApp: ->
+    document.location = '/app'
+
+  showError: (msg) ->
+    @errorMessage.html(msg).show()
 
   submitLogin: (data) ->
-    new API('dev', null, null, '/api/v8')
+    loginErr = (err) =>
+      @showError err?.responseText || 'Couldn\'t log you in. Please try again!'
+
+    new API('dev', null, null)
       .auth.session data.email, data.password
-      .then ->
-        document.location = '/app'
-      .catch (err) =>
-        @errorMessage.html(
-          err?.responseText || 'Couldn\'t log you in. Please try again!'
-        ).show()
+      .then @redirectToApp, loginErr
+      .catch loginErr
 
   forgotPassword: (data) ->
-    if not data.email
-      @errorMessage.html('Please enter an email bellow.').show()
-      return
+    return @showError 'Please enter an email bellow.' unless data.email
+
+    forgetSuccess = =>
+      @showError 'An email containing instructions to reset your password has been sent.'
 
     handleError = (err) =>
-      message = switch err.responseText
+      @showError switch err.responseText
         when 'E-mail address does not exist\n'
           'Unknown email, please check that it\'s entered correctly!'
         else
@@ -35,14 +42,9 @@ class LoginPopup extends Modal
             'Failed to trigger a password reset.\n\
             Make sure you\'re connected to the internet'
 
-      @errorMessage.html(message).show()
-
-    new API('dev', null, null, '/api/v8')
-      .user.forgot  data.email
-      .then =>
-        @errorMessage.html(
-          'An email containing instructions to reset your password has been sent.'
-        ).show()
+    new API('dev', null, null)
+      .user.forgot data.email
+      .then @forgetSuccess, handleError
       .catch handleError
 
   startSubmit: (e) =>

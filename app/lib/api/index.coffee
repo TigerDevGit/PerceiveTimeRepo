@@ -1,15 +1,16 @@
 require('es6-promise').polyfill()
-Base64 = require 'Base64'
-$ = require 'jquery'
-_ = require 'underscore'
+Base64    = require 'Base64'
+$         = require 'jquery'
+_         = require 'underscore'
 endpoints = require './endpoints'
+
+DEFAULT_ENDPOINT = '/api/v8'
 
 class TogglApi
   # Toggl API constructor. "Name" is required in several endpoints.
   # Username (or API token) and password (not necessary if using token)
   # can be passed here, or you can call auth.basic later.
-  constructor: (name, username, password,
-                endpoint = 'https://www.toggl.com/api/v8') ->
+  constructor: (name, username, password, endpoint = DEFAULT_ENDPOINT) ->
     @endpoint = endpoint
     @name = name
     @auth = null
