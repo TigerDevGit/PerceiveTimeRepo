@@ -272,6 +272,9 @@ module.exports = (grunt) ->
     "compress"
   ]
 
+  # Need those dummy tasks for our bad deploy job
+  # Lets migrate those to something else...
   grunt.registerTask "deployInfo", []
+  grunt.registerTask "staging", []
 
   grunt.registerTask "default", ["build"]
