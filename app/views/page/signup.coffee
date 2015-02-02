@@ -45,6 +45,7 @@ class SignupView extends View
         document.location = '/app'
 
   postRender: ->
+    setTimeout => @$el.find("[name=email]").select()
     @errorMessage = $ '.signup-form__error', @$el
 
 module.exports = SignupView
