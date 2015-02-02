@@ -55,6 +55,9 @@ class LoginPopup extends Modal
     @errorMessage = @modal.find('.login-form__error')
     @form = @modal.find('.login-form')
 
+    setTimeout =>
+      @form.find('input[name=email]').select()
+
     @form.on 'submit', (e) =>
       @startSubmit e
       @submitLogin(formData @form)
