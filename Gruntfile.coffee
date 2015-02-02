@@ -245,6 +245,28 @@ module.exports = (grunt) ->
         src: "<%= yeoman.app %>/templates/**/*.hbs"
         dest: ".tmp/app/templates/compiled.js"
 
+    rev:
+      dist: [
+        '<%= yeoman.dist %>/**/*.js'
+        '<%= yeoman.dist %>/**/*.css'
+        '<%= yeoman.dist %>/**/*.{png,jpg,jpeg,gif,webp}'
+        '!<%= yeoman.dist %>/images/logo-big.png'
+        '!<%= yeoman.dist %>/images/fb-share-img.png'
+      ]
+
+    useminPrepare:
+      html: '<%= yeoman.dist %>/**/*.html'
+      options:
+        dist: '<%= yeoman.dist %>'
+
+    usemin:
+      html: ['<%= yeoman.dist %>/**/*.html']
+      css: ['<%= yeoman.dist %>/**/*.css']
+
+    # Filled by usemin
+    concat: {}
+    uglify: {}
+
   grunt.registerTask "serve", [
     'build:serve'
     'configureProxies:server'
@@ -266,9 +288,14 @@ module.exports = (grunt) ->
 
   grunt.registerTask "build", [
     "build:serve"
-    "htmlmin"
+    "useminPrepare"
+    "concat"
+    "uglify"
     "imagemin"
     "cssmin"
+    "rev"
+    "usemin"
+    "htmlmin"
     "compress"
   ]
 

@@ -10,9 +10,12 @@
   <meta property="og:image" content="http://www.toggl.com/images/fb-share-img.jpg"/>
   <meta property="og:image:secure_url" content="https://www.toggl.com/images/fb-share-img.jpg"/>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+  <!-- build:css stylesheets/main.css -->
   <link rel="stylesheet" href="stylesheets/dinnext.css">
   <link rel="stylesheet" href="stylesheets/bounce.jelly.css">
-  <link rel="stylesheet" href="stylesheets/style.autoprefixed.css?2">
+  <link rel="stylesheet" href="stylesheets/style.autoprefixed.css">
+  <!-- endbuild -->
 
   <link rel="apple-touch-icon" sizes="57x57" href="images/apple-touch-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -38,8 +41,13 @@
     <!-- Content injected here -->
   </div>
 
-  <script src="javascripts/modernizr.js"></script>
+  <!-- build:js javascripts/vendor.js -->
   <script src="javascripts/vendor.js"></script>
+  <script src="javascripts/modernizr.js"></script>
+  <!-- endbuild -->
+
+  <!-- build:js javascripts/toggl.js -->
   <script src="javascripts/toggl.js"></script>
+  <!-- endbuild -->
 </body>
 </html>
