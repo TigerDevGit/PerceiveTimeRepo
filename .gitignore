@@ -3,3 +3,4 @@ dist
 .tmp
 ssh_secrets.json
 .DS_Store
+snapshots

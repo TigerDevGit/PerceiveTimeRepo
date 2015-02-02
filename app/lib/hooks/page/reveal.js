@@ -1,4 +1,5 @@
-var $ = require('jquery');
+var $   = require('jquery'),
+    raf = require('animation-frame');
 
 module.exports = function ($page, view) {
   var elements = $('.js-scroll-reveal').toArray();
@@ -19,7 +20,7 @@ module.exports = function ($page, view) {
       }
     }
 
-    requestAnimationFrame(checkScroll);
+    raf(checkScroll);
   }
 
   $(document).on('scroll', checkScroll);

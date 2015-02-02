@@ -1,4 +1,5 @@
-var $ = require('jquery');
+var $   = require('jquery'),
+    raf = require('animation-frame');
 
 module.exports = function () {
   var canvas,
@@ -62,7 +63,7 @@ module.exports = function () {
       }
     }
 
-    requestAnimationFrame(checkCanvasVisibility);
+    raf(checkCanvasVisibility);
   }
 
   function startAnimation() {
@@ -128,7 +129,7 @@ module.exports = function () {
   }
 
   function enqueue() {
-    requestAnimationFrame(loop);
+    raf(loop);
   }
 
   function handleCanvasClick(event) {
@@ -147,7 +148,7 @@ module.exports = function () {
 
   ctx.lineWidth = settings.strokeWidth;
 
-  requestAnimationFrame(checkCanvasVisibility);
+  raf(checkCanvasVisibility);
 
   canvas.addEventListener('click', handleCanvasClick);
 };

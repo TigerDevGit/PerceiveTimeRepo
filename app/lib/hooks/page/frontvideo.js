@@ -1,4 +1,5 @@
-var $ = require('jquery');
+var $   = require('jquery'),
+    raf = require('animation-frame');
 
 /**
  * Video playback for the homepage video.
@@ -191,7 +192,7 @@ module.exports = function($page, view) {
 
       heading.textContent = headingText;
     } else {
-      window.requestAnimationFrame(loop);
+      raf(loop);
     }
   }
 
