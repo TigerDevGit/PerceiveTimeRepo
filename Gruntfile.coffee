@@ -275,7 +275,7 @@ module.exports = (grunt) ->
           # that's the path where the snapshots should be placed
           # it's empty by default which means they will go into the directory
           # where your Gruntfile.js is placed
-          snapshotPath: 'snapshots/',
+          snapshotPath: '<%= yeoman.dist %>/static/',
           # This should be either the base path to your index.html file
           # or your base URL. Currently the task does not use it's own
           # webserver. So if your site needs a webserver to be fully
@@ -293,7 +293,7 @@ module.exports = (grunt) ->
           sanitize: (requestUri) ->
             # returns 'index.html' if the url is '/', otherwise a prefix
             return 'index' if requestUri is "#"
-            requestUri.replace(/#\//g, '')
+            requestUri.replace(/#\//g, '') + "/index"
 
           # if you would rather not keep the script tags in the html snapshots
           # set `removeScripts` to true. It's false by default
@@ -338,13 +338,14 @@ module.exports = (grunt) ->
     "build:serve"
     "useminPrepare"
     "concat"
-    # "uglify"
+    "uglify"
     "imagemin"
     "cssmin"
     "rev"
     "usemin"
     "htmlmin"
     "compress"
+    "htmlSnapshot"
   ]
 
   # Need those dummy tasks for our bad deploy job
