@@ -164,21 +164,27 @@ module.exports = (grunt) ->
         username: "toggl"
         root: "/home/toggl/toggl_website"
       ]
-      # Disabled for now.
-      # production: [
-      #   {
-      #     host: "23.253.62.226"
-      #     port: 666
-      #     username: "toggl"
-      #     root: "/home/toggl/toggl_website"
-      #   }
-      #   {
-      #     host: "23.253.200.66"
-      #     port: 666
-      #     username: "toggl"
-      #     root: "/home/toggl/toggl_website"
-      #   }
-      # ]
+      production: [
+        {
+          host: "23.253.62.226"
+          port: 666
+          username: "toggl"
+          root: "/home/toggl/toggl_webapp"
+        }
+        {
+          host: "23.253.200.66"
+          port: 666
+          username: "toggl"
+          root: "/home/toggl/toggl_webapp"
+        }
+        {
+          host: "23.253.46.149"
+          port: 666
+          username: "toggl"
+          root: "/home/toggl/toggl_webapp"
+        }
+      ]
+
 
     autoprefixer:
       css:
