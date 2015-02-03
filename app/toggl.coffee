@@ -10,6 +10,7 @@ Backbone.history.start { pushState: true }
 # Also listen for link clicks in the page for links that begin with
 # a slash, for internal navigation.
 $(document).on 'click', 'a[href^="/"]', (e) ->
+  return if this.attributes.clickthrough
   e.preventDefault()
   Backbone.history.navigate this.attributes.href.value, { trigger: true }
   return false
