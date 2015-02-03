@@ -115,13 +115,14 @@ module.exports = (grunt) ->
 
     compress:
       dist:
-        options:
-          mode: "gzip"
-        files: [
-          { src: '<%= yeoman.dist %>/**/*.js', expand: true, ext: '.js.gz' }
-          { src: '<%= yeoman.dist %>/**/*.html', expand: true, ext: '.html.gz' }
-          { src: '<%= yeoman.dist %>/**/*.css', expand: true, ext: '.css.gz' }
+        expand: true
+        mode: "gzip"
+        src: [
+          "<%= yeoman.dist %>/**/*.js"
+          "<%= yeoman.dist %>/**/*.css"
+          "<%= yeoman.dist %>/**/*.html"
         ]
+        dest: "."
 
     cssmin:
       dist:
