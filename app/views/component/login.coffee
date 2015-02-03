@@ -44,7 +44,7 @@ class LoginPopup extends Modal
 
     new API('dev', null, null)
       .user.forgot data.email
-      .then @forgetSuccess, handleError
+      .then forgetSuccess, handleError
       .catch handleError
 
   startSubmit: (e) =>
