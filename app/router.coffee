@@ -1,6 +1,6 @@
 Backbone = require 'backbone'
 routes = require './routes'
-$ = require 'jquery'
+window.$ = $ = require 'jquery'
 
 # Create a new backbone router with the routes specified
 Router = Backbone.Router.extend
@@ -20,7 +20,6 @@ routes.forEach (route) ->
     currentView?.trigger 'destroy'
     currentView = new route.view().render()
     window._gaq?.push [ '_trackPageview', route.route ]
-    return
-  return
+    $(document.body).attr id: route.name
 
 module.exports = router
