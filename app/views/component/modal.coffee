@@ -8,6 +8,7 @@ _ = require 'underscore'
 class ModalView extends View
 
   initialize: ->
+    super
     # Teardown happens before the view is actually destroyed. Cleans
     # up the body class and removes the visible class, then waits
     # until the animation is done to trigger removal.

@@ -2138,6 +2138,16 @@ a {
     color: #f30c16;
   }
 
+  .cta-button--white-empty {
+    border-color: white;
+  }
+
+  .cta-button--white-empty:hover {
+    border-color: white;
+    background: initial;
+    color: #f30c16;
+  }
+
   .cta-button--filled {
     color: white;
     background: #f30c16;

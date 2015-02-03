@@ -12,6 +12,7 @@ module.exports =
     require './view/nav-opener'
     require './view/login-popup'
     require './view/ga-track'
+    require './view/logout-button'
   ]
   page: {
     frontvideo: require './page/frontvideo'

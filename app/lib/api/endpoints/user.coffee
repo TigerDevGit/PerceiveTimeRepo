@@ -1,8 +1,7 @@
 module.exports = (api) ->
-  return {
-    # Creates a new user with the email, password, and timezone.
-    signup: (email, password, tz) ->
-      return api.request 'post', 'signups',
+  # Creates a new user with the email, password, and timezone.
+  signup: (email, password, tz) ->
+    return api.request 'post', 'signups',
         processData: false
         contentType: 'application/json'
         data: JSON.stringify(
@@ -48,7 +47,7 @@ module.exports = (api) ->
       api
         .request 'get', 'oauth_url?state=signup',
           dataType: undefined # The response isn't JSON; see SO question 6186770
-        .then (result) ->
+            .then (result) ->
           document.location = result
 
     # Completes an OAuth Sign-up given a token (which should be available on
@@ -64,4 +63,3 @@ module.exports = (api) ->
               timezone: tz
               created_with: api.name
           )
-  }

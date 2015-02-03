@@ -10,8 +10,13 @@
       <ol>
         <li><a href="/features">Features</a></li>
         <li><a href="/about">About</a></li>
+        {{#if logged}}
+        <li><a href="#" class="cta-button cta-button--small cta-button--inline cta-button--white-empty cta-button--no-arrow js-logout-button">Log out</a></li>
+        <li><a href="/app" class="cta-button cta-button--small cta-button--inline cta-button--filled">Go to tracker</a></li>
+        {{ else }}
         <li><a href="#" class="js-login-button">Log in</a></li>
         <li><a href="/signup" class="cta-button cta-button--small cta-button--inline cta-button--filled cta-button--no-arrow js-ripple-button"  ga-track="signup, nav_click">Sign up</a></li>
+        {{/if}}
       </ol>
       <ol class="secondary">
         {{> 'secondary-nav' }}

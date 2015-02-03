@@ -56,6 +56,13 @@ module.exports = (grunt) ->
             protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
             port: if API_HOST_USES_SSL then 443 else 80
           }
+          {
+            context: "/api/v9/"
+            host: API_HOST['https://'.length..]
+            https: API_HOST_USES_SSL
+            protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
+            port: if API_HOST_USES_SSL then 443 else 80
+          }
         ]
         options:
           port: 9001
@@ -195,7 +202,7 @@ module.exports = (grunt) ->
       coffee:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/{,**/}*.coffee"
-        tasks: [ "build:serve" ]
+        tasks: [ "browserify:app" ]
       handlebars:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/templates/{,**/}*.hbs"
@@ -353,7 +360,7 @@ module.exports = (grunt) ->
     "usemin"
     "htmlmin"
     "compress"
-    "htmlSnapshot"
+    # "htmlSnapshot"
   ]
 
   # Need those dummy tasks for our bad deploy job

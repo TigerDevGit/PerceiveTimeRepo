@@ -1,6 +1,7 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
+_ = require 'underscore'
 
 # Import the precompiled templates
 Handlebars = require 'handlebars'
@@ -13,23 +14,17 @@ hooks = require './lib/hooks'
 # templating behind the scenes for us.
 class View extends Backbone.View
   el: '.page'
+  model: require './lib/user-state-model'
+  initialize: ->
+    @listenTo @model, 'change', @render
+
   render: ->
-    # Prerender actions
     @preRender?()
-
-    # Inject the compiled page
-    @$el.html templates[@template](@attributes)
-
-    # Update document title.
-    if @title?
-      document.title = @title
-
-    # Attach hooks
+    data = _.extend @model.toJSON(), @attributes
+    @$el.html templates[@template] data
+    document.title = @title if @title?
     @bindHooks()
-
-    # Postrender if necessary
     @postRender?()
-
     return this
 
   bindHooks: ->

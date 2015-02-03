@@ -1,4 +1,5 @@
 require('es6-promise').polyfill()
+userState = require '../../user-state-model'
 
 module.exports = (api) ->
   # Sets the API's username and password up. Hits /me so it's
@@ -21,9 +22,11 @@ module.exports = (api) ->
       .then (args...) ->
         # on successful responses we no longer need auth data,
         # so remove it from the API
+        userState.set logged: true
         api.auth = null
         Promise.resolve args...
 
   # Clears a cookie-based session
   destroy: ->
     api.request 'delete', 'sessions'
+    userState.set logged: false

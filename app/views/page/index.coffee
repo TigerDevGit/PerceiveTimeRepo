@@ -11,6 +11,7 @@ class IndexView extends View
   title: 'Toggl - Free Time Tracking Software'
 
   initialize: ->
+    super
     @attributes =
       navLight: true
 
