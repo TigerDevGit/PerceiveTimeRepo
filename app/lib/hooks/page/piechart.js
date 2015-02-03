@@ -1,5 +1,5 @@
 var $   = require('jquery'),
-    raf = require('animation-frame');
+    raf = require('raf');
 
 module.exports = function () {
   var canvas,

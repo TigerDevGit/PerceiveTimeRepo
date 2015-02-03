@@ -1,5 +1,5 @@
 var $   = require('jquery'),
-    raf = require('animation-frame');
+    raf = require('raf');
 
 module.exports = function ($page, view) {
   var elements = $('.js-scroll-reveal').toArray();
