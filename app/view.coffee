@@ -25,7 +25,14 @@ class View extends Backbone.View
     document.title = @title if @title?
     @bindHooks()
     @postRender?()
+    @scrollToAnchor()
     return this
+
+  scrollToAnchor: ->
+    hash = location.hash
+    return unless hash
+    position = $(hash).offset().top
+    $(document.body).scrollTop position
 
   bindHooks: ->
     # Run view cooks
