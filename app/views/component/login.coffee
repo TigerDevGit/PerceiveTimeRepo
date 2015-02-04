@@ -42,6 +42,9 @@ class LoginPopup extends Modal
       @startSubmit e
       @submitLogin(formData @form)
 
+    $('.js-forgot-password', @modal).on 'click', =>
+      @$el.remove()
+
     $('.login-form__oauth__google', @modal).on 'click', (e) =>
       @startSubmit e
       @googleLogin()
