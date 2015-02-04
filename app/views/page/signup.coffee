@@ -14,7 +14,7 @@ class SignupView extends View
 
   initialize: ({params}) ->
     @invitationCode = params[0]
-    @api = new API('dev', null, null)
+    @api = new API('TogglNext', null, null)
 
   showError: (msg) =>
     @errorMessage.html(msg).show()
