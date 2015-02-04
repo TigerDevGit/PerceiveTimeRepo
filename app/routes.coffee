@@ -45,6 +45,11 @@ module.exports = [
     view: require './views/page/forgot-password'
   }
   {
+    route: 'reset_password/:token'
+    name: 'resetPassword'
+    view: require './views/page/reset-password'
+  }
+  {
     route: '*notFound'
     name: 'notFound'
     view: require './views/page/not-found'
