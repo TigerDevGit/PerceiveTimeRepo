@@ -25,28 +25,6 @@ class LoginPopup extends Modal
       .then @redirectToApp, loginErr
       .catch loginErr
 
-  forgotPassword: (data) ->
-    return @showError 'Please enter an email bellow.' unless data.email
-
-    forgetSuccess = =>
-      @showError 'An email containing instructions to reset your password has been sent.'
-
-    handleError = (err) =>
-      @showError switch err.responseText
-        when 'E-mail address does not exist\n'
-          'Unknown email, please check that it\'s entered correctly!'
-        else
-          if err.responseText
-            err.responseText
-          else
-            'Failed to trigger a password reset.\n\
-            Make sure you\'re connected to the internet'
-
-    new API('dev', null, null)
-      .user.forgot data.email
-      .then forgetSuccess, handleError
-      .catch handleError
-
   startSubmit: (e) =>
     e.preventDefault()
     @errorMessage.hide()
@@ -63,10 +41,6 @@ class LoginPopup extends Modal
     @form.on 'submit', (e) =>
       @startSubmit e
       @submitLogin(formData @form)
-
-    $('.js-forgot-password', @modal).on 'click', (e) =>
-      @startSubmit e
-      @forgotPassword(formData @form)
 
     $('.login-form__oauth__google', @modal).on 'click', (e) =>
       @startSubmit e

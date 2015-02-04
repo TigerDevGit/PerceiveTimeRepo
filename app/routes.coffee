@@ -40,6 +40,11 @@ module.exports = [
     view: require './views/page/terms'
   }
   {
+    route: 'forgot-password'
+    name: 'forgotPassword'
+    view: require './views/page/forgot-password'
+  }
+  {
     route: '*notFound'
     name: 'notFound'
     view: require './views/page/not-found'

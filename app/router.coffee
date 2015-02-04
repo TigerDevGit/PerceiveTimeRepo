@@ -5,8 +5,8 @@ window.$ = $ = require 'jquery'
 # Create a new backbone router with the routes specified
 Router = Backbone.Router.extend
   routes: do ->
-    routes.reduce (old, route) ->
-      old[route.route] = route.name
+    routes.reduce (old, {route, name}) ->
+      old[route] = name
       old
     , {}
 
