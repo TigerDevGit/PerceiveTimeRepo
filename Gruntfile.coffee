@@ -177,19 +177,19 @@ module.exports = (grunt) ->
           host: "23.253.62.226"
           port: 666
           username: "toggl"
-          root: "/home/toggl/toggl_webapp"
+          root: "/home/toggl/toggl_website"
         }
         {
           host: "23.253.200.66"
           port: 666
           username: "toggl"
-          root: "/home/toggl/toggl_webapp"
+          root: "/home/toggl/toggl_website"
         }
         {
           host: "23.253.46.149"
           port: 666
           username: "toggl"
-          root: "/home/toggl/toggl_webapp"
+          root: "/home/toggl/toggl_website"
         }
       ]
 
