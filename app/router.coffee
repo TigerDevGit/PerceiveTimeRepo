@@ -5,11 +5,10 @@ window.$ = $ = require 'jquery'
 # Create a new backbone router with the routes specified
 Router = Backbone.Router.extend
   routes: do ->
-    out = {}
-    for route in routes
-      out[route.route] = route.name
-
-    return out
+    routes.reduce (old, route) ->
+      old[route.route] = route.name
+      old
+    , {}
 
 router = new Router()
 currentView = null
