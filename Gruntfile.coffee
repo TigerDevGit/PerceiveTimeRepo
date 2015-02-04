@@ -65,7 +65,7 @@ module.exports = (grunt) ->
           }
         ]
         options:
-          port: 9001
+          port: 80
           hostname: "localhost"
           debug: true
           livereload: LIVERELOAD_PORT
@@ -195,6 +195,13 @@ module.exports = (grunt) ->
 
 
     autoprefixer:
+      notFound:
+        expand: true
+        flatten: true
+        src: "<%= yeoman.app %>/static-pages/not-found/stylesheets/*.css"
+        dest: "<%= yeoman.dist %>/not-found/stylesheets/"
+        ext: ".autoprefixed.css"
+
       css:
         src: "<%= yeoman.app %>/assets/stylesheets/style.css"
         dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
@@ -348,8 +355,8 @@ module.exports = (grunt) ->
     "browserify"
     "autoprefixer"
     "modernizr"
-    "copy:dist"
     "copy:statics"
+    "copy:dist"
   ]
 
   grunt.registerTask "build", [

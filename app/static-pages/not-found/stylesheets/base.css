@@ -226,6 +226,8 @@ video::-webkit-media-controls {
   width: 16px;
   height: 14px;
   transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
 }
 
 .cta-button--back-arrow.cta-button--filled:before {
@@ -242,6 +244,10 @@ video::-webkit-media-controls {
 
   .cta-button:after {
     display: none;
+  }
+
+  .cta-button--back-arrow:before {
+    margin-top: 4.5px;
   }
 }
 
