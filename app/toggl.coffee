@@ -1,4 +1,4 @@
-Backbone = require 'backbone'
+window.Backbone = Backbone = require 'backbone'
 $ = require 'jquery'
 # Fix required when using backbone with Browserify:
 Backbone.$ = $
@@ -12,7 +12,11 @@ Backbone.history.start { pushState: true }
 $(document).on 'click', 'a[href^="/"]', (e) ->
   return if this.attributes.clickthrough
   e.preventDefault()
-  Backbone.history.navigate this.attributes.href.value, { trigger: true }
+  href = this.attributes.href.value
+  res  = Backbone.history.navigate href, { trigger: true }
+  # If there was no history navigation action then navigate it through the router again
+  # only this time remove the hash
+  Backbone.history.loadUrl href.split('#')[0] unless res
   return false
 
 # Add global hooks

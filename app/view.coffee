@@ -31,7 +31,9 @@ class View extends Backbone.View
   scrollToAnchor: ->
     hash = location.hash
     return unless hash
-    position = $(hash).offset().top
+    $hash = $(hash)
+    return unless $hash.length
+    position = $hash.offset().top
     $(document.body).scrollTop position
 
   bindHooks: ->
