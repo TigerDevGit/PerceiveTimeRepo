@@ -1,4 +1,5 @@
-var Q = require('q');
+var Q     = require('q'),
+    slack = require('slack-notify')('https://hooks.slack.com/services/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');
 
 var ROOT = '/home/toggl/toggl_website-TEST/',
     DIST = process.cwd() + '/dist/';
@@ -17,7 +18,13 @@ module.exports = function (shipit) {
   });
 
   shipit.task('deploy', function() {
-    return shipit.start('build', 'mkDir', 'populatePrev', 'copy');
+    return shipit.start('build', 'mkDir', 'populatePrev', 'copy', function() {
+      slack.send({
+        text: this.environment + ' was successfully deployed.',
+        username: 'Cap`n Crunch',
+        icon_emoji: ':boom:'
+      });
+    });
   });
 
   // Create the missing directorys
