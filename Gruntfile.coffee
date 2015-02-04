@@ -191,6 +191,13 @@ module.exports = (grunt) ->
           username: "toggl"
           root: "/home/toggl/toggl_website"
         }
+        {
+          host: "23.253.62.116"
+          port: 666
+          username: "toggl"
+          root: "/home/toggl/toggl_website"
+        }
+
       ]
 
 
