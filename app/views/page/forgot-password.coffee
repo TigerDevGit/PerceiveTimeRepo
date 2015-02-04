@@ -14,10 +14,10 @@ class SignupView extends View
   showError: (msg) =>
     @errorMessage.html(msg).show()
 
-  forgetSuccess: =>
+  forgotSuccess: =>
     @showError 'An email containing instructions to reset your password has been sent.'
 
-  forgetError: =>
+  forgotError: =>
     @showError switch err.responseText
       when 'E-mail address does not exist\n'
         'Unknown email, please check that it\'s entered correctly!'
@@ -35,8 +35,8 @@ class SignupView extends View
 
     new API('dev', null, null)
       .user.forgot data.email
-      .then @forgetSuccess, @forgetError
-      .catch @handleError
+      .then @forgotSuccess, @forgotError
+      .catch @forgotError
 
   postRender: ->
     setTimeout => @$el.find("[name=email]").select()
