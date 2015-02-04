@@ -12,9 +12,22 @@ class SignupView extends View
     'click .signup-form__oauth': 'googleSignup',
     'submit .signup-form': 'submitSignup',
 
+  attributes:
+    title: 'Get Started Now!'
+    caption: ''
+    showOAuth: true
+    buttonLabel: 'Sign up for free'
+
   initialize: ({params}) ->
     @invitationCode = params[0]
     @api = new API('TogglNext', null, null)
+    if @invitationCode
+      @attributes = {
+        title: 'Welcome to Toggl!'
+        caption: 'Take charge of your time.<br />Track down your hours and learn to work smarter, not harder.'
+        showOAuth: false
+        buttonLabel: "Join the team"
+      }
 
   showError: (msg) =>
     @errorMessage.html(msg).show()

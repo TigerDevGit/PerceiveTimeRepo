@@ -1,7 +1,8 @@
 {{> 'header' }}
 <section class="hero hero--signup hero--dynamic-height">
   <div class="hero__content cf">
-    <h1>Get started now!</h1>
+    <h1>{{ title }}</h1>
+    <p>{{{ caption }}}</p>
   </div>
 </section>
 <section class="content-section content-section--signup">
@@ -15,8 +16,9 @@
       <input name="password" type="password" placeholder="Password">
     </div>
     <div class="signup-form__submit">
-      <button type="submit" class="cta-button cta-button--filled js-ripple-button">Sign up for free</button>
+      <button type="submit" class="cta-button cta-button--filled js-ripple-button">{{ buttonLabel }}</button>
     </div>
+    {{#if showOAuth}}
     <div class="signup-form__oauth">
       <a href="#">
         <svg version="1.1" baseProfile="full"
@@ -32,6 +34,7 @@
         Sign up with Google
       </a>
     </div>
+    {{/if}}
   </form>
 </section>
 {{> 'pricing-boxes' }}

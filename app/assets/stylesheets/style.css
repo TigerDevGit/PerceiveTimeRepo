@@ -1159,6 +1159,9 @@ a {
           border-radius: 0;
           outline: none;
         }
+        .signup-form__field input[readonly] {
+          color: #808080;
+        }
 
       .signup-form__submit {
         margin-top: 33px;
@@ -2823,4 +2826,4 @@ p.larger {
   color: #f30c16 !important;
 }
 
- 
+
