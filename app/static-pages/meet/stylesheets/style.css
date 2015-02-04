@@ -470,7 +470,8 @@ p {
   .top {
     padding: 110px 20px 0;
     font-size: 16px;
-    height: 280px; }
+    height: 100%;
+    float: left; }
 
   .grid-holder {
     text-align: center; }
