@@ -330,6 +330,7 @@ module.exports = (grunt) ->
             '#/legal/privacy'
             '#/landing'
             '#/tools'
+            '#/forgot-password'
           ]
 
   grunt.registerTask "serve", [
