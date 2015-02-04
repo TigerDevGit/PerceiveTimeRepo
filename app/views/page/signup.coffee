@@ -13,6 +13,8 @@ class SignupView extends View
     'submit .signup-form': 'submitSignup',
 
   initialize: ({params}) ->
+    @invitationCode = params[0]
+    @api = new API('TogglNext', null, null)
 
   showError: (msg) =>
     @errorMessage.html(msg).show()
@@ -20,7 +22,6 @@ class SignupView extends View
   googleSignup: (e) ->
     e.preventDefault()
     @errorMessage.hide()
-    api = new API('dev', null, null)
     api.user.initGoogleSignup()
 
   redirectToApp: ->
@@ -28,21 +29,21 @@ class SignupView extends View
 
   submitSignup: (e) ->
     e.preventDefault()
-    @api = new API('dev', null, null)
     @errorMessage.hide()
     @data = formData $(@$el)
+    @data.tz = jstz.determine()?.name()
 
     signupError = (err) =>
-      @showError err?.responseText || 'Failed to sign up.<br />'+
+      @showError err?.responseText or 'Failed to sign up.<br />'+
         'Please check your e-mail and password and make sure you\'re online.'
 
-    @api.user.signup @data.email, @data.password, jstz.determine()?.name()
+    @api.user.signup @data
       .then @login, signupError
       .catch signupError
 
   login: =>
     loginError = (err) =>
-      @showError err?.responseText || 'Failed to log-in<br />'+
+      @showError err?.responseText or 'Failed to log-in<br />'+
         'Please try using the \'Log in\' button above'
 
     @api.auth.session @data.email, @data.password
@@ -50,7 +51,14 @@ class SignupView extends View
       .catch loginError
 
   postRender: ->
-    setTimeout => @$el.find("[name=email]").select()
-    @errorMessage = $ '.signup-form__error', @$el
+    @errorMessage = @$ '.signup-form__error'
+    if @invitationCode
+      @api.invitation.get @invitationCode
+      .then (response) =>
+        return unless response
+        @$('input[name=email]').val(response).prop 'readonly', true
+        @$('input[name=code]').val(@invitationCode)
+    else
+      setTimeout => @$el.find("[name=email]").select()
 
 module.exports = SignupView

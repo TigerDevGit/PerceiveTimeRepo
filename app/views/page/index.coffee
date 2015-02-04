@@ -20,7 +20,7 @@ class IndexView extends View
     if not query.code
       return
 
-    api = new Api('dev', null, null, '/api/v8')
+    api = new Api('TogglNext', null, null, '/api/v8')
     if query.state == 'signup'
       return api
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())

@@ -8,7 +8,7 @@ class LoginPopup extends Modal
   template: 'component/login'
 
   googleLogin: ->
-    new API('dev', null, null).user.initGoogleLogin()
+    new API('TogglNext', null, null).user.initGoogleLogin()
 
   redirectToApp: ->
     document.location = '/app'
@@ -20,7 +20,7 @@ class LoginPopup extends Modal
     loginErr = (err) =>
       @showError err?.responseText || 'Couldn\'t log you in. Please try again!'
 
-    new API('dev', null, null)
+    new API('TogglNext', null, null)
       .auth.session data.email, data.password
       .then @redirectToApp, loginErr
       .catch loginErr
