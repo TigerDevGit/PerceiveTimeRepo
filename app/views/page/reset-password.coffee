@@ -23,7 +23,7 @@ class SignupView extends View
   resetSuccess: =>
     @showError 'Your password has now been reset.'
 
-  resetError: =>
+  resetError: (err) =>
     @showError err.responseText || "Failed to reset password. Please make sure you're online."
 
   loginErr: (err) =>
@@ -52,8 +52,7 @@ class SignupView extends View
       type: 'POST'
       data: data
       success: @loginUser
-      error: (jqXHR, textStatus, errorThrown) =>
-        @showError jqXHR.responseText
+      error: @resetError
 
   showInvalidTokenError: ->
     @showError "Invalid token. Will redirect to index page in 5seconds"
