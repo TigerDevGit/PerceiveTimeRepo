@@ -8,11 +8,11 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
-@media screen and (max-width: 1450px) {
-  html, body, .page {
-    height: 100%;
-  }
+
+html, body, .page {
+  height: 100%;
 }
+
 @media screen and (max-width: 580px) {
   body {
     background-size: auto 100vh;
@@ -141,10 +141,8 @@ a {
 .hero {
   position: relative;
 }
-@media screen and (max-width: 1450px) {
-  .hero--front {
-    height: 100%;
-  }
+.hero--front {
+  height: 100%;
 }
 @media screen and (max-width: 580px) {
   .hero {
