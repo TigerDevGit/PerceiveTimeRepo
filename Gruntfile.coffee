@@ -266,9 +266,9 @@ module.exports = (grunt) ->
         '<%= yeoman.dist %>/**/*.css'
         '<%= yeoman.dist %>/**/*.{png,jpg,jpeg,gif,webp}'
         '!<%= yeoman.dist %>/images/logo-big.png'
+        '!<%= yeoman.dist %>/images/share-img/**/*'
         '!<%= yeoman.dist %>/images/tools/**/*'
         '!<%= yeoman.dist %>/photos/**/*'
-        '!<%= yeoman.dist %>/share-img/**/*'
       ]
 
     useminPrepare:
