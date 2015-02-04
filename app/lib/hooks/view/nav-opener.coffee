@@ -13,7 +13,6 @@ module.exports = ($el) ->
 
   navOpenerClick = (e) ->
     e.stopPropagation()
-
     opened = $body.toggleClass('nav-visible').is('.nav-visible')
 
     if opened
@@ -23,8 +22,7 @@ module.exports = ($el) ->
       $page.off 'click', navSideClick
 
   navSideClick = (e) ->
-    if not $main.get(0).contains e.target
-      $body.removeClass 'nav-visible'
-      $page.off 'click', navSideClick
+    $body.removeClass 'nav-visible'
+    $page.off 'click', navSideClick
 
   $btn.on 'click', navOpenerClick
