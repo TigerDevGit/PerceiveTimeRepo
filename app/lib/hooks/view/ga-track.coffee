@@ -5,11 +5,11 @@ _ = require 'underscore'
 # Should have a comma-delimited list of arguments, e.g.:
 #
 #   This:  <a href="/signup" ga-track="signup, home_click">
-#   Makes: _gaq.push('signup', 'home_click')
+#   Makes: ga('send', 'event', 'signup', 'home_click')
 module.exports = ($el) ->
   tag = 'ga-track'
-
   $('[' + tag + ']', $el).on 'click', ->
+    return unless ga?
     props = _.invoke $(this).attr(tag).split(','), 'trim'
-    _gaq?.push [ '_trackEvent' ].concat(props)
+    ga 'send', 'event', props...
     return

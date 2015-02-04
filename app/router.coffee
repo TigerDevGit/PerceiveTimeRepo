@@ -18,7 +18,8 @@ routes.forEach (route) ->
     $(window).scrollTop 0
     currentView?.trigger 'destroy'
     currentView = new route.view({params}).render()
-    window._gaq?.push [ '_trackPageview', route.route ]
+    # Track the pageviews with the new universal tracker
+    ga? 'send', 'pageview', route.route
     $(document.body).attr id: route.name
 
 module.exports = router
