@@ -1,16 +1,11 @@
 module.exports = (api) ->
   # Creates a new user with the email, password, and timezone.
-  signup: (email, password, tz) ->
+  signup: (data) ->
+    data.created_with = api.name
     return api.request 'post', 'signups',
         processData: false
         contentType: 'application/json'
-        data: JSON.stringify(
-          user:
-            email: email
-            password: password
-            timezone: tz
-            created_with: api.name
-        )
+        data: JSON.stringify(user: data)
 
   # Forgot a password functionality. Causes an email to be sent
   # to the user with reset instructions.
