@@ -5,7 +5,7 @@ module.exports = [
     view: require './views/page/index'
   }
   {
-    route: 'signup'
+    route: 'signup(/:invitationCode)'
     name: 'signup'
     view: require './views/page/signup'
   }

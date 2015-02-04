@@ -12,6 +12,8 @@ class SignupView extends View
     'click .signup-form__oauth': 'googleSignup',
     'submit .signup-form': 'submitSignup',
 
+  initialize: ({params}) ->
+
   showError: (msg) =>
     @errorMessage.html(msg).show()
 
