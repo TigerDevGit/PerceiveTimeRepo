@@ -15,10 +15,10 @@ router = new Router()
 currentView = null
 # Then listen for navigation to those routes and render accordingly
 routes.forEach (route) ->
-  router.on 'route:' + route.name, ->
+  router.on 'route:' + route.name, (params...) ->
     $(window).scrollTop 0
     currentView?.trigger 'destroy'
-    currentView = new route.view().render()
+    currentView = new route.view({params}).render()
     window._gaq?.push [ '_trackPageview', route.route ]
     $(document.body).attr id: route.name
 
