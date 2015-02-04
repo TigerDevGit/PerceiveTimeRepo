@@ -329,6 +329,7 @@ module.exports = (grunt) ->
             '#/legal/terms'
             '#/legal/privacy'
             '#/landing'
+            '#/tools'
           ]
 
   grunt.registerTask "serve", [
@@ -361,12 +362,13 @@ module.exports = (grunt) ->
     "usemin"
     "htmlmin"
     "compress"
-    # "htmlSnapshot"
+    "htmlSnapshot"
   ]
 
   # Need those dummy tasks for our bad deploy job
   # Lets migrate those to something else...
   grunt.registerTask "deployInfo", []
   grunt.registerTask "staging", []
+  grunt.registerTask "production", []
 
   grunt.registerTask "default", ["build"]
