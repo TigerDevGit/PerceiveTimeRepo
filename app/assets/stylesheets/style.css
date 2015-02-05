@@ -1368,7 +1368,6 @@ a {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
     opacity: 0.5;
     left: 0;
     top: 0;
@@ -1377,10 +1376,6 @@ a {
 
   .team--checkered .team__member:before {
     width: 50%;
-  }
-
-  .team__member:nth-child(2n):before {
-    background: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
   }
 
   .team--checkered .team__member:nth-child(2n):before {
