@@ -1,8 +1,7 @@
 var Q     = require('q'),
     slack = require('slack-notify')('https://hooks.slack.com/services/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');
 
-var ROOT = '/home/toggl/toggl_website-TEST/',
-    DIST = process.cwd() + '/dist/';
+var DIST = process.cwd() + '/dist/';
 
 // Currently there is no remoteCwd option so we have to improvise...
 // Will prepend cd folder && before any command
@@ -13,12 +12,14 @@ function cwdTask(cmd, cwd) {
 module.exports = function (shipit) {
   shipit.initConfig({
     staging: {
-      servers: 'toggl@hubert'
+      servers: 'toggl@hubert',
+      root: '/home/toggl/toggl_website/'
     }
   });
 
   shipit.task('deploy', function() {
-    return shipit.start('build', 'mkDir', 'populatePrev', 'copy', function() {
+    return shipit.start('build', 'mkDir', 'populatePrev', 'copy', function(err) {
+      if (err) { return; }
       slack.send({
         text: this.environment + ' was successfully deployed.',
         username: 'Cap`n Crunch',
@@ -35,26 +36,28 @@ module.exports = function (shipit) {
   //  - prev-assets
   //  - current
   shipit.blTask('mkDir', function () {
+    var root = this.config.root;
     return Q().then(function () {
-      return shipit.remote('mkdir -p ' + ROOT);
+      return shipit.remote('mkdir -p ' + root);
     }).then(function () {
-      return shipit.remote(cwdTask('mkdir -p prev-assets current', ROOT));
+      return shipit.remote(cwdTask('mkdir -p prev-assets current', root));
     });
   });
 
   // Populates the prev-assets folder.
   // We are keeping the last assets in prev-assets folder just in case something goes bad
   shipit.blTask('populatePrev', function () {
+    var root = this.config.root;
     return Q().then(function () {
-      return shipit.remote(cwdTask('rm -rf prev-assets', ROOT));
+      return shipit.remote(cwdTask('rm -rf prev-assets', root));
     }).then(function () {
-      return shipit.remote(cwdTask('mv current/ prev-assets/', ROOT));
+      return shipit.remote(cwdTask('mv current/ prev-assets/', root));
     });
   });
 
   // Rsyncs local files to current directory
   shipit.blTask('copy', function () {
-    return shipit.remoteCopy(DIST, ROOT + 'current/');
+    return shipit.remoteCopy(DIST, this.config.root + 'current/');
   });
 
   shipit.blTask('build', function() {
