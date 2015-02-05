@@ -14,6 +14,15 @@ module.exports = function (shipit) {
     staging: {
       servers: 'toggl@hubert',
       root: '/home/toggl/toggl_website/'
+    },
+    production: {
+      servers: [
+        'toggl@23.253.62.226:666',
+        'toggl@23.253.200.66:666',
+        'toggl@23.253.46.149:666',
+        'toggl@23.253.62.116:666'
+      ],
+      root: '/home/toggl/toggl_website'
     }
   });
 
