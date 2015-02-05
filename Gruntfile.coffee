@@ -165,42 +165,6 @@ module.exports = (grunt) ->
         src: '**/*'
         dest: "<%= yeoman.dist %>/"
 
-    togglRelease:
-      staging: [
-        host: "hubert"
-        port: 22
-        username: "toggl"
-        root: "/home/toggl/toggl_website"
-      ]
-      production: [
-        {
-          host: "23.253.62.226"
-          port: 666
-          username: "toggl"
-          root: "/home/toggl/toggl_website"
-        }
-        {
-          host: "23.253.200.66"
-          port: 666
-          username: "toggl"
-          root: "/home/toggl/toggl_website"
-        }
-        {
-          host: "23.253.46.149"
-          port: 666
-          username: "toggl"
-          root: "/home/toggl/toggl_website"
-        }
-        {
-          host: "23.253.62.116"
-          port: 666
-          username: "toggl"
-          root: "/home/toggl/toggl_website"
-        }
-
-      ]
-
-
     autoprefixer:
       notFound:
         expand: true
@@ -380,11 +344,5 @@ module.exports = (grunt) ->
     "compress"
     "htmlSnapshot"
   ]
-
-  # Need those dummy tasks for our bad deploy job
-  # Lets migrate those to something else...
-  grunt.registerTask "deployInfo", []
-  grunt.registerTask "staging", []
-  grunt.registerTask "production", []
 
   grunt.registerTask "default", ["build"]
