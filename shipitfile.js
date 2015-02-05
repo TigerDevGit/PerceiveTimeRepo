@@ -69,15 +69,16 @@ module.exports = function (shipit) {
     return shipit.remoteCopy(DIST, this.config.root + 'current/');
   });
 
-  shipit.blTask('build', function() {
+  shipit.blTask('build', function () {
     return shipit.local('grunt build');
   });
 
-  shipit.task('bump:minor', function() {
-    return shipit.local('npm version minor');
-  });
-
-  shipit.task('bumpt:major', function() {
-    return shipit.local('npm version major');
-  });
+  // Bump tasks
+  // Will bump the package.json version
+  function bump(version) {
+    return shipit.local('npm version ' + version);
+  }
+  shipit.task('bump', bump.bind(null, 'patch'));
+  shipit.task('bump:minor', bump.bind(null, 'minor'));
+  shipit.task('bumpt:major', bump.bind(null, 'major'));
 };
