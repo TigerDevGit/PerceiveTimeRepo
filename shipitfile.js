@@ -63,4 +63,12 @@ module.exports = function (shipit) {
   shipit.blTask('build', function() {
     return shipit.local('grunt build');
   });
+
+  shipit.task('bump:minor', function() {
+    return shipit.local('npm version minor');
+  });
+
+  shipit.task('bumpt:major', function() {
+    return shipit.local('npm version major');
+  });
 };
