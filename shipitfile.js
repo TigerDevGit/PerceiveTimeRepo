@@ -22,7 +22,7 @@ module.exports = function (shipit) {
         'toggl@23.253.46.149:666',
         'toggl@23.253.62.116:666'
       ],
-      root: '/home/toggl/toggl_website'
+      root: '/home/toggl/toggl_website/'
     }
   });
 
