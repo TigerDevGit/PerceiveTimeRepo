@@ -49,9 +49,4 @@ module.exports = [
     name: 'resetPassword'
     view: require './views/page/reset-password'
   }
-  {
-    route: '*notFound'
-    name: 'notFound'
-    view: require './views/page/not-found'
-  }
 ]
