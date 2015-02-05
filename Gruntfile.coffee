@@ -65,7 +65,7 @@ module.exports = (grunt) ->
           }
         ]
         options:
-          port: 80
+          port: process.env.PORT or 9001
           hostname: "localhost"
           debug: true
           livereload: LIVERELOAD_PORT
