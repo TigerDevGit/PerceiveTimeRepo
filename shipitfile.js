@@ -30,7 +30,7 @@ module.exports = function (shipit) {
     return shipit.start('build', 'mkDir', 'populatePrev', 'copy', function(err) {
       if (err) { return; }
       slack.send({
-        text: this.environment + ' was successfully deployed.',
+        text: 'WEBSITE: ' + this.environment + ' was successfully deployed.',
         username: 'Cap`n Crunch',
         icon_emoji: ':boom:'
       });
