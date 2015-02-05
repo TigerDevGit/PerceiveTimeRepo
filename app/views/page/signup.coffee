@@ -8,6 +8,9 @@ class SignupView extends View
   template: 'page/signup'
   title: 'Sign Up — Toggl, The Simplest Time Tracker'
 
+  ui:
+    submitButton: '.signup-form__submit button'
+
   events:
     'click .signup-form__oauth': 'googleSignup',
     'submit .signup-form': 'submitSignup',
@@ -30,6 +33,7 @@ class SignupView extends View
   submitSignup: (e) ->
     e.preventDefault()
     @errorMessage.hide()
+    @updateStatus 'pending'
     @data = formData $(@$el)
     @data.tz = jstz.determine()?.name()
 
@@ -40,6 +44,8 @@ class SignupView extends View
     @api.user.signup @data
       .then @login, signupError
       .catch signupError
+      .then =>
+        @updateStatus 'done'
 
   login: =>
     loginError = (err) =>
@@ -49,6 +55,21 @@ class SignupView extends View
     @api.auth.session @data.email, @data.password
       .then @redirectToApp, loginError
       .catch loginError
+
+  updateStatus: (status) ->
+    $submitButton = $(@ui.submitButton)
+    if $submitButton.timeout
+      clearTimeout($submitButton.timeout)
+
+    switch status
+      when 'pending'
+        onTimeout = ->
+          $submitButton.addClass('pending cta-button--no-arrow')
+          $submitButton.text('Loading...')
+        $submitButton.timeout = setTimeout(onTimeout, 300)
+      else
+        $submitButton.removeClass('pending cta-button--no-arrow')
+        $submitButton.text('Sign-up')
 
   postRender: ->
     @errorMessage = @$ '.signup-form__error'

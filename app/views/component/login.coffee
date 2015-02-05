@@ -20,10 +20,28 @@ class LoginPopup extends Modal
     loginErr = (err) =>
       @showError err?.responseText || 'Couldn\'t log you in. Please try again!'
 
+    @updateStatus 'pending'
     new API('TogglNext', null, null)
       .auth.session data.email, data.password
       .then @redirectToApp, loginErr
       .catch loginErr
+      .then =>
+        @updateStatus 'done'
+
+  updateStatus: (status) ->
+    $submitButton = $('.login-form__submit button')
+    if $submitButton.timeout
+      clearTimeout($submitButton.timeout)
+
+    switch status
+      when 'pending'
+        onTimeout = ->
+          $submitButton.addClass('pending cta-button--no-arrow')
+          $submitButton.text('Loading...')
+        $submitButton.timeout = setTimeout(onTimeout, 300)
+      else
+        $submitButton.removeClass('pending cta-button--no-arrow')
+        $submitButton.text('Sign-up')
 
   startSubmit: (e) =>
     e.preventDefault()

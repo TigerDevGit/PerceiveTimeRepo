@@ -36,6 +36,8 @@
 *
 * #JS-RIPPLE-BUTTON-- A button that sends out a ripple on click
 *
+* #PENDING-BUTTON  -- A button which is pending on some async action and disabled
+*
 * #PLATFORMS-LIST  -- horisontal list of links with platform icons
 *
 * #CHECKLIST       -- wide unordered list, each list item is prefixed with a green checkmark
@@ -2273,6 +2275,19 @@ a {
     animation: ripple 400ms ease-in 1;
   }
 
+
+
+
+/**
+* #PENDING-BUTTON
+**/
+
+.js-ripple-button.pending {
+  transition: all 0.3s;
+  background: #919191;
+  border-color: grey;
+  cursor: default;
+}
 
 
 
