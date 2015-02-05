@@ -14,7 +14,7 @@ class LoginPopup extends Modal
     document.location = '/app'
 
   showError: (msg) ->
-    # @errorMessage.html(msg).show()
+    @errorMessage.html(msg).show()
 
   submitLogin: (data) ->
     loginErr = (err) =>
