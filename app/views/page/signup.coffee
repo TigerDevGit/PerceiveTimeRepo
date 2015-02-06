@@ -35,7 +35,7 @@ class SignupView extends View
   googleSignup: (e) ->
     e.preventDefault()
     @errorMessage.hide()
-    api.user.initGoogleSignup()
+    @api.user.initGoogleSignup()
 
   redirectToApp: ->
     document.location = '/app'

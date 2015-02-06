@@ -21,36 +21,29 @@ class IndexView extends View
       return
 
     api = new Api('TogglNext', null, null, '/api/v8')
-    if query.state == 'signup'
+
+    if query.state == 'profile'
+      document.location = "/app/profile/#{query.code}"
+      return
+    else if query.state == 'signup'
       return api
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())
-        # Ignore the error and just authenticate with Google, if the account is
-        # already associated
-        # TODO Tell the user about doing this
-        #
-        # This isn't working properly yet.
-        #.catch (err) ->
-          #alreadyAssociatedErr = 'Your Google account is already associated
-                                  #with another Toggl account.\n'
-          #if(err && err.responseText == alreadyAssociatedErr)
-            #return
-          #else
-            #alert 'Failed with: ' + err && err.responseText
-            #throw err
-        .then ->
-          api.user.completeGoogleLogin query.code
+        .then (response) ->
+          api.auth.session response.data.api_token, 'api_token'
         .then ->
           document.location = '/app'
-        # TODO Factor out `signup -> login -> redirect` logic and remove
-        # duplication; see the `signup` view
         .catch (err) ->
-          alert 'Failed with: ' + err && err.responseText
+          unless err?.responseText.indexOf("already redeemed") != -1 # Hide error caused by browser refresh
+            alert "Signup failed. " + err?.responseText
 
     api
-      .user.completeGoogleLogin query.code, query.state == 'remember_me'
+      .user.completeGoogleLogin query.code, query.state == 'remember_me' # TODO: implement this login + remember_me
       .then ->
         document.location = '/app'
       .catch (err) ->
-        alert 'Failed with: ' + err && err.responseText
+        if err.status is 403
+          alert "Failed to login with Google, are you sure this is the right account?"
+        else
+          alert "Failed to login with Google. " + err?.responseText
 
 module.exports = IndexView
