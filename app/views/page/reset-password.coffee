@@ -7,9 +7,9 @@ class SignupView extends View
   template: 'page/reset-password'
   title: 'Reset your password — Toggl, The Simplest Time Tracker'
 
-  initialize: ({params}) ->
+  initialize: ({@token}) ->
     super
-    @token = params[0]
+    alert @token
 
   events:
     'submit': 'resetPassword'
