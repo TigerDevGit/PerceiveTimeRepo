@@ -2537,6 +2537,7 @@ body.with-modal-overlay {
             color: white;
             text-transform: uppercase;
             font-family: 'DIN Next', sans-serif;
+            padding: 20px;
           }
 
           .login-form__oauth__google:before {
