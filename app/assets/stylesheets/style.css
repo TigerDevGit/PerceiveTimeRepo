@@ -2408,10 +2408,6 @@ a {
   top: 100%;
 }
 
-body.with-modal-overlay {
-  overflow: hidden;
-}
-
 .modal-overlay--visible,
 .no-pointerevents .modal-overlay--visible {
   opacity: 1;
