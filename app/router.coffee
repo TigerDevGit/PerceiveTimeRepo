@@ -27,6 +27,7 @@ Router = class Router extends Backbone.Router
     'forgot-password': -> renderPage require './views/page/forgot-password'
     'reset_password/:token': 'showResetPassword'
     'signup(/:invitationCode)': 'showSignup'
+    'login': 'showLogin'
 
   showResetPassword: (token) ->
     ResetPassword = require './views/page/reset-password'
@@ -35,6 +36,11 @@ Router = class Router extends Backbone.Router
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
     renderPage Signup, { invitationCode }
+
+  showLogin: ->
+    renderPage require './views/page/index'
+    LoginPopup = require './views/component/login'
+    new LoginPopup().render()
 
   # Returns the current route
   # If the route is a regexp then it will return the regexp
