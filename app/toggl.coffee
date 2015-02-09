@@ -1,10 +1,11 @@
-window.Backbone = Backbone = require 'backbone'
-$ = require 'jquery'
+Backbone = require 'backbone'
+$        = require 'jquery'
 # Fix required when using backbone with Browserify:
 Backbone.$ = $
 
 # Start the router
-router = require './router'
+Router = require './router'
+router = new Router
 Backbone.history.start { pushState: true }
 
 # Also listen for link clicks in the page for links that begin with
