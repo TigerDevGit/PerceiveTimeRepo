@@ -26,7 +26,7 @@ Router = class Router extends Backbone.Router
     'legal/terms': -> renderPage require './views/page/terms'
     'forgot-password': -> renderPage require './views/page/forgot-password'
     'reset_password/:token': 'showResetPassword'
-    'signup(/:invitationCode)': 'showSigup'
+    'signup(/:invitationCode)': 'showSignup'
 
   showResetPassword: (token) ->
     ResetPassword = require './views/page/reset-password'
