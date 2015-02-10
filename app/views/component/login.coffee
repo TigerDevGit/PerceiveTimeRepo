@@ -28,8 +28,10 @@ class LoginPopup extends Modal
       .auth.session data.email, data.password
       .then @redirectToApp, loginErr
       .catch loginErr
-      .then =>
-        @updateStatus 'done'
+      .then(
+        (=> @updateStatus 'done'),
+        (=> @updateStatus 'done')
+      )
 
   startSubmit: (e) =>
     e.preventDefault()

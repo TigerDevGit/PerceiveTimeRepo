@@ -46,8 +46,10 @@ class SignupView extends View
     @api.user.signup @data
       .then @login, signupError
       .catch signupError
-      .then =>
-        @updateStatus 'done'
+      .then(
+        (=> @updateStatus 'done'),
+        (=> @updateStatus 'done')
+      )
 
   login: =>
     loginError = (err) =>
