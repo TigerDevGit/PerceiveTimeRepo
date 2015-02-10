@@ -4,8 +4,11 @@ module.exports = ($form) ->
   out = {}
   $form.find('input').each ->
     if @name
-      # ||= is used here because a `display:none` `input type="password"` was
+      # or= is used here because a `display:none` `input type="password"` was
       # appearing under the login-form. This fixes it, but it'd be nice to know
       # whether this is a problem.
-      out[@name] ||= @value
+      if @type is 'checkbox'
+        out[@name] or= @checked
+      else
+        out[@name] or= @value
   return out

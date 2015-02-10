@@ -3,13 +3,11 @@ API      = require '../../lib/api'
 formData = require '../../lib/form-data'
 $        = require 'jquery'
 
-class SignupView extends View
+class ResetPasswordView extends View
   template: 'page/reset-password'
   title: 'Reset your password — Toggl, The Simplest Time Tracker'
 
-  initialize: ({params}) ->
-    super
-    @token = params[0]
+  initialize: ({@token}) ->
 
   events:
     'submit': 'resetPassword'
@@ -71,4 +69,4 @@ class SignupView extends View
     @errorMessage = $ '.signup-form__error', @$el
     @$el.find('#reset_code').val @token
 
-module.exports = SignupView
+module.exports = ResetPasswordView

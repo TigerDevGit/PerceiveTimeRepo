@@ -4,8 +4,10 @@
     <section class="hero__manual-video js-manual-video" style="display:none;">
     </section>
     <video preload="none" class="js-automatic-video" muted poster="/images/share-img/video-placeholder.jpg">
+      {{#unless videoDisabled}}
       <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.mp4" type="video/mp4"></source>
       <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.webm" type="video/webm"></source>
+      {{/unless}}
     </video>
   </div>
   <div class="hero__content content--light hero__content--centered">

@@ -17,9 +17,10 @@ module.exports = (api) ->
 
 
   # Initializes a google login
-  initGoogleLogin: ->
+  initGoogleLogin: (remember) ->
+    state = if remember then "login_remember" else "login"
     api
-      .request 'get', 'oauth_url', dataType: undefined
+      .request 'get', "oauth_url?state=#{state}", dataType: undefined
       .then (result) -> document.location = result
 
   # Completes a google login

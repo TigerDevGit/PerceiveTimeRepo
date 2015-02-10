@@ -29,7 +29,7 @@ module.exports = function (shipit) {
   });
 
   shipit.task('deploy', function() {
-    return shipit.start('build', 'mkDir', 'populatePrev', 'copy', function(err) {
+    return shipit.start('install', 'build', 'mkDir', 'populatePrev', 'copy', function(err) {
       if (err) { return; }
       slack.send({
         text: 'WEBSITE: ' + this.environment + ' was successfully deployed.',
@@ -37,6 +37,11 @@ module.exports = function (shipit) {
         icon_emoji: ':boom:'
       });
     });
+  });
+
+  // Runs the npm install.
+  shipit.blTask('install', function () {
+    return shipit.local('npm install');
   });
 
   // Create the missing directorys

@@ -18,8 +18,8 @@ class SignupView extends View
     showOAuth: true
     buttonLabel: 'Sign up for free'
 
-  initialize: ({params}) ->
-    @invitationCode = params[0]
+  initialize: ({@invitationCode}) ->
+    super
     @api = new API('TogglNext', null, null)
     if @invitationCode
       @attributes = {

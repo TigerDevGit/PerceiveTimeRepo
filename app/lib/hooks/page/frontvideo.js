@@ -213,6 +213,7 @@ module.exports = function($page, view) {
 
   function detect_autoplay(){
     if('ontouchstart' in document.body){
+      running = false;
       document.body.classList.add('video-suspended');
 
       var heading = document.querySelector('.hero-timer-heading'),

@@ -13,6 +13,7 @@ class IndexView extends View
   initialize: ->
     super
     @attributes =
+      videoDisabled: 'ontouchstart' of document.body
       navLight: true
 
     query = parseQuery(window.location.search)
@@ -35,15 +36,16 @@ class IndexView extends View
         .catch (err) ->
           unless err?.responseText.indexOf("already redeemed") != -1 # Hide error caused by browser refresh
             alert "Signup failed. " + err?.responseText
-
-    api
-      .user.completeGoogleLogin query.code, query.state == 'remember_me' # TODO: implement this login + remember_me
-      .then ->
-        document.location = '/app'
-      .catch (err) ->
-        if err.status is 403
-          alert "Failed to login with Google, are you sure this is the right account?"
-        else
-          alert "Failed to login with Google. " + err?.responseText
+    else if query.state in ['login', 'login_remember']
+      remember = query.state is 'login_remember'
+      api
+        .user.completeGoogleLogin query.code, remember
+        .then ->
+          document.location = '/app'
+        .catch (err) ->
+          if err.status is 403
+            alert "Failed to login with Google, are you sure this is the right account?"
+          else
+            alert "Failed to login with Google. " + err?.responseText
 
 module.exports = IndexView

@@ -2434,10 +2434,6 @@ a {
   top: 100%;
 }
 
-body.with-modal-overlay {
-  overflow: hidden;
-}
-
 .modal-overlay--visible,
 .no-pointerevents .modal-overlay--visible {
   opacity: 1;
@@ -2563,6 +2559,7 @@ body.with-modal-overlay {
             color: white;
             text-transform: uppercase;
             font-family: 'DIN Next', sans-serif;
+            padding: 20px;
           }
 
           .login-form__oauth__google:before {
