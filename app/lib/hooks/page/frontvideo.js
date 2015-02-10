@@ -67,7 +67,7 @@ module.exports = function($page, view) {
       ],
       lastBreakpoint = 0,
       referenceTime,
-      running = true;
+      running = true, paused = false;
 
   function hideTimer() {
     $('.hero-timer').css('opacity', 0);
@@ -102,8 +102,14 @@ module.exports = function($page, view) {
       return;
     }
 
-    updateTimerHeadings();
-    updateTimer();
+    if (video.currentTime > 0) {
+      $('.js-play-pause-controls').show();
+    }
+
+    if (!paused) {
+      updateTimerHeadings();
+      updateTimer();
+    }
     window.requestAnimationFrame(loop);
   }
 
@@ -177,6 +183,20 @@ module.exports = function($page, view) {
     video.muted = mute;
   }
 
+  function handlePlayButtonClick(event) {
+    event.preventDefault();
+    video.play();
+    $('.video-pause-button').show();
+    $('.video-play-button').hide();
+  }
+
+  function handlePauseButtonClick(event) {
+    event.preventDefault();
+    video.pause();
+    $('.video-pause-button').hide();
+    $('.video-play-button').show();
+  }
+
   function detect_autoplay(){
     if('ontouchstart' in document.body){
       document.body.classList.add('video-suspended');
@@ -200,6 +220,16 @@ module.exports = function($page, view) {
     running = false;
   });
 
+  video.addEventListener('pause', function () {
+    paused = true;
+  }, true);
+
+  video.addEventListener('play', function () {
+    paused = false;
+  }, true);
+
   $('.video-mute-button').on('click', handleMuteButtonClick);
+  $('.video-pause-button').on('click', handlePauseButtonClick);
+  $('.video-play-button').on('click', handlePlayButtonClick);
   detect_autoplay();
 };
