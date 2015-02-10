@@ -627,6 +627,12 @@ a {
       margin: auto;
     }
 
+    .hero__content h1.hero-timer-heading__manual {
+      font-weight: 300;
+      width: 530px;
+      letter-spacing: 3px;
+    }
+
     .hero--front .cta-button {
       position: absolute;
       bottom: 0;
@@ -2840,3 +2846,28 @@ p.larger {
   background: initial;
   color: #f30c16 !important;
 }
+
+.hero__manual-video {
+  background: url('../images/bg-skater.jpg') center no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.manual-time-start a {
+  color: white;
+  font-weight: 100;
+}
+.video-force-start:after {
+  content: url('../images/big-play.png');
+  position: absolute;
+  top: -20px;
+  margin-left: -15px;
+}
+.seen-wrapper {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+

@@ -1,6 +1,17 @@
 var $   = require('jquery'),
     raf = require('raf');
 
+// Because AMD is hard...
+// https://github.com/carhartl/jquery-cookie/issues/319
+require('jquery.cookie');
+
+var COOKIE_VAL = 'SEEN_VIDEO';
+
+function incrementSeenCount () {
+  var current = +$.cookie(COOKIE_VAL) || 0;
+  $.cookie(COOKIE_VAL, current + 1);
+}
+
 /**
  * Video playback for the homepage video.
  */
@@ -219,16 +230,26 @@ module.exports = function($page, view) {
     }
   }
 
+  function handleVideoForceStart(event) {
+    event.preventDefault();
+    video.play();
+    $('.js-manual-video').hide();
+    $('.js-automatic-video').show();
+  }
+
   view.on('destroy', function () {
     running = false;
   });
 
+  // Playing event is triggered on the first play
+  // and every time a video is unpaused
+  video.addEventListener('playing', function () {
+    togglePausePlayButtons(true);
+    paused = false;
+  });
+
   video.addEventListener('pause', function () {
     paused = true;
-  }, true);
-
-  video.addEventListener('play', function () {
-    paused = false;
   }, true);
 
   video.addEventListener('ended', function () {
@@ -236,7 +257,18 @@ module.exports = function($page, view) {
     togglePausePlayButtons(false);
   });
 
+  // If the user has seen the movie more than 9 times already
+  // then lets just not show it
+  if (+$.cookie(COOKIE_VAL) > 9) {
+    $('.js-manual-video').show();
+    $('.js-automatic-video').hide();
+  } else {
+    video.play();
+    incrementSeenCount();
+  }
+
   $('.video-mute-button').on('click', handleMuteButtonClick);
+  $('.video-force-start').on('click', handleVideoForceStart);
   $('.video-pause-button').on('click', handlePauseButtonClick);
   $('.video-play-button').on('click', handlePlayButtonClick);
   detect_autoplay();
