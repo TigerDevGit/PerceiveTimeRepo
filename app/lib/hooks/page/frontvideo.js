@@ -186,15 +186,18 @@ module.exports = function($page, view) {
   function handlePlayButtonClick(event) {
     event.preventDefault();
     video.play();
-    $('.video-pause-button').show();
-    $('.video-play-button').hide();
+    togglePausePlayButtons(true);
   }
 
   function handlePauseButtonClick(event) {
     event.preventDefault();
     video.pause();
-    $('.video-pause-button').hide();
-    $('.video-play-button').show();
+    togglePausePlayButtons(false);
+  }
+
+  function togglePausePlayButtons (toggle) {
+    $('.video-pause-button').toggle(toggle);
+    $('.video-play-button').toggle(!toggle);
   }
 
   function detect_autoplay(){
@@ -227,6 +230,11 @@ module.exports = function($page, view) {
   video.addEventListener('play', function () {
     paused = false;
   }, true);
+
+  video.addEventListener('ended', function () {
+    paused = true;
+    togglePausePlayButtons(false);
+  });
 
   $('.video-mute-button').on('click', handleMuteButtonClick);
   $('.video-pause-button').on('click', handlePauseButtonClick);
