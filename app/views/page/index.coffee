@@ -13,6 +13,7 @@ class IndexView extends View
   initialize: ->
     super
     @attributes =
+      videoDisabled: 'ontouchstart' of document.body
       navLight: true
 
     query = parseQuery(window.location.search)
