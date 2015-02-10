@@ -1,9 +1,9 @@
-Modal = require './modal'
-API = require '../../lib/api'
-formData = require '../../lib/form-data'
-$ = require 'jquery'
-_ = require 'underscore'
-PendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+Modal              = require './modal'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+$                  = require 'jquery'
+_                  = require 'underscore'
 
 class LoginPopup extends Modal
   template: 'component/login'
@@ -56,6 +56,6 @@ class LoginPopup extends Modal
       @startSubmit e
       @googleLogin()
 
-_.extend(LoginPopup.prototype, PendingButtonMixin)
+_.extend(LoginPopup.prototype, pendingButtonMixin)
 
 exports = module.exports = LoginPopup

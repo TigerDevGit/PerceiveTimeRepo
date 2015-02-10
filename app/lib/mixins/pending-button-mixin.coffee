@@ -2,7 +2,7 @@ $ = require 'jquery'
 
 # A mixin for easily updating a button's pending status. Assumes the object
 # defined a property `submitButton` with the target button element.
-PendingButtonMixin =
+pendingButtonMixin =
   isPending: -> $(@submitButton).hasClass 'pending'
 
   updateStatus: (status) ->
@@ -21,4 +21,4 @@ PendingButtonMixin =
         $submitButton.removeClass('disabled pending cta-button--no-arrow')
         $submitButton.text(@submitButtonOriginalText)
 
-exports = module.exports = PendingButtonMixin
+exports = module.exports = pendingButtonMixin
