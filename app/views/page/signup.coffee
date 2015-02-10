@@ -1,15 +1,14 @@
-View     = require '../../view'
-API      = require '../../lib/api'
-formData = require '../../lib/form-data'
-$        = require 'jquery'
-jstz     = require('jstimezonedetect').jstz
+View               = require '../../view'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+$                  = require 'jquery'
+jstz               = require('jstimezonedetect').jstz
+_                  = require 'underscore'
 
 class SignupView extends View
   template: 'page/signup'
   title: 'Sign Up — Toggl, The Simplest Time Tracker'
-
-  ui:
-    submitButton: '.signup-form__submit button'
 
   events:
     'click .signup-form__oauth': 'googleSignup',
@@ -32,8 +31,11 @@ class SignupView extends View
 
   submitSignup: (e) ->
     e.preventDefault()
-    @errorMessage.hide()
+
+    return if @isPending()
     @updateStatus 'pending'
+
+    @errorMessage.hide()
     @data = formData $(@$el)
     @data.tz = jstz.determine()?.name()
 
@@ -56,23 +58,9 @@ class SignupView extends View
       .then @redirectToApp, loginError
       .catch loginError
 
-  updateStatus: (status) ->
-    $submitButton = $(@ui.submitButton)
-    if $submitButton.timeout
-      clearTimeout($submitButton.timeout)
-
-    switch status
-      when 'pending'
-        onTimeout = ->
-          $submitButton.addClass('pending cta-button--no-arrow')
-          $submitButton.text('Loading...')
-        $submitButton.timeout = setTimeout(onTimeout, 300)
-      else
-        $submitButton.removeClass('pending cta-button--no-arrow')
-        $submitButton.text('Sign-up')
-
   postRender: ->
     @errorMessage = @$ '.signup-form__error'
+    @submitButton = @$ '.signup-form__submit button'
     if @invitationCode
       @api.invitation.get @invitationCode
       .then (response) =>
@@ -81,5 +69,7 @@ class SignupView extends View
         @$('input[name=code]').val(@invitationCode)
     else
       setTimeout => @$el.find("[name=email]").select()
+
+_.extend(SignupView.prototype, pendingButtonMixin)
 
 module.exports = SignupView
