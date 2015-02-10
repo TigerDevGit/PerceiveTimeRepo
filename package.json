@@ -60,7 +60,6 @@
     "gulp-concat": "^2.4.3",
     "gulp-declare": "^0.3.0",
     "gulp-embedlr": "^0.5.2",
-    "gulp-gzip": "0.0.8",
     "gulp-handlebars": "^3.0.1",
     "gulp-htmlmin": "^1.0.0",
     "gulp-imagemin": "^2.1.0",

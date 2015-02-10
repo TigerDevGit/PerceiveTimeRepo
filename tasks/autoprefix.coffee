@@ -1,7 +1,6 @@
 'use strict'
 gulp = require 'gulp'
 autoprefixer = require 'gulp-autoprefixer'
-gzip = require 'gulp-gzip'
 minifyCss = require 'gulp-minify-css'
 rename = require 'gulp-rename'
 sourcemaps = require 'gulp-sourcemaps'
@@ -14,8 +13,7 @@ exports.style = ->
   src = src
     .pipe(autoprefixer())
     .pipe(minifyCss())
-    .pipe(gzip())
   src = src.pipe(sourcemaps.write()) unless NO_SOURCE_MAPS
   src
-    .pipe(rename('style.autoprefixed.css.gz'))
+    .pipe(rename('style.autoprefixed.css'))
     .pipe(gulp.dest('./dist/stylesheets/'))
