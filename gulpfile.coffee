@@ -6,4 +6,4 @@ require('./tasks')(gulp)
 
 gulp.task 'build', ['browserify', 'copy', 'autoprefix']
 gulp.task 'default', ['auto-reload-config']
-gulp.task 'all', ['build', 'copy', 'serve', 'watch']
+gulp.task 'all', ['coffeelint', 'build', 'copy', 'serve', 'watch']
