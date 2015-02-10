@@ -15,10 +15,10 @@ exports._devserver = devserver = express()
 # devserver.use()
 devserver.use(livereload port: LIVERELOAD_PORT)
 devserver.use('/api', proxy(TOGGL_API_URL,
-  forwardPath: (req, res) -> console.log(req.url); '/api' + req.url
+  forwardPath: (req, res) -> '/api' + req.url
 ))
 devserver.use('/app', proxy(TOGGL_WEBAPP_URL,
-  forwardPath: (req, res) -> console.log(req.url); '/app' + req.url
+  forwardPath: (req, res) -> '/app' + req.url
 ))
 devserver.use(express.static('./dist'))
 devserver.use((req, res, next) ->
