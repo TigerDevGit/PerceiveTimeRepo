@@ -4,8 +4,10 @@ gulp = require 'gulp'
 refresh = require 'gulp-livereload'
 sourcemaps = require 'gulp-sourcemaps'
 uglify = require 'gulp-uglify'
+_ = require 'underscore'
 buffer = require 'vinyl-buffer'
 source = require 'vinyl-source-stream'
+watchify = require 'watchify'
 
 lrserver = require('./serve')._lrserver
 
@@ -19,13 +21,14 @@ exit = (err) ->
 # External packages to be put in the "vendor" browserify bundle
 EXTERNAL_MODULES = Object.keys(require('../package.json').dependencies)
 
-exports.toggl = ->
-  bundler = browserify(
-    entries: './dist/.tmp/app/toggl.js'
-    extensions: ['.coffee', '.hbs', '.js']
-    debug: if NO_MINIFICATION and NO_SOURCE_MAPS then false else true
-  )
+togglBundler = watchify(browserify(_.extend({
+  entries: './dist/.tmp/app/toggl.js'
+  extensions: ['.coffee', '.hbs', '.js']
+  debug: if NO_MINIFICATION and NO_SOURCE_MAPS then false else true
+}, watchify.args)))
 
+exports.toggl = ->
+  bundler = togglBundler
   bundler.external(EXTERNAL_MODULES)
 
   output = bundler.bundle()
@@ -47,12 +50,13 @@ exports.toggl = ->
 
 exports.toggl.dependencies = ['coffeescript', 'handlebars', 'copy:toggl-javascript']
 
-exports.vendor = ->
-  bundler = browserify(
-    entries: []
-    debug: if NO_MINIFICATION and NO_SOURCE_MAPS then false else true
-  )
+vendorBundler = watchify(browserify(_.extend({
+  entries: []
+  debug: if NO_MINIFICATION and NO_SOURCE_MAPS then false else true
+}, watchify.args)))
 
+exports.vendor = ->
+  bundler = vendorBundler
   bundler.require(EXTERNAL_MODULES)
 
   output = bundler.bundle()

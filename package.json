@@ -91,7 +91,8 @@
     "through2": "^0.6.3",
     "tiny-lr": "^0.1.5",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.0.0"
+    "vinyl-source-stream": "^1.0.0",
+    "watchify": "^2.3.0"
   },
   "engines": {
     "node": ">=0.8.0"
