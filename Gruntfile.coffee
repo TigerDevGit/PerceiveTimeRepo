@@ -234,7 +234,7 @@ module.exports = (grunt) ->
           partialsPathRegex: /\/partials\//
 
         src: "<%= yeoman.app %>/templates/**/*.hbs"
-        dest: ".tmp/app/templates/compiled.js"
+        dest: ".tmp/app/templates/index.js"
 
     rev:
       dist: [
