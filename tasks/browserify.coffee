@@ -1,6 +1,7 @@
 'use strict'
 browserify = require 'browserify'
 gulp = require 'gulp'
+gzip = require 'gulp-gzip'
 refresh = require 'gulp-livereload'
 sourcemaps = require 'gulp-sourcemaps'
 uglify = require 'gulp-uglify'
@@ -36,6 +37,7 @@ exports.toggl = ->
     output = output
       .pipe(sourcemaps.init(loadMaps: true))
       .pipe(uglify())
+      .pipe(gzip())
       .pipe(sourcemaps.write())
 
   output = output
@@ -60,6 +62,7 @@ exports.vendor = ->
     .pipe(buffer())
     .pipe(sourcemaps.init(loadMaps: true))
     .pipe(uglify())
+    .pipe(gzip())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/javascripts/'))
     .pipe(refresh(lrserver))
