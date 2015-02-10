@@ -3,12 +3,12 @@ chalk = require 'chalk'
 gutil = require 'gulp-util'
 requireDirectory = require 'require-directory'
 
+# Bootstraps the tasks directory into gulp
 exports = module.exports = (gulp) ->
   tasks = requireDirectory module
 
   gutil.log 'Starting to bootstrap tasks'
   for prefix, taskSet of tasks
-
     if prefix[0] == '_' then continue
 
     prefixedNames = []
