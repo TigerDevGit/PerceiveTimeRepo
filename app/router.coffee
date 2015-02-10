@@ -11,7 +11,7 @@ renderPage = (Page, paramsObj) ->
 # Create a new backbone router with the routes specified
 Router = class Router extends Backbone.Router
   initialize: ->
-    @on 'all', =>
+    @on 'route', =>
       $(document.body).attr id: Backbone.history.fragment
       # Track the pageviews with the new universal tracker
       ga? 'send', 'pageview', @_getCurrentRoute()
