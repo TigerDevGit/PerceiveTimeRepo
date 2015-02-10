@@ -17,7 +17,7 @@ class SignupView extends View
   forgotSuccess: =>
     @showError 'An email containing instructions to reset your password has been sent.'
 
-  forgotError: =>
+  forgotError: (err) =>
     @showError switch err.responseText
       when 'E-mail address does not exist\n'
         'Unknown email, please check that it\'s entered correctly!'
