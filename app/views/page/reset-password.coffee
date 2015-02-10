@@ -7,6 +7,8 @@ class ResetPasswordView extends View
   template: 'page/reset-password'
   title: 'Reset your password — Toggl, The Simplest Time Tracker'
 
+  initialize: ({@token}) ->
+
   events:
     'submit': 'resetPassword'
 
