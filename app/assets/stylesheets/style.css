@@ -2846,6 +2846,7 @@ p.larger {
 
 .hero__manual-video {
   background: url('../images/bg-skater.jpg') center no-repeat;
+  background-size: cover;
   width: 100%;
   height: 100%;
 }
