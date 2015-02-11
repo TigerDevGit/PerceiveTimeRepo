@@ -28,20 +28,23 @@ module.exports = function (shipit) {
     }
   });
 
+  // THUNDERBIRDS ARE GO!
   shipit.task('deploy', function() {
-    return shipit.start('install', 'build', 'mkDir', 'populatePrev', 'copy', function(err) {
-      if (err) { return; }
+    return shipit.start('install', 'build', 'mkDir', 'populatePrev', 'copy', 'deploy-notification');
+  });
+
+  // Notifies slack about the successful deploy
+  // Will fetch the current git branch and display it alongside the environment
+  shipit.task('deploy-notification', function() {
+    var environment = this.environment;
+    shipit.local('git rev-parse --abbrev-ref HEAD', function(err, res) {
+      var branch = res.stdout;
       slack.send({
-        text: 'WEBSITE: ' + this.environment + ' was successfully deployed.',
+        text: 'WEBSITE : *' + branch.slice(0, -1) + '* was successfully deployed to *' + environment + '*',
         username: 'Cap`n Crunch',
         icon_emoji: ':boom:'
       });
     });
-  });
-
-  // Runs the npm install.
-  shipit.blTask('install', function () {
-    return shipit.local('npm install');
   });
 
   // Create the missing directorys
@@ -76,8 +79,14 @@ module.exports = function (shipit) {
     return shipit.remoteCopy(DIST, this.config.root + 'current/');
   });
 
+  // Builds the webapp to ./dist
   shipit.blTask('build', function () {
     return shipit.local('grunt build');
+  });
+
+  // Runs install tasks.
+  shipit.blTask('install', function () {
+    return shipit.local('npm install');
   });
 
   // Bump tasks
