@@ -258,12 +258,20 @@ module.exports = function($page, view) {
     togglePausePlayButtons(false);
   });
 
-  // If the user has seen the movie more than 9 times already
-  // then lets just not show it
-  if (+$.cookie(COOKIE_VAL) > 9) {
+  if (typeof video.play !== 'function') {
+    // If there is a case where we cant play the video.
+    // This might be with some strange browsers then just show the manual play video
+    // without play button
+    $('.js-manual-video').show();
+    $('.js-automatic-video').hide();
+    $('.seen-wrapper').hide();
+  } else if (+$.cookie(COOKIE_VAL) > 9) {
+    // If the user has seen the movie more than 9 times already
+    // then lets just not show it
     $('.js-manual-video').show();
     $('.js-automatic-video').hide();
   } else {
+    $('.js-manual-video').hide();
     video.play();
     incrementSeenCount();
   }
