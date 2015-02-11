@@ -1,13 +1,24 @@
 var $   = require('jquery'),
     raf = require('raf');
 
+// Because AMD is hard...
+// https://github.com/carhartl/jquery-cookie/issues/319
+require('jquery.cookie');
+
+var COOKIE_VAL = 'SEEN_VIDEO';
+
+function incrementSeenCount () {
+  var current = +$.cookie(COOKIE_VAL) || 0;
+  $.cookie(COOKIE_VAL, current + 1);
+}
+
 /**
  * Video playback for the homepage video.
  */
 module.exports = function($page, view) {
   var video = $('.hero__background video').get(0),
-      firstTimerHeading = $('.hero-timer-heading').get(0),
-      secondTimerHeading = $('.hero-timer-heading').get(1),
+      firstTimerHeading = $('.hero-timer-heading.dynamic').get(0),
+      secondTimerHeading = $('.hero-timer-heading.dynamic').get(1),
       timerSeconds = $('.hero-timer .seconds').get(0),
       timerMilliseconds = $('.hero-timer .milliseconds').get(0),
       breakpoints = [
@@ -67,7 +78,7 @@ module.exports = function($page, view) {
       ],
       lastBreakpoint = 0,
       referenceTime,
-      running = true;
+      running = true, paused = false;
 
   function hideTimer() {
     $('.hero-timer').css('opacity', 0);
@@ -102,8 +113,14 @@ module.exports = function($page, view) {
       return;
     }
 
-    updateTimerHeadings();
-    updateTimer();
+    if (video.currentTime > 0) {
+      $('.js-play-pause-controls').show();
+    }
+
+    if (!paused) {
+      updateTimerHeadings();
+      updateTimer();
+    }
     window.requestAnimationFrame(loop);
   }
 
@@ -177,6 +194,23 @@ module.exports = function($page, view) {
     video.muted = mute;
   }
 
+  function handlePlayButtonClick(event) {
+    event.preventDefault();
+    video.play();
+    togglePausePlayButtons(true);
+  }
+
+  function handlePauseButtonClick(event) {
+    event.preventDefault();
+    video.pause();
+    togglePausePlayButtons(false);
+  }
+
+  function togglePausePlayButtons (toggle) {
+    $('.video-pause-button').toggle(toggle);
+    $('.video-play-button').toggle(!toggle);
+  }
+
   function detect_autoplay(){
     if('ontouchstart' in document.body){
       running = false;
@@ -197,10 +231,54 @@ module.exports = function($page, view) {
     }
   }
 
+  function handleVideoForceStart(event) {
+    event.preventDefault();
+    video.play();
+    $('.js-manual-video').hide();
+    $('.js-automatic-video').show();
+  }
+
   view.on('destroy', function () {
     running = false;
   });
 
+  // Playing event is triggered on the first play
+  // and every time a video is unpaused
+  video.addEventListener('playing', function () {
+    togglePausePlayButtons(true);
+    paused = false;
+  });
+
+  video.addEventListener('pause', function () {
+    paused = true;
+  }, true);
+
+  video.addEventListener('ended', function () {
+    paused = true;
+    togglePausePlayButtons(false);
+  });
+
+  if (typeof video.play !== 'function') {
+    // If there is a case where we cant play the video.
+    // This might be with some strange browsers then just show the manual play video
+    // without play button
+    $('.js-manual-video').show();
+    $('.js-automatic-video').hide();
+    $('.seen-wrapper').hide();
+  } else if (+$.cookie(COOKIE_VAL) > 9) {
+    // If the user has seen the movie more than 9 times already
+    // then lets just not show it
+    $('.js-manual-video').show();
+    $('.js-automatic-video').hide();
+  } else {
+    $('.js-manual-video').hide();
+    video.play();
+    incrementSeenCount();
+  }
+
   $('.video-mute-button').on('click', handleMuteButtonClick);
+  $('.video-force-start').on('click', handleVideoForceStart);
+  $('.video-pause-button').on('click', handlePauseButtonClick);
+  $('.video-play-button').on('click', handlePlayButtonClick);
   detect_autoplay();
 };

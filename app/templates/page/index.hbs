@@ -1,23 +1,39 @@
 {{> 'header' }}
 <section class="hero hero--front">
   <div class="hero__background">
-    <video autoplay loop muted>
+    <section class="hero__manual-video js-manual-video" style="display:none;">
+    </section>
+    <video preload="none" class="js-automatic-video" loop muted poster="/images/share-img/video-placeholder.jpg">
       {{#unless videoDisabled}}
-        <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.mp4" type="video/mp4"></source>
-        <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.webm" type="video/webm"></source>
+      <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.mp4" type="video/mp4"></source>
+      <source src="https://462e248addf43461ebf1-67d25b13c2734524734b517d4cf06455.ssl.cf1.rackcdn.com/videos/fp-video.webm" type="video/webm"></source>
       {{/unless}}
     </video>
   </div>
   <div class="hero__content content--light hero__content--centered">
-    <h1 class="hero-timer-heading" data-default-text="Toggl anything"></h1>
-    <h1 class="hero-timer-heading"></h1>
-    <span class="hero-timer" style="opacity: 0;">
-      <span class="seconds"></span>.<span class="milliseconds"></span>
-    </span>
+    <section class="js-manual-video">
+      <h1 class="hero-timer-heading hero-timer-heading__manual">Leading time tracking tool</h1>
+      <h3 class="manual-time-start">
+        <div class="seen-wrapper">
+          <a href="#" class="video-force-start">See the video</a>
+        </div>
+      </h3>
+    </section>
+    <section class="js-automatic-video">
+      <h1 class="hero-timer-heading dynamic" data-default-text="Toggl anything"></h1>
+      <h1 class="hero-timer-heading dynamic"></h1>
+      <span class="hero-timer" style="opacity: 0;">
+        <span class="seconds"></span>.<span class="milliseconds"></span>
+      </span>
+    </section>
+
   </div>
   <a href="/signup" class="cta-button cta-button--filled js-ripple-button" ga-track="signup, home_click">Start tracking</a>
-  <footer>Scott from TM5150</footer>
-  <div class="video-mute-button">
+  <div class="js-play-pause-controls" style="display: none;">
+    <div class="video-pause-button" style="display:none;"> </div>
+    <div class="video-play-button"> </div>
+  </div>
+  <div class="video-mute-button js-automatic-video">
     <svg height="32" version="1.1" width="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
       <defs></defs>
       <g class="audio-waves">

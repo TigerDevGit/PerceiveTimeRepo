@@ -623,6 +623,14 @@ a {
     .hero__content h1.hero-timer-heading {
       font-size: 70px;
       letter-spacing: -3px;
+      width: 500px;
+      margin: auto;
+    }
+
+    .hero__content h1.hero-timer-heading__manual {
+      font-weight: 300;
+      width: 530px;
+      letter-spacing: 3px;
     }
 
     .hero--front .cta-button {
@@ -642,10 +650,28 @@ a {
     }
 
     .video-mute-button {
-      position: absolute;
-      bottom: 30px;
       right: 30px;
+      bottom: 30px;
+    }
+
+    .video-mute-button, .video-pause-button, .video-play-button {
+      position: absolute;
       cursor: pointer;
+    }
+
+    .video-pause-button, .video-play-button {
+      bottom: 30px;
+      right: 75px;
+      width: 48px;
+      height: 48px;
+    }
+
+    .video-pause-button {
+      background: url('../images/pause-icon.png');
+    }
+
+    .video-play-button {
+      background: url('../images/play-icon.png');
     }
 
     .video-suspended .video-mute-button {
@@ -2818,4 +2844,28 @@ p.larger {
   color: #f30c16 !important;
 }
 
+.hero__manual-video {
+  background: url('../images/bg-skater.jpg') center no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.manual-time-start a {
+  color: white;
+  font-weight: 100;
+}
+.video-force-start:after {
+  content: url('../images/big-play.png');
+  position: absolute;
+  top: -20px;
+  margin-left: -15px;
+}
+.seen-wrapper {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
 
