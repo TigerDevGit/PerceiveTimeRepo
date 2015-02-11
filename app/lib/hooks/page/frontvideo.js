@@ -17,8 +17,8 @@ function incrementSeenCount () {
  */
 module.exports = function($page, view) {
   var video = $('.hero__background video').get(0),
-      firstTimerHeading = $('.hero-timer-heading').get(0),
-      secondTimerHeading = $('.hero-timer-heading').get(1),
+      firstTimerHeading = $('.hero-timer-heading.dynamic').get(0),
+      secondTimerHeading = $('.hero-timer-heading.dynamic').get(1),
       timerSeconds = $('.hero-timer .seconds').get(0),
       timerMilliseconds = $('.hero-timer .milliseconds').get(0),
       breakpoints = [
