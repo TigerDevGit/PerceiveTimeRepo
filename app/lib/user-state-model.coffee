@@ -7,10 +7,11 @@ class UserModel extends Backbone.Model
     @getLogged()
 
   getLogged: =>
+    @set pending: true
     $.ajax
       url: @url
       dataType: 'text'
-      success: => @set logged: true
-      error: => @set logged: false
+      success: => @set logged: true, pending: false
+      error: => @set logged: false, pending: false
 
 module.exports = new UserModel

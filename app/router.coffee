@@ -39,11 +39,18 @@ Router = class Router extends Backbone.Router
 
   showLogin: ->
     indexView = renderPage require './views/page/index'
-    # Wait until the indexView's model 'change' event gets triggered (which
-    # relies on an /api/v9/me/logged request to be emitted).
-    indexView.model.on 'change', ->
+
+    renderLogin = ->
       LoginPopup = require './views/component/login'
       new LoginPopup().render()
+
+    # Wait until the indexView's model 'change' event gets triggered (which
+    # relies on an /api/v9/me/logged request to be emitted). If it's not
+    # pending, just render (it won't be pending if a user goes from '/login' to
+    # another page then back in history - then `change` would never be emitted)
+    if indexView.model.get 'pending'
+      indexView.model.on 'change', renderLogin
+    else renderLogin()
 
   # Returns the current route
   # If the route is a regexp then it will return the regexp
