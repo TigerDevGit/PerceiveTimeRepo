@@ -38,9 +38,12 @@ Router = class Router extends Backbone.Router
     renderPage Signup, { invitationCode }
 
   showLogin: ->
-    renderPage require './views/page/index'
-    LoginPopup = require './views/component/login'
-    new LoginPopup().render()
+    indexView = renderPage require './views/page/index'
+    # Wait until the indexView's model 'change' event gets triggered (which
+    # relies on an /api/v9/me/logged request to be emitted).
+    indexView.model.on 'change', ->
+      LoginPopup = require './views/component/login'
+      new LoginPopup().render()
 
   # Returns the current route
   # If the route is a regexp then it will return the regexp
