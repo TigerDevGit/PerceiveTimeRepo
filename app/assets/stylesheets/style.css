@@ -799,7 +799,8 @@ a {
       margin-bottom: 20px;
     }
 
-    .hero__content h1.hero-timer-heading__manual {
+    .hero__content h1.hero-timer-heading__manual,
+    .hero__content h1.hero-timer-heading {
       width: 100%;
     }
 
