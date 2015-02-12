@@ -261,13 +261,12 @@ module.exports = function($page, view) {
 
 
 
-  // We the video has no source files to play
-  // then do not display the poser
   if (!sources.length) {
+    // We the video has no source files to play
+    // then do not display the poser. This may be caused by unsupported browser
     $(video).attr('poster', null);
-  }
-
-  if (typeof video.play !== 'function' || !sources.length) {
+    $('.js-manual-video').hide();
+  } else if (typeof video.play !== 'function') {
     // If there is a case where we cant play the video.
     // This might be with some strange browsers then just show the manual play video
     // without play button
