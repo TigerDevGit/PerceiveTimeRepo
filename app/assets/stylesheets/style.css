@@ -800,7 +800,7 @@ a {
     }
 
     .hero__content h1.hero-timer-heading__manual {
-      width: 350px;
+      width: 100%;
     }
 
     .hero--front .hero__content h1.hero-timer-heading {
