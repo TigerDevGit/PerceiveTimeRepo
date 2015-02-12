@@ -799,6 +799,10 @@ a {
       margin-bottom: 20px;
     }
 
+    .hero__content h1.hero-timer-heading__manual {
+      width: 350px;
+    }
+
     .hero--front .hero__content h1.hero-timer-heading {
       font-size: 50px;
       letter-spacing: 0;
@@ -2855,12 +2859,14 @@ p.larger {
   color: white;
   font-weight: 100;
 }
+
 .video-force-start:after {
   content: url('../images/big-play.png');
   position: absolute;
   top: -20px;
   margin-left: -15px;
 }
+
 .seen-wrapper {
   position: absolute;
   left: 50%;

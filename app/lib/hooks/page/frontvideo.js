@@ -217,7 +217,7 @@ module.exports = function($page, view) {
       running = false;
       document.body.classList.add('video-suspended');
 
-      var heading = document.querySelector('.hero-timer-heading'),
+      var heading = document.querySelector('.hero-timer-heading.dynamic'),
           headingText;
 
       if (heading.dataset) {
