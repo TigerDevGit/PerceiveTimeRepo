@@ -17,6 +17,7 @@ function incrementSeenCount () {
  */
 module.exports = function($page, view) {
   var video = $('.hero__background video').get(0),
+      sources = $(video).find('source'),
       firstTimerHeading = $('.hero-timer-heading.dynamic').get(0),
       secondTimerHeading = $('.hero-timer-heading.dynamic').get(1),
       timerSeconds = $('.hero-timer .seconds').get(0),
@@ -258,7 +259,15 @@ module.exports = function($page, view) {
     togglePausePlayButtons(false);
   });
 
-  if (typeof video.play !== 'function') {
+
+
+  // We the video has no source files to play
+  // then do not display the poser
+  if (!sources.length) {
+    $(video).attr('poster', null);
+  }
+
+  if (typeof video.play !== 'function' || !sources.length) {
     // If there is a case where we cant play the video.
     // This might be with some strange browsers then just show the manual play video
     // without play button
