@@ -251,6 +251,7 @@ module.exports = (grunt) ->
         '<%= yeoman.dist %>/**/*.css'
         '<%= yeoman.dist %>/**/*.{png,jpg,jpeg,gif,webp}'
         '!<%= yeoman.dist %>/not-found/**/*'
+        '!<%= yeoman.dist %>/under-maintenance/**/*'
         '!<%= yeoman.dist %>/images/logo-big.png'
         '!<%= yeoman.dist %>/images/share-img/**/*'
         '!<%= yeoman.dist %>/images/tools/**/*'
