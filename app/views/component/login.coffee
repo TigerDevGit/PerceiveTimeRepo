@@ -53,6 +53,6 @@ class LoginPopup extends Modal
     # If the router navigates away from the current route destroy the modal
     # This fixes history after navigating to `/login`.
     router = require('../../toggl').router
-    router.on 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
+    @listenTo router, 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
 
 module.exports = LoginPopup
