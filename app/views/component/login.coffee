@@ -59,6 +59,11 @@ class LoginPopup extends Modal
       @startSubmit e
       @googleLogin()
 
+    # If the router navigates away from the current route destroy the modal
+    # This fixes history after navigating to `/login`.
+    router = require('../../toggl').router
+    @listenTo router, 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
+
 _.extend(LoginPopup.prototype, pendingButtonMixin)
 
-exports = module.exports = LoginPopup
+module.exports = LoginPopup

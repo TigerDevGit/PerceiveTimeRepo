@@ -5,7 +5,7 @@ Backbone.$ = $
 
 # Start the router
 Router = require './router'
-router = new Router
+router = exports.router = new Router
 Backbone.history.start { pushState: true }
 
 # Also listen for link clicks in the page for links that begin with
