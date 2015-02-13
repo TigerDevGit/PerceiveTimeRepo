@@ -173,6 +173,13 @@ module.exports = (grunt) ->
         dest: "<%= yeoman.dist %>/not-found/stylesheets/"
         ext: ".autoprefixed.css"
 
+      underMaintenance:
+        expand: true
+        flatten: true
+        src: "<%= yeoman.app %>/static-pages/under-maintenance/stylesheets/*.css"
+        dest: "<%= yeoman.dist %>/under-maintenance/stylesheets/"
+        ext: ".autoprefixed.css"
+
       css:
         src: "<%= yeoman.app %>/assets/stylesheets/style.css"
         dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
