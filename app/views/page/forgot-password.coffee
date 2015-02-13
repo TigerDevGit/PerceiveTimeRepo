@@ -1,10 +1,12 @@
-View     = require '../../view'
-API      = require '../../lib/api'
-formData = require '../../lib/form-data'
-$        = require 'jquery'
-jstz     = require('jstimezonedetect').jstz
+View               = require '../../view'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+$                  = require 'jquery'
+_                  = require 'underscore'
+jstz               = require('jstimezonedetect').jstz
 
-class SignupView extends View
+class ForgotPasswordView extends View
   template: 'page/forgot-password'
   title: 'Forgot password — Toggl, The Simplest Time Tracker'
 
@@ -17,7 +19,7 @@ class SignupView extends View
   forgotSuccess: =>
     @showError 'An email containing instructions to reset your password has been sent.'
 
-  forgotError: =>
+  forgotError: (err) =>
     @showError switch err.responseText
       when 'E-mail address does not exist\n'
         'Unknown email, please check that it\'s entered correctly!'
@@ -33,13 +35,23 @@ class SignupView extends View
     data = formData @$el.find 'form'
     return @showError 'Please enter an email bellow.' unless data.email
 
+    return if @isPending()
+    @updateStatus('pending')
+
     new API('dev', null, null)
       .user.forgot data.email
       .then @forgotSuccess, @forgotError
       .catch @forgotError
+      .then(
+        (=> @updateStatus('done')),
+        (=> @updateStatus('done'))
+      )
 
   postRender: ->
     setTimeout => @$el.find("[name=email]").select()
-    @errorMessage = $ '.signup-form__error', @$el
+    @errorMessage = @$ '.signup-form__error'
+    @submitButton = @$ '.signup-form__submit button'
 
-module.exports = SignupView
+_.extend(ForgotPasswordView.prototype, pendingButtonMixin)
+
+module.exports = ForgotPasswordView

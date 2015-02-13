@@ -1,8 +1,10 @@
-View     = require '../../view'
-API      = require '../../lib/api'
-formData = require '../../lib/form-data'
-$        = require 'jquery'
-jstz     = require('jstimezonedetect').jstz
+View               = require '../../view'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+$                  = require 'jquery'
+jstz               = require('jstimezonedetect').jstz
+_                  = require 'underscore'
 
 class SignupView extends View
   template: 'page/signup'
@@ -42,6 +44,10 @@ class SignupView extends View
 
   submitSignup: (e) ->
     e.preventDefault()
+
+    return if @isPending()
+    @updateStatus 'pending'
+
     @errorMessage.hide()
     @data = formData $(@$el)
     @data.tz = jstz.determine()?.name()
@@ -53,6 +59,10 @@ class SignupView extends View
     @api.user.signup @data
       .then @login, signupError
       .catch signupError
+      .then(
+        (=> @updateStatus 'done'),
+        (=> @updateStatus 'done')
+      )
 
   login: =>
     loginError = (err) =>
@@ -65,6 +75,7 @@ class SignupView extends View
 
   postRender: ->
     @errorMessage = @$ '.signup-form__error'
+    @submitButton = @$ '.signup-form__submit button'
     if @invitationCode
       @api.invitation.get @invitationCode
       .then (response) =>
@@ -73,5 +84,7 @@ class SignupView extends View
         @$('input[name=code]').val(@invitationCode)
     else
       setTimeout => @$el.find("[name=email]").select()
+
+_.extend(SignupView.prototype, pendingButtonMixin)
 
 module.exports = SignupView

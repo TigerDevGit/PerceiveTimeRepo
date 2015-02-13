@@ -1,8 +1,9 @@
-Modal    = require './modal'
-API      = require '../../lib/api'
-formData = require '../../lib/form-data'
-$        = require 'jquery'
-
+Modal              = require './modal'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+$                  = require 'jquery'
+_                  = require 'underscore'
 
 class LoginPopup extends Modal
   template: 'component/login'
@@ -21,10 +22,17 @@ class LoginPopup extends Modal
     loginErr = (err) =>
       @showError err?.responseText || 'Couldn\'t log you in. Please try again!'
 
+    return if @isPending()
+    @updateStatus 'pending'
+
     new API('TogglNext', null, null)
       .auth.session data.email, data.password, data.remember_me
       .then @redirectToApp, loginErr
       .catch loginErr
+      .then(
+        (=> @updateStatus 'done'),
+        (=> @updateStatus 'done')
+      )
 
   startSubmit: (e) =>
     e.preventDefault()
@@ -35,6 +43,7 @@ class LoginPopup extends Modal
     super()
     @errorMessage = @modal.find('.login-form__error')
     @form = @modal.find('.login-form')
+    @submitButton = @modal.find('.login-form__submit button')
 
     setTimeout =>
       @form.find('input[name=email]').select()
@@ -50,4 +59,6 @@ class LoginPopup extends Modal
       @startSubmit e
       @googleLogin()
 
-module.exports = LoginPopup
+_.extend(LoginPopup.prototype, pendingButtonMixin)
+
+exports = module.exports = LoginPopup
