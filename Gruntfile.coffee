@@ -57,6 +57,13 @@ module.exports = (grunt) ->
             port: if API_HOST_USES_SSL then 443 else 80
           }
           {
+            context: "/api/v9/"
+            host: API_HOST['https://'.length..]
+            https: API_HOST_USES_SSL
+            protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
+            port: if API_HOST_USES_SSL then 443 else 80
+          }
+          {
             context: "/app"
             host: 'localhost'
             port: 3000
