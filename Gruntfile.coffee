@@ -63,6 +63,11 @@ module.exports = (grunt) ->
             protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
             port: if API_HOST_USES_SSL then 443 else 80
           }
+          {
+            context: "/app"
+            host: 'localhost'
+            port: 3000
+          }
         ]
         options:
           port: process.env.PORT or 9001
@@ -243,7 +248,7 @@ module.exports = (grunt) ->
           partialsPathRegex: /\/partials\//
 
         src: "<%= yeoman.app %>/templates/**/*.hbs"
-        dest: ".tmp/app/templates/compiled.js"
+        dest: ".tmp/app/templates/index.js"
 
     rev:
       dist: [

@@ -5,7 +5,7 @@ _ = require 'underscore'
 
 # Import the precompiled templates
 Handlebars = require 'handlebars'
-templates = require('./templates/compiled')(Handlebars)
+templates = require('./templates')(Handlebars)
 
 # Get the view "hooks"
 hooks = require './lib/hooks'
