@@ -803,6 +803,7 @@ a {
 
     .hero__content h1.hero-timer-heading__manual,
     .hero__content h1.hero-timer-heading {
+      padding-left: 0;
       width: 100%;
     }
 
@@ -2884,6 +2885,7 @@ p.larger {
 }
 
 .seen-wrapper {
+  margin-left: -15px;
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
