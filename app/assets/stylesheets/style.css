@@ -2867,11 +2867,10 @@ p.larger {
   font-weight: 100;
 }
 
-.video-force-start:after {
-  content: url('../images/big-play.png');
+.video-force-start .seen-btn {
   position: absolute;
   top: -23px;
-  margin-left: -15px;
+  right: -55px;
 }
 
 .seen-wrapper {
