@@ -2880,11 +2880,14 @@ p.larger {
 .video-force-start:after {
   content: url('../images/big-play.png');
   position: absolute;
-  top: -20px;
+  top: -23px;
   margin-left: -15px;
 }
 
 .seen-wrapper {
+  text-transform: uppercase;
+  font-family:'DIN Next';
+  font-size: 16px;
   margin-left: -15px;
   position: absolute;
   left: 50%;
