@@ -664,16 +664,6 @@ a {
     .video-pause-button, .video-play-button {
       bottom: 30px;
       right: 75px;
-      width: 48px;
-      height: 48px;
-    }
-
-    .video-pause-button {
-      background: url('../images/pause-icon.png');
-    }
-
-    .video-play-button {
-      background: url('../images/play-icon.png');
     }
 
     .video-suspended .video-mute-button {
