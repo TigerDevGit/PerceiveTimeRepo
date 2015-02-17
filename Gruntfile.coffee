@@ -126,6 +126,7 @@ module.exports = (grunt) ->
           "<%= yeoman.dist %>/**/*.js"
           "<%= yeoman.dist %>/**/*.css"
           "<%= yeoman.dist %>/**/*.html"
+          "<%= yeoman.dist %>/**/*.json"
         ]
         dest: "."
 
