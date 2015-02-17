@@ -1,6 +1,6 @@
 chai = require 'chai'
 $ = require 'jquery'
-_ = require 'underscore'
+_ = require 'lodash'
 formData = require '../../../app/lib/form-data.coffee'
 
 chai.should()

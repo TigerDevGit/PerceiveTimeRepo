@@ -1,5 +1,5 @@
 $ = require 'jquery'
-_ = require 'underscore'
+_ = require 'lodash'
 
 # Lets you track events on click by adding a ga-track tag to the element.
 # Should have a comma-delimited list of arguments, e.g.:

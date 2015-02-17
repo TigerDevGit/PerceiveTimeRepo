@@ -1,6 +1,6 @@
 Backbone = require 'backbone'
 $        = require 'jquery'
-_        = require 'underscore'
+_        = require 'lodash'
 
 currentView = null
 renderPage = (Page, paramsObj) ->

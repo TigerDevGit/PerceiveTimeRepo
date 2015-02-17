@@ -4,7 +4,7 @@ formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
 jstz               = require('jstimezonedetect').jstz
-_                  = require 'underscore'
+_                  = require 'lodash'
 
 class SignupView extends View
   template: 'page/signup'
