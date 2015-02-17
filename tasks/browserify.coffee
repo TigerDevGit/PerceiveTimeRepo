@@ -62,10 +62,11 @@ exports.vendor = ->
   output = bundler.bundle()
     .pipe(source('vendor.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init(loadMaps: true))
+  unless NO_MINIFICATION
+    output = output.pipe(sourcemaps.init(loadMaps: true))
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./dist/javascripts/'))
+  output = output.pipe(gulp.dest('./dist/javascripts/'))
     .pipe(refresh(lrserver))
 
   output.on 'error', exit
