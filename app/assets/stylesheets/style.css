@@ -792,9 +792,12 @@ a {
       margin-bottom: 20px;
     }
 
+    .hero__content h1.hero-timer-heading__dynamic,
     .hero__content h1.hero-timer-heading__manual,
     .hero__content h1.hero-timer-heading {
       padding-left: 0;
+      margin-right: 0;
+      padding-right: 0;
       width: 100%;
     }
 
