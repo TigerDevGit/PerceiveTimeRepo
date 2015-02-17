@@ -630,9 +630,10 @@ a {
     }
 
     .hero__content h1.hero-timer-heading__manual {
-      font-weight: 300;
-      width: 530px;
+      font-weight: 700;
+      width: 650px;
       letter-spacing: 3px;
+      font-size: 82px;
     }
 
     .hero--front .cta-button {
