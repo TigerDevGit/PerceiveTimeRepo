@@ -320,10 +320,9 @@ module.exports = (grunt) ->
             '#/signup'
             '#/legal/terms'
             '#/legal/privacy'
-            '#/landing'
             '#/tools'
             '#/forgot-password'
-          ]
+          ].concat _.map(require('./app/landing-routes'), (params, path) -> "#/#{path}")
 
   grunt.registerTask "serve", [
     'build:serve'
