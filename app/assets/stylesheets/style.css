@@ -792,6 +792,11 @@ a {
       margin-bottom: 20px;
     }
 
+    .video-play-button, .video-pause-button {
+      bottom: 0px;
+      left: 2px;
+    }
+
     .hero__content h1.hero-timer-heading__dynamic,
     .hero__content h1.hero-timer-heading__manual,
     .hero__content h1.hero-timer-heading {
