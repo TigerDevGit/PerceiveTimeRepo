@@ -1,6 +1,5 @@
 Backbone = require 'backbone'
 $        = require 'jquery'
-Backbone.$ = $
 class SiteOptionsModel extends Backbone.Model
   url: '/site_options.json'
 
