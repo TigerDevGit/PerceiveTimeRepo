@@ -1,7 +1,8 @@
 View = require '../../view'
 
 class LandingView extends View
-  template: 'page/landing'
-  title: 'Toggl, The Simplest Time Tracker'
+
+  initialize: ({template, @title}) ->
+    @template = "page/landing/#{template}"
 
 module.exports = LandingView
