@@ -3,7 +3,7 @@ uniqueId = require '../../lib/unique-id'
 formData = require '../../lib/form-data'
 API = require '../../lib/api'
 $ = require 'jquery'
-_ = require 'underscore'
+_ = require 'lodash'
 
 class ModalView extends View
 

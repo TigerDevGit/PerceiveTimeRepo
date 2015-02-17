@@ -1,4 +1,4 @@
-_ = require 'underscore'
+_ = require 'lodash'
 
 # Returns the name of the event that's trigger for the current browser
 # when an animation ends. Results are cached using _.once.

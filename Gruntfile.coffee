@@ -5,7 +5,7 @@ path              = require 'path'
 connectLiveReload = require 'connect-livereload'
 matchdep          = require 'matchdep'
 request           = require 'request'
-_                 = require 'underscore'
+_                 = require 'lodash'
 {proxyRequest}    = require 'grunt-connect-proxy/lib/utils'
 
 timerStart = Date.now()
@@ -28,7 +28,7 @@ module.exports = (grunt) ->
   external = [
     "jquery"
     "backbone"
-    "underscore"
+    "lodash"
     "handlebars"
     "es6-promise"
   ]
@@ -320,10 +320,9 @@ module.exports = (grunt) ->
             '#/signup'
             '#/legal/terms'
             '#/legal/privacy'
-            '#/landing'
             '#/tools'
             '#/forgot-password'
-          ]
+          ].concat _.map(require('./app/landing-routes'), (params, path) -> "#/#{path}")
 
   grunt.registerTask "serve", [
     'build:serve'

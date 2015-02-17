@@ -1,7 +1,7 @@
 require('es6-promise').polyfill()
 Base64    = require 'Base64'
 $         = require 'jquery'
-_         = require 'underscore'
+_         = require 'lodash'
 endpoints = require './endpoints'
 
 DEFAULT_ENDPOINT = '/api/v8'

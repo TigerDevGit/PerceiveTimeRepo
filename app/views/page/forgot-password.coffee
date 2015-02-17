@@ -3,7 +3,7 @@ API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
-_                  = require 'underscore'
+_                  = require 'lodash'
 jstz               = require('jstimezonedetect').jstz
 
 class ForgotPasswordView extends View

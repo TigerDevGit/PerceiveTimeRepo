@@ -1,7 +1,7 @@
 $ = require 'jquery'
 Backbone = require 'backbone'
 Backbone.$ = $
-_ = require 'underscore'
+_ = require 'lodash'
 
 # Import the precompiled templates
 Handlebars = require 'handlebars'
