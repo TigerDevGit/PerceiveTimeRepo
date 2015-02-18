@@ -1,7 +1,7 @@
 Backbone = require 'backbone'
 $        = require 'jquery'
 class SiteOptionsModel extends Backbone.Model
-  url: '/site_options.json'
+  url: '/site_options.json?' + Date.now()
 
   initialize: ->
     @fetch()
