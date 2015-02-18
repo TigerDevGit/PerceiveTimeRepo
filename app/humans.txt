@@ -1,0 +1,68 @@
+/* WEB DEVELOPMENT TEAM */
+
+/* FRONT-END */
+
+Your title: Andrin Riiet
+Location: Tallinn
+
+Your title: Mikk Kirštein
+Location: Czech Rep.
+
+Your title: Pedro Tacla Yamada
+Location: Brazil
+
+Your title: Indrek Vändrik
+Site: http://zombierun.eu/
+Twitter: @ZombieRunGame
+Location: Tallinn
+
+Your title: Aleksandr Motsjonov
+Site: https://plus.google.com/+AleksandrMotsjonov
+Twitter: @soswow
+Location: Australia
+
+Your title: Mart Roosmaa
+Location: Norway
+
+/* BACK-END */
+
+Your title: Margus Mahler
+Location: Tallinn
+
+Your title: Madis Lõhmus
+Location: Tallinn
+
+Your title: Tanel Lebedev
+Location: Tallinn
+
+Your title: Ervin Weber
+Location: Tallinn
+
+Your title: Tambet Masik
+Location: Tallinn
+
+
+/* THANKS */
+
+Your title: Krister Haav
+Location: Tallinn
+
+Your title: Liisa Toompuu
+Location: Tallinn
+
+Your title: Annika Helendi
+Location: Tallinn
+
+
+/* You can find our whole team here: https://www.toggl.com/about */
+
+/* ================================== */
+/* We're hiring! Visit jobs.toggl.com */
+/* ================================== */
+
+
+/* SITE */
+
+Last update: Wed Feb 18 2015 09:07:00 GMT+0200 (EET)
+Standards: HTML5, CSS3, CoffeeScript
+Components: jQuery, Backbone, Marionette, Foundation
