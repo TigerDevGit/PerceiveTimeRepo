@@ -36,7 +36,7 @@
 *
 * #JS-RIPPLE-BUTTON-- A button that sends out a ripple on click
 *
-* #PENDING-BUTTON  -- A button which is pending on some async action and disabled
+* #LOADER          -- A loading indicator - heavily borrowing from http://codepen.io/TaniaLD/pen/oKxep
 *
 * #PLATFORMS-LIST  -- horisontal list of links with platform icons
 *
@@ -2315,12 +2315,56 @@ a {
 
 .js-ripple-button.pending {
   transition: all 0.3s;
-  background: #919191;
-  border-color: grey;
+  background: none;
+  border: none;
   cursor: default;
 }
 
+/**
+* #LOADER
+**/
 
+.loader:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  animation: loaderg 1s ease-in-out infinite;
+}
+
+.loader {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  top: 46%;
+  left: 46%;
+  border-radius: 12px;
+  background-color: #919191;
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  animation: loaderd 1s ease-in-out infinite;
+}
+
+@keyframes loaderg {
+  0%{  left: -25px; background-color: rgba(145, 145, 145, .8); }
+  50%{ left: 0px; background-color: rgba(145, 145, 145, .1);}
+  100%{ left:-25px; background-color: rgba(145, 145, 145, .8); }
+}
+
+@keyframes loaderd {
+  0%{  left: 25px; background-color: rgba(145, 145, 145, .8); }
+  50%{ left: 0px; background-color: rgba(145, 145, 145, .1);}
+  100%{ left:25px; background-color: rgba(145, 145, 145, .8); }
+}
 
 
 /**
