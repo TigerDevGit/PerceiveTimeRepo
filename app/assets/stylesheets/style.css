@@ -1988,21 +1988,23 @@ a {
   .social {
     position: absolute;
     right: 0;
-    top: 13px;
+    top: 8px;
   }
 
     .social li {
       margin-left: 10px;
+      vertical-align: middle;
     }
 
     .social a {
       font-size: 0;
       display: inline-block;
-      width: 18px;
-      height: 18px;
+      padding: 0 1px;
       background: no-repeat center;
       background-size: contain;
       color: #999999;
+      vertical-align: middle;
+      line-height: 0;
       transition: color 200ms linear;
     }
 
