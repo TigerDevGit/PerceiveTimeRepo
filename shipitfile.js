@@ -15,6 +15,14 @@ module.exports = function (shipit) {
       servers: 'toggl@hubert',
       root: '/home/toggl/toggl_website/'
     },
+    alpha: {
+      servers: 'toggl@104.239.149.25',
+      root: '/home/toggl/toggl_alpha_website/'
+    },
+    beta: {
+      servers: 'toggl@104.239.149.25',
+      root: '/home/toggl/toggl_website/'
+    },
     production: {
       servers: [
         'toggl@23.253.62.226:666',
