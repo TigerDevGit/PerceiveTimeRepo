@@ -1,6 +1,7 @@
 require('es6-promise').polyfill()
 Base64    = require 'Base64'
 $         = require 'jquery'
+utf8      = require 'utf8'
 _         = require 'lodash'
 endpoints = require './endpoints'
 
@@ -53,7 +54,8 @@ class TogglApi
       {username, password} = this
       originalBeforeSend = options.beforeSend
       options.beforeSend = (xhr) ->
-        authHeader = "Basic #{Base64.btoa(username + ':' + password)}"
+        authString = utf8.encode "#{username}:#{password}"
+        authHeader = "Basic #{Base64.btoa(authString)}"
         xhr.setRequestHeader 'Authorization', authHeader
         originalBeforeSend(xhr) if originalBeforeSend
 
