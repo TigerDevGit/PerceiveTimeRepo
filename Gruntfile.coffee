@@ -306,10 +306,6 @@ module.exports = (grunt) ->
           # if you would rather not keep the script tags in the html snapshots
           # set `removeScripts` to true. It's false by default
           removeScripts: true,
-          # set `removeLinkTags` to true. It's false by default
-          removeLinkTags: true,
-          # set `removeMetaTags` to true. It's false by default
-          removeMetaTags: true,
           # allow to add a custom attribute to the body
           bodyAttr: 'data-prerendered'
           # here goes the list of all urls that should be fetched
