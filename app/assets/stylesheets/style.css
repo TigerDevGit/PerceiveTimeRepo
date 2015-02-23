@@ -636,6 +636,27 @@ a {
       font-size: 82px;
     }
 
+    @media (max-width: 800px) {
+      .hero__content h1.hero-timer-heading__manual {
+        font-size: 64px;
+        width: 510px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .hero__content .js-manual-video {
+        width: 100%;
+      }
+
+      .hero__content h1.hero-timer-heading__manual {
+        font-size: 38px !important;
+        letter-spacing: 0;
+        margin: auto !important;
+        max-width: 300px;
+        width: 0;
+      }
+    }
+
     .hero--front .cta-button {
       position: absolute;
       bottom: 0;
