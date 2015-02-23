@@ -97,6 +97,16 @@ module.exports = function (shipit) {
     return shipit.local('npm install');
   });
 
+  shipit.blTask('loginAnnouncement:enable', function () {
+    var root = this.config.root;
+    return shipit.remote(cwdTask('sed --in-place \'s/"showAnnouncement":\\s*false/"showAnnouncement": true/\' site_options.json', root + 'current/'));
+  });
+
+  shipit.blTask('loginAnnouncement:disable', function () {
+    var root = this.config.root;
+    return shipit.remote(cwdTask('sed --in-place \'s/"showAnnouncement":\\s*true/"showAnnouncement": false/\' site_options.json', root + 'current/'));
+  });
+
   // Bump tasks
   // Will bump the package.json version
   function bump(version) {

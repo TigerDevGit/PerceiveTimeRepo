@@ -16,7 +16,7 @@ class LoginPopup extends Modal
     document.location = '/app'
 
   showError: (msg) ->
-    @errorMessage.html(msg).show()
+    @errorMessage.html(msg).show() unless @announcementMessage.is(':visible')
 
   submitLogin: (data) ->
     loginErr = (err) =>
@@ -38,10 +38,23 @@ class LoginPopup extends Modal
     e.preventDefault()
     @errorMessage.hide()
 
+  showAnnouncement: ->
+    @siteOptionsModel = require('../../lib/site-options-model')()
+    @listenTo @siteOptionsModel, 'change', @renderAccouncement
+    @renderAccouncement()
+
+  renderAccouncement: ->
+    return if not @siteOptionsModel.get('loginForm')
+    onOff = !!@siteOptionsModel.get('loginForm').showAnnouncement
+    @errorMessage.hide() if onOff
+    @announcementMessage.toggle onOff
+    @announcementMessage.html @siteOptionsModel.get('loginForm').announcement
+
   # Then bind hooks appropriately.
   postRender: ->
     super()
-    @errorMessage = @modal.find('.login-form__error')
+    @errorMessage = @modal.find('.login-form__error.default')
+    @announcementMessage = @modal.find('.login-form__error.announcement')
     @form = @modal.find('.login-form')
     @submitButton = @modal.find('.login-form__submit button')
 
@@ -63,6 +76,8 @@ class LoginPopup extends Modal
     # This fixes history after navigating to `/login`.
     router = require('../../toggl').router
     @listenTo router, 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
+
+    @showAnnouncement()
 
 _.extend(LoginPopup.prototype, pendingButtonMixin)
 

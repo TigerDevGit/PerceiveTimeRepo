@@ -2592,6 +2592,11 @@ a {
         padding: 23px 26px;
         -webkit-font-smoothing: subpixel-antialiased;
       }
+      .login-form__error a {
+        text-decoration: underline;
+        font-weight: 500;
+        color: white;
+      }
 
       .login-form__field {
         margin: 12px 25px;
