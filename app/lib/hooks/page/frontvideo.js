@@ -1,23 +1,12 @@
 var $   = require('jquery'),
     raf = require('raf');
 
-// Because AMD is hard...
-// https://github.com/carhartl/jquery-cookie/issues/319
-require('jquery.cookie');
-
-var COOKIE_VAL = 'SEEN_VIDEO';
-
-function incrementSeenCount () {
-  var current = +$.cookie(COOKIE_VAL) || 0;
-  $.cookie(COOKIE_VAL, current + 1);
-}
-
 /**
  * Video playback for the homepage video.
  */
 module.exports = function($page, view) {
-  var video = $('.hero__background video').get(0),
-      sources = $(video).find('source'),
+  var video = $('.hero__background iframe').get(0),
+      player = $f(video),
       firstTimerHeading = $('.hero-timer-heading.dynamic').get(0),
       secondTimerHeading = $('.hero-timer-heading.dynamic').get(1),
       timerSeconds = $('.hero-timer .seconds').get(0),
@@ -79,7 +68,44 @@ module.exports = function($page, view) {
       ],
       lastBreakpoint = 0,
       referenceTime,
-      running = true, paused = false;
+      running = true, paused = false,
+      lastRunningTime = 0;
+
+  function throttle(fn, threshhold, scope) {
+    threshhold || (threshhold = 250);
+    var last,
+        deferTimer;
+    return function () {
+      var context = scope || this;
+
+      var now = +new Date,
+          args = arguments;
+      if (last && now < last + threshhold) {
+        // hold on to it
+        clearTimeout(deferTimer);
+        deferTimer = setTimeout(function () {
+          last = now;
+          fn.apply(context, args);
+        }, threshhold);
+      } else {
+        last = now;
+        fn.apply(context, args);
+      }
+    };
+  }
+
+  function resize() {
+    var $windowHeight = $(window).height();
+    var $videoHeight = $(".video").outerHeight();
+    var $scale = $windowHeight / $videoHeight * 1.01;
+    
+    if ($videoHeight <= $windowHeight) {
+      $(".video").css({
+        "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
+        "transform" : "scale("+$scale+") translateY(-50%)"
+      });
+    };
+  }
 
   function hideTimer() {
     $('.hero-timer').css('opacity', 0);
@@ -90,57 +116,60 @@ module.exports = function($page, view) {
   }
 
   function updateTimer() {
-    var refTime = referenceTime || new Date().getTime(),
-        currentTime = new Date().getTime(),
-        timeDifference = Math.floor((currentTime-refTime)/10),
-        minutes,
-        seconds,
-        milliseconds;
+    if (running && !paused) {
+      var refTime = referenceTime || new Date().getTime(),
+          currentTime = new Date().getTime(),
+          timeDifference = Math.floor((currentTime-refTime)/10),
+          minutes,
+          seconds,
+          milliseconds;
 
-    minutes = Math.floor(timeDifference/(60*100));
-    seconds = Math.floor(timeDifference/100)-minutes*60;
-    milliseconds = timeDifference - seconds*100 - minutes*60*100;
+      minutes = Math.floor(timeDifference/(60*100));
+      seconds = Math.floor(timeDifference/100)-minutes*60;
+      milliseconds = timeDifference - seconds*100 - minutes*60*100;
 
-    if (milliseconds < 10) {
-      milliseconds = '0'+milliseconds;
+      if (milliseconds < 10) {
+        milliseconds = '0'+milliseconds;
+      }
+
+      timerSeconds.textContent = seconds;
+      timerMilliseconds.textContent = milliseconds;
     }
-
-    timerSeconds.textContent = seconds;
-    timerMilliseconds.textContent = milliseconds;
+    raf(updateTimer);
   }
 
-  function loop() {
+  function loop(data) {
     if (!running) {
       return;
     }
 
-    if (video.currentTime > 0) {
+    lastRunningTime = data.seconds;
+
+    if (data.seconds > 0) {
       $('.js-play-pause-controls').show();
     }
 
     if (!paused) {
-      updateTimerHeadings();
-      updateTimer();
+      updateTimerHeadings(data.seconds);
     }
-    window.requestAnimationFrame(loop);
   }
 
-  function updateTimerHeadings() {
+  function updateTimerHeadings(currentTime) {
     var firstHeadingText,
         secondHeadingText,
         currentBreakpoint = lastBreakpoint,
         twoFramesBeforeNextBreakpoint = false;
 
-    if (breakpoints.length > currentBreakpoint+1 && video.currentTime > breakpoints[currentBreakpoint+1].time) {
+    if (breakpoints.length > currentBreakpoint+1 && currentTime > breakpoints[currentBreakpoint+1].time) {
       // next breakpoint
       currentBreakpoint = currentBreakpoint + 1;
 
       firstHeadingText = breakpoints[currentBreakpoint].firstHeadingText;
       secondHeadingText = breakpoints[currentBreakpoint].secondHeadingText;
-    } else if (breakpoints.length > currentBreakpoint+1 && video.currentTime > breakpoints[currentBreakpoint+1].time-0.08) {
+    } else if (breakpoints.length > currentBreakpoint+1 && currentTime > breakpoints[currentBreakpoint+1].time-0.08) {
       // two seconds before next breakpoint
       twoFramesBeforeNextBreakpoint = true;
-    } else if (breakpoints.length == currentBreakpoint+1 && video.currentTime < breakpoints[currentBreakpoint].time) {
+    } else if (breakpoints.length == currentBreakpoint+1 && currentTime < breakpoints[currentBreakpoint].time) {
       // video restarted
       currentBreakpoint = 0;
     }
@@ -192,18 +221,22 @@ module.exports = function($page, view) {
     var mute = this.classList.contains('active');
 
     this.classList.toggle('active');
-    video.muted = mute;
+    if (mute) {
+      player.api('setVolume', 0);
+    } else {
+      player.api('setVolume', 1);
+    }
   }
 
   function handlePlayButtonClick(event) {
     event.preventDefault();
-    video.play();
+    player.api('play');
     togglePausePlayButtons(true);
   }
 
   function handlePauseButtonClick(event) {
     event.preventDefault();
-    video.pause();
+    player.api('pause');
     togglePausePlayButtons(false);
   }
 
@@ -227,14 +260,19 @@ module.exports = function($page, view) {
       }
 
       heading.textContent = headingText;
+
+      $('.hero__background .video').hide();
     } else {
-      raf(loop);
+      player.api('setVolume', 0);
+      player.api('play');
+      player.addEvent('playProgress', throttle(loop, 1000/30));
+      raf(updateTimer);
     }
   }
 
   function handleVideoForceStart(event) {
     event.preventDefault();
-    video.play();
+    player.api('play');
     $('.js-manual-video').hide();
     $('.js-automatic-video').show();
   }
@@ -243,50 +281,32 @@ module.exports = function($page, view) {
     running = false;
   });
 
-  // Playing event is triggered on the first play
-  // and every time a video is unpaused
-  video.addEventListener('playing', function () {
-    togglePausePlayButtons(true);
-    paused = false;
+
+  player.addEvent('ready', function() {
+    player.addEvent('play', function () {
+      togglePausePlayButtons(true);
+      paused = false;
+    });
+
+    player.addEvent('pause', function () {
+      togglePausePlayButtons(false);
+      paused = true;
+    }, true);
+
+    player.addEvent('finish', function () {
+      paused = true;
+      togglePausePlayButtons(false);
+    });
+
+    detect_autoplay();
   });
 
-  video.addEventListener('pause', function () {
-    paused = true;
-  }, true);
-
-  video.addEventListener('ended', function () {
-    paused = true;
-    togglePausePlayButtons(false);
-  });
-
-
-
-  if (!sources.length) {
-    // We the video has no source files to play
-    // then do not display the poser. This may be caused by unsupported browser
-    $(video).attr('poster', null);
-    $('.js-manual-video').hide();
-  } else if (typeof video.play !== 'function') {
-    // If there is a case where we cant play the video.
-    // This might be with some strange browsers then just show the manual play video
-    // without play button
-    $('.js-manual-video').show();
-    $('.js-automatic-video').hide();
-    $('.seen-wrapper').hide();
-  } else if (+$.cookie(COOKIE_VAL) > 9) {
-    // If the user has seen the movie more than 9 times already
-    // then lets just not show it
-    $('.js-manual-video').show();
-    $('.js-automatic-video').hide();
-  } else {
-    $('.js-manual-video').hide();
-    video.play();
-    incrementSeenCount();
-  }
 
   $('.video-mute-button').on('click', handleMuteButtonClick);
   $('.video-force-start').on('click', handleVideoForceStart);
   $('.video-pause-button').on('click', handlePauseButtonClick);
   $('.video-play-button').on('click', handlePlayButtonClick);
-  detect_autoplay();
+
+  $(window).resize(resize);
+  resize();
 };

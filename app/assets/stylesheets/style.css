@@ -429,6 +429,38 @@ a {
   .hero--features .hero__background {
     height: 1319px;
   }
+
+    .hero__background .video {
+      display: block;
+      left: 0px;
+      overflow: hidden;
+      padding-bottom: 45%;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      -webkit-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .hero__background .wrapper {
+      display: block;
+      height: 300%;
+      left: 0px;
+      overflow: hidden;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    .hero__background iframe {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   @media screen and (max-width: 580px) {
     .hero--features .hero__background {
       height: 100%;
@@ -460,7 +492,7 @@ a {
       width: 100%;
     }
 
-    .video-suspended .hero--front .hero__background video {
+    .video-suspended .hero--front .hero__background {
       background: linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,.35)), url('../photos/landing-bg.jpg?1') right center;
       background-size: cover;
     }
