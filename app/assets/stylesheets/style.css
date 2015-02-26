@@ -693,7 +693,7 @@ a {
       position: absolute;
       bottom: 0;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
     @media screen and (max-width: 580px) {
       .video-suspended .hero--front .cta-button {
@@ -708,6 +708,7 @@ a {
     .video-mute-button {
       right: 30px;
       bottom: 30px;
+      transform: translate3d(0,0,0);
     }
 
     .video-mute-button, .video-pause-button, .video-play-button {
@@ -718,6 +719,7 @@ a {
     .video-pause-button, .video-play-button {
       bottom: 22px;
       right: 75px;
+      transform: translate3d(0,0,0);
     }
 
     .video-suspended .video-mute-button {
