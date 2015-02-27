@@ -1,6 +1,18 @@
 var $   = require('jquery'),
     raf = require('raf');
 
+// Because AMD is hard...
+// https://github.com/carhartl/jquery-cookie/issues/319
+require('jquery.cookie');
+require('./froogaloop.js');
+
+var COOKIE_VAL = 'SEEN_VIDEO';
+
+function incrementSeenCount () {
+  var current = +$.cookie(COOKIE_VAL) || 0;
+  $.cookie(COOKIE_VAL, current + 1);
+}
+
 /**
  * Video playback for the homepage video.
  */
@@ -98,7 +110,7 @@ module.exports = function($page, view) {
     var $windowHeight = $(window).height();
     var $videoHeight = $(".video").outerHeight();
     var $scale = $windowHeight / $videoHeight * 1.01;
-    
+
     if ($videoHeight <= $windowHeight) {
       $(".video").css({
         "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
@@ -272,7 +284,7 @@ module.exports = function($page, view) {
 
   function handleVideoForceStart(event) {
     event.preventDefault();
-    player.api('play');
+    detect_autoplay();
     $('.js-manual-video').hide();
     $('.js-automatic-video').show();
   }
@@ -284,6 +296,7 @@ module.exports = function($page, view) {
 
   player.addEvent('ready', function() {
     player.addEvent('play', function () {
+      incrementSeenCount();
       togglePausePlayButtons(true);
       paused = false;
     });
@@ -298,7 +311,21 @@ module.exports = function($page, view) {
       togglePausePlayButtons(false);
     });
 
-    detect_autoplay();
+    if ('ontouchstart' in document.body) {
+      // Do not show play button for mobile devices
+      $('.js-manual-video').show();
+      $('.js-automatic-video').hide();
+      $('.seen-wrapper').hide();
+    } else if (+$.cookie(COOKIE_VAL) > 9) {
+      // If the user has seen the movie more than 9 times already
+      // then lets just not show it
+      $('.js-manual-video').show();
+      $('.js-automatic-video').hide();
+    } else {
+      $('.js-manual-video').hide();
+      detect_autoplay();
+      incrementSeenCount();
+    }
   });
 
 

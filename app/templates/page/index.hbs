@@ -1,13 +1,29 @@
 {{> 'header' }}
 <section class="hero hero--front">
   <div class="hero__background">
-    <div class="video">
+    <section class="hero__manual-video js-manual-video" style="display:none;"></section>
+    <div class="video js-automatic-video">
       <div class="wrapper">
         <iframe src="//player.vimeo.com/video/120347656?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
       </div>
     </div>
   </div>
   <div class="hero__content content--light hero__content--centered">
+    <section class="js-manual-video">
+      <h1 class="hero-timer-heading hero-timer-heading__manual">Leading time tracking tool</h1>
+      <h3 class="manual-time-start">
+        <div class="seen-wrapper">
+          <a href="#" class="video-force-start">See the video
+            <div class="seen-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="72" height="72" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+            </div>
+          </a>
+        </div>
+      </h3>
+    </section>
     <section class="js-automatic-video">
       <h1 class="hero-timer-heading dynamic" data-default-text="Toggl anything"></h1>
       <h1 class="hero-timer-heading dynamic"></h1>
