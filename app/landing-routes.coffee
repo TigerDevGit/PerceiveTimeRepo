@@ -10,3 +10,7 @@ module.exports =
   'trello-time-tracking':
     title: 'Time tracking integration with Trello'
     template: 'trello'
+
+  'work-management-software':
+    title: 'Toggl - Free Work Management Software'
+    template: 'work-management'
