@@ -25,8 +25,6 @@ module.exports = function (shipit) {
     },
     production: {
       servers: [
-        'toggl@23.253.62.226:666',
-        'toggl@23.253.200.66:666',
         'toggl@23.253.46.149:666',
         'toggl@23.253.62.116:666',
         'toggl@23.253.20.253:666',
