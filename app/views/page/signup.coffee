@@ -50,7 +50,7 @@ class SignupView extends View
 
     @errorMessage.hide()
     @data = formData $(@$el)
-    @data.tz = jstz.determine()?.name()
+    @data.timezone = jstz.determine()?.name()
 
     signupError = (err) =>
       @showError err?.responseText or 'Failed to sign up.<br />'+
