@@ -18,3 +18,7 @@ module.exports =
   'project-time-management':
     title: 'Toggl - Free Project Time Management Software'
     template: 'project-management'
+
+  'employee-time-management':
+    title: 'Toggl - Online Employee Time Management Software'
+    template: 'employee-management'
