@@ -143,6 +143,7 @@ module.exports = (grunt) ->
         options:
           removeComments: true
           collapseWhitespace: true
+          conservativeCollapse: true
         files: [
           expand: true
           cwd: "<%= yeoman.dist %>"
