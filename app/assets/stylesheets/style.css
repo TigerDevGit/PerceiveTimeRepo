@@ -513,7 +513,34 @@ a {
     margin-bottom: 50px;
   }
 
->>>>>>> Stashed changes
+  .hero--invitation .hero__content h1 {
+    margin: 0;
+  }
+
+  .hero--invitation .hero__content p {
+    font-size: 20px;
+    margin-top: 0;
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero--invitation .hero__content p {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .hero--invitation .hero__content p {
+      font-size: 13px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .hero--invitation .hero__content p {
+      font-size: 13px;
+    }
+  }
+
   .hero__content {
     position: relative;
     text-align: center;
@@ -1352,14 +1379,14 @@ img.scroll-revealed {
   .content-section--invitation form {
     max-width: 90%;
   }
-}
 
-<<<<<<< Updated upstream
   .content-section--invitation .toggler-comic {
     height: 160px;
     margin-right: 20px;
     display: inline-block;
-=======
+  }
+}
+
 .content-section--invitation .toggler-comic {
   background-image: url("../images/toggler-comic.png");
   display: inline-block;
@@ -1371,7 +1398,6 @@ img.scroll-revealed {
 @media screen and (max-width: 400px) {
   .content-section--invitation .toggler-comic {
     display: none;
->>>>>>> Stashed changes
   }
 }
 
