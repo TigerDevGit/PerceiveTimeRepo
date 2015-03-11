@@ -530,14 +530,13 @@ a {
   }
 
   @media screen and (max-width: 580px) {
-    .hero--invitation .hero__content p {
-      font-size: 13px;
+    .hero--invitation {
+      margin-bottom: 0;
     }
-  }
 
-  @media screen and (max-width: 580px) {
     .hero--invitation .hero__content p {
       font-size: 13px;
+      max-width: 330px;
     }
   }
 
