@@ -24,12 +24,18 @@ class SignupView extends View
     super
     @api = new API('TogglNext', null, null)
     if @invitationCode
+      $(document.body).addClass('body--white')
       @attributes = {
         title: 'Welcome to Toggl!'
-        caption: 'Take charge of your time.<br />Track down your hours and learn to work smarter, not harder.'
+        caption: 'Take charge of your time. Track down your hours and learn to work smarter, not harder.'
+        isInvitation: true
         showOAuth: false
+        hideNav: true
         buttonLabel: "Join the team"
       }
+
+  onDestroy: ->
+    $(document.body).removeClass('body--white')
 
   showError: (msg) =>
     @errorMessage.html(msg).show()
