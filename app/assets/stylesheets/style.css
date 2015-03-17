@@ -540,6 +540,16 @@ a {
     }
   }
 
+  @media screen and (max-width: 400px) {
+    .hero--invitation h1 {
+      font-size: 40px !important;
+    }
+
+    .hero--invitation {
+      margin-bottom: 20px;
+    }
+  }
+
   .hero__content {
     position: relative;
     text-align: center;
@@ -1380,9 +1390,17 @@ img.scroll-revealed {
   }
 
   .content-section--invitation .toggler-comic {
-    height: 160px;
-    margin-right: 20px;
+    background-image: url("../images/toggler-comic.png");
     display: inline-block;
+    height: 160px;
+    width: 88px;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    .content-section--invitation .toggler-comic {
+      display: none;
+    }
   }
 }
 
