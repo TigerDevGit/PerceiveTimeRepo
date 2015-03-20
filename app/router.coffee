@@ -19,16 +19,16 @@ Router = class Router extends Backbone.Router
 
   routes: ->
     _.extend {
-      '': -> renderPage require './views/page/index'
-      'features': -> renderPage require './views/page/features'
-      'about': -> renderPage require './views/page/about'
-      'tools': -> renderPage require './views/page/tools'
-      'legal/privacy': -> renderPage require './views/page/privacy'
-      'legal/terms': -> renderPage require './views/page/terms'
-      'forgot-password': -> renderPage require './views/page/forgot-password'
+      '(/)': -> renderPage require './views/page/index'
+      'features(/)': -> renderPage require './views/page/features'
+      'about(/)': -> renderPage require './views/page/about'
+      'tools(/)': -> renderPage require './views/page/tools'
+      'legal/privacy(/)': -> renderPage require './views/page/privacy'
+      'legal/terms(/)': -> renderPage require './views/page/terms'
+      'forgot-password(/)': -> renderPage require './views/page/forgot-password'
       'reset_password/:token': 'showResetPassword'
       'signup(/:invitationCode)': 'showSignup'
-      'login': 'showLogin'
+      'login(/)': 'showLogin'
     }, _.mapValues require('./landing-routes'), (params) ->
       -> renderPage require('./views/page/landing'), params
 
