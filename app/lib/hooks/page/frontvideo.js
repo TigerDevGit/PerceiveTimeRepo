@@ -1,5 +1,6 @@
-var $   = require('jquery'),
-    raf = require('raf');
+var $      = require('jquery'),
+  raf      = require('raf'),
+  Backbone = require('backbone');
 
 // Because AMD is hard...
 // https://github.com/carhartl/jquery-cookie/issues/319
@@ -316,6 +317,11 @@ module.exports = function($page, view) {
       $('.js-manual-video').show();
       $('.js-automatic-video').hide();
       $('.seen-wrapper').hide();
+
+    } else if (Backbone.history.fragment == 'login') {
+      incrementSeenCount();
+      $('.js-manual-video').show();
+      $('.js-automatic-video').hide();
     } else if (+$.cookie(COOKIE_VAL) > 9) {
       // If the user has seen the movie more than 9 times already
       // then lets just not show it
