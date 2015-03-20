@@ -12,12 +12,17 @@ Backbone.history.start { pushState: true }
 # a slash, for internal navigation.
 $(document).on 'click', 'a[href^="/"]', (e) ->
   return if this.attributes.clickthrough
-  e.preventDefault()
   href = this.attributes.href.value
+
+  # Clear the anchor
+  window.location.hash = ''
+  if history.pushState
+    history.pushState('', document.title, window.location.pathname)
+
   res  = Backbone.history.navigate href, { trigger: true }
-  # If there was no history navigation action then navigate it through the router again
-  # only this time remove the hash
-  Backbone.history.loadUrl href.split('#')[0] unless res
+  return if href.indexOf('#') > -1
+  # If there was no history navigation action then force load the URL
+  Backbone.history.loadUrl href unless res
   return false
 
 # Add global hooks
