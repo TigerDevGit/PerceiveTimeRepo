@@ -354,4 +354,17 @@ module.exports = (grunt) ->
     "htmlSnapshot"
   ]
 
+  grunt.registerTask "build:nosnapshot", [
+    "build:serve"
+    "useminPrepare"
+    "concat"
+    "uglify"
+    "imagemin"
+    "cssmin"
+    "rev"
+    "usemin"
+    "htmlmin"
+    "compress"
+  ]
+
   grunt.registerTask "default", ["build"]
