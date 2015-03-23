@@ -27,3 +27,7 @@ $(document).on 'click', 'a[href^="/"]', (e) ->
 
 # Add global hooks
 require('./lib/hooks/global/stretch')()
+
+# Notify prerender io that the page is ready to be served
+window.prerenderReady = true
+
