@@ -83,11 +83,14 @@ class SignupView extends View
     @errorMessage = @$ '.signup-form__error'
     @submitButton = @$ '.signup-form__submit button'
     if @invitationCode
-      @api.invitation.get @invitationCode
-      .then (response) =>
-        return unless response
-        @$('input[name=email]').val(response).prop 'readonly', true
-        @$('input[name=code]').val(@invitationCode)
+      @api.invitation.get(@invitationCode)
+        .then (invite) =>
+          return unless invite
+          @$('input[name=email]').val(invite.email).prop('readonly', true)
+          @$('input[name=code]').val(@invitationCode)
+          name = invite.sender_name?.split(' ')[0]
+          if name and name.length < 9
+            @submitButton.text("Join #{name}'s Team")
     else
       setTimeout => @$el.find("[name=email]").select()
 
