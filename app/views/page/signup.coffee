@@ -91,6 +91,11 @@ class SignupView extends View
           name = invite.sender_name?.split(' ')[0]
           if name and name.length < 9
             @submitButton.text("Join #{name}'s Team")
+        .catch (err) =>
+          @showError(
+            err?.responseText or 'Failed to validate your invitation code<br />
+              Please try reloading the page'
+          )
     else
       setTimeout => @$el.find("[name=email]").select()
 
