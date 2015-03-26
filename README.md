@@ -56,21 +56,5 @@ Those files are saved to `./dist/static` folder and are served by nginx if the r
  
 ## Releasing
 
-#### Shipit
+Check RELEASE.md
 
-We use [shipit](https://github.com/shipitjs/shipit) to deploy our website.  
-Shipit tasks lie in [shipitfile.js](https://github.com/toggl/website/blob/master/shipitfile.js). Check it out how it works.
-
-#### How to release?
-
-1. Make sure you have shipit installed
-`npm install -g shipit`
-
-tasks:  
-
-* shipit |environment| deploy 
-* shipit |environment| deploy bump
-* shipit |environment| deploy bump:minor
-* shipit |environment| deploy bump:major
-
-Shipit runs `grunt build internally`
