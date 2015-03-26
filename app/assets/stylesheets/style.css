@@ -722,8 +722,8 @@ h1.hero-timer-heading {
 }
 
 .video-pause-button, .video-play-button {
-  bottom: 22px;
-  right: 75px;
+  bottom: 28px;
+  right: 82px;
   transform: translate3d(0,0,0);
 }
 
@@ -2989,7 +2989,7 @@ p.larger {
 
 .video-force-start .seen-btn {
   position: absolute;
-  top: -23px;
+  top: -18px;
   right: -55px;
 }
 
