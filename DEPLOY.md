@@ -1,8 +1,8 @@
-# Toggl webapp deploy madness
+# Toggl website deploy madness
 
-webapp is deployed using a different gitolite repository.
+website is deployed using a different gitolite repository.
 
-get it from: `g.toggl.com:webapp-deploy`
+get it from: `g.toggl.com:website-deploy`
 
 ### Shipit
 
@@ -20,7 +20,7 @@ We use [shipit](https://github.com/shipitjs/shipit) to deploy our website.
 
 Deploy task uses [shipit-deploy](https://github.com/shipitjs/shipit-deploy) for its inner magic. Check out its repo if you need to modify something.
 
-By running any shipit task the webapp repository will be checked out to `workspace` directory and built by using `grunt build` in it. After a successful build the content of `workspace` will be rsynced to server with a timestamp. After a successful rsync it will symlink timestamped folder to `current` for nginx serving.
+By running any shipit task the website repository will be checked out to `workspace` directory and built by using `grunt build` in it. After a successful build the content of `workspace` will be rsynced to server with a timestamp. After a successful rsync it will symlink timestamped folder to `current` for nginx serving.
 
 The deploy task will leave *five* last versions to the server, meaning that we can rollback really easily.
 
