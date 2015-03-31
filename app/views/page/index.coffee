@@ -10,10 +10,15 @@ class IndexView extends View
   hooks: ['frontvideo', 'timer']
   title: 'Toggl - Free Time Tracking Software'
 
+  isAprilFools: ->
+    d = new Date()
+    d.getMonth() is 3 and d.getDate() is 1
+
   initialize: ->
     super
     @attributes =
       videoDisabled: 'ontouchstart' of document.body
+      aprilFools: @isAprilFools()
       navLight: true
 
     query = parseQuery(window.location.search)

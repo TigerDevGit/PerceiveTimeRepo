@@ -430,7 +430,7 @@ a {
   height: 1319px;
 }
 
-.hero__background .video {
+.hero__background:not(.aprilfools) .video {
   display: block;
   left: 0px;
   overflow: hidden;
@@ -443,17 +443,42 @@ a {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+.aprilfools.hero__background .video {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
 
-.hero__background .wrapper {
+.hero__background:not(.aprilfools) .wrapper {
   display: block;
   height: 300%;
-  left: 0px;
   overflow: hidden;
   position: absolute;
   top: 50%;
+  left: 0px;
   width: 100%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+
+.aprilfools.hero__background .wrapper {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  -webkit-transform: translateY(0%);
+  transform: translateY(0%);
+}
+.aprilfools.hero__background:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .hero__background iframe {

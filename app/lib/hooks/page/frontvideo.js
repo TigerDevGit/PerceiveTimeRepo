@@ -81,8 +81,59 @@ module.exports = function($page, view) {
       ],
       lastBreakpoint = 0,
       referenceTime,
+      referenceDelta = 0,
       running = true, paused = false,
       lastRunningTime = 0;
+
+  if(view.isAprilFools()) {
+    breakpoints = [
+      {
+        time: 0
+      },
+      {
+        time: 9.13,
+        firstHeadingText: 'Track',
+        secondHeadingText: '"Working"'
+      },
+      {
+        time: 14.64,
+        secondHeadingText: 'introspection'
+      },
+      {
+        time: 22.22,
+        secondHeadingText: 'deep thoughts'
+      },
+      {
+        time: 28.24,
+        secondHeadingText: 'ballistics calculations'
+      },
+      {
+        time: 35.77,
+        secondHeadingText: 'remote communication'
+      },
+      {
+        time: 42.12,
+        secondHeadingText: 'mining operations'
+      },
+      {
+        time: 50.53,
+        secondHeadingText: 'cruisin\''
+      },
+      {
+        time: 55.17,
+        secondHeadingText: 'cruisin\''
+      },
+      {
+        time: 59.82,
+        secondHeadingText: 'looking for a new job'
+      },
+      {
+        time: 65.93,
+        firstHeadingText: '',
+        secondHeadingText: ''
+      }
+    ];
+  }
 
   function throttle(fn, threshhold, scope) {
     threshhold || (threshhold = 250);
@@ -110,29 +161,56 @@ module.exports = function($page, view) {
   function resize() {
     var $windowHeight = $(window).height();
     var $videoHeight = $(".video").outerHeight();
-    var $scale = $windowHeight / $videoHeight * 1.01;
-
-    if ($videoHeight <= $windowHeight) {
-      $(".video").css({
-        "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
-        "transform" : "scale("+$scale+") translateY(-50%)"
-      });
-    };
+    if(view.isAprilFools()) {
+      var $windowWidth = $(window).width();
+      if($windowWidth > 1450) {
+        $windowHeight = 805;
+      }
+      var videoRatio = 281/500;
+      var windowRatio = $windowHeight / $windowWidth;
+      var videoHeight = $windowWidth * videoRatio;
+      if(windowRatio > videoRatio) {
+        var videoWidth = ($windowHeight*1.07) / videoRatio;
+        $('.video .wrapper').css({
+          'width': videoWidth + 'px',
+          'height': '107%',
+          'left': '50%',
+          "-webkit-transform" : "translateX(-50%)",
+          "transform" : "translateX(-50%)"
+        });
+      } else {
+        $('.video .wrapper').css({
+          'width': '100%',
+          'height': videoHeight + 'px',
+          'left': 0,
+          "-webkit-transform" : "translateX(0)",
+          "transform" : "translateX(0)"
+        });
+      }
+    } else {
+      var $scale = $windowHeight / $videoHeight * 1.01;
+      if ($videoHeight <= $windowHeight) {
+        $(".video").css({
+          "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
+          "transform" : "scale("+$scale+") translateY(-50%)"
+        });
+      };
+    }
   }
 
   function hideTimer() {
-    $('.hero-timer').css('opacity', 0);
+    $('.hero-timer').css({'display': 'none', 'opacity': 0});
   }
 
   function showTimer() {
-    $('.hero-timer').css('opacity', 1);
+    $('.hero-timer').css({'display': 'block', 'opacity': 1});
   }
 
   function updateTimer() {
     if (running && !paused) {
       var refTime = referenceTime || new Date().getTime(),
           currentTime = new Date().getTime(),
-          timeDifference = Math.floor((currentTime-refTime)/10),
+          timeDifference = Math.floor((currentTime-refTime+referenceDelta)/10),
           minutes,
           seconds,
           milliseconds;
@@ -188,26 +266,50 @@ module.exports = function($page, view) {
     }
 
     if (currentBreakpoint != lastBreakpoint) {
-      switch (currentBreakpoint) {
-        case 1:
-          showTimer();
-          referenceTime = new Date().getTime();
-        break;
-        case 8:
-          referenceTime = new Date().getTime()-31080;
-        break;
-        case 10:
-          referenceTime = undefined;
-        break;
-        case 11:
-          referenceTime = new Date().getTime();
-        break;
-        case 12:
-          hideTimer();
-          referenceTime = undefined;
-        break;
-        default:
-          referenceTime = new Date().getTime();
+      if(view.isAprilFools()) {
+        switch (currentBreakpoint) {
+          case 0:
+            hideTimer();
+          break;
+          case 1:
+            showTimer();
+            referenceTime = new Date().getTime();
+            referenceDelta = 0;
+          break;
+          case 8:
+            referenceDelta = new Date().getTime() - referenceTime;
+            referenceTime = undefined;
+          break;
+          case 10:
+            referenceDelta = 0;
+            hideTimer()
+          break;
+          default:
+            referenceTime = new Date().getTime();
+            referenceDelta = 0;
+        }
+      } else {
+        switch (currentBreakpoint) {
+          case 1:
+            showTimer();
+            referenceTime = new Date().getTime();
+          break;
+          case 8:
+            referenceTime = new Date().getTime()-31080;
+          break;
+          case 10:
+            referenceTime = undefined;
+          break;
+          case 11:
+            referenceTime = new Date().getTime();
+          break;
+          case 12:
+            hideTimer();
+            referenceTime = undefined;
+          break;
+          default:
+            referenceTime = new Date().getTime();
+        }
       }
 
       lastBreakpoint = currentBreakpoint;
@@ -217,7 +319,7 @@ module.exports = function($page, view) {
       firstTimerHeading.textContent = firstHeadingText;
     }
 
-    if (twoFramesBeforeNextBreakpoint && currentBreakpoint != 10) {
+    if (twoFramesBeforeNextBreakpoint && (currentBreakpoint != 10 || view.isAprilFools())) {
       secondTimerHeading.textContent = '';
       hideTimer();
     } else {
@@ -322,7 +424,7 @@ module.exports = function($page, view) {
       incrementSeenCount();
       $('.js-manual-video').show();
       $('.js-automatic-video').hide();
-    } else if (+$.cookie(COOKIE_VAL) > 9) {
+    } else if (+$.cookie(COOKIE_VAL) > 9 && !view.isAprilFools()) {
       // If the user has seen the movie more than 9 times already
       // then lets just not show it
       $('.js-manual-video').show();
@@ -330,7 +432,7 @@ module.exports = function($page, view) {
     } else {
       $('.js-manual-video').hide();
       detect_autoplay();
-      incrementSeenCount();
+      if(!view.isAprilFools()) incrementSeenCount();
     }
   });
 

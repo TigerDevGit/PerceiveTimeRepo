@@ -1,10 +1,14 @@
 {{> 'header' }}
 <section class="hero hero--front">
-  <div class="hero__background">
+  <div class="hero__background{{#if aprilFools}} aprilfools{{/if}}">
     <section class="hero__manual-video js-manual-video" style="display:none;"></section>
     <div class="video js-automatic-video">
       <div class="wrapper">
-        <iframe src="//player.vimeo.com/video/120347656?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        {{#if aprilFools}}
+          <iframe src="//player.vimeo.com/video/123713375?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        {{ else }}
+          <iframe src="//player.vimeo.com/video/120347656?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        {{/if}}
       </div>
     </div>
   </div>
