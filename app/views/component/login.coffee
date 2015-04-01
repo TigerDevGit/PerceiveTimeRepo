@@ -8,12 +8,16 @@ _                  = require 'lodash'
 class LoginPopup extends Modal
   template: 'component/login'
 
+  initialize: (options) ->
+    @returnTo = options?.returnTo
+    super
+
   googleLogin: ->
     form = formData @form
     new API('TogglNext', null, null).user.initGoogleLogin(form.remember_me)
 
-  redirectToApp: ->
-    document.location = '/app'
+  redirectToApp: =>
+    document.location = @returnTo or '/app'
 
   showError: (msg) ->
     @errorMessage.html(msg).show() unless @announcementMessage.is(':visible')
