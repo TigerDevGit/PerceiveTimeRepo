@@ -12,10 +12,14 @@ hooks = require './lib/hooks'
 
 DEFAULT_META_TAGS = [{
   name: 'Description'
-  content: 'Toggl is an online time tracking tool. It features 1-click time tracking and helps you see where your time goes. Free and paid versions are available.'
+  content: 'Toggl is an online time tracking tool. It features 1-click time
+            tracking and helps you see where your time goes. Free and paid
+            versions are available.'
 }, {
   name: 'Keywords'
-  content: 'time tracking, time tracking tool, online time tracking, free time tracking, 1-click time tracking, productivity tools, time tracker, timetracker, time tracker software, timetracking'
+  content: 'time tracking, time tracking tool, online time tracking, free time
+            tracking, 1-click time tracking, productivity tools, time tracker,
+            timetracker, time tracker software, timetracking'
 }]
 
 # This serves as a basis for our other views, doing the "heavy lifting" of
