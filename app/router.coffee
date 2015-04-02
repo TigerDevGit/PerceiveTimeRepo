@@ -41,12 +41,14 @@ Router = class Router extends Backbone.Router
     renderPage Signup, { invitationCode }
 
   showLogin: (qs) ->
-    query = _.reduce(qs.split('&'), (memo, c) ->
-      [key, value] = c.split('=')
-      memo[key and decodeURIComponent(key)] =
-        value and decodeURIComponent(value)
-      memo
-    , {})
+    query = if qs
+      _.reduce(qs.split('&'), (memo, c) ->
+        [key, value] = c.split('=')
+        memo[key and decodeURIComponent(key)] =
+          value and decodeURIComponent(value)
+        memo
+      , {})
+    else {}
     indexView = renderPage require './views/page/index'
 
     renderLogin = ->
