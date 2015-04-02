@@ -40,12 +40,18 @@ Router = class Router extends Backbone.Router
     Signup = require './views/page/signup'
     renderPage Signup, { invitationCode }
 
-  showLogin: ->
+  showLogin: (qs) ->
+    query = _.reduce(qs.split('&'), (memo, c) ->
+      [key, value] = c.split('=')
+      memo[key and decodeURIComponent(key)] =
+        value and decodeURIComponent(value)
+      memo
+    , {})
     indexView = renderPage require './views/page/index'
 
     renderLogin = ->
       LoginPopup = require './views/component/login'
-      new LoginPopup().render()
+      new LoginPopup(returnTo: query.return_to).render()
 
     # Wait until the indexView's model 'change' event gets triggered (which
     # relies on an /api/v9/me/logged request to be emitted). If it's not
