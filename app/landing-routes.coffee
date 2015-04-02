@@ -31,6 +31,10 @@ module.exports =
   'best-free-time-tracking-app-for-iphone':
     title: 'Best free time tracking app for iphone'
     template: 'iphone'
+    meta: [{
+      name: 'description'
+      content: 'Analyise your time usage by tracking daily activites on your iPhone. All the data is synced to the cloud and can be exported as online timesheet.'
+    }]
 
   'best-free-time-tracking-app-for-android':
     title: 'Best free time tracking app for android'
