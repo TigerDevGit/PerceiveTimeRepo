@@ -1,5 +1,4 @@
 "use strict"
-
 fs                = require 'fs'
 path              = require 'path'
 connectLiveReload = require 'connect-livereload'
@@ -194,7 +193,7 @@ module.exports = (grunt) ->
       coffee:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/{,**/}*.coffee"
-        tasks: [ "browserify:app" ]
+        tasks: [ "build:serve" ]
       handlebars:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/templates/{,**/}*.hbs"
