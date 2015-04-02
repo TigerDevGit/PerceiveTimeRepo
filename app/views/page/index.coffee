@@ -12,7 +12,7 @@ class IndexView extends View
 
   isAprilFools: ->
     d = new Date()
-    d.getMonth() is 3 and d.getDate() is 1
+    d.getMonth() is 3 and d.getDate() <= 8
 
   initialize: ->
     super
