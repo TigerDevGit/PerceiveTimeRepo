@@ -2499,9 +2499,14 @@ img.scroll-revealed {
   transition-delay: 300ms;
 }
 
+.platform--linux {
+  background-image: url('../images/platform-linux.svg?1');
+  transition-delay: 400ms;
+}
+
 .platform--extra {
   background-image: url('../images/platform-extra.svg?1');
-  transition-delay: 400ms;
+  transition-delay: 500ms;
 }
 
 .scroll-revealed .platform {
