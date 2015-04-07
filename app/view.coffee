@@ -29,6 +29,7 @@ class View extends Backbone.View
     @listenTo @model, 'change', @render
 
   render: ->
+    @.trigger 'pre-render'
     @preRender?()
     data = _.extend @model.toJSON(), @attributes
     @changeMetaTags()

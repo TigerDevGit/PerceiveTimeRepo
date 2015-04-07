@@ -392,10 +392,11 @@ module.exports = function($page, view) {
     $('.js-automatic-video').show();
   }
 
-  view.on('destroy', function () {
+  function onDisposed() {
     running = false;
-  });
-
+    view.off('destroy pre-render', onDisposed)
+  }
+  view.on('destroy pre-render', onDisposed);
 
   player.addEvent('ready', function() {
     player.addEvent('play', function () {
