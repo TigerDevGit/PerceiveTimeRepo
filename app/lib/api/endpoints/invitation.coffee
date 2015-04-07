@@ -3,4 +3,5 @@ module.exports = (api) ->
   get: (code) ->
     return api.request 'get', "invitations/#{code}",
       processData: false
-      dataType: 'text'
+      url: "/api/v9/invitations/#{code}"
+      dataType: 'json'

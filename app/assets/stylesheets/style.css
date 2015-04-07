@@ -487,12 +487,98 @@ a {
   width: 100%;
 }
 
+.hero--invitation .hero__content h1 {
+  margin: 0;
+}
+
+.hero--invitation .hero__content p {
+  font-size: 20px;
+  margin-top: 0;
+  max-width: 800px;
+}
+
+@media screen and (max-width: 1024px) {
+  .hero--invitation .hero__content p {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .hero--invitation {
+    margin-bottom: 0;
+  }
+
+  .hero--invitation .hero__content p {
+    font-size: 13px;
+    max-width: 330px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero--invitation h1 {
+    font-size: 40px !important;
+  }
+
+  .hero--invitation {
+    margin-bottom: 20px;
+  }
+}
+
 @media screen and (max-width: 580px) {
   .hero--features .hero__background {
     height: 100%;
   }
+
   .video-suspended .hero--front .hero__background {
     background-position: 75% center !important;
+  }
+
+  .hero--invitation {
+    background-color: white;
+    margin-bottom: 50px;
+  }
+
+  .hero--invitation .hero__content h1 {
+    margin: 0;
+  }
+
+  .hero--invitation .hero__content p {
+    font-size: 20px;
+    margin-top: 0;
+    max-width: 800px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero--invitation .hero__content p {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .hero--invitation {
+      margin-bottom: 0;
+    }
+
+    .hero--invitation .hero__content p {
+      font-size: 13px;
+      max-width: 330px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .hero--invitation h1 {
+      font-size: 40px !important;
+    }
+
+    .hero--invitation {
+      margin-bottom: 20px;
+    }
+  }
+
+  .hero__content {
+    position: relative;
+    text-align: center;
+    padding-top: 160px;
   }
 }
 
@@ -1311,6 +1397,52 @@ img.scroll-revealed {
   vertical-align: middle;
   margin-right: 16px;
 }
+
+.content-section--invitation .invitation-form-wrapper {
+  max-width: 430px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.content-section--invitation form {
+  width: 310px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 400px) {
+  .content-section--invitation form {
+    max-width: 90%;
+  }
+
+  .content-section--invitation .toggler-comic {
+    background-image: url("../images/toggler-comic.png");
+    display: inline-block;
+    height: 160px;
+    width: 88px;
+    margin-right: 20px;
+  }
+
+  @media screen and (max-width: 400px) {
+    .content-section--invitation .toggler-comic {
+      display: none;
+    }
+  }
+}
+
+.content-section--invitation .toggler-comic {
+  background-image: url("../images/toggler-comic.png");
+  display: inline-block;
+  height: 160px;
+  width: 88px;
+  margin-right: 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .content-section--invitation .toggler-comic {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 580px) {
   .content-section--signup {
     padding-bottom: 15px;
