@@ -8,7 +8,11 @@ _                  = require 'lodash'
 
 class SignupView extends View
   template: 'page/signup'
-  title: 'Sign Up — Toggl, The Simplest Time Tracker'
+  title: 'Toggl - Sign up, Track Time & Analyze Profitability'
+  meta: [
+    name: 'description'
+    content: 'Track project hours or general time usage. Analyze business profitability, personal productivity or keep track of employee timesheets.'
+  ]
 
   events:
     'click .signup-form__oauth': 'googleSignup',
