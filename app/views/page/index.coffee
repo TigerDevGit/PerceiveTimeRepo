@@ -14,6 +14,12 @@ class IndexView extends View
     content: 'Get better at time management, increase small business revenues or easily manage employee timesheets. Best cloud based multi-platform timer.'
   ]
 
+  events:
+    'click .js-redirect-to-app': (e) ->
+      return unless @model.get('logged')
+      e.preventDefault()
+      document.location = '/app'
+
   isAprilFools: ->
     d = new Date()
     d.getMonth() is 3 and d.getDate() <= 8
