@@ -4,7 +4,11 @@ $ = require 'jquery'
 
 class AboutView extends View
   template: 'page/about'
-  title: 'Team — Toggl, The Simplest Time Tracker'
+  title: 'Toggl - Team Behind the Best Time Tracker'
+  meta: [
+    name: 'description'
+    content: 'Get better overview of the productive and awesome people behind Toggl - the best free time tracking tool in the cloud. Check it out!'
+  ]
 
   postRender: ->
     $('.js-jobs-popup', @$el).on 'click', (e) ->

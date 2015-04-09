@@ -8,7 +8,11 @@ jstz = jstimezonedetect.jstz
 class IndexView extends View
   template: 'page/index'
   hooks: ['frontvideo', 'timer']
-  title: 'Toggl - Free Time Tracking Software'
+  title: 'Toggl - Free Time Tracking Software & App'
+  meta: [
+    name: 'description'
+    content: 'Get better at time management, increase small business revenues or easily manage employee timesheets. Best cloud based multi-platform timer.'
+  ]
 
   isAprilFools: ->
     d = new Date()
