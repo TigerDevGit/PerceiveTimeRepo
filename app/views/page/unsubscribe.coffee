@@ -27,6 +27,8 @@ class UnsubscribeView extends View
     @errorMessage = @$('.js-error')
 
   showError: (err) ->
+    if err.indexOf('Error') is -1
+      err = 'Error: ' + err
     @errorMessage.text(err)
     @errorMessage.show()
 
@@ -51,9 +53,8 @@ class UnsubscribeView extends View
       @updateStatus('done')
       @description.text("You're no longer subscribed to the #{@readableType}")
     jqhr.fail (err) =>
-      alert err
       @updateStatus('done')
-      @showError err
+      @showError(err.responseText)
       @description.text(oldValue)
 
 _.extend(UnsubscribeView.prototype, pendingButtonMixin)
