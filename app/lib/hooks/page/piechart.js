@@ -1,8 +1,16 @@
 var $   = require('jquery'),
     raf = require('raf');
 
-module.exports = function () {
+// We don't want the animation to run on any subsequent visits to /features, so
+// this is shared on all animation set-ups
+var animationCompleted = false;
+var animationRunning = false;
+var animationCompletedPercent;
+var animationStartTime;
+
+module.exports = function ($page, view) {
   var canvas,
+      canvasBoundingRect,
       ctx,
       segments = [
         {
@@ -22,11 +30,7 @@ module.exports = function () {
           color: '#f30c16'
         }
       ],
-      animationRunning = false,
-      animationStartTime,
       currentTime,
-      animationCompletedPercent,
-      animationCompleted = false,
       settings = {
         strokeWidth: 86,
         radius: 115,
@@ -47,28 +51,19 @@ module.exports = function () {
     }
   }
 
+  var lastCheck;
   function checkCanvasVisibility() {
-    var canvasBoundingRect = canvas.getBoundingClientRect();
+    if(lastCheck < new Date().getTime() - 100) return;
 
-    if (!animationRunning) {
-      if (canvasBoundingRect.top < window.innerHeight * 0.75 && canvasBoundingRect.bottom > window.innerHeight * 0.25) {
+    if (!animationCompleted && !animationRunning) {
+      if (canvasBoundingRect.top < window.scrollY + window.innerHeight * 0.75) {
         startAnimation();
       }
-    } else {
-      if (canvasBoundingRect.top > window.innerHeight || canvasBoundingRect.bottom < 0) {
-        animationRunning = false;
-
-        canvas.parentNode.classList.remove('pie-chart--animation-complete');
-        clear();
-      }
     }
-
-    raf(checkCanvasVisibility);
   }
 
   function startAnimation() {
     animationStartTime = new Date().getTime();
-
     animationRunning = true;
     animationCompleted = false;
     animationCompletedPercent = 0;
@@ -77,12 +72,14 @@ module.exports = function () {
   }
 
   function loop() {
+    if(animationCompleted) return;
     currentTime = new Date().getTime() - animationStartTime;
     animationCompletedPercent = animationCompletedPercent = currentTime / settings.animationLength;
 
     if (animationCompletedPercent >= 1) {
       animationCompletedPercent = 1;
       animationCompleted = true;
+      animationRunning = false;
     }
 
     clear();
@@ -132,13 +129,13 @@ module.exports = function () {
     raf(loop);
   }
 
-  function handleCanvasClick(event) {
+  function handleCanvasClick() {
     canvas.parentNode.classList.remove('pie-chart--animation-complete');
-
     startAnimation();
   }
 
   canvas = document.getElementById('js-pie-chart-canvas');
+  canvasBoundingRect = canvas.getBoundingClientRect();
   ctx = canvas.getContext('2d');
 
   settings.center.x = canvas.width/2;
@@ -148,7 +145,23 @@ module.exports = function () {
 
   ctx.lineWidth = settings.strokeWidth;
 
-  raf(checkCanvasVisibility);
-
   canvas.addEventListener('click', handleCanvasClick);
+
+  if (animationRunning) {
+    loop();
+    return;
+  }
+
+  if (animationCompleted) {
+    clear();
+    animationCompletedPercent = 1;
+    draw();
+    canvas.parentNode.classList.add('pie-chart--animation-complete');
+    return;
+  }
+
+  $(document).on('scroll', checkCanvasVisibility);
+  view.on('destroy', function() {
+    $(document).off('scroll', checkCanvasVisibility);
+  });
 };

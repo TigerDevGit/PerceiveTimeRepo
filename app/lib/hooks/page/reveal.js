@@ -1,26 +1,38 @@
 var $   = require('jquery'),
-    raf = require('raf');
+    _   = require('lodash');
+
+var toRemove = {};
 
 module.exports = function ($page, view) {
-  var elements = $('.js-scroll-reveal').toArray();
+  var $elements = _($('.js-scroll-reveal').toArray())
+    .map(function(el) {
+      return $(el);
+    })
+    .filter(function($el, i) {
+      if(toRemove[i]) {
+        $el.addClass('scroll-revealed');
+        return false;
+      }
+      return true;
+    })
+    .value();
+  var lastCheck;
 
   function checkScroll() {
-    var index = 0;
+    if(lastCheck < new Date().getTime() - 500) return;
 
-    for (var i = 0, l = elements.length; i < l; i++) {
-      var element = elements[i];
-      var offset = $(element).offset();
-      var height = $(element).height();
-
-      if (offset.top < window.scrollY + window.innerHeight * 0.75 &&
-          offset.top + height  > window.scrollY + window.innerHeight * 0.25) {
-        element.classList.add('scroll-revealed');
-      } else {
-        element.classList.remove('scroll-revealed');
+    for (var i = 0, l = $elements.length; i < l; i++) {
+      var $element = $elements[i];
+      var offset = $element.offset();
+      if (offset.top < window.scrollY + window.innerHeight * 0.75) {
+        $element.addClass('scroll-revealed');
+        toRemove[i] = true;
       }
     }
 
-    raf(checkScroll);
+    $elements = _.filter($elements, function(i) {
+      return !toRemove[i];
+    });
   }
 
   $(document).on('scroll', checkScroll);
