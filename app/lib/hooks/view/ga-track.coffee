@@ -6,9 +6,9 @@ _ = require 'lodash'
 #
 #   This:  <a href="/signup" ga-track="signup, home_click">
 #   Makes: ga('send', 'event', 'signup', 'home_click')
-module.exports = ($el) ->
+module.exports = (view) ->
   tag = 'ga-track'
-  $('[' + tag + ']', $el).on 'click', ->
+  view.$('[' + tag + ']').on 'click', ->
     return unless ga?
     props = _.invoke $(this).attr(tag).split(','), 'trim'
     ga 'send', 'event', props...

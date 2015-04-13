@@ -38,7 +38,7 @@ class SignupView extends View
         buttonLabel: "Join the team"
       }
 
-  onDestroy: ->
+  onRemove: ->
     $(document.body).removeClass('body--white')
 
   showError: (msg) =>

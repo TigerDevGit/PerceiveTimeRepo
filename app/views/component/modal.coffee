@@ -15,9 +15,9 @@ class ModalView extends View
     @on 'teardown', ->
       $('body').removeClass 'with-modal-overlay'
       @modal.removeClass 'modal-overlay--visible'
-      setTimeout (=> @trigger 'destroy'), 150
+      setTimeout (=> @remove()), 150
 
-    @on 'destroy', ->
+    @on 'remove', ->
       @$el.remove()
 
     return
@@ -40,7 +40,7 @@ class ModalView extends View
     $(document).on 'keypress', teardownKeypress
 
     # When the element is removed, clean up after itself.
-    @on 'destroy', -> $(document).off 'keypress', teardownKeypress
+    @on 'remove', -> $(document).off 'keypress', teardownKeypress
 
   # Finds a adds jquery objects for re-used elements on the lgoin view.
   findElements: ->

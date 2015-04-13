@@ -3,8 +3,8 @@ var $   = require('jquery'),
 
 var toRemove = {};
 
-module.exports = function ($page, view) {
-  var $elements = _($('.js-scroll-reveal').toArray())
+module.exports = function (view) {
+  var $elements = _(view.$('.js-scroll-reveal').toArray())
     .map(function(el) {
       return $(el);
     })
@@ -37,7 +37,7 @@ module.exports = function ($page, view) {
 
   $(document).on('scroll', checkScroll);
   // When we navigate away from the page, remove the scroll handler.
-  view.on('destroy', function () {
+  view.on('remove', function () {
     $(document).off('scroll', checkScroll);
   });
 };

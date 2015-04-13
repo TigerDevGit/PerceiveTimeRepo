@@ -7,8 +7,8 @@ $ = require 'jquery'
 # and adds a class that triggers a CSS animation.
 #
 # When the animation end event is fired, the class is removed from the .js-ripple-button__ripple.
-module.exports = ($el) ->
-  $el.find('.js-ripple-button').on 'click', (e) ->
+module.exports = (view) ->
+  view.$('.js-ripple-button').on 'click', (e) ->
     return if $(e.target).hasClass('disabled') || !!e.target.disabled
 
     rect = e.target.getBoundingClientRect()

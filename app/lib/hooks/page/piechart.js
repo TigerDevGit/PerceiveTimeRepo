@@ -8,7 +8,7 @@ var animationRunning = false;
 var animationCompletedPercent;
 var animationStartTime;
 
-module.exports = function ($page, view) {
+module.exports = function (view) {
   var canvas,
       canvasBoundingRect,
       ctx,
@@ -134,34 +134,39 @@ module.exports = function ($page, view) {
     startAnimation();
   }
 
-  canvas = document.getElementById('js-pie-chart-canvas');
-  canvasBoundingRect = canvas.getBoundingClientRect();
-  ctx = canvas.getContext('2d');
+  view.once('show', function() {
 
-  settings.center.x = canvas.width/2;
-  settings.center.y = canvas.height/2;
+    canvas = view.$('#js-pie-chart-canvas').get(0);
+    canvasBoundingRect = canvas.getBoundingClientRect();
+    ctx = canvas.getContext('2d');
 
-  scaleCanvas();
+    settings.center.x = canvas.width/2;
+    settings.center.y = canvas.height/2;
 
-  ctx.lineWidth = settings.strokeWidth;
+    scaleCanvas();
 
-  canvas.addEventListener('click', handleCanvasClick);
+    ctx.lineWidth = settings.strokeWidth;
 
-  if (animationRunning) {
-    loop();
-    return;
-  }
+    canvas.addEventListener('click', handleCanvasClick);
 
-  if (animationCompleted) {
-    clear();
-    animationCompletedPercent = 1;
-    draw();
-    canvas.parentNode.classList.add('pie-chart--animation-complete');
-    return;
-  }
+    if (animationRunning) {
+      loop();
+      return;
+    }
 
-  $(document).on('scroll', checkCanvasVisibility);
-  view.on('destroy', function() {
-    $(document).off('scroll', checkCanvasVisibility);
+    if (animationCompleted) {
+      clear();
+      animationCompletedPercent = 1;
+      draw();
+      canvas.parentNode.classList.add('pie-chart--animation-complete');
+      return;
+    }
+
+    $(document).on('scroll', checkCanvasVisibility);
+    view.on('destroy', function() {
+      $(document).off('scroll', checkCanvasVisibility);
+    });
+
   });
+
 };

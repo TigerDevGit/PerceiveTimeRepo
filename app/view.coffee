@@ -25,12 +25,20 @@ DEFAULT_META_TAGS = [{
 # This serves as a basis for our other views, doing the "heavy lifting" of
 # templating behind the scenes for us.
 class View extends Backbone.View
-  el: '.page'
+  className: -> 'page'
   model: require './lib/user-state-model'
 
   initialize: ->
     @meta ?= DEFAULT_META_TAGS
     @listenTo @model, 'change', @render
+
+  remove: ->
+    # There's no View::triggerMethod without Marionette
+    @onBeforeRemove?()
+    @trigger('before:remove')
+    super
+    @onRemove?()
+    @trigger('remove')
 
   render: ->
     @.trigger 'pre-render'
@@ -62,8 +70,8 @@ class View extends Backbone.View
 
   bindHooks: ->
     # Run view cooks
-    hook(@$el, this) for hook in hooks.view
+    hook(this) for hook in hooks.view
     # Run page hooks
-    hooks.page[hook](@$el, this) for hook in @hooks if @hooks?
+    hooks.page[hook](this) for hook in @hooks if @hooks?
 
 module.exports = View
