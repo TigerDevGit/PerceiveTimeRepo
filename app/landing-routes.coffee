@@ -93,3 +93,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'google-calendar-timer-integration':
+    title: 'Best time tracking integration with Google Calendar'
+    template: 'google_calendar'
+    meta: [{
+      name: 'description'
+      content: 'Directly track time spent on calendar events and export timesheets from Toggl. Managing work time with Google Calendar and Toggl is really quick and easy with this simple Chrome extension.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
