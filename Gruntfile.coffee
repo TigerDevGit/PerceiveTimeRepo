@@ -33,6 +33,8 @@ module.exports = (grunt) ->
     "es6-promise"
   ]
 
+  pkg = grunt.file.readJSON("package.json")
+
   grunt.initConfig
     yeoman: yeomanConfig
 
@@ -190,6 +192,20 @@ module.exports = (grunt) ->
         src: "<%= yeoman.app %>/assets/stylesheets/style.css"
         dest: "<%= yeoman.dist %>/stylesheets/style.autoprefixed.css"
 
+    replace:
+      distVersion:
+        options:
+          variables:
+            version: pkg.version
+        files: [
+          flatten: true
+          expand: true
+          src: [
+            'dist/index.html'
+          ]
+          dest: 'dist/'
+        ]
+
     watch:
       coffee:
         options: livereload: LIVERELOAD_PORT
@@ -338,6 +354,7 @@ module.exports = (grunt) ->
     "modernizr"
     "copy:statics"
     "copy:dist"
+    "replace:distVersion"
   ]
 
   grunt.registerTask "build", [

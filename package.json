@@ -8,6 +8,7 @@
   "dependencies": {
     "Base64": "^0.3.0",
     "backbone": "^1.1.2",
+    "bugsnag-js": "https://github.com/bugsnag/bugsnag-js#v2.4.7",
     "es6-promise": "^2.0.1",
     "folderify": "^0.6.0",
     "handlebars": "^2.0.0",
@@ -51,6 +52,7 @@
     "grunt-html-snapshot": "^0.6.1",
     "grunt-karma": "^0.10.1",
     "grunt-modernizr": "^0.6.0",
+    "grunt-replace": "^0.8.0",
     "grunt-rev": "^0.1.0",
     "grunt-usemin": "^3.0.0",
     "gulp": "^3.8.10",
@@ -62,6 +64,7 @@
     "gulp-concat": "^2.4.3",
     "gulp-declare": "^0.3.0",
     "gulp-embedlr": "^0.5.2",
+    "gulp-gzip": "0.0.8",
     "gulp-handlebars": "^3.0.1",
     "gulp-htmlmin": "^1.0.0",
     "gulp-imagemin": "^2.1.0",
@@ -84,18 +87,17 @@
     "karma-sinon": "^1.0.4",
     "karma-sinon-expect": "^0.1.4",
     "matchdep": "^0.3.0",
+    "minifyify": "^6.1.0",
     "pretender": "^0.4.2",
     "q": "^1.1.2",
-    "slack-notify": "^0.1.4",
-    "minifyify": "^6.1.0",
     "read": "^1.0.5",
     "require-directory": "^2.0.0",
+    "slack-notify": "^0.1.4",
     "through2": "^0.6.3",
     "tiny-lr": "^0.1.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.3.0",
-    "gulp-gzip": "0.0.8"
+    "watchify": "^2.3.0"
   },
   "engines": {
     "node": ">=0.8.0"
