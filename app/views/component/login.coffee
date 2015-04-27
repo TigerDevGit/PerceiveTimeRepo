@@ -29,13 +29,19 @@ class LoginPopup extends Modal
     return if @isPending()
     @updateStatus 'pending'
 
+    # Stop listening to model changes so the login form isn't rerendered before
+    # the redirect.
+    @stopListening(@model, 'change')
+
     new API('TogglNext', null, null)
       .auth.session data.email, data.password, data.remember_me
       .then @redirectToApp, loginErr
       .catch loginErr
       .then(
         (=> @updateStatus 'done'),
-        (=> @updateStatus 'done')
+        (=>
+          @listenTo(@model, 'change', @render)
+          @updateStatus 'done')
       )
 
   startSubmit: (e) =>
