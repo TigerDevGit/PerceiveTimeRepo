@@ -8,7 +8,7 @@
   "dependencies": {
     "Base64": "^0.3.0",
     "backbone": "^1.1.2",
-    "bugsnag-js": "https://github.com/bugsnag/bugsnag-js#v2.4.7",
+    "bugsnag-js": "git://github.com/bugsnag/bugsnag-js#v2.4.7",
     "es6-promise": "^2.0.1",
     "folderify": "^0.6.0",
     "handlebars": "^2.0.0",
