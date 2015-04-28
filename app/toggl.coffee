@@ -1,5 +1,25 @@
 Backbone = require 'backbone'
+Bugsnag  = require 'bugsnag-js'
 $        = require 'jquery'
+_        = require 'lodash'
+
+# Set-up Bugsnag
+environment = do ->
+  host = document.location.host
+  if _.startsWith(host, 'next.toggl.com') or
+     _.startsWith(host, 'fubar.toggl.com')
+    "staging"
+  else if _.startsWith(host, 'www.toggl.com') or
+          _.startsWith(host, 'toggl.com') or
+          _.startsWith(host, 'new.toggl.com')
+    "production"
+  else "development"
+
+Bugsnag.apiKey = 'bc2e8b6278a6e7b3d6345fe6a373b120'
+Bugsnag.releaseStage = environment
+Bugsnag.notifyReleaseStages = ['development', 'staging', 'production']
+Bugsnag.appVersion = $('body').data('version')
+
 # Fix required when using backbone with Browserify:
 Backbone.$ = $
 
