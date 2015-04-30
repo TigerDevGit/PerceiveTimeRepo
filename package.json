@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "Base64": "^0.3.0",
-    "backbone": "https://github.com/jashkenas/backbone#8b46ffaf9148f65b631d8bfd4faa0f43468ee997",
+    "backbone": "git+https://github.com/jashkenas/backbone.git#8b46ffaf9148f65b631d8bfd4faa0f43468ee997",
     "bugsnag-js": "git://github.com/bugsnag/bugsnag-js#v2.4.7",
     "es6-promise": "^2.0.1",
     "folderify": "^0.6.0",
