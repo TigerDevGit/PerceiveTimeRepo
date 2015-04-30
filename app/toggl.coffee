@@ -15,10 +15,14 @@ environment = do ->
     "production"
   else "development"
 
+# Log so that end-users can report the website's version they are using
+version = $('body').data('version')
+console.log "With <3 by Toggl. v#{version} (website)"
+
 Bugsnag.apiKey = 'bc2e8b6278a6e7b3d6345fe6a373b120'
 Bugsnag.releaseStage = environment
 Bugsnag.notifyReleaseStages = ['development', 'staging', 'production']
-Bugsnag.appVersion = $('body').data('version')
+Bugsnag.appVersion = version
 
 # Fix required when using backbone with Browserify:
 Backbone.$ = $
@@ -50,4 +54,3 @@ require('./lib/hooks/global/stretch')()
 
 # Notify prerender io that the page is ready to be served
 window.prerenderReady = true
-
