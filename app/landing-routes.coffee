@@ -105,3 +105,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'online-timesheet-software':
+    title: 'Toggl - Online Timesheet Software'
+    template: 'online-timesheet'
+    meta: [{
+      name: 'description'
+      content: 'Analyize the time usage of your employees. Use timer or add time logs manually. All the data is synced to the cloud and generated into useful time reports and graphs.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
