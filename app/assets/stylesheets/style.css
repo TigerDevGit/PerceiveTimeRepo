@@ -602,6 +602,13 @@ a {
   transform: translateX(-50%) translateY(-50%);
 }
 
+.hero--unsubscribe .unsubscribe-error {
+  background: #f30c16;
+  color: white;
+  font-size: 14px;
+  padding: 23px 26px;
+}
+
 .video-suspended .hero__background video {
   height: 100%;
   width: 100%;

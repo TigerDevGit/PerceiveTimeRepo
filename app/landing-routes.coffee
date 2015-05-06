@@ -18,7 +18,8 @@
 #  will add a following meta tag for the page:
 #  `<meta name="TEST" content="TEST-CONTENT">`
 #
-#  The keys for the meta tags can be custom, so if you wanted to create a meta tag for some OG image it would look like this:
+#  The keys for the meta tags can be custom, so if you wanted to create a meta
+#  tag for some OG image it would look like this:
 # ```
 #   meta: [{
 #     property: 'og-image'
