@@ -127,3 +127,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'customer-profitability-analysis-software':
+    title: 'Toggl - Customer Profitability Analysis Software'
+    template: 'customer-profitability'
+    meta: [{
+      name: 'description'
+      content: 'Analyize your project time usage by tracking daily tasks and see how much time each customer takes out of your day. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
