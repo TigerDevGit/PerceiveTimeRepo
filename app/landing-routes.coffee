@@ -116,3 +116,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'work-time-measuring-web-app':
+    title: 'Toggl - Free Work Time Measuring Web App'
+    template: 'work-measuring'
+    meta: [{
+      name: 'description'
+      content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
