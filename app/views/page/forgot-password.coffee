@@ -33,7 +33,7 @@ class ForgotPasswordView extends View
   forgotPassword: (e) =>
     e.preventDefault()
     data = formData @$el.find 'form'
-    return @showError 'Please enter an email bellow.' unless data.email
+    return @showError 'Please enter an email below.' unless data.email
 
     return if @isPending()
     @updateStatus('pending')

@@ -19,7 +19,7 @@ class UnsubscribeView extends View
     unless @readableType
       document.location = '/not-found'
     @attributes =
-      description: "Click the button bellow to unsubscribe from the #{@readableType}"
+      description: "Click the button below to unsubscribe from the #{@readableType}"
 
   postRender: ->
     @description = @$('.js-description')
