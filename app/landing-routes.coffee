@@ -138,3 +138,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'best-time-keeping-software-lawyers':
+    title: 'Toggl - Best Time Keeping Software For Lawyers'
+    template: 'lawyers'
+    meta: [{
+      name: 'description'
+      content: 'Track time spent on client tasks, calls, meetings and e-mails. Automatic rounding option, different billable rates and powerful reports make it the best time tracking software for lawyers and attorneys.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
