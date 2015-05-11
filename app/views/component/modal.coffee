@@ -10,6 +10,7 @@ class ModalView extends View
   events:
     'click .modal-overlay__close': 'fadeAndRemove'
     'click .modal-overlay': 'fadeAndRemove'
+    'click .modal-overlay__content': (e) -> e.stopPropagation()
     'keydown': (e) -> if keycode(e) is 'esc' then @fadeAndRemove()
 
   # Cleans up the body class and removes the visible class, then waits until

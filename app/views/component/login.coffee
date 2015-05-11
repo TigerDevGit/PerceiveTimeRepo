@@ -1,11 +1,11 @@
-Modal              = require './modal'
+ModalView          = require './modal'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
 _                  = require 'lodash'
 
-class LoginPopup extends Modal
+class LoginPopup extends ModalView
   template: 'component/login'
 
   initialize: (options) ->
