@@ -3,7 +3,8 @@ var $ = require('jquery');
 module.exports = function() {
   var secondsTracked = 0,
       interval,
-      timerTimeElement;
+      timerTimeElement
+      paused = false;
 
   function startTimer() {
     interval = setInterval(timerLoop, 1000);
@@ -59,17 +60,16 @@ module.exports = function() {
   }
 
   function handleTimerButtonClick(event) {
-    var resumed = event.target.classList.toggle('timer__button--stop');
-
-    if (resumed) {
+    if (paused) {
       startTimer();
-
       event.target.innerHTML = event.target.innerHTML.replace('Start', 'Stop');
+      event.target.classList.add('timer__button--stop');
     } else {
       pauseTimer();
-
       event.target.innerHTML = event.target.innerHTML.replace('Stop', 'Start');
+      event.target.classList.remove('timer__button--stop');
     }
+    paused = !paused;
   }
 
 
