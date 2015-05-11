@@ -356,8 +356,8 @@ module.exports = function(view) {
   }
 
   function togglePausePlayButtons (toggle) {
-    $('.video-pause-button').toggle(toggle);
-    $('.video-play-button').toggle(!toggle);
+    view.$('.video-pause-button').toggle(toggle);
+    view.$('.video-play-button').toggle(!toggle);
   }
 
   function detect_autoplay(){
