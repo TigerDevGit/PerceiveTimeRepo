@@ -149,3 +149,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'company-productivity-analysis-web-app':
+    title: 'Toggl - Company Productivity Analysis Through Time Tracking'
+    template: 'company-productivity'
+    meta: [{
+      name: 'description'
+      content: 'Analyize the time usage of your employees. Very simple setup and easy real time tracking. All the data is synced to the cloud and can be exported as online timesheets.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
