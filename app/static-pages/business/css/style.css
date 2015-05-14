@@ -113,8 +113,8 @@ p											{ font-size:18px; line-height:24px; color:#7f7f7f; padding-bottom:27
   line-height: 66px;
   color: #fff;
 }
-.request-specifics input[type="text"] {
-   
+.request-specifics input[type="text"],
+.request-specifics input[type="email"] {
     border-bottom:1px solid #f21c25;
     border-image: none;
     border-style: solid;   
