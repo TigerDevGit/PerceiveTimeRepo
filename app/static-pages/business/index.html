@@ -52,7 +52,7 @@
                   <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
                   <input type="hidden" name="id" value="065a1dea01">
                   <input placeholder="Enter your email here"
-                         type="email"
+                         type="text"
                          autocapitalize="off"
                          autocorrect="off"
                          name="MERGE0"
@@ -145,7 +145,7 @@
                   <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
                   <input type="hidden" name="id" value="065a1dea01">
                   <input placeholder="Enter your email here"
-                         type="email"
+                         type="text"
                          autocapitalize="off"
                          autocorrect="off"
                          name="MERGE0"
@@ -198,16 +198,47 @@ $(document).ready(function(e) {
     $(this).hide();
   });
 
-  $('#thank_link').click(function(e) {
-    $(this).hide();
-    $('#toppoup').hide();
-    $('#thanks_popup').show();
-  });
+  function convertToAjax($form, $toHide, $toShow) {
+    function handleFormSubmit(e, cb) {
+      e.preventDefault();
+      e.stopPropagation();
+      var method = $form.attr('method')
+      var url = $form.attr('action')
 
-  $('#thank_link_sec').click(function(e) {
-    $(this).hide();
-    $('#sec_formcont').hide();
-    $('#thanks_botpopup').show();
+      url += '?c=?';
+
+      return cb(new Error('Failed to submit your e-mail. Please try again.'));
+      $.ajax({
+        url: url.replace('/post', '/post-json'),
+        type: method,
+        data: $form.serialize(),
+        dataType: 'jsonp',
+        success: function(resp) {
+          cb(null, resp);
+        },
+        error: function(xhr) {
+          cb(new Error('Failed to submit your e-mail. Please try again.'))
+        },
+      })
+    }
+
+    $form.on('submit', function(e) {
+      handleFormSubmit(e, function(err) {
+        if(err) {
+          alert(err);
+          return;
+        }
+
+        $('#toppoup').hide();
+        $('#thanks_popup').show();
+        $('#sec_formcont').hide();
+        $('#thanks_botpopup').show();
+      });
+    });
+  }
+
+  $('form').map(function(i, el) {
+    convertToAjax($(el));
   });
 });
 </script>
