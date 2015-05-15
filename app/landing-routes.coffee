@@ -204,3 +204,13 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+  'best-time-tracking-software-windows':
+    title: 'Toggl - Free Time Tracking Software For Windows'
+    template: 'windows'
+    meta: [{
+      name: 'description'
+      content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards in the web version.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
