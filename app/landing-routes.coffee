@@ -149,3 +149,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'best-time-reporting-software-freelancers':
+    title: 'Toggl - Best Time Reporting Software For Freelancers'
+    template: 'freelancers'
+    meta: [{
+      name: 'description'
+      content: 'Track time spent on client tasks, calls, meetings and e-mails. Different billable rates and reports sharing make it the best time tracking software for freelancers.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
