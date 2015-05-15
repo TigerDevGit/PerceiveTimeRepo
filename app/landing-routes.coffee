@@ -182,3 +182,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'task-duration-tracking-tool':
+    title: 'Toggl - Free Online Task Tracking Tool'
+    template: 'task-tracking'
+    meta: [{
+      name: 'description'
+      content: 'Analyize task time usage by tracking daily activites on the web and with Android or iPhone app. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
