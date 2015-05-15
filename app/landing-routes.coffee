@@ -160,3 +160,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'corporate-timesheet-alternative-application':
+    title: 'Toggl - The Best Alternative To Corporate Timesheets'
+    template: 'timesheet-alternative'
+    meta: [{
+      name: 'description'
+      content: 'Track and analyize your work hours without the time-wasting spreasheet filling. Use timer or add time logs manually. All the data is synced to the cloud and generated into useful time reports and pretty graphs.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
