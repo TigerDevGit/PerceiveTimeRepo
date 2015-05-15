@@ -48,7 +48,7 @@
             <div class="bott_form_cont" id="toppoup">
               <div class="request-meeting"> <a href="#informed_box" class="btn link_btn">Keep me informed</a> </div>
               <div class="request-specifics" id="informed_box">
-                <form action="http://toggl.us9.list-manage.com/subscribe/post" method="POST">
+                <form action="http://toggl.us9.list-manage1.com/subscribe/post" method="POST">
                   <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
                   <input type="hidden" name="id" value="065a1dea01">
                   <input placeholder="Enter your email here"
@@ -141,7 +141,7 @@
             <div class="bott_form_cont" id="sec_formcont">
               <div class="request-meeting"> <a href="#request_meeting" class="btn link_btn">I want this!</a> </div>
               <div class="request-specifics" id="request_meeting">
-                <form action="http://toggl.us9.list-manage.com/subscribe/post" method="POST">
+                <form action="http://toggl.us9.list-manage1.com/subscribe/posts" method="POST">
                   <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
                   <input type="hidden" name="id" value="065a1dea01">
                   <input placeholder="Enter your email here"
@@ -206,8 +206,7 @@ $(document).ready(function(e) {
       var url = $form.attr('action')
 
       url += '?c=?';
-
-      return cb(new Error('Failed to submit your e-mail. Please try again.'));
+      console.log($form.serialize());
       $.ajax({
         url: url.replace('/post', '/post-json'),
         type: method,
