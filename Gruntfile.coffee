@@ -30,6 +30,8 @@ module.exports = (grunt) ->
     "lodash"
     "handlebars"
     "es6-promise"
+    "custom-event-polyfill"
+    "devtools-detect"
   ]
 
   pkg = grunt.file.readJSON("package.json")
