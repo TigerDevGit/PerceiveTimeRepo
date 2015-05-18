@@ -4,7 +4,16 @@ parseQuery = (qs) ->
   ret = {}
   for pair in qs.split '&'
     [key, value] = pair.split '='
-    ret[decodeURIComponent(key)] = decodeURIComponent(value)
+    if key
+      if value
+        value = decodeURIComponent(value)
+        if value is "true"
+          value = true
+        else if value is "false"
+          value = false
+        else if !isNaN(n = +value)
+          value = n
+      ret[decodeURIComponent(key)] = value
   ret
 
 exports = module.exports = parseQuery
