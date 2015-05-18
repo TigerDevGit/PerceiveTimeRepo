@@ -24,6 +24,9 @@ class IndexView extends View
     d = new Date()
     d.getMonth() is 3 and d.getDate() <= 8
 
+  redirectToApp: ->
+    document.location = '/app'
+
   initialize: ->
     super
     @attributes =
@@ -44,19 +47,20 @@ class IndexView extends View
     else if query.state == 'signup'
       return api
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())
-        .then (response) ->
-          api.auth.session response.data.api_token, 'api_token'
-        .then ->
-          document.location = '/app'
+        .then (data) =>
+          if data.has_account
+            @redirectToApp()
+          else
+            api.auth.session response.data.api_token, 'api_token'
+        .then @redirectToApp
         .catch (err) ->
-          unless err?.responseText.indexOf("already redeemed") != -1 # Hide error caused by browser refresh
-            alert "Signup failed. " + err?.responseText
+          alert "Signup failed. " + err?.responseText
+
     else if query.state in ['login', 'login_remember']
       remember = query.state is 'login_remember'
       api
         .user.completeGoogleLogin query.code, remember
-        .then ->
-          document.location = '/app'
+        .then @redirectToApp
         .catch (err) ->
           if err.status is 403
             alert "Failed to login with Google, are you sure this is the right account?"

@@ -47,7 +47,7 @@ module.exports = (api) ->
     api
       .request 'post', 'signups',
         contentType: 'application/json'
-        dataType: undefined
+        dataType: 'json'
         data: JSON.stringify
           code: code
           user:
