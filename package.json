@@ -5,6 +5,17 @@
   "scripts": {
     "test": "gulp test"
   },
+  "browserify": {
+    "transform": ["browserify-shim"]
+  },
+  "browser": {
+    "devtools-detect": "./node_modules/devtools-detect/devtools-detect.js",
+    "custom-event-polyfill": "./node_modules/custom-event-polyfill/custom-event-polyfill.js"
+  },
+  "browserify-shim": {
+    "devtools-detect": "",
+    "custom-event-polyfill": ""
+  },
   "dependencies": {
     "Base64": "^0.3.0",
     "backbone": "git+https://github.com/jashkenas/backbone.git#8b46ffaf9148f65b631d8bfd4faa0f43468ee997",
@@ -18,7 +29,9 @@
     "lodash": "~3.2.0",
     "raf": "^2.0.4",
     "request": "^2.51.0",
-    "utf8": "^2.1.0"
+    "utf8": "^2.1.0",
+    "devtools-detect": "~1.0.0",
+    "custom-event-polyfill": "~0.2.1"
   },
   "devDependencies": {
     "brfs": "^1.3.0",
@@ -97,7 +110,8 @@
     "tiny-lr": "^0.1.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.0.0",
-    "watchify": "^2.3.0"
+    "watchify": "^2.3.0",
+    "browserify-shim": "~3.8.6"
   },
   "engines": {
     "node": ">=0.8.0"
