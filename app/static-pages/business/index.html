@@ -48,23 +48,19 @@
             <div class="bott_form_cont" id="toppoup">
               <div class="request-meeting"> <a href="#informed_box" class="btn link_btn">Keep me informed</a> </div>
               <div class="request-specifics" id="informed_box">
-                <form action="http://toggl.us9.list-manage1.com/subscribe/post" method="POST">
-                  <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
-                  <input type="hidden" name="id" value="065a1dea01">
+                <form action="https://meet.toggl.com/signup-business" method="POST">
                   <input placeholder="Enter your email here"
                          type="text"
                          autocapitalize="off"
                          autocorrect="off"
-                         name="MERGE0"
-                         id="MERGE0"
+                         name="email"
+                         id="email"
                          size="25"
                          value=""
                          class="email_txt">
-                  <input type="text"
-                         name="b_ec2d9851fdb4dd58762140aea_065a1dea01"
-                         tabindex="-1"
-                         value=""
-                         style="display: none;">
+                  <input type="hidden"
+                         name="list"
+                         value="Keep me informed">
                   <input type="submit"
                          id="thank_link"
                          class="btn custom_btn"
@@ -141,23 +137,19 @@
             <div class="bott_form_cont" id="sec_formcont">
               <div class="request-meeting"> <a href="#request_meeting" class="btn link_btn">I want this!</a> </div>
               <div class="request-specifics" id="request_meeting">
-                <form action="http://toggl.us9.list-manage1.com/subscribe/posts" method="POST">
-                  <input type="hidden" name="u" value="ec2d9851fdb4dd58762140aea">
-                  <input type="hidden" name="id" value="065a1dea01">
+                <form action="https://meet.toggl.com/signup-business" method="POST">
                   <input placeholder="Enter your email here"
                          type="text"
                          autocapitalize="off"
                          autocorrect="off"
-                         name="MERGE0"
-                         id="MERGE0"
+                         name="email"
+                         id="email"
                          size="25"
                          value=""
                          class="botm_email">
-                  <input type="text"
-                         name="b_ec2d9851fdb4dd58762140aea_065a1dea01"
-                         tabindex="-1"
-                         value=""
-                         style="display: none;">
+                  <input type="hidden"
+                         name="list"
+                         value="I want this!">
                   <input type="submit"
                          id="thank_link_sec"
                          class="btn custom_btn"
@@ -198,20 +190,40 @@ $(document).ready(function(e) {
     $(this).hide();
   });
 
+  $.fn.serializeObject = function()
+  {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+          if (o[this.name] !== undefined) {
+              if (!o[this.name].push) {
+                  o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+          } else {
+              o[this.name] = this.value || '';
+          }
+      });
+      return o;
+  };
+
   function convertToAjax($form, $toHide, $toShow) {
     function handleFormSubmit(e, cb) {
       e.preventDefault();
       e.stopPropagation();
+
       var method = $form.attr('method')
       var url = $form.attr('action')
 
-      url += '?c=?';
-      console.log($form.serialize());
+      var data = $form.serializeObject()
+      console.log(data)
+
       $.ajax({
-        url: url.replace('/post', '/post-json'),
+        url: url,
+        dataType: 'json',
+        contentType: 'application/json; charset=UTF-8',
+        data: data,
         type: method,
-        data: $form.serialize(),
-        dataType: 'jsonp',
         success: function(resp) {
           cb(null, resp);
         },
