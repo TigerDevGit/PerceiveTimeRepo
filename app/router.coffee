@@ -1,6 +1,7 @@
-Backbone = require 'backbone'
-$        = require 'jquery'
-_        = require 'lodash'
+Backbone   = require 'backbone'
+$          = require 'jquery'
+_          = require 'lodash'
+parseQuery = require './lib/parse-query'
 
 currentView = null
 renderPage = (Page, paramsObj) ->
@@ -25,7 +26,8 @@ Router = class Router extends Backbone.Router
       'tools(/)': -> renderPage require './views/page/tools'
       'legal/privacy(/)': -> renderPage require './views/page/privacy'
       'legal/terms(/)': -> renderPage require './views/page/terms'
-      'forgot-password(/)': -> renderPage require './views/page/forgot-password'
+      'forgot-password(/)': (params) ->
+        renderPage(require('./views/page/forgot-password'), parseQuery(params))
       'unsubscribe/:type/:token(/)': 'showUnsubscribe'
       'reset_password/:token': 'showResetPassword'
       'signup(/:invitationCode)': 'showSignup'
@@ -46,14 +48,7 @@ Router = class Router extends Backbone.Router
     renderPage Signup, { invitationCode }
 
   showLogin: (qs) ->
-    query = if qs
-      _.reduce(qs.split('&'), (memo, c) ->
-        [key, value] = c.split('=')
-        memo[key and decodeURIComponent(key)] =
-          value and decodeURIComponent(value)
-        memo
-      , {})
-    else {}
+    query = parseQuery(qs)
     indexView = renderPage require './views/page/index'
 
     renderLogin = ->
