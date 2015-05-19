@@ -1,12 +1,14 @@
 {
   "name": "toggl-next-website",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "test": "gulp test"
   },
   "browserify": {
-    "transform": ["browserify-shim"]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "browser": {
     "devtools-detect": "./node_modules/devtools-detect/devtools-detect.js",
