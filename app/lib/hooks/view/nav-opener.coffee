@@ -5,11 +5,11 @@ $ = require 'jquery'
 # Clicking on .nav-opener toggles 'nav-visible' class on the html element,
 # when the html element has this class, main navigation is displayed
 # in mobile view.
-module.exports = ($el) ->
-  $body = $ 'body'
-  $page = $ '.page'
-  $main = $ '.main-nav'
-  $btn = $el.find '.nav-opener'
+module.exports = (view) ->
+  $body = view.$ 'body'
+  $page = view.$ '.page'
+  $main = view.$ '.main-nav'
+  $btn = view.$ '.nav-opener'
 
   navOpenerClick = (e) ->
     e.stopPropagation()

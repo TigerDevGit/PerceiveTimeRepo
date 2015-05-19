@@ -1,6 +1,6 @@
-Modal = require './modal'
+ModalView = require './modal'
 
-class JobsPopup extends Modal
+class JobsPopup extends ModalView
   template: 'component/jobs-popup'
 
 

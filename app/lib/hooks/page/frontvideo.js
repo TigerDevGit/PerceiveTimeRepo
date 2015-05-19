@@ -17,13 +17,13 @@ function incrementSeenCount () {
 /**
  * Video playback for the homepage video.
  */
-module.exports = function($page, view) {
-  var video = $('.hero__background iframe').get(0),
+module.exports = function(view) {
+  var video = view.$('.hero__background iframe').get(0),
       player = $f(video),
-      firstTimerHeading = $('.hero-timer-heading.dynamic').get(0),
-      secondTimerHeading = $('.hero-timer-heading.dynamic').get(1),
-      timerSeconds = $('.hero-timer .seconds').get(0),
-      timerMilliseconds = $('.hero-timer .milliseconds').get(0),
+      firstTimerHeading = view.$('.hero-timer-heading.dynamic').get(0),
+      secondTimerHeading = view.$('.hero-timer-heading.dynamic').get(1),
+      timerSeconds = view.$('.hero-timer .seconds').get(0),
+      timerMilliseconds = view.$('.hero-timer .milliseconds').get(0),
       breakpoints = [
         {
           time: 0
@@ -160,7 +160,7 @@ module.exports = function($page, view) {
 
   function resize() {
     var $windowHeight = $(window).height();
-    var $videoHeight = $(".video").outerHeight();
+    var $videoHeight = view.$(".video").outerHeight();
     if(view.isAprilFools()) {
       var $windowWidth = $(window).width();
       if($windowWidth > 1450) {
@@ -171,7 +171,7 @@ module.exports = function($page, view) {
       var videoHeight = $windowWidth * videoRatio;
       if(windowRatio > videoRatio) {
         var videoWidth = ($windowHeight*1.07) / videoRatio;
-        $('.video .wrapper').css({
+        view.$('.video .wrapper').css({
           'width': videoWidth + 'px',
           'height': '107%',
           'left': '50%',
@@ -179,7 +179,7 @@ module.exports = function($page, view) {
           "transform" : "translateX(-50%)"
         });
       } else {
-        $('.video .wrapper').css({
+        view.$('.video .wrapper').css({
           'width': '100%',
           'height': videoHeight + 'px',
           'left': 0,
@@ -190,7 +190,7 @@ module.exports = function($page, view) {
     } else {
       var $scale = $windowHeight / $videoHeight * 1.01;
       if ($videoHeight <= $windowHeight) {
-        $(".video").css({
+        view.$(".video").css({
           "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
           "transform" : "scale("+$scale+") translateY(-50%)"
         });
@@ -199,11 +199,11 @@ module.exports = function($page, view) {
   }
 
   function hideTimer() {
-    $('.hero-timer').css({'display': 'none', 'opacity': 0});
+    view.$('.hero-timer').css({'display': 'none', 'opacity': 0});
   }
 
   function showTimer() {
-    $('.hero-timer').css({'display': 'block', 'opacity': 1});
+    view.$('.hero-timer').css({'display': 'block', 'opacity': 1});
   }
 
   function updateTimer() {
@@ -237,7 +237,7 @@ module.exports = function($page, view) {
     lastRunningTime = data.seconds;
 
     if (data.seconds > 0) {
-      $('.js-play-pause-controls').show();
+      view.$('.js-play-pause-controls').show();
     }
 
     if (!paused) {
@@ -356,8 +356,8 @@ module.exports = function($page, view) {
   }
 
   function togglePausePlayButtons (toggle) {
-    $('.video-pause-button').toggle(toggle);
-    $('.video-play-button').toggle(!toggle);
+    view.$('.video-pause-button').toggle(toggle);
+    view.$('.video-play-button').toggle(!toggle);
   }
 
   function detect_autoplay(){
@@ -376,7 +376,7 @@ module.exports = function($page, view) {
 
       heading.textContent = headingText;
 
-      $('.hero__background .video').hide();
+      view.$('.hero__background .video').hide();
     } else {
       player.api('setVolume', 0);
       player.api('play');
@@ -388,15 +388,15 @@ module.exports = function($page, view) {
   function handleVideoForceStart(event) {
     event.preventDefault();
     detect_autoplay();
-    $('.js-manual-video').hide();
-    $('.js-automatic-video').show();
+    view.$('.js-manual-video').hide();
+    view.$('.js-automatic-video').show();
   }
 
   function onDisposed() {
     running = false;
-    view.off('destroy pre-render', onDisposed)
+    view.off('remove pre-render', onDisposed)
   }
-  view.on('destroy pre-render', onDisposed);
+  view.on('remove pre-render', onDisposed);
 
   player.addEvent('ready', function() {
     player.addEvent('play', function () {
@@ -417,31 +417,31 @@ module.exports = function($page, view) {
 
     if ('ontouchstart' in document.body) {
       // Do not show play button for mobile devices
-      $('.js-manual-video').show();
-      $('.js-automatic-video').hide();
-      $('.seen-wrapper').hide();
+      view.$('.js-manual-video').show();
+      view.$('.js-automatic-video').hide();
+      view.$('.seen-wrapper').hide();
 
     } else if (Backbone.history.fragment == 'login') {
       incrementSeenCount();
-      $('.js-manual-video').show();
-      $('.js-automatic-video').hide();
+      view.$('.js-manual-video').show();
+      view.$('.js-automatic-video').hide();
     } else if (+$.cookie(COOKIE_VAL) > 9 && !view.isAprilFools()) {
       // If the user has seen the movie more than 9 times already
       // then lets just not show it
-      $('.js-manual-video').show();
-      $('.js-automatic-video').hide();
+      view.$('.js-manual-video').show();
+      view.$('.js-automatic-video').hide();
     } else {
-      $('.js-manual-video').hide();
+      view.$('.js-manual-video').hide();
       detect_autoplay();
       if(!view.isAprilFools()) incrementSeenCount();
     }
   });
 
 
-  $('.video-mute-button').on('click', handleMuteButtonClick);
-  $('.video-force-start').on('click', handleVideoForceStart);
-  $('.video-pause-button').on('click', handlePauseButtonClick);
-  $('.video-play-button').on('click', handlePlayButtonClick);
+  view.$('.video-mute-button').on('click', handleMuteButtonClick);
+  view.$('.video-force-start').on('click', handleVideoForceStart);
+  view.$('.video-pause-button').on('click', handlePauseButtonClick);
+  view.$('.video-play-button').on('click', handlePlayButtonClick);
 
   $(window).resize(resize);
   resize();

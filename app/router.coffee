@@ -3,11 +3,14 @@ $          = require 'jquery'
 _          = require 'lodash'
 parseQuery = require './lib/parse-query'
 
+$application = $('.application')
 currentView = null
 renderPage = (Page, paramsObj) ->
   $(window).scrollTop 0
-  currentView?.trigger 'destroy'
+  currentView?.remove()
   currentView = new Page(paramsObj).render()
+  $application.html(currentView.$el)
+  currentView.trigger('show');
 
 # Create a new backbone router with the routes specified
 Router = class Router extends Backbone.Router

@@ -1,6 +1,4 @@
-var $ = require('jquery');
-
-module.exports = function() {
+module.exports = function(view) {
   var secondsTracked = 0,
       interval,
       timerTimeElement
@@ -56,7 +54,7 @@ module.exports = function() {
   }
 
   function attachListeners() {
-    $('.timer__button').on('click', handleTimerButtonClick);
+    view.$('.timer__button').on('click', handleTimerButtonClick);
   }
 
   function handleTimerButtonClick(event) {
@@ -73,7 +71,7 @@ module.exports = function() {
   }
 
 
-  timerTimeElement = $('.timer__time');
+  timerTimeElement = view.$('.timer__time');
   startTimer();
   attachListeners();
 };
