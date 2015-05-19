@@ -221,7 +221,7 @@ $(document).ready(function(e) {
       $.ajax({
         url: url,
         contentType: 'application/json; charset=UTF-8',
-        data: data,
+        data: JSON.stringify(data),
         type: method,
         crossDomain: true,
         success: function(resp) {
