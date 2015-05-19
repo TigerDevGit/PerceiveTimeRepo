@@ -220,10 +220,10 @@ $(document).ready(function(e) {
 
       $.ajax({
         url: url,
-        dataType: 'json',
         contentType: 'application/json; charset=UTF-8',
         data: data,
         type: method,
+        crossDomain: true,
         success: function(resp) {
           cb(null, resp);
         },
