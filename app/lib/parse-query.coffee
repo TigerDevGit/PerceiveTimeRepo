@@ -1,5 +1,5 @@
 # Parses a QueryString as an Object
-parseQuery = (qs) ->
+parseQuery = (qs = '') ->
   qs = qs.slice(1) if qs[0] == '?'
   ret = {}
   for pair in qs.split '&'
