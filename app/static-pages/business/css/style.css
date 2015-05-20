@@ -131,6 +131,7 @@ p											{ font-size:18px; line-height:24px; color:#7f7f7f; padding-bottom:27
 .request-specifics input.botm_email{ color:#bebebe;}	
 
 .main_content		{ padding:64px 10px; background:url(../images/content-section--twitter-bg.jpg) center top; }
+.main_content .container   { max-width: 590px; }
 .main_content h2			{ font-family: 'DIN_Next'; font-weight: normal;  font-size:38px; line-height:40px; color:#f30c16; padding-bottom:40px; text-transform:uppercase;  text-align:center; }
 
 .main_content .post_list 	{}
