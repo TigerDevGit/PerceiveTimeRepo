@@ -89,14 +89,14 @@ p											{ font-size:18px; line-height:24px; color:#7f7f7f; padding-bottom:27
 .wrapper .logo embed , .wrapper .logo embed svg	{ cursor:pointer; } 
 
 .top_section .banner_content	{ /*padding:245px 0 320px;*/ text-align:center; position:relative;
-    top: 45%;
-    transform: translateY(-45%); }
-.banner_content h1				{ font-family: 'DIN_Next'; font-weight: bold;  font-size:60px; line-height:60px; color:#ffffff; /*padding-bottom:20px;*/  }
-.banner_content p				{ font-size:20px; line-height:26px; color:#fffefe; font-family: 'Open Sans', sans-serif; font-weight:300; padding:10px 0 28px 0;  }
+    top: 42%;
+    transform: translateY(-42%); }
+.banner_content h1				{ font-family: 'DIN_Next'; font-weight: bold;  font-size:70px; line-height:60px; color:#ffffff; /*padding-bottom:20px;*/  }
+.banner_content p				{ font-size:20px; line-height:28px; color:#fffefe; font-family: 'Open Sans', sans-serif; font-weight:300; padding:10px 0 36px 0;  }
 .banner_content .price_txt		{ font-size:16px; line-height:26px; color:#fffefe; font-family: 'Open Sans', sans-serif; font-weight:400; display:block; padding-top:12px;  }
 
 .top_form		{ position:relative; }
-.wrapper .btn  { animation-iteration-count: infinite;  animation-direction: alternate;   animation-delay: 1s;   animation: moveRight 0.3s cubic-bezier(0.26, 0.68, 0.76, 0.64) 2.5s both;  font-family: 'Open Sans', sans-serif; text-transform:uppercase; padding:22px 45px; background:#f30c16; font-size:22px; line-height:22px; color:#fffefe; display:inline-block; }
+.wrapper .btn  { animation-iteration-count: infinite;  animation-direction: alternate;   animation-delay: 1s;   animation: moveRight 0.3s cubic-bezier(0.26, 0.68, 0.76, 0.64) 2.5s both;  font-family: 'Open Sans', sans-serif; text-transform:uppercase; padding:22px 45px; background:#f30c16; font-size:20px; line-height:22px; color:#fffefe; display:inline-block; }
 
 .wrapper .btn:hover {
     background: none repeat scroll 0 0 #ce0009;
@@ -121,16 +121,16 @@ p											{ font-size:18px; line-height:24px; color:#7f7f7f; padding-bottom:27
     font-family: clearsans_thin,sans-serif;
     font-size: 22px; color:#fffefe;
     margin-right: 20px;
-    padding: 10px 5px 15px;
+    padding: 10px 14px 15px;
 	max-width:360px;
-    width: 100%; background:none; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; font-family: 'Open Sans', sans-serif; font-weight:400; text-transform:none; outline:none !important;
+    width: 100%; background:none; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; font-family: 'Open Sans', sans-serif; font-weight:300; text-transform:none; outline:none !important;
 	margin-bottom:10px;}
 .request-specifics input.email_txt::-webkit-input-placeholder { color:#fffefe; }
 .request-specifics input.email_txt::-moz-placeholder { color:#fffefe; } /* firefox 19+ */
 .request-specifics input.email_txt:-ms-input-placeholder { color:#fffefe; } /* ie */	
 .request-specifics input.botm_email{ color:#bebebe;}	
 
-.main_content		{ padding:50px 10px; background:url(../images/content-section--twitter-bg.jpg) center top; }
+.main_content		{ padding:64px 10px; background:url(../images/content-section--twitter-bg.jpg) center top; }
 .main_content h2			{ font-family: 'DIN_Next'; font-weight: normal;  font-size:38px; line-height:40px; color:#f30c16; padding-bottom:40px; text-transform:uppercase;  text-align:center; }
 
 .main_content .post_list 	{}
