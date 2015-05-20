@@ -89,8 +89,10 @@ p											{ font-size:18px; line-height:24px; color:#7f7f7f; padding-bottom:27
 .wrapper .logo embed , .wrapper .logo embed svg	{ cursor:pointer; } 
 
 .top_section .banner_content	{ /*padding:245px 0 320px;*/ text-align:center; position:relative;
-    top: 42%;
-    transform: translateY(-42%); }
+  top: 42%;
+  -webkit-transform: translateY(-42%);
+  -ms-transform: translateY(-42%); 
+  transform: translateY(-42%); }
 .banner_content h1				{ font-family: 'DIN_Next'; font-weight: bold;  font-size:70px; line-height:60px; color:#ffffff; /*padding-bottom:20px;*/  }
 .banner_content p				{ font-size:20px; line-height:28px; color:#fffefe; font-family: 'Open Sans', sans-serif; font-weight:300; padding:10px 0 36px 0;  }
 .banner_content .price_txt		{ font-size:16px; line-height:26px; color:#fffefe; font-family: 'Open Sans', sans-serif; font-weight:400; display:block; padding-top:12px;  }
