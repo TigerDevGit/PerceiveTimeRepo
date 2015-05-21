@@ -46,7 +46,7 @@
             </p>
 
             <div class="bott_form_cont" id="toppoup">
-              <div class="request-meeting"> <a href="#informed_box" class="btn link_btn">Keep me informed</a> </div>
+              <div class="request-meeting"> <a id="header-link-btn" href="#informed_box" class="btn link_btn">Keep me informed</a> </div>
               <div class="request-specifics" id="informed_box">
                 <form action="https://meet.toggl.com/signup-business" method="POST">
                   <input placeholder="Enter your email here"
@@ -207,6 +207,15 @@ $(document).ready(function(e) {
       });
       return o;
   };
+
+  $.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href)
+    return (results == null? null : results[1] || 0)
+  }
+
+  if ($.urlParam('app') === 'true') {
+    document.getElementById('header-link-btn').click()
+  }
 
   function convertToAjax($form, $toHide, $toShow) {
     function handleFormSubmit(e, cb) {
