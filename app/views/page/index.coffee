@@ -47,8 +47,8 @@ class IndexView extends View
     else if query.state == 'signup'
       return api
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())
-        .then (data) =>
-          if data.has_account
+        .then (response) =>
+          if response.has_account
             @redirectToApp()
           else
             api.auth.session response.data.api_token, 'api_token'
