@@ -187,6 +187,7 @@ $(document).ready(function(e) {
     e.preventDefault();
     var showme = $(this).attr('href');
     $(showme).fadeIn(500);
+    $(showme).find('#email').focus()
     $(this).hide();
   });
 
