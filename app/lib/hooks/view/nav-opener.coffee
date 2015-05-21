@@ -6,8 +6,8 @@ $ = require 'jquery'
 # when the html element has this class, main navigation is displayed
 # in mobile view.
 module.exports = (view) ->
-  $body = view.$ 'body'
-  $page = view.$ '.page'
+  $body = $ 'body'
+  $page = view.$el
   $main = view.$ '.main-nav'
   $btn = view.$ '.nav-opener'
 
