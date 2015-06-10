@@ -10,7 +10,7 @@ renderPage = (Page, paramsObj) ->
   currentView?.remove()
   currentView = new Page(paramsObj).render()
   $application.html(currentView.$el)
-  currentView.trigger('show');
+  currentView.trigger('show')
 
 # Create a new backbone router with the routes specified
 Router = class Router extends Backbone.Router
@@ -35,6 +35,7 @@ Router = class Router extends Backbone.Router
       'reset_password/:token': 'showResetPassword'
       'signup(/:invitationCode)': 'showSignup'
       'login(/)': 'showLogin'
+      'pricing(/)': 'showPricing'
     }, _.mapValues require('./landing-routes'), (params) ->
       -> renderPage require('./views/page/landing'), params
 
@@ -45,6 +46,10 @@ Router = class Router extends Backbone.Router
   showResetPassword: (token) ->
     ResetPassword = require './views/page/reset-password'
     renderPage ResetPassword, { token }
+
+  showPricing: ->
+    Pricing = require './views/page/pricing'
+    renderPage Pricing
 
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
