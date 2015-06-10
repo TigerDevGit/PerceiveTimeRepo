@@ -3174,3 +3174,10 @@ p.larger {
   transform: translateX(-50%);
 }
 
+.pricing-page #pricing {
+  padding-top: 150px;
+}
+
+.pricing-page .main-nav li a {
+  color: #fff;
+}
