@@ -385,11 +385,18 @@ module.exports = function(view) {
     }
   }
 
+  var MANUAL = 1
+  var AUTOMATIC = 2
+  function setVideoMode(mode) {
+    view.$('.js-automatic-video')[if mode is AUTOMATIC then 'show' else 'hide']();
+    view.$('.js-manual-video')[if mode is MANUAL then 'show' else 'hide']();
+    resize();
+  }
+
   function handleVideoForceStart(event) {
     event.preventDefault();
     detect_autoplay();
-    view.$('.js-manual-video').hide();
-    view.$('.js-automatic-video').show();
+    setVideoMode(AUTOMATIC);
   }
 
   function onDisposed() {
@@ -417,24 +424,23 @@ module.exports = function(view) {
 
     if ('ontouchstart' in document.body) {
       // Do not show play button for mobile devices
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
       view.$('.seen-wrapper').hide();
+      setVideoMode(MANUAL);
 
     } else if (Backbone.history.fragment == 'login') {
       incrementSeenCount();
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
+      setVideoMode(MANUAL);
     } else if (+$.cookie(COOKIE_VAL) > 9 && !view.isAprilFools()) {
       // If the user has seen the movie more than 9 times already
       // then lets just not show it
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
+      setVideoMode(MANUAL)
     } else {
       view.$('.js-manual-video').hide();
+      setVideoMode(AUTOMATIC);
       detect_autoplay();
       if(!view.isAprilFools()) incrementSeenCount();
     }
+    console.log('player ready')
   });
 
 
