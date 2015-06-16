@@ -7,15 +7,6 @@ module.exports = (api) ->
         contentType: 'application/json'
         data: JSON.stringify(user: data)
 
-  # Forgot a password functionality. Causes an email to be sent
-  # to the user with reset instructions.
-  forgot: (email) ->
-    return api.request 'post', 'lost_passwords',
-      processData: false
-      contentType: 'application/json'
-      data: JSON.stringify { email }
-
-
   # Initializes a google login
   initGoogleLogin: (remember) ->
     state = if remember then "login_remember" else "login"

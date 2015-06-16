@@ -30,7 +30,7 @@ class View extends Backbone.View
 
   initialize: ->
     @meta ?= DEFAULT_META_TAGS
-    @listenTo @model, 'change', @render
+    @listenTo @model, 'change:logged', @changeHeader
 
   remove: ->
     # There's no View::triggerMethod without Marionette
@@ -51,6 +51,10 @@ class View extends Backbone.View
     @postRender?()
     @scrollToAnchor()
     return this
+
+  changeHeader: (model, logged) ->
+    @$('.not-logged').toggle not logged
+    @$('.logged').toggle logged
 
   changeMetaTags: ->
     CUSTOM_META_CLASS = 'custom-meta-tag'
