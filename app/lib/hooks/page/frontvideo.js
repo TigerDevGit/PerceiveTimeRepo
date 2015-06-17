@@ -142,7 +142,7 @@ module.exports = function(view) {
     return function () {
       var context = scope || this;
 
-      var now = +new Date,
+      var now = +new Date(),
           args = arguments;
       if (last && now < last + threshhold) {
         // hold on to it
@@ -194,7 +194,7 @@ module.exports = function(view) {
           "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
           "transform" : "scale("+$scale+") translateY(-50%)"
         });
-      };
+      }
     }
   }
 
@@ -282,7 +282,7 @@ module.exports = function(view) {
           break;
           case 10:
             referenceDelta = 0;
-            hideTimer()
+            hideTimer();
           break;
           default:
             referenceTime = new Date().getTime();
@@ -332,7 +332,7 @@ module.exports = function(view) {
     }
   }
 
-  function handleMuteButtonClick(event) {
+  function handleMuteButtonClick(/*event*/) {
     var mute = this.classList.contains('active');
 
     this.classList.toggle('active');
@@ -385,16 +385,30 @@ module.exports = function(view) {
     }
   }
 
+  var MANUAL = 1;
+  var AUTOMATIC = 2;
+  function setVideoMode(mode) {
+    var $automaticVideo = view.$('.js-automatic-video');
+    var $manualVideo = view.$('.js-manual-video');
+
+    if(mode === AUTOMATIC) $automaticVideo.show();
+    else $automaticVideo.hide();
+
+    if(mode === MANUAL) $manualVideo.show();
+    else $manualVideo.hide();
+
+    resize();
+  }
+
   function handleVideoForceStart(event) {
     event.preventDefault();
     detect_autoplay();
-    view.$('.js-manual-video').hide();
-    view.$('.js-automatic-video').show();
+    setVideoMode(AUTOMATIC);
   }
 
   function onDisposed() {
     running = false;
-    view.off('remove pre-render', onDisposed)
+    view.off('remove pre-render', onDisposed);
   }
   view.on('remove pre-render', onDisposed);
 
@@ -417,21 +431,19 @@ module.exports = function(view) {
 
     if ('ontouchstart' in document.body) {
       // Do not show play button for mobile devices
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
       view.$('.seen-wrapper').hide();
+      setVideoMode(MANUAL);
 
     } else if (Backbone.history.fragment == 'login') {
       incrementSeenCount();
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
+      setVideoMode(MANUAL);
     } else if (+$.cookie(COOKIE_VAL) > 9 && !view.isAprilFools()) {
       // If the user has seen the movie more than 9 times already
       // then lets just not show it
-      view.$('.js-manual-video').show();
-      view.$('.js-automatic-video').hide();
+      setVideoMode(MANUAL);
     } else {
       view.$('.js-manual-video').hide();
+      setVideoMode(AUTOMATIC);
       detect_autoplay();
       if(!view.isAprilFools()) incrementSeenCount();
     }
