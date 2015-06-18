@@ -1346,6 +1346,7 @@ img.scroll-revealed {
 }
 
 .signup-form__info, .signup-form__error {
+  display: none;
   color: white;
   font-size: 14px;
   padding: 23px 26px;

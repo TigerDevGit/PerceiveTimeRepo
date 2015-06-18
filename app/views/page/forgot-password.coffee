@@ -18,12 +18,12 @@ class ForgotPasswordView extends View
     @attributes = {query}
 
   showInfo: (msg) =>
-    @infoMessage.html(msg).show()
-    @errorMessage.hide()
+    @errorMessage.fadeOut =>
+      @infoMessage.html(msg).fadeIn()
 
   showError: (msg) =>
-    @errorMessage.html(msg).show()
-    @infoMessage.hide()
+    @infoMessage.fadeOut =>
+      @errorMessage.html(msg).fadeIn()
 
   forgotSuccess: =>
     @showInfo 'An email containing instructions to reset your password has been sent.'
