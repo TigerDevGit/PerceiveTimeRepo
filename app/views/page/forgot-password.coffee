@@ -13,10 +13,6 @@ class ForgotPasswordView extends View
   events:
     'submit': 'forgotPassword'
 
-  initialize: (query) ->
-    super
-    @attributes = {query}
-
   showInfo: (msg) =>
     @errorMessage.fadeOut =>
       @infoMessage.html(msg).fadeIn()
