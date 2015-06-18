@@ -1345,13 +1345,21 @@ img.scroll-revealed {
   margin: 0 auto;
 }
 
-.signup-form__error {
-  background: #f30c16;
+.signup-form__info, .signup-form__error {
+  display: none;
   color: white;
   font-size: 14px;
   padding: 23px 26px;
   margin-bottom: 12px;
   -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.signup-form__info {
+  background: #999999;
+}
+
+.signup-form__error {
+  background: #f30c16;
 }
 
 .signup-form__field {
