@@ -17,11 +17,16 @@ class ForgotPasswordView extends View
     super
     @attributes = {query}
 
+  showInfo: (msg) =>
+    @infoMessage.html(msg).show()
+    @errorMessage.hide()
+
   showError: (msg) =>
     @errorMessage.html(msg).show()
+    @infoMessage.hide()
 
   forgotSuccess: =>
-    @showError 'An email containing instructions to reset your password has been sent.'
+    @showInfo 'An email containing instructions to reset your password has been sent.'
 
   forgotError: (err) =>
     @showError switch err.responseText
@@ -53,6 +58,7 @@ class ForgotPasswordView extends View
 
   postRender: ->
     setTimeout => @$el.find("[name=email]").select()
+    @infoMessage  = @$ '.signup-form__info'
     @errorMessage = @$ '.signup-form__error'
     @submitButton = @$ '.signup-form__submit button'
 
