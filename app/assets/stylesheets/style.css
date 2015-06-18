@@ -2035,7 +2035,7 @@ img.scroll-revealed {
   font-weight: 300;
   color: #fff;
   position: relative;
-  cursor: default;
+  cursor: pointer;
 }
 
 .pricing__block--label {
@@ -2055,7 +2055,7 @@ img.scroll-revealed {
   -o-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  cursor: default;
+  /*cursor: default;*/
 }
 
 .pricing__block--business .pricing__block--header {
@@ -2102,7 +2102,7 @@ img.scroll-revealed {
   font-size: 13px;
   line-height: 32px;
   color: #393939;
-  cursor: default;
+  cursor: pointer;
 }
 .pricing__block li._bold {
   font-weight: 600;
@@ -2129,7 +2129,7 @@ img.scroll-revealed {
   color: #747474;
   font-weight: 600;
   margin: 23px 0 0 0;
-  cursor: default;
+  cursor: pointer;
 }
 .pricing__block--price span {
   color: #393939;
