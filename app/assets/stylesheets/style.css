@@ -2009,9 +2009,21 @@ img.scroll-revealed {
   /*padding: 30px 0 30px 30px;*/
   background: #fff;
   -webkit-font-smoothing: subpixel-antialiased;
+
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+  transition: all 300ms ease;
 }
 .pricing__block:nth-child(2) {
   margin: 0 20px;
+}
+
+.pricing__block:hover {
+  -webkit-box-shadow: 0 0 20px rgba(65,65,65,.2);
+  -moz-box-shadow: 0 0 20px rgba(65,65,65,.2);
+  box-shadow: 0 0 20px rgba(65,65,65,.2);
 }
 
 .pricing__block--header {
@@ -2023,6 +2035,7 @@ img.scroll-revealed {
   font-weight: 300;
   color: #fff;
   position: relative;
+  cursor: default;
 }
 
 .pricing__block--label {
@@ -2116,6 +2129,7 @@ img.scroll-revealed {
   color: #747474;
   font-weight: 600;
   margin: 23px 0 0 0;
+  cursor: default;
 }
 .pricing__block--price span {
   color: #393939;
@@ -2177,7 +2191,7 @@ img.scroll-revealed {
   }
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 767px) {
   .pricing h1 {
     font-size: 37px;
   }
@@ -2268,12 +2282,16 @@ img.scroll-revealed {
 
   .pricing__footnote {
     font-size: 11px;
+    padding: 0 10px;
   }
 }
 @media screen and (max-width: 509px) {
   .pricing__block ul,
   .pricing__block.pricing__block--free ul {
     padding: 21px 25px 0 25px;
+  }
+  .pricing-page #pricing {
+    padding-top: 90px;
   }
 }
 @media screen and (max-width: 479px) {
@@ -2290,6 +2308,9 @@ img.scroll-revealed {
     -webkit-column-gap: 0px;
     column-count: 1; 
     column-gap: 0px;
+  }
+  .pricing__footnote {
+    padding: 0 15px;
   }
 }
 
@@ -3387,6 +3408,11 @@ p.larger {
 
 .pricing-page #pricing {
   padding-top: 150px;
+}
+@media screen and (max-width: 479px) {
+  .pricing-page #pricing {
+    padding-top: 90px;
+  }
 }
 
 /*.pricing-page .main-nav li a {
