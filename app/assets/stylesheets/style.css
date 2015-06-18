@@ -2133,12 +2133,12 @@ img.scroll-revealed {
   padding: 21px 0 0 0;
 }
 .pricing__button .cta-button {
-  background: #F2F2F2;
+  background: transparent;
   font-size: 15px;
   color: #f30c16;
   padding: 19px 0 17px 0;
   width: 274px;
-  font-weight: 700;
+  font-weight: 400;
 }
 .pricing__button .cta-button:after,
 .pricing__button .cta-button:hover:after {
