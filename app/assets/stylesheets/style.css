@@ -2021,9 +2021,9 @@ img.scroll-revealed {
 }
 
 .pricing__block:hover {
-  -webkit-box-shadow: 0 0 20px rgba(65,65,65,.2);
-  -moz-box-shadow: 0 0 20px rgba(65,65,65,.2);
-  box-shadow: 0 0 20px rgba(65,65,65,.2);
+  -webkit-box-shadow: 0 0 20px rgba(65,65,65,.3);
+  -moz-box-shadow: 0 0 20px rgba(65,65,65,.3);
+  box-shadow: 0 0 20px rgba(65,65,65,.3);
 }
 
 .pricing__block--header {
