@@ -22,6 +22,8 @@
     "Base64": "^0.3.0",
     "backbone": "git+https://github.com/jashkenas/backbone.git#8b46ffaf9148f65b631d8bfd4faa0f43468ee997",
     "bugsnag-js": "git://github.com/bugsnag/bugsnag-js#v2.4.7",
+    "custom-event-polyfill": "~0.2.1",
+    "devtools-detect": "~1.0.0",
     "es6-promise": "^2.0.1",
     "folderify": "^0.6.0",
     "handlebars": "^2.0.0",
@@ -32,9 +34,7 @@
     "lodash": "~3.2.0",
     "raf": "^2.0.4",
     "request": "^2.51.0",
-    "utf8": "^2.1.0",
-    "devtools-detect": "~1.0.0",
-    "custom-event-polyfill": "~0.2.1"
+    "utf8": "^2.1.0"
   },
   "devDependencies": {
     "brfs": "^1.3.0",
