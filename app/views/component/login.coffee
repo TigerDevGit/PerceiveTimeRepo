@@ -14,6 +14,7 @@ class LoginPopup extends ModalView
 
   googleLogin: ->
     form = formData @form
+    $.cookie('remember_me', data.remember_me)
     new API('TogglNext', null, null).user.initGoogleLogin(form.remember_me)
 
   redirectToApp: =>
@@ -32,6 +33,8 @@ class LoginPopup extends ModalView
     # Stop listening to model changes so the login form isn't rerendered before
     # the redirect.
     @stopListening(@model, 'change')
+
+    $.cookie('remember_me', data.remember_me)
 
     new API('TogglNext', null, null)
       .auth.session data.email, data.password, data.remember_me
