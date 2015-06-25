@@ -370,7 +370,7 @@ module.exports = (grunt) ->
     "usemin"
     "htmlmin"
     "compress"
-    "htmlSnapshot"
+    # "htmlSnapshot"
   ]
 
   grunt.registerTask "build:nosnapshot", [

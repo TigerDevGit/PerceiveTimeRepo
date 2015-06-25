@@ -54,6 +54,9 @@ class IndexView extends View
             api.auth.session response.data.api_token, 'api_token'
         .then @redirectToApp
         .catch (err) ->
+          if err?.responseText is "User with this email already exists\n"
+            err.responseText = err.responseText.slice(0, -1) # remove new line
+            err.responseText += " and it has 'Google Sign In' disabled.\n\nMore info: http://support.toggl.com/google-sign-in/"
           alert "Signup failed. " + err?.responseText
 
     else if query.state in ['login', 'login_remember']
