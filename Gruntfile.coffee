@@ -208,6 +208,14 @@ module.exports = (grunt) ->
         ]
 
     watch:
+      copy:
+        options: livereload: LIVERELOAD_PORT
+        files: [
+          "<%= yeoman.app %>/{,**/}*.js",
+          "<%= yeoman.app %>/assets/{,**/}*",
+          "<%= yeoman.app %>/static-pages/**/*",
+        ]
+        tasks: [ "copy" ]
       coffee:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/{,**/}*.coffee"
