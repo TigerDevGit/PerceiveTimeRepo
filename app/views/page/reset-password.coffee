@@ -53,7 +53,7 @@ class ResetPasswordView extends View
       error: @resetError
 
   showInvalidTokenError: =>
-    @showError "Invalid token. Will redirect to index page in 5seconds"
+    @showError "Invalid token. Will redirect to index page in 5 seconds"
     setTimeout (-> document.location = '/'), 5000
 
   preRender: ->
