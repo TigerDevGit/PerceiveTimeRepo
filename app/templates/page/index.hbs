@@ -37,7 +37,10 @@
     </section>
 
   </div>
-  <a href="{{#if logged}}/app{{ else }}/signup{{/if}}" class="cta-button cta-button--filled {{#if logged}}js-redirect-to-app{{/if}} js-ripple-button" ga-track="signup, home_click">Start tracking</a>
+
+  <a href="/app" class="logged cta-button cta-button--filled js-redirect-to-app js-ripple-button" ga-track="signup, home_click">Start tracking</a>
+  <a href="/signup" class="not-logged cta-button cta-button--filled js-ripple-button" ga-track="signup, home_click">Start tracking</a>
+
   <div class="js-play-pause-controls" style="display: none;">
     <div class="video-pause-button" style="display:none;">
       <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="white">

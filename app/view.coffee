@@ -30,7 +30,7 @@ class View extends Backbone.View
 
   initialize: ->
     @meta ?= DEFAULT_META_TAGS
-    @listenTo @model, 'change:logged', @changeHeader
+    @listenTo @model, 'change:logged', @updateLogged
 
   remove: ->
     # There's no View::triggerMethod without Marionette
@@ -52,7 +52,7 @@ class View extends Backbone.View
     @scrollToAnchor()
     return this
 
-  changeHeader: (model, logged) ->
+  updateLogged: (model, logged) ->
     @$('.not-logged').toggle not logged
     @$('.logged').toggle logged
 
