@@ -10,7 +10,7 @@ class ResetPasswordView extends View
   initialize: ({@token}) -> super
 
   events:
-    'submit': 'resetPassword'
+    submit: 'resetPassword'
 
   showError: (msg) =>
     @errorMessage.html(msg).show()
@@ -27,7 +27,7 @@ class ResetPasswordView extends View
   loginErr: (err) =>
     @showError err?.responseText || 'Couldn\'t log you in. Please try again manually!'
 
-  loginUser: (email)=>
+  loginUser: (email) =>
     data = formData @$el.find 'form'
     new API('dev', null, null)
       .auth.session email, data.password
@@ -52,17 +52,16 @@ class ResetPasswordView extends View
       success: @loginUser
       error: @resetError
 
-  showInvalidTokenError: ->
-    @showError "Invalid token. Will redirect to index page in 5seconds"
+  showInvalidTokenError: =>
+    @showError "Invalid token. Will redirect to index page in 5 seconds"
     setTimeout (-> document.location = '/'), 5000
 
   preRender: ->
     $.ajax
-      url: "/api/v8/is_valid_lost_password/#{@token}"
+      url: "/api/v9/me/lost_passwords/#{@token}"
       method: 'GET'
-      dataType: 'text'
       success: (@token) =>
-        @showInvalidTokenError() if +@token is 0
+      error: @showInvalidTokenError
 
   postRender: ->
     setTimeout => @$el.find("[name=password]").select()

@@ -1,5 +1,4 @@
 View               = require '../../view'
-API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
@@ -43,14 +42,18 @@ class ForgotPasswordView extends View
     return if @isPending()
     @updateStatus('pending')
 
-    new API('dev', null, null)
-      .user.forgot data.email
-      .then @forgotSuccess, @forgotError
-      .catch @forgotError
-      .then(
-        (=> @updateStatus('done')),
-        (=> @updateStatus('done'))
-      )
+    req = $.ajax
+      url: '/api/v9/me/lost_passwords'
+      method: 'POST'
+      contentType: 'application/json'
+      success: @forgotSuccess
+      error: @forgotError
+      data: JSON.stringify email: data.email
+
+    req.then(
+      (=> @updateStatus('done')),
+      (=> @updateStatus('done'))
+    )
 
   postRender: ->
     setTimeout => @$el.find("[name=email]").select()
