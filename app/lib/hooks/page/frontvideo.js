@@ -18,6 +18,20 @@ function incrementSeenCount () {
  * Video playback for the homepage video.
  */
 module.exports = function(view) {
+  view.on('video:load', function() {
+    attachToVideo(view);
+  });
+
+  view.on('render', function() {
+    resize(view);
+  });
+
+  view.on('show', function() {
+    resize(view);
+  });
+};
+
+function attachToVideo(view) {
   var video = view.$('.hero__background iframe').get(0),
       player = $f(video),
       firstTimerHeading = view.$('.hero-timer-heading.dynamic').get(0),
@@ -156,46 +170,6 @@ module.exports = function(view) {
         fn.apply(context, args);
       }
     };
-  }
-
-  function resize() {
-    var $windowHeight = $(window).height();
-    var $videoHeight = view.$(".video").outerHeight();
-    if(view.isAprilFools()) {
-      var $windowWidth = $(window).width();
-      if($windowWidth > 1450) {
-        $windowHeight = 805;
-      }
-      var videoRatio = 281/500;
-      var windowRatio = $windowHeight / $windowWidth;
-      var videoHeight = $windowWidth * videoRatio;
-      if(windowRatio > videoRatio) {
-        var videoWidth = ($windowHeight*1.07) / videoRatio;
-        view.$('.video .wrapper').css({
-          'width': videoWidth + 'px',
-          'height': '107%',
-          'left': '50%',
-          "-webkit-transform" : "translateX(-50%)",
-          "transform" : "translateX(-50%)"
-        });
-      } else {
-        view.$('.video .wrapper').css({
-          'width': '100%',
-          'height': videoHeight + 'px',
-          'left': 0,
-          "-webkit-transform" : "translateX(0)",
-          "transform" : "translateX(0)"
-        });
-      }
-    } else {
-      var $scale = $windowHeight / $videoHeight * 1.01;
-      if ($videoHeight <= $windowHeight) {
-        view.$(".video").css({
-          "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
-          "transform" : "scale("+$scale+") translateY(-50%)"
-        });
-      }
-    }
   }
 
   function hideTimer() {
@@ -397,7 +371,7 @@ module.exports = function(view) {
     if(mode === MANUAL) $manualVideo.show();
     else $manualVideo.hide();
 
-    resize();
+    resize(view);
   }
 
   function handleVideoForceStart(event) {
@@ -455,6 +429,46 @@ module.exports = function(view) {
   view.$('.video-pause-button').on('click', handlePauseButtonClick);
   view.$('.video-play-button').on('click', handlePlayButtonClick);
 
-  $(window).resize(resize);
-  resize();
-};
+  $(window).resize(resize.bind(null, view));
+  resize(view);
+}
+
+function resize(view) {
+  var $windowHeight = $(window).height();
+  var $videoHeight = view.$(".video").outerHeight();
+  if(view.isAprilFools()) {
+    var $windowWidth = $(window).width();
+    if($windowWidth > 1450) {
+      $windowHeight = 805;
+    }
+    var videoRatio = 281/500;
+    var windowRatio = $windowHeight / $windowWidth;
+    var videoHeight = $windowWidth * videoRatio;
+    if(windowRatio > videoRatio) {
+      var videoWidth = ($windowHeight*1.07) / videoRatio;
+      view.$('.video .wrapper').css({
+        'width': videoWidth + 'px',
+        'height': '107%',
+        'left': '50%',
+        "-webkit-transform" : "translateX(-50%)",
+        "transform" : "translateX(-50%)"
+      });
+    } else {
+      view.$('.video .wrapper').css({
+        'width': '100%',
+        'height': videoHeight + 'px',
+        'left': 0,
+        "-webkit-transform" : "translateX(0)",
+        "transform" : "translateX(0)"
+      });
+    }
+  } else {
+    var $scale = $windowHeight / $videoHeight * 1.01;
+    if ($videoHeight <= $windowHeight) {
+      view.$(".video").css({
+        "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
+        "transform" : "scale("+$scale+") translateY(-50%)"
+      });
+    }
+  }
+}

@@ -14,6 +14,24 @@ class IndexView extends View
     content: 'Get better at time management, increase small business revenues or easily manage employee timesheets. Best cloud based multi-platform timer.'
   ]
 
+  onShow: ->
+    # Inject video onto the page
+    html = @_videoHtml()
+    @$('.video .wrapper').html(html)
+    @$('.video .wrapper iframe').load => @trigger('video:load')
+
+  _videoHtml: ->
+    id = if @attributes.isAprilFoold
+      123713375
+    else 120347656
+
+    return "<iframe src=\"https://player.vimeo.com/video/#{id}?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0\"\
+                    frameborder=\"0\"\
+                    webkitallowfullscreen\
+                    mozallowfullscreen\
+                    allowfullscreen>\
+            </iframe>"
+
   events:
     'click .js-redirect-to-app': (e) ->
       return unless @model.get('logged')
@@ -28,6 +46,7 @@ class IndexView extends View
     document.location = '/app'
 
   initialize: ->
+    @on('show', => @onShow())
     super
     @attributes =
       videoDisabled: 'ontouchstart' of document.body
