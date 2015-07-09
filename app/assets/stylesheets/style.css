@@ -1682,6 +1682,10 @@ img.scroll-revealed {
   transition: opacity 300ms linear;
 }
 
+.team__member__background img[alt="Dunja Lazic"] {
+  padding-top: 25px;
+}
+
 .team__member__background .team__member__background__hover {
   opacity: 0;
 }
