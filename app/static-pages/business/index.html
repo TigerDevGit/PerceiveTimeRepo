@@ -183,6 +183,22 @@ $(document).ready(function(e) {
     $('.top_section').css({'height': vph});
   }
 
+  function addLogoOverlay(selector) {
+    var $content = $(selector);
+    var $overlay = $('<div/>').width(378).height(96).css({
+      position: 'absolute',
+      left: $content.offset().left,
+      top: $content.offset().top,
+      cursor: "pointer"
+    });
+
+    $overlay.appendTo('body').click(function () {
+      document.location = $content.attr('href');
+    });
+  }
+
+  addLogoOverlay('a.logo');
+
   $('.link_btn').click(function(e) {
     e.preventDefault();
     var showme = $(this).attr('href');
