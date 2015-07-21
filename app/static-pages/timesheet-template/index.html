@@ -13,9 +13,10 @@
   <meta name="viewport" id="viewport-meta" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link href="./includes/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./includes/sweetalert.css" media="all">
 
-  <script src="./includes/modernizr.min.js">
-  </script>
+  <script src="./includes/modernizr.min.js"></script>
+  <script src="./includes/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 
   <title>
     Free Timesheet Template
@@ -280,13 +281,11 @@
           window.external.AddFavorite(location.href,document.title);
         }
         else {
-          // webkit - safari/chrome
-          alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+          var key = (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL');
+          sweetAlert('To bookmark this page', 'Press ' + key + ' + D');
         }
-      }
-                            );
-    }
-     );
+      });
+    });
   </script>
   </body>
 </html>
