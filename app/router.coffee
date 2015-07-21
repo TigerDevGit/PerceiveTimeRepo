@@ -16,10 +16,8 @@ renderPage = (Page, paramsObj) ->
 Router = class Router extends Backbone.Router
 
   initialize: ->
-    @on 'route', =>
+    @on 'route', ->
       $(document.body).attr id: Backbone.history.fragment
-      # Track the pageviews with the new universal tracker
-      ga? 'send', 'pageview', @_getCurrentRoute()
 
   routes: ->
     _.extend {
@@ -70,14 +68,5 @@ Router = class Router extends Backbone.Router
     if indexView.model.get 'pending'
       indexView.model.on 'change', renderLogin
     else renderLogin()
-
-  # Returns the current route
-  # If the route is a regexp then it will return the regexp
-  _getCurrentRoute: =>
-    fragment = Backbone.history.fragment
-    routes   = _.keys @routes
-    _.find routes, (handler) =>
-      route = if _.isRegExp(handler) then handler else @_routeToRegExp(handler)
-      route.test fragment
 
 module.exports = Router

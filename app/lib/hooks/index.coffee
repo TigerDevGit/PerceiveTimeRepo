@@ -11,7 +11,6 @@ module.exports =
     require './view/ripple-button'
     require './view/nav-opener'
     require './view/login-popup'
-    require './view/ga-track'
     require './view/logout-button'
   ]
   page: {
