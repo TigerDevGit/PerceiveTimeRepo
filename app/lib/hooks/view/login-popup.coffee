@@ -5,6 +5,5 @@ module.exports = (view) ->
   LoginPopup = require '../../../views/component/login'
 
   view.$('.js-login-button').on 'click', (e) ->
-    ga 'send', 'pageview', 'login'
     e.preventDefault()
     new LoginPopup().render()
