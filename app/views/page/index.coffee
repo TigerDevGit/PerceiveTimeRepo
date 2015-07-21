@@ -1,8 +1,9 @@
+sweetAlert       = require 'sweetalert'
 jstimezonedetect = require 'jstimezonedetect'
-Api = require '../../lib/api'
-parseQuery = require '../../lib/parse-query'
-redirectToApp = require '../../lib/redirect-to-app'
-View = require '../../view'
+View             = require '../../view'
+Api              = require '../../lib/api'
+redirectToApp    = require '../../lib/redirect-to-app'
+parseQuery       = require '../../lib/parse-query'
 
 jstz = jstimezonedetect.jstz
 
@@ -74,7 +75,7 @@ class IndexView extends View
           if err?.responseText is "User with this email already exists\n"
             err.responseText = err.responseText.slice(0, -1) # remove new line
             err.responseText += " and it has 'Google Sign In' disabled.\n\nMore info: http://support.toggl.com/google-sign-in/"
-          alert "Signup failed. " + err?.responseText
+          sweetAlert "Signup failed. " + err?.responseText
 
     else if query.state in ['login', 'login_remember']
       remember = query.state is 'login_remember'
@@ -83,8 +84,8 @@ class IndexView extends View
         .then redirectToApp
         .catch (err) ->
           if err.status is 403
-            alert "Failed to login with Google, are you sure this is the right account?"
+            sweetAlert "Failed to login with Google. ", "are you sure this is the right account?", 'error'
           else
-            alert "Failed to login with Google. " + err?.responseText
+            sweetAlert "Failed to login with Google. ", err?.responseText, 'error'
 
 module.exports = IndexView
