@@ -2,6 +2,7 @@ View     = require '../../view'
 API      = require '../../lib/api'
 formData = require '../../lib/form-data'
 $        = require 'jquery'
+_        = require 'lodash'
 
 class ResetPasswordView extends View
   template: 'page/reset-password'
@@ -27,7 +28,7 @@ class ResetPasswordView extends View
   loginErr: (err) =>
     @showError err?.responseText || 'Couldn\'t log you in. Please try again manually!'
 
-  loginUser: (email) =>
+  loginUser: ({email}) =>
     data = formData @$el.find 'form'
     new API('dev', null, null)
       .auth.session email, data.password
@@ -40,15 +41,18 @@ class ResetPasswordView extends View
   resetPassword: (e) =>
     e.preventDefault()
     @hideError()
-    data = formData @$el.find 'form'
+    data = formData(@$el.find 'form')
+    data.user_id = @user_id
     match = data.password is data.passwordConfirm
     if not data.password?.length or not match
       @showError 'Passwords do not match'
       return
 
-    $.ajax '/api/v8/confirm_reset_password',
+    $.ajax '/api/v9/me/lost_passwords/confirm',
       type: 'POST'
-      data: data
+      data: JSON.stringify data
+      contentType: "application/json"
+      dataType: "json"
       success: @loginUser
       error: @resetError
 
@@ -60,7 +64,7 @@ class ResetPasswordView extends View
     $.ajax
       url: "/api/v9/me/lost_passwords/#{@token}"
       method: 'GET'
-      success: (@token) =>
+      success: ({@user_id}) =>
       error: @showInvalidTokenError
 
   postRender: ->
