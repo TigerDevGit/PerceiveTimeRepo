@@ -25,7 +25,7 @@ Router = class Router extends Backbone.Router
       'features(/)': -> renderPage require './views/page/features'
       'about(/)': -> renderPage require './views/page/about'
       'tools(/)': -> renderPage require './views/page/tools'
-      'legal/privacy(/)': -> renderPage require './views/page/privacy'
+      'legal/privacy(/)': 'showPrivacy'
       'legal/terms(/)': 'showTos'
       'forgot-password(/)': -> renderPage require './views/page/forgot-password'
       'unsubscribe/:type/:token(/)': 'showUnsubscribe'
@@ -57,6 +57,11 @@ Router = class Router extends Backbone.Router
     { simple } = parseQuery(qs)
     TermsPage = require './views/page/terms'
     renderPage TermsPage, { simple }
+
+  showPrivacy: (qs) ->
+    { simple } = parseQuery qs
+    PrivacyPage = require './views/page/privacy'
+    renderPage PrivacyPage, { simple }
 
   showLogin: (qs) ->
     query = parseQuery(qs)
