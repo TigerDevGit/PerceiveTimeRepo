@@ -1,4 +1,7 @@
-{{> 'header' }}
+{{#unless simple}}
+  {{> 'header' }}
+{{/unless}}
+
 <section class="hero hero--textpage hero--dynamic-height">
   <div class="hero__content cf">
     <h1>Terms of service</h1>
@@ -215,4 +218,7 @@
 
   <p>Last revised: January 19, 2014</p>
 </section>
-{{> 'footer' }}
+
+{{#unless simple}}
+  {{> 'footer' }}
+{{/unless}}

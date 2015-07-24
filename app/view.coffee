@@ -27,6 +27,7 @@ DEFAULT_META_TAGS = [{
 class View extends Backbone.View
   className: -> 'page'
   model: require './lib/user-state-model'
+  attributes: {}
 
   initialize: ->
     @meta ?= DEFAULT_META_TAGS
