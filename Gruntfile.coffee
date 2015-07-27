@@ -284,6 +284,7 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/not-found/**/*'
         '!<%= yeoman.dist %>/under-maintenance/**/*'
         '!<%= yeoman.dist %>/images/logo-big.png'
+        '!<%= yeoman.dist %>/images/logo.png'
         '!<%= yeoman.dist %>/images/share-img/**/*'
         '!<%= yeoman.dist %>/images/tools/**/*'
         '!<%= yeoman.dist %>/photos/**/*'
