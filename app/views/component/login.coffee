@@ -2,6 +2,7 @@ ModalView          = require './modal'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+redirectToApp      = require '../../lib/redirect-to-app'
 $                  = require 'jquery'
 _                  = require 'lodash'
 
@@ -22,7 +23,9 @@ class LoginPopup extends ModalView
     new API('TogglNext', null, null).user.initGoogleLogin(form.remember_me)
 
   redirectToApp: =>
-    document.location = @returnTo or '/app'
+    if @returnTo?
+      document.location = @returnTo
+    else redirectToApp()
 
   showError: (msg) ->
     @errorMessage.html(msg).show() unless @announcementMessage.is(':visible')

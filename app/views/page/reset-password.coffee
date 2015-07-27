@@ -1,8 +1,9 @@
-View     = require '../../view'
-API      = require '../../lib/api'
-formData = require '../../lib/form-data'
-$        = require 'jquery'
-_        = require 'lodash'
+View          = require '../../view'
+API           = require '../../lib/api'
+formData      = require '../../lib/form-data'
+redirectToApp = require '../../lib/redirect-to-app'
+$             = require 'jquery'
+_             = require 'lodash'
 
 class ResetPasswordView extends View
   template: 'page/reset-password'
@@ -32,11 +33,8 @@ class ResetPasswordView extends View
     data = formData @$el.find 'form'
     new API('dev', null, null)
       .auth.session email, data.password
-      .then @redirectToApp, @loginErr
+      .then redirectToApp, @loginErr
       .catch @loginErr
-
-  redirectToApp: ->
-    document.location = '/app'
 
   resetPassword: (e) =>
     e.preventDefault()

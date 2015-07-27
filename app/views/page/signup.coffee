@@ -2,6 +2,7 @@ View               = require '../../view'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+redirectToApp      = require '../../lib/redirect-to-app'
 $                  = require 'jquery'
 jstz               = require('jstimezonedetect').jstz
 _                  = require 'lodash'
@@ -49,20 +50,6 @@ class SignupView extends View
     @errorMessage.hide()
     @api.user.initGoogleSignup()
 
-  redirectToApp: ->
-    if /iPhone|iPod/i.test(navigator.userAgent) and
-       confirm('Redirecting to the App Store')
-      window.open('http://itunes.apple.com/us/app/toggl-timer/id885767775?mt=8', '_top')
-      setTimeout((-> document.location.href = ''), 1000)
-      return
-    else if /Android/i.test(navigator.userAgent) and
-       confirm("Our web application doesn't support mobile devices.
-               Would you like to be redirected to download our mobile App?")
-      window.open('https://play.google.com/store/apps/details?id=com.toggl.timer&hl=en', '_top')
-      setTimeout((-> document.location.href = ''), 1000)
-      return
-    document.location = '/app'
-
   submitSignup: (e) ->
     e.preventDefault()
 
@@ -91,7 +78,7 @@ class SignupView extends View
         'Please try using the \'Log in\' button above'
 
     @api.auth.session @data.email, @data.password
-      .then @redirectToApp, loginError
+      .then redirectToApp, loginError
       .catch loginError
 
   postRender: ->
