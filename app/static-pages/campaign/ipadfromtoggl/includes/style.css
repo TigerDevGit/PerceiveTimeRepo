@@ -159,7 +159,7 @@ p {
 	height: 870px;
 	z-index: 1;
 	overflow: hidden;
-	background: url("../images/kite2.jpg") no-repeat left top;
+	background: url("../images/bg-campaign.jpg") no-repeat left top;
 	background-size: cover;
 }
 
