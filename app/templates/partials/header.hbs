@@ -1,6 +1,6 @@
 <header>
   <div class="wrapper">
-    <a href="/" class="logo">Toggl</a>
+    <a href="/" class="logo" data-clicky="logo:nav_click">Toggl</a>
     <button class="nav-opener nav-opener--red"></button>
     {{log hideNav}}
     {{#unless hideNav }}
@@ -10,13 +10,13 @@
           <nav class="main-nav">
       {{/if}}
       <ol>
-        <li><a href="/features">Features</a></li>
-        <li><a href="/pricing">Pricing</a></li>
-        <li><a href="/about">About</a></li>
-        <li class="logged" style="display:none"><a href="#" class="js-logout-button">Log out</a></li>
-        <li class="logged" style="display:none"><a href="/app/" clickthrough class="cta-button cta-button--small cta-button--inline cta-button--filled">Go to tracker</a></li>
+        <li><a href="/features" data-clicky="features:nav_click">Features</a></li>
+        <li><a href="/pricing" data-clicky="pricing:nav_click">Pricing</a></li>
+        <li><a href="/about" data-clicky="about:nav_click">About</a></li>
+        <li class="logged" style="display:none"><a href="#" class="js-logout-button" data-clicky="logout:nav_click">Log out</a></li>
+        <li class="logged" style="display:none"><a href="/app/" clickthrough class="cta-button cta-button--small cta-button--inline cta-button--filled" data-clicky="go_to_tracker:nav_click">Go to tracker</a></li>
 
-        <li class="not-logged"><a href="#" class="js-login-button">Log in</a></li>
+        <li class="not-logged"><a href="#" class="js-login-button" data-clicky="login:nav_click">Log in</a></li>
         <li class="not-logged"><a href="/signup" class="cta-button cta-button--small cta-button--inline cta-button--filled cta-button--no-arrow js-ripple-button"  data-clicky="signup:nav_click">Sign up</a></li>
 
       </ol>
