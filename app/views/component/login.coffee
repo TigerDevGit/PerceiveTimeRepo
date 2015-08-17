@@ -10,6 +10,7 @@ class LoginPopup extends ModalView
 
   initialize: (options) ->
     @returnTo = options?.returnTo
+    @expired = options?.expired
     super
 
   setRememberMeCookie: (rememberMe) ->
@@ -92,6 +93,7 @@ class LoginPopup extends ModalView
     router = require('../../toggl').router
     @listenTo router, 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
 
+    @modal.find('.login-form__info').show() if @expired
     @showAnnouncement()
 
 _.extend(LoginPopup.prototype, pendingButtonMixin)
