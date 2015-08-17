@@ -2,6 +2,7 @@ Backbone   = require 'backbone'
 $          = require 'jquery'
 _          = require 'lodash'
 parseQuery = require './lib/parse-query'
+redirectToApp = require './lib/redirect-to-app'
 
 $application = $('.application')
 currentView = null
@@ -50,9 +51,20 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
+  showOverview: () ->
+    # Don't show `Overview` page to mobile users, it is meant to be only for
+    # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
+    # kind of info.
+    if redirectToApp.hasMobileApp()
+      redirectToApp()
+    else
+      Overview = require './views/page/overview'
+      renderPage Overview
+
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
-    renderPage Signup, { invitationCode }
+    page = renderPage Signup, { invitationCode }
+    @listenTo page, 'login:success', @showOverview
 
   showTos: (qs) ->
     { simple } = parseQuery(qs)

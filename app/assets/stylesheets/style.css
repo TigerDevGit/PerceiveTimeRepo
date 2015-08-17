@@ -3526,3 +3526,24 @@ p.larger {
   text-transform: uppercase;
   font-family: 'DIN Next', sans-serif;
 }
+
+.overview-page .hero__content p {
+  margin-top: -10px;
+  font-size: 20px;
+}
+
+.overview-page .content-section--centered {
+  padding-top: 25px;
+}
+
+.overview-page .cta-button {
+  margin-top: 17px;
+  margin-bottom: -8px; /* js-ripple-button's overflow: hidden rule is pushing the button upwards */
+}
+
+@media screen and (max-width: 580px) {
+  .overview-page .hero__content p {
+    padding-top: 20px;
+    font-size: 16px;
+  }
+}

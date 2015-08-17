@@ -2,7 +2,6 @@ View               = require '../../view'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
-redirectToApp      = require '../../lib/redirect-to-app'
 $                  = require 'jquery'
 jstz               = require('jstimezonedetect').jstz
 _                  = require 'lodash'
@@ -73,13 +72,17 @@ class SignupView extends View
       )
 
   login: =>
+    loginSuccess = =>
+      @trigger 'login:success'
+
     loginError = (err) =>
       @showError err?.responseText or 'Failed to log-in<br />'+
         'Please try using the \'Log in\' button above'
 
     @api.auth.session @data.email, @data.password
-      .then redirectToApp, loginError
+      .then loginSuccess, loginError
       .catch loginError
+
 
   postRender: ->
     @errorMessage = @$ '.signup-form__error'

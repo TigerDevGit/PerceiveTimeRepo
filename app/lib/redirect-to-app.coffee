@@ -14,3 +14,7 @@ exports = module.exports = ->
       setTimeout((-> document.location.href = ''), 1000)
       return
     document.location = '/app'
+
+exports.hasMobileApp = ->
+    /iPhone|iPod|Android/i.test(navigator.userAgent)
+
