@@ -53,7 +53,13 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
-  showOverview: ->
+  getObmData: ->
+    new API('TogglNext', null, null, '/api/v9')
+    .experiments.obmData()
+    .then @showOverview
+    .catch (err) -> @showOverview(null)
+
+  showOverview: (obmData) ->
     # Don't show `Overview` page to mobile users, it is meant to be only for
     # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
     # kind of info.
@@ -61,20 +67,21 @@ Router = class Router extends Backbone.Router
       return redirectToApp()
 
     userState = require './lib/user-state-model'
-    if data = userState.get('data')
-      obm = new Obm(data: data.obm, api: new API('TogglNext', data.api_token))
-      if obm.isIncluded(72)
-        ObmU72Overview = require './views/page/obmu72-overview'
-        renderPage(ObmU72Overview, obm: obm)
+
+    if data = userState.get('data') and obmData
+      obm = new Obm(data: obmData, api: new API('TogglNext', data.api_token))
+      if obm.isIncluded(79)
+        ObmU79Overview = require './views/page/obmu79-overview'
+        renderPage(ObmU79Overview, obm: obm)
         return
 
-    # no overview unless obm 72 included group
+    # no overview unless obm 79 included group
     redirectToApp()
 
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
     page = renderPage Signup, { invitationCode }
-    @listenTo page, 'login:success', @showOverview
+    @listenTo page, 'login:success', @getObmData
 
   showTos: (qs) ->
     { simple } = parseQuery(qs)
