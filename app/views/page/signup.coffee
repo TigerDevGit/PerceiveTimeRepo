@@ -1,5 +1,6 @@
 View               = require '../../view'
 API                = require '../../lib/api'
+Obm                = require '../../lib/obm'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
@@ -49,8 +50,13 @@ class SignupView extends View
     @errorMessage.hide()
     @api.user.initGoogleSignup()
 
-  redirectToApp: ->
-    document.location = '/app'
+  redirectToApp: ({ data } = {}) =>
+    data = data?.obm or {}
+    obm = new Obm { data, @api }
+    if obm.isIncluded 62
+      @trigger 'obm62:included', obm
+    else
+      document.location = '/app'
 
   submitSignup: (e) ->
     e.preventDefault()

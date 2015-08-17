@@ -11,6 +11,7 @@ renderPage = (Page, paramsObj) ->
   currentView = new Page(paramsObj).render()
   $application.html(currentView.$el)
   currentView.trigger('show')
+  currentView
 
 # Create a new backbone router with the routes specified
 Router = class Router extends Backbone.Router
@@ -49,9 +50,14 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
+  showObm62: (obm) ->
+    Obm62 = require './views/page/overview-obm62'
+    renderPage Obm62, { obm }
+
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
-    renderPage Signup, { invitationCode }
+    page = renderPage Signup, { invitationCode }
+    @listenTo page, 'obm62:included', @showObm62
 
   showTos: (qs) ->
     { simple } = parseQuery(qs)
