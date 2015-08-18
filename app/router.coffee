@@ -82,7 +82,7 @@ Router = class Router extends Backbone.Router
     # pending, just render (it won't be pending if a user goes from '/login' to
     # another page then back in history - then `change` would never be emitted)
     if indexView.model.get 'pending'
-      indexView.model.on 'change', renderLogin
+      @listenToOnce indexView.model, 'change', renderLogin
     else renderLogin()
 
 module.exports = Router
