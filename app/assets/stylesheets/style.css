@@ -3041,17 +3041,21 @@ img.scroll-revealed {
   margin: 0;
 }
 
-.login-form__error {
+.login-form__error, .login-form__info {
   background: #f30c16;
   color: white;
   font-size: 14px;
   padding: 23px 26px;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-.login-form__error a {
+.login-form__error a, .login-form__info a {
   text-decoration: underline;
   font-weight: 500;
   color: white;
+}
+
+.login-form__info {
+  background: #606060;
 }
 
 .login-form__field {

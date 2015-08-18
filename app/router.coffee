@@ -75,7 +75,7 @@ Router = class Router extends Backbone.Router
 
     renderLogin = ->
       LoginPopup = require './views/component/login'
-      new LoginPopup(returnTo: query.return_to).render()
+      new LoginPopup(returnTo: query.return_to, expired: query.expired).render()
 
     # Wait until the indexView's model 'change' event gets triggered (which
     # relies on an /api/v9/me/logged request to be emitted). If it's not
