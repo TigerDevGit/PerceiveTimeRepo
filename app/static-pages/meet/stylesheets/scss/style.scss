@@ -265,7 +265,10 @@ p { margin: 0 0 28px 0; padding: 0; }
     overflow: hidden;
     width: 485px; height: 485px; float: left; background: white;
     &.grid-right { float: right; }
-    img { display: block; }
+    img {
+      display: block;
+      &.wide-picture { max-height: 100%; max-width: none }
+    }
     .inner { display: table; width: 100%; }
     .row { display: table-row; }
     .content {
