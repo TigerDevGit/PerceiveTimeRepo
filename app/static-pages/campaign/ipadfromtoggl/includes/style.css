@@ -103,11 +103,6 @@ p {
 	border-radius: 1px;
 }
 
-.btn:before {
-	content: url("../images/down_arr_white.png");
-	display: none;
-}
-
 .btn:after {
 	content: " ›";
 	vertical-align: 1px;
@@ -502,6 +497,11 @@ p.narrow{
 
 #feedwrap{
 	text-align: center;
+}
+
+#feedwrap iframe {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #bh{
