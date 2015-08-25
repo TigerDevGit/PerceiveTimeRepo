@@ -2,7 +2,7 @@ Backbone = require 'Backbone'
 clicky = require 'clicky-loader'
 $ = require 'jquery'
 
-clicky.init 100857897
+clicky.init(100857897)
 
 DATA_KEY = '[data-clicky]'
 
@@ -12,3 +12,8 @@ $(document).on 'click', DATA_KEY, (e) ->
   title = action[0]
   type  = action[1]
   clicky.log url, title, type
+
+DATA_GOAL_KEY = '[data-clicky-goal]'
+$(document).on 'click', DATA_GOAL_KEY, (e) ->
+  goal = $(e.currentTarget).closest(DATA_GOAL_KEY).data('clicky-goal')
+  clicky.goal(goal)
