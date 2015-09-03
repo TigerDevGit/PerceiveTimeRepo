@@ -11,6 +11,7 @@ renderPage = (Page, paramsObj) ->
   currentView = new Page(paramsObj).render()
   $application.html(currentView.$el)
   currentView.trigger('show')
+  currentView
 
 # Create a new backbone router with the routes specified
 Router = class Router extends Backbone.Router
