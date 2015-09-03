@@ -2,6 +2,7 @@ View               = require '../../view'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
+redirectToApp      = require '../../lib/redirect-to-app'
 $                  = require 'jquery'
 jstz               = require('jstimezonedetect').jstz
 _                  = require 'lodash'
@@ -49,9 +50,6 @@ class SignupView extends View
     @errorMessage.hide()
     @api.user.initGoogleSignup()
 
-  redirectToApp: ->
-    document.location = '/app'
-
   submitSignup: (e) ->
     e.preventDefault()
 
@@ -80,7 +78,7 @@ class SignupView extends View
         'Please try using the \'Log in\' button above'
 
     @api.auth.session @data.email, @data.password
-      .then @redirectToApp, loginError
+      .then redirectToApp, loginError
       .catch loginError
 
   postRender: ->

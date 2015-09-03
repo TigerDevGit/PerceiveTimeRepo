@@ -1,6 +1,7 @@
 jstimezonedetect = require 'jstimezonedetect'
 Api = require '../../lib/api'
 parseQuery = require '../../lib/parse-query'
+redirectToApp = require '../../lib/redirect-to-app'
 View = require '../../view'
 
 jstz = jstimezonedetect.jstz
@@ -36,14 +37,11 @@ class IndexView extends View
     'click .js-redirect-to-app': (e) ->
       return unless @model.get('logged')
       e.preventDefault()
-      document.location = '/app'
+      redirectToApp()
 
   isAprilFools: ->
     d = new Date()
     d.getMonth() is 3 and d.getDate() <= 8
-
-  redirectToApp: ->
-    document.location = '/app'
 
   initialize: ->
     @on('show', => @onShow())
@@ -68,10 +66,10 @@ class IndexView extends View
         .user.completeGoogleSignup(query.code, jstz.determine()?.name())
         .then (response) =>
           if response.has_account
-            @redirectToApp()
+            redirectToApp()
           else
             api.auth.session response.data.api_token, 'api_token'
-        .then @redirectToApp
+        .then redirectToApp
         .catch (err) ->
           if err?.responseText is "User with this email already exists\n"
             err.responseText = err.responseText.slice(0, -1) # remove new line
@@ -82,7 +80,7 @@ class IndexView extends View
       remember = query.state is 'login_remember'
       api
         .user.completeGoogleLogin query.code, remember
-        .then @redirectToApp
+        .then redirectToApp
         .catch (err) ->
           if err.status is 403
             alert "Failed to login with Google, are you sure this is the right account?"
