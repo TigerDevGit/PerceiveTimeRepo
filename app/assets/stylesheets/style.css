@@ -3438,3 +3438,86 @@ p.larger {
 /*.pricing-page .main-nav li a {
   color: #fff;
 }*/
+
+.smartbanner {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  line-height: 80px;
+  font-family: 'Open sans', 'Helvetica Neue', sans-serif;
+  background: #fff;
+  z-index: 9998;
+  overflow: hidden;
+  border-bottom: 1px solid #999;
+}
+
+.sb-container {
+  margin: 0 auto;
+  white-space: nowrap;
+}
+
+.sb-close {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px 0 10px;
+  font-family: 'ArialRoundedMTBold', Arial;
+  font-size: 20px;
+  text-align: center;
+  color: #888;
+  text-decoration: none;
+  border: 0;
+  border-radius: 14px;
+  -webkit-border-radius: 14px;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.sb-close:active,
+.sb-close:hover {
+  color: #aaa;
+}
+
+.sb-app-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 57px;
+  height: 57px;
+  margin-right: 5px;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: #ddd 0 0 1px;
+  -webkit-box-shadow: #ddd 0 0 1px;
+}
+
+.sb-info {
+  display: inline-block;
+  vertical-align: middle;
+  width: 44%;
+  font-size: 12px;
+  line-height: 1.5em;
+  font-weight: bold;
+}
+
+.sb-title {
+  font-size:14px;
+  line-height: 1.4em;
+}
+
+.sb-cta {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  padding: 0 26px;
+  font-size: 14px;
+  line-height: 34px;
+  height: 34px;
+  text-align: center;
+  color: #fff;
+  background: #f30c16;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'DIN Next', sans-serif;
+}
