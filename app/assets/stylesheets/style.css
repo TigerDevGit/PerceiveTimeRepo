@@ -3511,8 +3511,9 @@ p.larger {
   bottom: 0;
   margin: auto 0;
   padding: 0 26px;
-  font-size: 14px;
-  line-height: 34px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 37px;
   height: 34px;
   text-align: center;
   color: #fff;
