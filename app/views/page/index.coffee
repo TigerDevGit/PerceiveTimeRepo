@@ -89,5 +89,3 @@ class IndexView extends View
             sweetAlert "Failed to login with Google.", (err?.responseText or "Unknown error"), 'error'
 
 module.exports = IndexView
-
-sweetAlert "Failed to login with Google. ", "are you sure this is the right account?", 'error'
