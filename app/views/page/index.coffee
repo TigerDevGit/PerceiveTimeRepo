@@ -75,7 +75,7 @@ class IndexView extends View
           if err?.responseText is "User with this email already exists\n"
             err.responseText = err.responseText.slice(0, -1) # remove new line
             err.responseText += " and it has 'Google Sign In' disabled.\n\nMore info: http://support.toggl.com/google-sign-in/"
-          sweetAlert "Signup failed. " + err?.responseText
+          sweetAlert "Signup failed.", (err?.responseText or "Unknown error")
 
     else if query.state in ['login', 'login_remember']
       remember = query.state is 'login_remember'
@@ -84,9 +84,9 @@ class IndexView extends View
         .then redirectToApp
         .catch (err) ->
           if err.status is 403
-            sweetAlert "Failed to login with Google. ", "are you sure this is the right account?", 'error'
+            sweetAlert "Failed to login with Google.", "Are you sure this is the right account?", 'error'
           else
-            sweetAlert "Failed to login with Google. ", err?.responseText, 'error'
+            sweetAlert "Failed to login with Google.", (err?.responseText or "Unknown error"), 'error'
 
 module.exports = IndexView
 
