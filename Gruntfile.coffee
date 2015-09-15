@@ -168,6 +168,12 @@ module.exports = (grunt) ->
         src: 'lib/**/*.js'
         dest: ".tmp/app"
 
+      sweetalertjs:
+        expand: true
+        cwd: "<%= yeoman.app %>/../node_modules/sweetalert/dist/"
+        src: "sweetalert.min.js"
+        dest: "<%= yeoman.dist %>/javascripts/"
+
       statics:
         expand: true
         cwd: "<%= yeoman.app %>/static-pages"
@@ -288,6 +294,8 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/images/share-img/**/*'
         '!<%= yeoman.dist %>/images/tools/**/*'
         '!<%= yeoman.dist %>/photos/**/*'
+        '!<%= yeoman.dist %>/stylesheets/sweetalert.css'
+        '!<%= yeoman.dist %>/javascripts/sweetalert.min.js'
       ]
 
     useminPrepare:
@@ -360,6 +368,7 @@ module.exports = (grunt) ->
     "coffee"
     "handlebars"
     "copy:appjs"
+    "copy:sweetalertjs"
     "browserify"
     "autoprefixer"
     "modernizr"
