@@ -194,7 +194,7 @@ $(function() {
         window.external.AddFavorite(location.href,document.title);
         } else { // webkit - safari/chrome
           // webkit - safari/chrome
-          var key = (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL');
+          var key = (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command' : 'CTRL');
           sweetAlert('Bookmark this page!', 'Press ' + key + ' + D');
         }
     });
