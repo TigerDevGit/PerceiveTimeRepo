@@ -53,6 +53,7 @@ $(document).on 'click', 'a[href^="/"]', (e) ->
 require('./lib/hooks/global/stretch')()
 require('./lib/hooks/global/hiring')()
 require('./lib/hooks/global/clicky')
+require('./lib/hooks/global/android-smart-app-banner')()
 
 # Notify prerender io that the page is ready to be served
 window.prerenderReady = true
