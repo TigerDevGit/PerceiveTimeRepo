@@ -713,3 +713,128 @@ body.stop-scrolling {
 
 .sweet-alert .sa-icon.sa-success .sa-line.sa-long {
   -ms-transform: rotate(-45deg) \9; }
+
+
+/* Sweet Alert theme for Toggl */
+
+.sweet-overlay {
+  background: rgba(10, 10, 10, 0.6);
+}
+
+.sweet-alert {
+  font-family: 'Open Sans', Arial, sans-serif;
+  padding: 24px;
+  border-radius: 0;
+  text-align: left;
+  width: 550px;
+}
+.sweet-alert h2 {
+  font-size: 20px;
+  color: #4f4f4f;
+  line-height: 24px;
+  margin: 17px 0;
+  text-align: left;
+}
+.sweet-alert p {
+  display: block;
+  color: #4f4f4f;
+  font-weight: normal;
+  margin: 8px 0;
+}
+.sweet-alert .sa-button-container {
+  text-align: right;
+  margin: 0 -10px -10px;
+}
+.sweet-alert button {
+  border: 0 !important;
+  border-radius: 0px;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  margin: 15px 0 0 5px;
+  position: relative;
+  color: #4bc800;
+  font-size: 13px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+.sweet-alert button.cancel:hover, .sweet-alert button.confirm:hover, .sweet-alert button:hover {
+  color: #2b9800;
+}
+
+.sweet-alert button.cancel, .sweet-alert button.confirm {
+  background: none !important;
+}
+
+.sweet-alert button:active, .sweet-alert button.cancel:active, .sweet-alert button.confirm:active {
+  box-shadow: none !important;
+  color: #2b9800;
+}
+.sweet-alert .sa-confirm-button-container {
+  display: inline;
+}
+.sweet-alert .sa-icon:not(.sa-custom) {
+  transform: scale(0.8);
+  margin-bottom: -10px;
+  margin-top: -10px;
+}
+.sweet-alert input {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #c9c9c9;
+  color: #222;
+  margin-bottom: 8px;
+  padding: 1px;
+  padding-bottom: 8px;
+  height: auto;
+  box-shadow: none;
+  margin: 10px 0;
+}
+.sweet-alert input:focus {
+  border: none;
+  border-bottom: 1px solid #4dc3ff;
+  box-shadow: inset 0 -1px 0 #4dc3ff;
+}
+.sweet-alert fieldset {
+  padding: 0;
+}
+.sweet-alert fieldset .sa-input-error {
+  display: none;
+}
+.sa-icon.sa-warning, .sa-icon.sa-info, .sa-icon.sa-success, .sa-icon.sa-error {
+  display: none !important;
+}
+.sweet-alert .sa-error-container {
+  display: none;
+  background: none;
+  height: auto;
+  padding: 0 24px;
+  margin: 0 -20px;
+  text-align: left;
+}
+.sweet-alert .sa-error-container.show {
+  padding: 0 24px;
+  display: block;
+}
+.sweet-alert .sa-error-container.show ~ fieldset input {
+  background: red;
+  border-bottom: 1px solid #ea4a46;
+  box-shadow: inset 0px 2px 1px rgba(128, 128, 128, 0.2);
+}
+.sweet-alert .sa-error-container .icon {
+  display: none;
+}
+.sweet-alert .sa-error-container p {
+  color: #ea4a46;
+  margin-top: 0;
+}
+
+
+.sweet-alert input {
+  display: none !important;
+}
+
+.sweet-alert fieldset {
+  margin: initial;
+  padding: initial;
+}
