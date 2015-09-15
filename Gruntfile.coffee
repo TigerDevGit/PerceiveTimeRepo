@@ -32,6 +32,7 @@ module.exports = (grunt) ->
     "es6-promise"
     "custom-event-polyfill"
     "devtools-detect"
+    "sweetalert"
   ]
 
   pkg = grunt.file.readJSON("package.json")
