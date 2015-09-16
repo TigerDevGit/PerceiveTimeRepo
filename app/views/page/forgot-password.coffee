@@ -25,7 +25,7 @@ class ForgotPasswordView extends View
 
   forgotError: (err) =>
     @showError switch err.responseText
-      when 'E-mail address does not exist\n'
+      when 'E-mail address does not exist'
         'Unknown email, please check that it\'s entered correctly!'
       else
         if err.responseText
