@@ -4,6 +4,7 @@ View             = require '../../view'
 Api              = require '../../lib/api'
 redirectToApp    = require '../../lib/redirect-to-app'
 parseQuery       = require '../../lib/parse-query'
+utils            = require '../../lib/utils'
 
 jstz = jstimezonedetect.jstz
 
@@ -72,10 +73,37 @@ class IndexView extends View
             api.auth.session response.data.api_token, 'api_token'
         .then redirectToApp
         .catch (err) ->
-          if err?.responseText is "User with this email already exists\n"
-            err.responseText = err.responseText.slice(0, -1) # remove new line
-            err.responseText += " and it has 'Google Sign In' disabled.\n\nMore info: http://support.toggl.com/google-sign-in/"
-          showAlert "Signup failed.", (err?.responseText or "Sorry about that, please try again or contact support@toggl.com.")
+          reason = err?.responseText
+
+          if reason?.match(/^OAuthError/)
+            # responseTexts coming from OAuth are weird. err.responseText
+            # could be: (yes, all that is the err.responseText)
+            #
+            # ```
+            # OAuthError: updateToken: 400 Bad Request {"error" :
+            # "invalid_grant","error_description" : "Code was already
+            # redeemed.”}
+            # ```
+            #
+            # so we extract the json object and we get a nicer error
+            # description/reason
+            #
+            json = reason.match(/{[\s\S]*}/)?[0]
+            if json?
+              err = JSON.parse json
+              reason = err.error_description
+
+          else if reason is "User with this email already exists\n"
+            googleSignInURL = 'http://support.toggl.com/google-sign-in/'
+            reason = reason.slice(0, -1) # remove new line
+            reason += " and it has 'Google Sign In' disabled.\n\nMore info: \
+              #{ utils.generateLink(googleSignInURL, 'external') }."
+
+          reason ?= utils.genericErrorMessage
+          showAlert
+            title: "Signup failed."
+            text: reason
+            html: true
 
     else if query.state in ['login', 'login_remember']
       remember = query.state is 'login_remember'
@@ -86,6 +114,10 @@ class IndexView extends View
           if err.status is 403
             showAlert "Failed to login with Google.", "Are you sure this is the right account?", 'error'
           else
-            showAlert "Failed to login with Google.", (err?.responseText or "Sorry about that, please try again or contact support@toggl.com."), 'error'
+            showAlert
+              title: "Failed to login with Google."
+              text: err?.responseText or utils.genericErrorMessage
+              type: 'error'
+              html: true
 
 module.exports = IndexView
