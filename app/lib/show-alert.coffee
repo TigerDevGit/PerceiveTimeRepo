@@ -3,7 +3,7 @@ sweetAlert = require 'sweetalert'
 module.exports = (title, text, type) ->
 
   # Allow both (attrs) and (title, text, type) parameters
-  if typeof title is 'Object'
+  if typeof title is 'object'
     attrs = title
   else
     attrs = {title, text, type}
