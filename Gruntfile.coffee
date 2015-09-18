@@ -169,12 +169,6 @@ module.exports = (grunt) ->
         src: 'lib/**/*.js'
         dest: ".tmp/app"
 
-      sweetalertjs:
-        expand: true
-        cwd: "<%= yeoman.app %>/../node_modules/sweetalert/dist/"
-        src: "sweetalert.min.js"
-        dest: "<%= yeoman.dist %>/javascripts/"
-
       statics:
         expand: true
         cwd: "<%= yeoman.app %>/static-pages"
@@ -304,13 +298,23 @@ module.exports = (grunt) ->
       options:
         dist: '<%= yeoman.dist %>'
 
+    # usemin generates a `xxx:generated` task in concat and uglify
     usemin:
       html: ['<%= yeoman.dist %>/**/*.html']
       css: ['<%= yeoman.dist %>/**/*.css']
 
-    # Filled by usemin
-    concat: {}
-    uglify: {}
+    concat:
+      sweetalert:
+        src: [
+          '<%= yeoman.app %>/../node_modules/sweetalert/dist/sweetalert.min.js'
+          '.tmp/app/lib/show-alert.js'
+        ]
+        dest: '<%= yeoman.dist %>/javascripts/sweetalert.min.js'
+
+    uglify:
+      '<%= yeoman.dist %>/javascripts/sweetalert.min.js': [
+       '<%= yeoman.dist %>/javascripts/sweetalert.min.js'
+      ]
 
     # Generate HTML snapshots for to make crawlers happy
     htmlSnapshot:
@@ -369,7 +373,7 @@ module.exports = (grunt) ->
     "coffee"
     "handlebars"
     "copy:appjs"
-    "copy:sweetalertjs"
+    "concat"
     "browserify"
     "autoprefixer"
     "modernizr"
