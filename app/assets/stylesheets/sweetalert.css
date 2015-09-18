@@ -727,6 +727,7 @@ body.stop-scrolling {
   border-radius: 0;
   text-align: left;
   width: 550px;
+  margin-left: -300px;
 }
 .sweet-alert h2 {
   font-size: 20px;
