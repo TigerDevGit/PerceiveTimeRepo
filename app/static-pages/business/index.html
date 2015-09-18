@@ -22,7 +22,9 @@
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <link href="css/style.css" rel="stylesheet">
+    <link href="/stylesheets/sweetalert.min.css" rel="stylesheet">
     <link href="css/responsive-style.css" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -169,6 +171,7 @@
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/javascripts/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
 $(document).ready(function(e) {
   resizeDiv();
@@ -260,7 +263,7 @@ $(document).ready(function(e) {
     $form.on('submit', function(e) {
       handleFormSubmit(e, function(err) {
         if(err) {
-          alert(err);
+          sweetAlert('Oops!', err.message, 'error');
           return;
         }
 

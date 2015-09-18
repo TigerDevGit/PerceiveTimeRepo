@@ -13,9 +13,10 @@
   <meta name="viewport" id="viewport-meta" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link href="./includes/style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/stylesheets/sweetalert.css" media="all">
 
-  <script src="./includes/modernizr.min.js">
-  </script>
+  <script src="./includes/modernizr.min.js"></script>
+  <script src="/javascripts/sweetalert.min.js" type="text/javascript" charset="utf-8"></script>
 
   <title>
     Free Employee Timesheet Template
@@ -257,12 +258,10 @@
         }
         else {
           // webkit - safari/chrome
-          alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+          sweetAlert('Bookmark this page!', 'Press CTRL + D');
         }
-      }
-                            );
-    }
-     );
+      });
+    });
   </script>
   </body>
 </html>

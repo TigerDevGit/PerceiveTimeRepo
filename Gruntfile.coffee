@@ -32,6 +32,7 @@ module.exports = (grunt) ->
     "es6-promise"
     "custom-event-polyfill"
     "devtools-detect"
+    "sweetalert"
   ]
 
   pkg = grunt.file.readJSON("package.json")
@@ -288,6 +289,8 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/images/share-img/**/*'
         '!<%= yeoman.dist %>/images/tools/**/*'
         '!<%= yeoman.dist %>/photos/**/*'
+        '!<%= yeoman.dist %>/stylesheets/sweetalert.css'
+        '!<%= yeoman.dist %>/javascripts/sweetalert.min.js'
       ]
 
     useminPrepare:
@@ -295,13 +298,23 @@ module.exports = (grunt) ->
       options:
         dist: '<%= yeoman.dist %>'
 
+    # usemin generates a `xxx:generated` task in concat and uglify
     usemin:
       html: ['<%= yeoman.dist %>/**/*.html']
       css: ['<%= yeoman.dist %>/**/*.css']
 
-    # Filled by usemin
-    concat: {}
-    uglify: {}
+    concat:
+      sweetalert:
+        src: [
+          '<%= yeoman.app %>/../node_modules/sweetalert/dist/sweetalert.min.js'
+          '.tmp/app/lib/show-alert.js'
+        ]
+        dest: '<%= yeoman.dist %>/javascripts/sweetalert.min.js'
+
+    uglify:
+      '<%= yeoman.dist %>/javascripts/sweetalert.min.js': [
+       '<%= yeoman.dist %>/javascripts/sweetalert.min.js'
+      ]
 
     # Generate HTML snapshots for to make crawlers happy
     htmlSnapshot:
@@ -360,6 +373,7 @@ module.exports = (grunt) ->
     "coffee"
     "handlebars"
     "copy:appjs"
+    "concat"
     "browserify"
     "autoprefixer"
     "modernizr"
