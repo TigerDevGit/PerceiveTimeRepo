@@ -153,47 +153,85 @@ p {
 
 /*====== MAIN STYLES ======*/
 #main {
-	
+	clear: both;
 }
 .posts {
-
+	margin-bottom: 85px;
+	float: left;
 }
 	.posts article {
-	
+		margin-top: 95px;
+		float: left;
+		clear: both;
 	}
 		.posts article h2 {
-		
+			font-size: 24px;
+			text-transform: uppercase;
+			color: #f30c16;
+			margin-bottom: 0px;
+			margin-top: 0px;
+			padding-bottom: 12px;
+			line-height: 1.5;
 		}
 			.posts article h2 span {
-			
+				border-bottom: 1px solid #f30c16;
+				padding-bottom: 8px;
 			}
 		.posts article p {
-		
+			font-weight: 300;
+			font-size: 15px;
+			color: #4c4c4c;
+			line-height: 1.86;
+			margin-top: 15px;
 		}
-		.posts article img {max-width: 100%; height: auto;}
+		.posts article li {
+			font-weight: 300;
+			font-size: 15px;
+			color: #4c4c4c;
+			line-height: 1.86;
+		}
+			.posts .main-article p {font-size: 22px; line-height: 1.36;}
+				.posts .main-article p.article-intro {margin-top: 68px;}
+		.posts article img {max-width: 100%; height: auto; margin-bottom: 20px;}
 	
-	.variant1 {
-	
+		.variant1  {
+			float: right;
+		}
+		.variant2 img {	
+			float: left;
+			margin-top: 5px;
+		}
+		.col-1 {width: 430px;}
+		.col-2 {width: 650px;}
+		.variant1 .col-1 {float: right; margin-left: 50px;}
+		.variant1 .col-2 {float: left;}
+		.variant2 .col-1 {float: left; margin-right: 50px;}
+		.variant2 .col-2 {float: right;}
+		
+		article h2.top-margin {margin-top: 25px}
+		
+		.post-alphabetical {padding-left: 36px;}	
+			.post-alphabetical li {list-style: none;}
+				.post-alphabetical .alph-num {color: #f5484c;}
+			
+		.list-padded {padding: 0 36px 0 36px;}
+		
+	.btn-big-cta {
+		clear: both;
+		display: block;
+		border: 2px solid #f30c16;
+		font-family: 'dinAlternate-bold';
+		text-transform: uppercase;
+		color: #f30c16;
+		font-size: 20px;
+		text-align: center;
+		width: 400px;
+		padding-top: 22px;
+		padding-bottom: 22px;
+		margin: auto;
+		margin-bottom: 100px;
 	}
-		.variant1 img {
-		
-		}
-		.variant1 p {
-		
-		}
-	.variant2 {
-	
-	}
-		.variant2 img {
-		
-		}
-		.variant2 p {
-		
-		}
-	.btn-cta {
-	
-	}
-	
+		.btn-big-cta:hover, .btn-big-cta:active, .btn-big-cta:link {color: #f30c16;}
 	
 #discover {
 	background: url(../img/triangle-pattern.jpg) center no-repeat;
@@ -255,15 +293,44 @@ p {
 			-o-transform: skew(7deg);
 		}
 			.insight-box h3 span {font-family: 'dinAlternate-bold';}
-			
+
+@media screen and (max-width: 1199px) {
+	.col-1 {width: 400px;}
+	.col-2 {width: 480px;}
+	article h2.top-margin {margin-top: 0px}
+	.posts .main-article p.article-intro {margin-top: 10px;}
+}			
 @media screen and (max-width: 991px) {
+	#main .container {width: 95%;}
+	.col-1 {width: 45%;}
+		.col-2 h2 {margin-top: -15px!important;}
+	.col-2 {width: 52%}
+	.variant1 .col-1 {margin-left: 20px;}
+	.variant2 .col-1 {margin-right: 20px;}
 	.discover-content {width: 100%}
+	.posts article p {font-size: 14px;}
+	.posts article h2 {line-height: 1.75; margin-bottom: -15px;}
+	.posts .main-article p {font-size: 18px;}
+		.posts .main-article p.article-intro {margin-top: 10px;}
 }
 @media screen and (max-width: 768px) {
+	.col-1 {width: 45%;}
+	.col-2 {width: 51%;}
+	.variant1 .col-1, .variant1 .col-2, .variant2 .col-1, .variant2 .col-2 {margin: 0;}
 	.discover-list1 {margin-left: 60px; float: left;}
 	.discover-list2 {margin-right: 70px;}
 	.discover-content .col-sm-6 {width: 50%}
 	.discover-content h2 {font-size: 35px;}
+}
+@media screen and (max-width: 650px) {
+	.col-1, .variant1 .col-1, .variant2 .col-1, .col-2, .variant1 .col-2, .variant2 .col-2 {width: 100%; float: left; margin-left: 0; margin-right: 0;}
+	.posts article img {width: 100%; height: auto}
+	.posts article p {text-align: center;}
+	.posts article h2 {text-align: center;}
+	.posts article {margin-top: 30px; border-bottom: 1px solid #e3e3e3; padding-bottom: 25px; overflow: hidden;}
+		.posts article:last-child {border-bottom: 0 none;}
+	.btn-big-cta {margin-top: 20px; margin-bottom: 43px;}
+	.posts {margin-bottom: 0;}
 }
 @media screen and (max-width: 600px) {
 	#discover {background-repeat: repeat;}
@@ -271,6 +338,8 @@ p {
 	.discover-content h2 {font-size: 26px;}
 	.discover-content .col-sm-6 {width: 100%;}
 	.discover-list1, .discover-list2 {clear: both; float: none; margin: 0 0 0 37px;}
+	.navbar-toggl .navbar-collapse{float: left!important; margin-left: 33%;}
+	.btn-red {margin-top: 15px;}
 }
 @media screen and (max-width: 595px) {
 	.insight-box{width: auto; margin-top: 25px;} 
@@ -280,10 +349,16 @@ p {
 	.discover-content h2 {font-size: 18px; margin: 38px 5px 25px 5px;}
 	.discover-list1, .discover-list2 {margin-left: 0}
 	.discover-content ul li {text-align: center;}
+	.btn-big-cta {font-size: 18px; width: 98%; }
+	.navbar-toggl .navbar-collapse{margin-left: 28%;}
 }
+@media screen and (max-width: 350px) {.btn-big-cta {font-size: 17px;}}
+@media screen and (max-width: 335px) {.btn-big-cta {font-size: 16px;}}
 @media screen and (max-width: 320px) {
 	.insight-box h3 {padding: 15px 30px 15px 30px; }
+	.navbar-toggl .navbar-collapse{margin-left: 25%;}
 }
+@media screen and (max-width: 318px) { .insight-box h3 {font-size: 22px;} .btn-big-cta {font-size: 14px; }
 
 			
 /*====== FOOTER STYLES ======*/
