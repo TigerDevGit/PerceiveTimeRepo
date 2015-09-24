@@ -358,7 +358,7 @@ p {
 	.insight-box h3 {padding: 15px 30px 15px 30px; }
 	.navbar-toggl .navbar-collapse{margin-left: 25%;}
 }
-@media screen and (max-width: 318px) { .insight-box h3 {font-size: 22px;} .btn-big-cta {font-size: 14px; }
+@media screen and (max-width: 318px) { .insight-box h3 {font-size: 22px;} .btn-big-cta {font-size: 14px; } }
 
 			
 /*====== FOOTER STYLES ======*/
