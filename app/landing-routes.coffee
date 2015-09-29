@@ -226,3 +226,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'best-productivity-tools-2016':
+    title: 'Must-have Tools to Increase Productivity in 2016'
+    template: 'best-productivity-tools-2016'
+    meta: [{
+      name: 'description'
+      content: 'Comprehensive overview of the best free time management tools to use in 2016. Most of these productivity boosting tools are cloud based.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
