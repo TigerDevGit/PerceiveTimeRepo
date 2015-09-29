@@ -9,9 +9,17 @@ _ = require 'lodash'
 class ModalView extends View
   events:
     'click .modal-overlay__close': 'fadeAndRemove'
-    'click .modal-overlay': 'fadeAndRemove'
-    'click .modal-overlay__content': (e) -> e.stopPropagation()
+    'click .modal-overlay': 'onClickModalOverlay'
     'keydown': (e) -> if keycode(e) is 'esc' then @fadeAndRemove()
+
+  onClickModalOverlay: (e) ->
+    # Ignore clicks inside the modal
+    $content = @$('.modal-overlay__content')
+    offset = $content.offset()
+    if offset.left <= e.pageX <= offset.left + $content.width() and
+       offset.top <= e.pageY <= offset.top + $content.height()
+      return
+    @fadeAndRemove()
 
   # Cleans up the body class and removes the visible class, then waits until
   # the animation is done to trigger removal
