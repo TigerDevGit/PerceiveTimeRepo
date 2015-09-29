@@ -3687,7 +3687,7 @@ p.larger {
     .btn-big-cta:hover, .btn-big-cta:active {box-shadow: none; background: #ce0009; color: #FFF!important;}
 
 .slalom .discover {
-  background: url('../images/daily-battles/triangle-pattern.jpg') center no-repeat;
+  background: url('../images/landing-pages/triangle-pattern.jpg') center no-repeat;
   min-height: 370px;
   overflow: hidden;
   clear: both;
@@ -3715,9 +3715,9 @@ p.larger {
       padding-left: 6px;
       list-style: none;
       list-style-position: inside;
-      list-style-image: url('../images/daily-battles/tick-red.png');
+      list-style-image: url('../images/landing-pages/tick-red.png');
     }
-      .discover-content ul li:hover {list-style-image: url('../images/daily-battles/tick-gray.png');}
+      .discover-content ul li:hover {list-style-image: url('../images/landing-pages/tick-gray.png');}
       .discover-content ul li a {
         font-weight: 300;
         font-size: 14px;
@@ -3729,7 +3729,7 @@ p.larger {
 .slalom .insight {
   border-bottom: 4px solid #d4d4d4;
   min-height: 155px;
-  background: url('../images/daily-battles/insight-img.jpg') center no-repeat;
+  background: url('../images/landing-pages/insight-img.jpg') center no-repeat;
   clear: both;
 }
   .insight-box {
