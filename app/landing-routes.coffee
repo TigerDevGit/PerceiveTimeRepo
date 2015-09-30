@@ -204,12 +204,35 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
   'best-time-tracking-software-windows':
     title: 'Toggl - Free Time Tracking Software For Windows'
     template: 'windows'
     meta: [{
       name: 'description'
       content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards in the web version.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
+
+  'daily-battles':
+    title: 'Toggl - We battle daily'
+    template: 'daily-battles'
+    meta: [{
+      name: 'description'
+      content: 'Victory shall be ours'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
+
+  'best-productivity-tools-2016':
+    title: 'Must-have Tools to Increase Productivity in 2016'
+    template: 'best-productivity-tools-2016'
+    meta: [{
+      name: 'description'
+      content: 'Comprehensive overview of the best free time management tools to use in 2016. Most of these productivity boosting tools are cloud based.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'

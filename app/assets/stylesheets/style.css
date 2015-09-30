@@ -669,6 +669,10 @@ video::-webkit-media-controls {
   font-size: 70px;
   max-width: 530px;
 }
+.hero--landing .hero__content h1.align-center {
+  max-width: none;
+  text-align: center;
+}
 
 .hero__content h1.smaller {
   font-size: 48px;
