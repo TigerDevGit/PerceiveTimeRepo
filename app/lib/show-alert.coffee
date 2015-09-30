@@ -25,12 +25,16 @@
     if attrs.html? and attrs.text?
       attrs.text = attrs.text.replace(/<[^<]*>/g, '')
 
+    attrs.text = attrs.mobileText if usingMobile()
+
     if attrs.type is 'input'
       userText = prompt(attrs.title + " " + attrs.text)
       callback?(userText)
     else
       alert(attrs.title + " " + attrs.text)
       callback?()
+
+  showAlert.usingMobile = usingMobile
 
   if typeof module is 'object'
     module.exports = showAlert
