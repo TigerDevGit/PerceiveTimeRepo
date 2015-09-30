@@ -8,6 +8,9 @@
     # Allow both (attrs) and (title, text, type) parameters
     if typeof title is 'object'
       attrs = title
+      # Allow button callback function as second parameter
+      if typeof text is 'function'
+        callback = text
     else
       attrs = {title, text, type}
 
@@ -16,16 +19,18 @@
       attrs.text = attrs.text.replace(/CTRL/g, 'Command')
 
     if not usingMobile()
-      return sweetAlert(attrs)
+      return sweetAlert(attrs, callback)
 
     # if using native alerts, remove html tags
     if attrs.html? and attrs.text?
       attrs.text = attrs.text.replace(/<[^<]*>/g, '')
 
     if attrs.type is 'input'
-      prompt(attrs.title + " " + attrs.text)
+      userText = prompt(attrs.title + " " + attrs.text)
+      callback?(userText)
     else
       alert(attrs.title + " " + attrs.text)
+      callback?()
 
   if typeof module is 'object'
     module.exports = showAlert
