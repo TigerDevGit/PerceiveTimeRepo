@@ -248,3 +248,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'google-calendar-timer':
+    title: 'Google Calendar Time Tracking Chrome Extension'
+    template: 'google-calendar-timer'
+    meta: [{
+      name: 'description'
+      content: 'Quick step-by-step guide on setting up the Google Calendar - Toggl time tracker integration with the help of Toggl Button extension.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
