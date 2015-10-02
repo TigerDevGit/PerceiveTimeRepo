@@ -23,6 +23,7 @@ class ModalView extends View
     if offset.left <= e.pageX <= offset.left + $content.width() and
        offset.top <= e.pageY <= offset.top + $content.height()
       return
+
     @fadeAndRemove()
 
   # Cleans up the body class and removes the visible class, then waits until
