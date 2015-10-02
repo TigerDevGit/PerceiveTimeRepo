@@ -237,3 +237,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'motivate-employee-time-tracking':
+    title: 'How to Motivate Your Employees to Track Time'
+    template: 'motivate-employee-time-tracking'
+    meta: [{
+      name: 'description'
+      content: 'Are you having difficulty getting your employees to track their work hours? Here\'s a guide on how to motivate them to fill in their timesheets.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
