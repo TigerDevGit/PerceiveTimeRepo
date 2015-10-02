@@ -16,6 +16,10 @@ class ModalView extends View
     # Ignore clicks inside the modal
     $content = @$('.modal-overlay__content')
     offset = $content.offset()
+
+    if $.contains($content.get(0), e.target)
+      return
+
     if offset.left <= e.pageX <= offset.left + $content.width() and
        offset.top <= e.pageY <= offset.top + $content.height()
       return
