@@ -4,6 +4,8 @@ formData      = require '../../lib/form-data'
 redirectToApp = require '../../lib/redirect-to-app'
 $             = require 'jquery'
 _             = require 'lodash'
+showAlert     = require '../../lib/show-alert'
+
 
 class ResetPasswordView extends View
   template: 'page/reset-password'
@@ -54,9 +56,30 @@ class ResetPasswordView extends View
       success: @loginUser
       error: @resetError
 
+  showRedirectAlert: (seconds, callback) ->
+    showAlert {
+      title: "Invalid token."
+      text: "You will be redirected to our homepage in <strong>#{seconds}</strong> second#{if seconds is 1 then '' else 's'}..."
+      mobileText: "You will be redirected to our homepage..."
+      type: 'error'
+      html: true
+    }, callback
+
   showInvalidTokenError: =>
-    @showError "Invalid token. Will redirect to index page in 5 seconds"
-    setTimeout (-> document.location = '/'), 5000
+    countDown = null
+    secondsLeft = 5
+
+    redirect = =>
+      clearInterval countDown
+      document.location = '/'
+
+    @showRedirectAlert(secondsLeft, redirect)
+
+    unless showAlert.usingMobile()
+      countDown = setInterval =>
+        @showRedirectAlert --secondsLeft, redirect
+        redirect() unless secondsLeft
+      , 1000
 
   preRender: ->
     $.ajax
