@@ -136,6 +136,7 @@
     clear: both;
     display: block;
     border: 2px solid #f30c16;
+    border-radius: 0;
     font-family: 'dinAlternate-bold';
     text-transform: uppercase;
     color: #f30c16!important;
