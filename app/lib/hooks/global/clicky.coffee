@@ -1,4 +1,4 @@
-Backbone = require 'Backbone'
+Backbone = require 'backbone'
 clicky = require 'clicky-loader'
 $ = require 'jquery'
 
