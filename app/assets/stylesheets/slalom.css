@@ -136,6 +136,7 @@
     clear: both;
     display: block;
     border: 2px solid #f30c16;
+    border-radius: 0;
     font-family: 'dinAlternate-bold';
     text-transform: uppercase;
     color: #f30c16!important;
@@ -149,7 +150,12 @@
     margin-bottom: 100px;
     transition: all 0.2s linear 0s;
   }
-    .btn-big-cta:hover, .btn-big-cta:active {box-shadow: none; background: #ce0009; color: #FFF!important;}
+  .btn-big-cta:hover, .btn-big-cta:active {
+    box-shadow: none;
+    background: #ce0009;
+    border-color: #ce0009;
+    color: #FFF!important;
+  }
 
 .slalom .discover {
   background: url('../images/landing-pages/triangle-pattern.jpg') center no-repeat;
