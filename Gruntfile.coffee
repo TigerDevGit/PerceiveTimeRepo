@@ -291,6 +291,9 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/photos/**/*'
         '!<%= yeoman.dist %>/stylesheets/sweetalert.css'
         '!<%= yeoman.dist %>/javascripts/sweetalert.min.js'
+        '!<%= yeoman.dist %>/stylesheets/bootstrap.min.css'
+        '!<%= yeoman.dist %>/stylesheets/slalom.css'
+        '!<%= yeoman.dist %>/images/landing-pages/**/*'
       ]
 
     useminPrepare:
