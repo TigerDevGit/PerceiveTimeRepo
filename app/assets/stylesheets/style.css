@@ -3538,7 +3538,7 @@ p.larger {
 
 .overview-page .cta-button {
   margin-top: 17px;
-  margin-bottom: -8px; /* js-ripple-button's overflow: hidden rule is pushing the button upwards */
+  margin-bottom: 70px;
 }
 
 @media screen and (max-width: 580px) {
