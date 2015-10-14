@@ -6,6 +6,9 @@ redirectToApp      = require '../../lib/redirect-to-app'
 $                  = require 'jquery'
 _                  = require 'lodash'
 
+isTogglLink = (str) ->
+  /^(https?:\/\/)?(www\.)?([^.]+\.)?toggl\.com/.exec(str)?
+
 class LoginPopup extends ModalView
   template: 'component/login'
 
@@ -23,7 +26,7 @@ class LoginPopup extends ModalView
     new API('TogglNext', null, null).user.initGoogleLogin(form.remember_me)
 
   redirectToApp: =>
-    if @returnTo?
+    if @returnTo? and isTogglLink(@returnTo)
       document.location = @returnTo
     else redirectToApp()
 
