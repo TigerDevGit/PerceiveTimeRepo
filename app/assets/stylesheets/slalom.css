@@ -124,7 +124,7 @@
     .variant2 .col-1 {float: left; margin-right: 50px;}
     .variant2 .col-2 {float: right;}
 
-    article h2.top-margin {margin-top: 25px}
+    .slalom .posts article h2.top-margin {margin-top: 25px}
 
     .post-alphabetical {padding-left: 36px;}
       .post-alphabetical li {list-style: none;}
