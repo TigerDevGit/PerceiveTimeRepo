@@ -3328,6 +3328,7 @@ p.overlay_text a {
 }
 
 p.tools_bottom {
+  clear: both;
   max-width:720px;
   margin:0 auto;
   padding-left:20px;
