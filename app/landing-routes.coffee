@@ -270,3 +270,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'part-time-employee-definition-us':
+    title: 'Definition of a part-time employee in the US'
+    template: 'part-time-employee-definition-us'
+    meta: [{
+      name: 'description'
+      content: 'Under federal law there is no practical difference between a part-time and a full-time employee. Use this guide to understand obligations that come with hiring a part-time employee.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
