@@ -259,3 +259,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'salesforce-time-tracking':
+    title: 'Time tracking integration with Salesforce'
+    template: 'salesforce'
+    meta: [{
+      name: 'description'
+      content: 'Track time spent on Salesforce tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
