@@ -100,6 +100,9 @@
       line-height: 1.86;
       margin-top: 15px;
     }
+    .slalom .posts article.justify-all p {
+      text-align: justify;
+    }
     .slalom .posts article li {
       font-weight: 300;
       font-size: 15px;
@@ -124,7 +127,15 @@
     .variant2 .col-1 {float: left; margin-right: 50px;}
     .variant2 .col-2 {float: right;}
 
-    .slalom .posts article h2.top-margin {margin-top: 25px}
+    .slalom .posts article .top-margin-15 {margin-top: 15px}
+    .slalom .posts article .top-margin-25 {margin-top: 25px}
+    .slalom .posts article .top-margin-35 {margin-top: 35px}
+    .slalom .posts article .top-margin-45 {margin-top: 45px}
+    .slalom .posts article .top-margin-55 {margin-top: 55px}
+    .slalom .posts article .top-margin-65 {margin-top: 65px}
+    .slalom .posts article .top-margin-75 {margin-top: 75px}
+    .slalom .posts article .top-margin-85 {margin-top: 85px}
+    .slalom .posts article .top-margin-95 {margin-top: 85px}
 
     .post-alphabetical {padding-left: 36px;}
       .post-alphabetical li {list-style: none;}
@@ -231,7 +242,15 @@
 @media screen and (max-width: 1199px) {
   .col-1 {width: 400px;}
   .col-2 {width: 480px;}
-  article h2.top-margin {margin-top: 0px}
+  article .top-margin-15 {margin-top: 0px}
+  article .top-margin-25 {margin-top: 0px}
+  article .top-margin-35 {margin-top: 0px}
+  article .top-margin-45 {margin-top: 0px}
+  article .top-margin-55 {margin-top: 0px}
+  article .top-margin-65 {margin-top: 0px}
+  article .top-margin-75 {margin-top: 0px}
+  article .top-margin-85 {margin-top: 0px}
+  article .top-margin-95 {margin-top: 0px}
   .slalom .posts .main-article p.article-intro {margin-top: 10px;}
 }
 @media screen and (max-width: 991px) {
