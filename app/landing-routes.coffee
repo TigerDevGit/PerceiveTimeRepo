@@ -338,7 +338,7 @@ module.exports =
     }]
 
   'project-collaboration-with-timesheets':
-    title: 'How to combine project collaboration with timesheets'
+    title: 'How to improve project collaboration with timesheets'
     template: 'project-collaboration-with-timesheets'
     meta: [{
       name: 'description'
