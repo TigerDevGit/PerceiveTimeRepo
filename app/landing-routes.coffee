@@ -336,3 +336,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'project-collaboration-with-timesheets':
+    title: 'How to combine project collaboration with timesheets'
+    template: 'project-collaboration-with-timesheets'
+    meta: [{
+      name: 'description'
+      content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your timesheet information into actionable insight.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
