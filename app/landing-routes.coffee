@@ -314,3 +314,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'wunderlist-time-tracking':
+    title: 'Time tracking Chrome extension for Wunderlist'
+    template: 'wunderlist'
+    meta: [{
+      name: 'description'
+      content: 'Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
