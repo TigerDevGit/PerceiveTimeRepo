@@ -336,3 +336,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'project-collaboration-with-timesheets':
+    title: 'How to improve project collaboration with timesheets'
+    template: 'project-collaboration-with-timesheets'
+    meta: [{
+      name: 'description'
+      content: 'If you want to make sure your team is organised and efficient when working on collaborative efforts, you absolutely need to monitor how they\'re using their time.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
