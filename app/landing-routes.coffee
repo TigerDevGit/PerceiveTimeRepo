@@ -325,3 +325,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'jira-time-tracking':
+    title: 'JIRA time tracking integration with Toggl'
+    template: 'jira'
+    meta: [{
+      name: 'description'
+      content: 'Track time spent on your JIRA tasks and export the logs directly to Toggl. Managing time spent on your task list with this free Chrome extension is really quick and easy.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
