@@ -32,7 +32,7 @@ Router = class Router extends Backbone.Router
       'forgot-password(/)': -> renderPage require './views/page/forgot-password'
       'unsubscribe/:type/:token(/)': 'showUnsubscribe'
       'reset_password/:token': 'showResetPassword'
-      'signup(/:invitationCode)': 'showSignup'
+      'signup(/)(/:invitationCode)': 'showSignup'
       'login(/)': 'showLogin'
       'pricing(/)': 'showPricing'
       'business(/)': -> window.location = '/business' # hack to redirect to static page
