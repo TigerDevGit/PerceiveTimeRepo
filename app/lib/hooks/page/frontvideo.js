@@ -44,7 +44,7 @@ function attachToVideo(view) {
         },
         {
           time: 5.12,
-          firstHeadingText: 'Toggl',
+          firstHeadingText: 'Track',
           secondHeadingText: 'great effort'
         },
         {
@@ -82,7 +82,7 @@ function attachToVideo(view) {
         {
           time: 49.48,
           firstHeadingText: '',
-          secondHeadingText: 'Toggl anything'
+          secondHeadingText: 'Track anything'
         },
         {
           time: 51.08
