@@ -353,7 +353,7 @@ module.exports =
     template: 'gmail-time-tracking'
     meta: [{
       name: 'description'
-      content: 'Track time spent on your Todoist list items and export the logs directly to Toggl. Managing time spent on your to-do list with this simple Chrome extension is really quick and easy.'
+      content: 'Track the time you spend on your emails right from inside your Gmail inbox. With this Toggl-Gmail integration it is free, quick and easy.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
