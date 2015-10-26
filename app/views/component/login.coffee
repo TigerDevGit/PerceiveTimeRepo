@@ -7,6 +7,11 @@ $                  = require 'jquery'
 _                  = require 'lodash'
 
 isTogglLink = (str) ->
+  if not str?
+    return false
+  # Local URL ("/app/reports/...")
+  if str.charAt(0) is '/' and str.charAt(1) isnt '/'
+    return true
   /^(https?:\/\/)?(www\.)?([^.]+\.)?toggl\.com/.exec(str)?
 
 class LoginPopup extends ModalView
