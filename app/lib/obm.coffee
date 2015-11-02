@@ -14,10 +14,10 @@ module.exports = class ObmHelper
   isRunning: (nr) -> @getObm().nr is nr
 
   # Checks if the user is included in the running obm
-  isIncluded: (nr) => @isRunning(nr) and @getObm().included?
+  isIncluded: (nr) => @isRunning(nr) and @getObm().included is true
 
   # Checks if the user is excluded in the running obm
-  isExcluded: (nr) => @isRunning(nr) and not @getObm().included?
+  isExcluded: (nr) => @isRunning(nr) and @getObm().included is false
 
   # Checks if user action exists for the given obm
   # Used for workspace specific obms.
