@@ -22,7 +22,10 @@ module.exports = (api) ->
       .then (args...) ->
         # on successful responses we no longer need auth data,
         # so remove it from the API
-        userState.set logged: true
+        userState.set({
+          logged: true
+          data: args[0]?.data
+        })
         api.auth = null
         Promise.resolve args...
 
