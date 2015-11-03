@@ -1,6 +1,8 @@
-Backbone   = require 'backbone'
-$          = require 'jquery'
-_          = require 'lodash'
+Backbone = require 'backbone'
+$ = require 'jquery'
+_ = require 'lodash'
+API = require './lib/api'
+Obm = require './lib/obm'
 parseQuery = require './lib/parse-query'
 redirectToApp = require './lib/redirect-to-app'
 
@@ -51,7 +53,7 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
-  showOverview: () ->
+  showOverview: ->
     # Don't show `Overview` page to mobile users, it is meant to be only for
     # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
     # kind of info.

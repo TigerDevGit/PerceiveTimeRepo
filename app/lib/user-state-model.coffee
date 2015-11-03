@@ -1,5 +1,6 @@
 Backbone = require 'backbone'
 $        = require 'jquery'
+
 class UserModel extends Backbone.Model
   url: '/api/v9/me/logged'
 
