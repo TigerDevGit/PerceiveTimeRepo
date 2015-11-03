@@ -68,8 +68,8 @@ Router = class Router extends Backbone.Router
         renderPage(ObmU72Overview, obm: obm)
         return
 
-    Overview = require './views/page/overview'
-    renderPage Overview
+    # no overview unless obm 72 included group
+    redirectToApp()
 
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
