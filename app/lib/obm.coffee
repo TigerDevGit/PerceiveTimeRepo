@@ -1,5 +1,4 @@
 module.exports = class ObmHelper
-
   constructor: ({ @data, @api } = {}) ->
     if not @data?
       throw new Error 'Missing Obm data source'

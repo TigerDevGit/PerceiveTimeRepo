@@ -11,4 +11,3 @@ class Overview extends View
   title: 'Overview — Toggl, The Simplest Time Tracker'
 
 module.exports = Overview
-

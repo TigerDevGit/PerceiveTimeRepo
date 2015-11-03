@@ -1,6 +1,8 @@
-Backbone   = require 'backbone'
-$          = require 'jquery'
-_          = require 'lodash'
+Backbone = require 'backbone'
+$ = require 'jquery'
+_ = require 'lodash'
+API = require './lib/api'
+Obm = require './lib/obm'
 parseQuery = require './lib/parse-query'
 redirectToApp = require './lib/redirect-to-app'
 
@@ -51,15 +53,23 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
-  showOverview: () ->
+  showOverview: ->
     # Don't show `Overview` page to mobile users, it is meant to be only for
     # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
     # kind of info.
     if redirectToApp.hasMobileApp()
-      redirectToApp()
-    else
-      Overview = require './views/page/overview'
-      renderPage Overview
+      return redirectToApp()
+
+    userState = require './lib/user-state-model'
+    if data = userState.get('data')
+      obm = new Obm(data: data.obm, api: new API('TogglNext', data.api_token))
+      if obm.isIncluded(72)
+        ObmU72Overview = require './views/page/obmu72-overview'
+        renderPage(ObmU72Overview, obm: obm)
+        return
+
+    Overview = require './views/page/overview'
+    renderPage Overview
 
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
