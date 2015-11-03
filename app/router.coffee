@@ -58,10 +58,18 @@ Router = class Router extends Backbone.Router
     # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
     # kind of info.
     if redirectToApp.hasMobileApp()
-      redirectToApp()
-    else
-      Overview = require './views/page/overview'
-      renderPage Overview
+      return redirectToApp()
+
+    userState = require './lib/user-state-model'
+    if data = userState.get('data')
+      obm = new Obm(data: data.obm, api: new API('TogglNext', data.api_token))
+      if obm.isIncluded(72)
+        ObmU72Overview = require './views/page/obmu72-overview'
+        renderPage(ObmU72Overview, obm: obm)
+        return
+
+    Overview = require './views/page/overview'
+    renderPage Overview
 
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'

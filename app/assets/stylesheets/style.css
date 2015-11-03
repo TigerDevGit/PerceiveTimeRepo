@@ -3533,8 +3533,19 @@ p.larger {
   font-size: 20px;
 }
 
+.overview-page.obmu72-overview-page .hero__content p {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 0;
+  margin-top: -20px;
+}
+
 .overview-page .content-section--centered {
   padding-top: 25px;
+}
+
+.overview-page.obmu72-overview-page .content-section--centered {
+  padding-top: 0;
 }
 
 .overview-page .cta-button {
