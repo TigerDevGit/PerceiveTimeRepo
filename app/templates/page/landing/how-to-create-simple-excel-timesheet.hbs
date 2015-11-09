@@ -1,0 +1,129 @@
+<script> document.head.insertAdjacentHTML('afterbegin', '<link rel="stylesheet" href="stylesheets/bootstrap.min.css">'); </script>
+<link rel="stylesheet" href="stylesheets/slalom.css">
+
+{{> 'header' navLight=true }}
+
+<section class="hero hero--landing hero--dynamic-height slalom-header">
+  <div class="hero__background" style="background-image: url(images/landing-pages/header-bg1.jpg);"></div>
+  <div class="hero__content content--light">
+    <div class="wrapper">
+      <h1 class="align-center">How to create<br />a simple Excel timesheet.</h1>
+    </div>
+  </div>
+</section>
+
+<div class="slalom">
+  <div class="container">
+    <section class="posts">
+      <article class="row variant2 main-article">
+        <div class="col-1">
+          <p><img src="images/landing-pages/part-time-employee-05-definitions.jpg" alt="Defining a part time employee in the US" /></p>
+        </div>
+        <div class="col-2">
+          <p>
+            Building a basic Excel timesheet for your employees is simple. Follow the steps below for a timesheet your staff could use over and over.
+          </p>
+        </div>
+      </article>
+
+      <article class="row variant1">
+        <div class="col-1">
+          <img src="images/landing-pages/part-time-employee-01-minimum-wage.jpg" alt="Minimum salary of part time workers" />
+        </div>
+        <div class="col-2">
+          <h2 class="top-margin-15"><span>1. Define</span> your labels and categories</h2>
+          <p>
+            Figure out what kind of information you actually need to have on your timesheets. Typically you would need employee name, time period the timesheet covers (week, month), but also the name of department & manager.
+          </p>
+          <p>
+            Of course, you can also add the social security number, employee ID if needed - but simpler is better.
+          </p>
+        </div>
+      </article>
+
+      <article class="row variant2">
+        <div class="col-1">
+          <img src="images/landing-pages/part-time-employee-04-overtime-pay.jpg" alt="Calculating overtime pay for part time workers" />
+        </div>
+        <div class="col-2">
+          <h2 class="top-margin-25"><span>2. Use columns</span> to break up the days</h2>
+          <p>
+            We’re using morning and afternoon separately, because your employees will have a lunch break in the middle. Don't worry about adding up the total, that will be calculated automatically using a formula.
+          </p>
+        </div>
+      </article>
+
+      <article class="row variant1">
+        <div class="col-1">
+          <img src="images/landing-pages/part-time-employee-02-working-hours.jpg" alt="Working hours of part time employees" />
+        </div>
+        <div class="col-2">
+          <h2 class="top-margin-15"><span>3. Insert</span> the formulas</h2>
+          <p>
+            In this example timesheet, we will only be using two basic formulas - one for adding up the total hours for a single day, and one for adding up all working hours for the period of the timesheet.
+          </p>
+            To do that, we inserted a simple B3+C3 formula into the "Total hours" cell (B5 in our example). Once an employee has entered their hours worked in the corresponding fields, they will be automatically added up in the "total" field. To use the same formula for the other days, simply copy the formula, and select "paste formula" in the other total hour fields below it - Excel will change the values for the other fields for you, so no need for manual typing.
+          </p>
+          <p>
+            To get the total hours your employee worked in a week, we will need to add up the individual daily total hours. This can be done easily by selecting a field where you want the total hours to be displayed and inserting the SUM formula. 
+          <p>
+            For example in this picture, working days for the week start at row number 3 and end in row number 8 and the daily totals are displayed in column D. To get the weekly total, the formula would be SUM(D3:D8). This means that Excel will automatically add up all values in column D, from row 3 to row 8.
+          </p>
+        </div>
+      </article>
+
+      <article class="row variant2">
+        <div class="col-1">
+          <img src="images/landing-pages/part-time-employee-03-benefits.jpg" alt="Benefits for part time workers" />
+        </div>
+        <div class="col-2">
+          <h2 class="top-margin-25"><span>4. Benefits</span> for part-time employees</h2>
+          <p>
+            Generally, employers have considerably more flexibility in choosing which benefits their part-time employees receive.
+          </p>
+          <p>
+            In fact, it might be tempting for employers to save money by cutting back on part-time contract benefits as much as possible, but it's worth keeping in mind that such a strategy might negatively affect your reputation, and may reduce your competitive edge when looking for highly qualified part-time workers.
+          </p>
+        </div>
+      </article>
+    </section><!-- end posts -->
+
+    <a href="#" class="btn btn-big-cta">Let me try the Free Account</a>
+
+  </div><!-- end container -->
+
+  <section class="discover">
+    <div class="container">
+      <div class="discover-content">
+        <h2>Discover More Great Stuff</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <ul class="list-unstyled discover-list1">
+              <li><a href="https://toggl.com">Free Time Tracking Software</a></li>
+              <li><a href="https://blog.toggl.com/" target="_blank">Time Management Blog</a></li>
+              <li><a href="https://blog.toggl.com/2015/09/track-costs-earnings-toggl/" target="_blank">How to track your costs & earnings</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 pull-right">
+            <ul class="list-unstyled discover-list2">
+              <li><a href="https://blog.toggl.com/2015/09/faking-timesheets/" target="_blank">Why employees cheat with timesheets</a></li>
+              <li><a href="https://blog.toggl.com/2015/09/set-better-goals/" target="_blank">Why setting goals matters</a></li>
+              <li><a href="https://blog.toggl.com/2015/08/share-knowledge-build-trust/" target="_blank">How does trust build success</a></li>
+            </ul>
+          </div>
+        </div>
+      </div><!-- end discover-content -->
+    </div><!-- end container -->
+  </section><!-- end discover -->
+
+  <section class="insight">
+    <div class="container">
+      <div class="insight-box">
+        <h3>Toggl Has Over <span>1 M Happy Users</span></h3>
+      </div>
+    </div><!-- end container -->
+  </section><!-- end insight -->
+
+</div><!-- end .slalom -->
+
+{{> 'footer' }}

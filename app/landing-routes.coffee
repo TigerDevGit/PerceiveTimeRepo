@@ -347,3 +347,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'how-to-create-simple-excel-timesheet':
+    title: 'How to create a simple Excel timesheet for your employees'
+    template: 'how-to-create-simple-excel-timesheet'
+    meta: [{
+      name: 'description'
+      content: 'Under federal law there is no practical difference between a part-time and a full-time employee. Use this guide to understand obligations that come with hiring a part-time employee.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
