@@ -17,7 +17,7 @@
     <section class="posts">
       <article class="row variant2 main-article">
         <div class="col-1">
-          <p><img src="images/landing-pages/part-time-employee-05-definitions.jpg" alt="Defining a part time employee in the US" /></p>
+          <p><img src="images/landing-pages/part-time-employee-05-definitions.jpg" alt="Creating a simple timesheet in MS Excel" style="border: 1px solid #CCCCCC" /></p>
         </div>
         <div class="col-2">
           <p>
@@ -28,80 +28,83 @@
 
       <article class="row variant1">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-01-minimum-wage.jpg" alt="Minimum salary of part time workers" />
+          <img src="images/landing-pages/simple-excel-timesheet-01.jpg" alt="Defining categories for timesheets" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
           <h2 class="top-margin-15"><span>1. Define</span> your labels and categories</h2>
           <p>
-            Figure out what kind of information you actually need to have on your timesheets. Typically you would need employee name, time period the timesheet covers (week, month), but also the name of department & manager.
+            Figure out what kind of information you actually need to have on your timesheets. Typically you would need a field for employee name, the time period the timesheet covers (week, month), but also the name of department & manager.
           </p>
           <p>
-            Of course, you can also add the social security number, employee ID if needed - but simpler is better.
+            Of course, you can also add fields for social security numbers, employee IDs if needed, but simpler is better.
           </p>
         </div>
       </article>
 
       <article class="row variant2">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-04-overtime-pay.jpg" alt="Calculating overtime pay for part time workers" />
+          <img src="images/landing-pages/simple-excel-timesheet-02-columns.jpg" alt="organising timesheet into columns" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
           <h2 class="top-margin-25"><span>2. Use columns</span> to break up the days</h2>
           <p>
-            We’re using morning and afternoon separately, because your employees will have a lunch break in the middle. Don't worry about adding up the total, that will be calculated automatically using a formula.
+            We’re using morning and afternoon separately, because your employees will have a lunch break in the middle. Also, by entering hours twice a day, the employee won't have to remember all their day's hours at the end of the day. Don't worry about adding up the total, that will be calculated automatically using a formula.
           </p>
         </div>
       </article>
 
       <article class="row variant1">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-02-working-hours.jpg" alt="Working hours of part time employees" />
+          <img src="images/landing-pages/simple-excel-timesheet-03-sum-row-formula.jpg" alt="Calculating daily work hours" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
-          <h2 class="top-margin-15"><span>3. Calulating</span> daily hours</h2>
+          <h2 class="top-margin-15"><span>3. Calculating</span> daily hours</h2>
           <p>
-            In this example timesheet, we will only be using two basic formulas - one for adding up the total hours for a single day, and one for adding up all working hours for the period of the timesheet.
+            In this example timesheet, we will only be using two basic formulas - one for adding up the total hours for a single day, and one for adding up all working hours for the week.
           </p>
-            To add up the day's hours, we inserted a simple =SUM(B7+D7) formula into the "Total hours" cell (E7 in our example). Once an employee has entered their hours in the "morning" and "afternoon" cells, they will be automatically added up in the "total" field. To use the same formula for the other days, simply copy the formula, and select "paste formula" in the other fields below the original one - Excel will change the values for the other fields for you, so no need for manual typing.
+            To add up a single day's hours, insert a simple <strong>=SUM(B7+D7)</strong> formula into the "Total hours" cell (E7 in this example). Once an employee has entered their hours in the "morning" and "afternoon" cells, they will be automatically added up in the "total" field. 
+          </p>
+          <p>
+            To use the same formula for the other days, simply use the copy + "paste formula" in the right click menu - Excel will change the values for the other fields for you, so no need for manual typing.
           </p>
         </div>
       </article>
 
       <article class="row variant2">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-03-benefits.jpg" alt="Benefits for part time workers" />
+          <img src="images/landing-pages/simple-excel-timesheet-04-sum-row-column.jpg" alt="Calculating weekly total working hours" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
           <h2 class="top-margin-25"><span>4. Calculating</span> total weekly hours</h2>
           <p>
-            To get the total hours your employee worked in a week, we will need to add up the individual daily total hours. This can be done easily by selecting a field where you want the total hours to be displayed and inserting another SUM formula.
+            To get the total hours your employee worked in a week, you will need to add up the individual daily total hours. This can be done easily by selecting a field where you want the total hours to be displayed and inserting another SUM formula.
           </p>
           <p>
-            For example in this picture, working days for the week start at row number 3 and end in row number 8 and the daily totals are displayed in column D. To get the weekly total, the formula would be =SUM(E7:E11). This means that Excel will automatically add up all values in column D that fall between rows 3 and 8.
+            For example in this picture, daily working time rows start at row number 3 and end in row number 8, with all the daily totals displayed in column D. To get the weekly total, the formula would be <strong>=SUM(E7:E11)</strong>. This formula adds up all cells in column D that between rows 3 and 8.
           </p>
         </div>
       </article>
 
       <article class="row variant1">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-02-working-hours.jpg" alt="Working hours of part time employees" />
+          <img src="images/landing-pages/simple-excel-timesheet-05-lock-cells-for-editing.jpg" alt="Locking timesheet cells for editing" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
-          <h2 class="top-margin-15"><span>5. Locking</span> the timesheet</h2>
+          <h2 class="top-margin-15"><span>5. Locking</span> cells to prevent editing</h2>
           <p>
-            To avoid accidents and mistakes, you will definitely want your employees to edit the cells where they need to insert their working hours, but to make things easier for yourself, you can also give them the option to edit their name and timesheet time range. To do this you need to define unlocked cells.
+            To avoid someone accidentally deleting a formula, you can limit the cells your employees can edit by locking them. Typically they would only need to insert the "morning" and "afternoon" working hours, but you can also choose to let them add their own names and edit the date ranges.
           </p>
-            By default, all cells in Excel are set as "locked" - to unlock the fields you want your employees to edit, drag and select the cells. Select "format cells" and go to the "Protection" tab - there, untick the checkbox where it says "locked". 
+            By default, all cells in Excel are set as "locked" - to unlock the fields you want your employees to edit, drag and select the cells, select "format cells" and under the "Protection" tab, untick the checkbox where it says "locked". 
           </p>
           <p>
-            Once you have done that, move on to the next step.
+            At this point, you have defined unlocked and locked cells, but for these changes to have an effect, move on to the next step.
           </p>
         </div>
       </article>
 
       <article class="row variant2">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-03-benefits.jpg" alt="Benefits for part time workers" />
+          <img src="images/landing-pages/simple-excel-timesheet-06-lock-timesheet.jpg" alt="Protecting excel timesheets from editing" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
           <h2 class="top-margin-25"><span>6. Prevent</span> future editing</h2>
@@ -109,7 +112,7 @@
             Once you have unlocked the cells you need your employees to edit, head to the "Format" menu and select "protect sheet". Only tick the box where it says "select unlocked cells".
           </p>
           <p>
-            When you've ticked the box, choose a password for unlocking the timesheet, hit "OK" and you're done!
+            When you've ticked the box, choose a password for unlocking the timesheet, hit "OK" and you're done. <strong>Make sure you don't forget the password.</strong>
           </p>
           <p>
             Simply copy the timesheet file and pass the copies on to your employees. 
@@ -118,7 +121,7 @@
 
       <article class="row variant1">
         <div class="col-1">
-          <img src="images/landing-pages/part-time-employee-02-working-hours.jpg" alt="Working hours of part time employees" />
+          <img src="images/landing-pages/part-time-employee-02-working-hours.jpg" alt="Working hours of part time employees" style="border: 1px solid #CCCCCC" />
         </div>
         <div class="col-2">
           <h2 class="top-margin-15"><span>7. Use Toggl</span> to avoid all this</h2>
