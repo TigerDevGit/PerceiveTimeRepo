@@ -347,3 +347,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'gmail-time-tracking':
+    title: 'Time tracking integration with Google Mail'
+    template: 'gmail-time-tracking'
+    meta: [{
+      name: 'description'
+      content: 'Track the time you spend on your emails right from inside your Gmail inbox. With this Toggl-Gmail integration it is free, quick and easy.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
