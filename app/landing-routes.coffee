@@ -380,3 +380,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'pomodoro-time-tracking':
+    title: 'Pomodoro timer integration for Toggl'
+    template: 'pomodoro-time-tracking'
+    meta: [{
+      name: 'description'
+      content: 'With the Toggl Button Chrome extension, you can integrate your Pomodoro technique with the powerful Toggl time tracking tool!'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
