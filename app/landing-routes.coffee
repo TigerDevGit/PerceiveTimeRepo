@@ -381,7 +381,7 @@ module.exports =
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
-  'pomodoro-time-tracking':
+  'pomodoro-timer-toggl':
     title: 'Pomodoro timer integration for Toggl'
     template: 'pomodoro-time-tracking'
     meta: [{
