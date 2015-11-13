@@ -375,7 +375,7 @@ module.exports =
     template: 'how-to-calculate-billable-hours'
     meta: [{
       name: 'description'
-      content: 'Calculating billable hours can be time consuming, especially if you need to factor in different rates. In Toggl, you can automate this process.'
+      content: 'Calculating billable hours can be time consuming, especially if you need to factor in different rates. With Toggl, this process can be easily automated.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
