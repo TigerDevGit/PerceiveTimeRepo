@@ -54,7 +54,7 @@ Your title: Annika Helendi
 Location: Tallinn
 
 
-/* You can find our whole team here: https://www.toggl.com/about */
+/* You can find our whole team here: https://toggl.com/about */
 
 /* ================================== */
 /* We're hiring! Visit jobs.toggl.com */
