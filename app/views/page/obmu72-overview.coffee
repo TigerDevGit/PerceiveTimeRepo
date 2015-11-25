@@ -1,6 +1,4 @@
 View = require '../../view'
-userState = require '../../lib/user-state-model'
-
 obm = require '../../lib/obm'
 
 class ObmU72Overview extends View
