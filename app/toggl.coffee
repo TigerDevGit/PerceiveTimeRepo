@@ -30,7 +30,8 @@ Backbone.$ = $
 # Fetch userState
 userState = require './lib/user-state-model'
 API = require './lib/api'
-userState.set pending: true
+# we can assume user is logged if we have user info stored in session storage
+userState.set pending: true, logged: sessionStorage?.getItem('/api/v8/me')?
 new API('TogglNext', null, null, userState.endpoint)
 .request 'GET', userState.path, dataType: 'text'
 .then -> userState.set logged: true, pending: false
