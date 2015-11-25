@@ -3677,8 +3677,9 @@ Landing Page Reports
 }
 @media(max-width: 767px){
   .r__landing--head {
-    margin-bottom: 0;
-    margin-top: 95px;
+    margin-bottom: 30px;
+    margin-top: 125px;
+    height: auto;
   }
   .r__landing--head span {
     display: inline;
@@ -3691,12 +3692,22 @@ Landing Page Reports
   .r__landing--head_inner {
     width: auto;
     margin: 0;
-    padding: 20px 30px;
+    padding: 20px 30px 30px 30px;
     height: auto;
+    text-align: center;
   }
   .r__landing--head_title {
     font-size: 28px;
     line-height: 40px;
+  }
+  .r__landing--head_title:after {
+    left: 50%;
+    margin-left: -103px;
+  }
+}
+@media(max-width: 580px){
+  .r__landing--head {
+    margin-top: 95px;
   }
 }
 @media(max-width: 479px){
@@ -3705,7 +3716,7 @@ Landing Page Reports
     line-height: 26px;
   }
   .r__landing--head_inner {
-    padding: 15px 20px;
+    padding: 15px 20px 30px 20px;
   }
   .r__landing--head .cta-button {
     width: 100%;
@@ -3954,7 +3965,7 @@ Landing Page Reports
   .r__landing--details {
     padding: 15px 20px;
     margin: 40px 0;
-    background-size: auto 70%;
+    background-image: none;
   }
   .r__landing--details_title {
     font-size: 28px;
