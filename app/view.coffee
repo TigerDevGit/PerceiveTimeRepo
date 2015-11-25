@@ -54,8 +54,12 @@ class View extends Backbone.View
     return this
 
   updateLogged: (model, logged) ->
-    @$('.not-logged').toggle not logged
-    @$('.logged').toggle logged
+    if logged
+      @$('.not-logged').css('display', 'none')
+      @$('.logged').attr('style', '') # removes js-defined styles
+    else
+      @$('.not-logged').attr('style', '')
+      @$('.logged').css('display', 'none')
 
   changeMetaTags: ->
     CUSTOM_META_CLASS = 'custom-meta-tag'
