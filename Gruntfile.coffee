@@ -294,6 +294,7 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/stylesheets/bootstrap.min.css'
         '!<%= yeoman.dist %>/stylesheets/slalom.css'
         '!<%= yeoman.dist %>/stylesheets/media-coverage.css'
+        '!<%= yeoman.dist %>/stylesheets/reports.css'
         '!<%= yeoman.dist %>/images/landing-pages/**/*'
       ]
 
