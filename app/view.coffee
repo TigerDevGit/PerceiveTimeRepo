@@ -51,6 +51,7 @@ class View extends Backbone.View
     @bindHooks()
     @postRender?()
     @scrollToAnchor()
+    @updateLogged @model, @model.get('logged')
     return this
 
   updateLogged: (model, logged) ->
