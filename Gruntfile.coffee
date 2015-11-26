@@ -293,6 +293,7 @@ module.exports = (grunt) ->
         '!<%= yeoman.dist %>/javascripts/sweetalert.min.js'
         '!<%= yeoman.dist %>/stylesheets/bootstrap.min.css'
         '!<%= yeoman.dist %>/stylesheets/slalom.css'
+        '!<%= yeoman.dist %>/stylesheets/media-coverage.css'
         '!<%= yeoman.dist %>/images/landing-pages/**/*'
       ]
 
