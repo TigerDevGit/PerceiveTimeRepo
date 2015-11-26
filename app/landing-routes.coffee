@@ -415,11 +415,11 @@ module.exports =
     }]
 
   'reports':
-    title: 'Landing Page | Reports'
+    title: 'Toggl Reports - Visual Timesheet Data & Sharing'
     template: 'reports'
     meta: [{
       name: 'description'
-      content: 'Track the time you spend on your Toodledo tasks without switching apps. Managing time spent on your list with this simple Chrome extension is quick and simple.'
+      content: 'Get actionable insights about your employee time management. Filter reports, share the view-only access to clients or export it all to Excel.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
