@@ -369,3 +369,14 @@ module.exports =
       property: 'og-image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'how-to-create-simple-excel-timesheet':
+    title: 'How to create a simple Excel timesheet for your employees'
+    template: 'how-to-create-simple-excel-timesheet'
+    meta: [{
+      name: 'description'
+      content: 'This is a tutorial on how to create a simple Excel timesheet with protected formulas that you can easily share with your employees.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
