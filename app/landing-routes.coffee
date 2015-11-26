@@ -435,3 +435,14 @@ module.exports =
       property: 'og-image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'airport-hacks':
+    title: 'Toggl | Airport Hacks'
+    template: 'airport-hacks'
+    meta: [{
+      name: 'description'
+      content: 'Get actionable insights about your employee time management. Filter reports, share the view-only access to clients or export it all to Excel.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
