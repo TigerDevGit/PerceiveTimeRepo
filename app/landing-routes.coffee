@@ -414,7 +414,7 @@ module.exports =
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
-  'reports':
+  'time-reports':
     title: 'Toggl Reports - Visual Timesheet Data & Sharing'
     template: 'reports'
     meta: [{
