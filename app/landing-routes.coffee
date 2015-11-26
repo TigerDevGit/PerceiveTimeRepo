@@ -391,3 +391,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'how-to-calculate-billable-hours':
+    title: 'How to calculate your billable hours with Toggl'
+    template: 'how-to-calculate-billable-hours'
+    meta: [{
+      name: 'description'
+      content: 'Calculating billable hours can be time consuming, especially if you need to factor in different rates. With Toggl, this process can be easily automated.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
