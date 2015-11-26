@@ -404,11 +404,11 @@ module.exports =
     }]
 
   'media-coverage':
-    title: 'Media coverage'
+    title: 'Toggl - Media coverage and Press Mentions'
     template: 'media-coverage'
     meta: [{
       name: 'description'
-      content: 'Track the time you spend on your Toodledo tasks without switching apps. Managing time spent on your list with this simple Chrome extension is quick and simple.'
+      content: 'Toggl time management system has been mentioned in all the biggest media outlets along with top productivity blogs.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
