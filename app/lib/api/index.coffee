@@ -18,6 +18,13 @@ class TogglApi
 
     if !!username
       @setAuth username, password
+    else if data = sessionStorage?.getItem('/api/v8/me')
+      # use api_token from session storage for auth
+      try
+        user = JSON.parse(data)
+        apiToken = user.api_token
+      catch err
+      @setAuth apiToken if apiToken?
 
     # attach endpoints to the api instance
     for key, module of endpoints

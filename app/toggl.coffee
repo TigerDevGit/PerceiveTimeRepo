@@ -27,6 +27,19 @@ Bugsnag.appVersion = version
 # Fix required when using backbone with Browserify:
 Backbone.$ = $
 
+# Fetch userState
+userState = require './lib/user-state-model'
+API = require './lib/api'
+# we can assume user is logged if we have user info stored in session storage
+userState.set pending: true, logged: sessionStorage?.getItem('/api/v8/me')?
+new API('TogglNext', null, null, userState.endpoint)
+.request 'GET', userState.path, dataType: 'text'
+.then -> userState.set logged: true, pending: false
+.catch (err) ->
+  # delete session data if api_token is no longer valid
+  sessionStorage?.clear() if err.status is 403
+  userState.set logged: false, pending: false
+
 # Start the router
 Router = require './router'
 router = exports.router = new Router
