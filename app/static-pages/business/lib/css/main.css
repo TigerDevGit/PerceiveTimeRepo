@@ -1,3 +1,11 @@
+@import url("//hello.myfonts.net/count/2c814a");
+
+@font-face {font-family: 'DIN Next'; font-weight: bold; src: url('../font/2C814A_0_0.eot');src: url('../font/2C814A_0_0.eot?#iefix') format('embedded-opentype'),url('../font/2C814A_0_0.woff2') format('woff2'),url('../font/2C814A_0_0.woff') format('woff'),url('../font/2C814A_0_0.ttf') format('truetype');}
+   
+@font-face {font-family: 'DIN Next'; font-weight: normal; src: url('../font/2C814A_1_0.eot');src: url('../font/2C814A_1_0.eot?#iefix') format('embedded-opentype'),url('../font/2C814A_1_0.woff2') format('woff2'),url('../font/2C814A_1_0.woff') format('woff'),url('../font/2C814A_1_0.ttf') format('truetype');}
+ 
+ 
+
 body {
   /*background-image: url(../images/bg-dark.png);*/
   background-image: url(../images/bg_1.jpg);
@@ -91,6 +99,7 @@ a.button_red {
   -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
   font-weight: 300;
+  font-family: 'DIN Next', Arial, sans-serif;
 }
 .button_red:hover,
 a.button_red:hover {
@@ -427,8 +436,14 @@ textarea.has_error,
 a.show_contact_form {
   font-size: 24px;
   line-height: 32px;
-  text-decoration: underline;
+  text-decoration: none;
   color: #e01b22;
+}
+a.show_contact_form i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 30px;
+  margin-right: 0 7px 0 0;
 }
 .hidden_contact_form {
   display: none;
@@ -473,6 +488,8 @@ a.show_contact_form {
   background: #e01b22;
   text-transform: uppercase;
   margin-left: 20px;
+  font-weight: 300;
+  font-family: 'DIN Next', Arial, sans-serif;
 }
 #nav li.last a:hover {
   background-color: #ce0009;
