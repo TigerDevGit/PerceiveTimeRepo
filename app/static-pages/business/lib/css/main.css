@@ -443,7 +443,7 @@ a.show_contact_form i {
   display: inline-block;
   vertical-align: middle;
   font-size: 30px;
-  margin-right: 0 7px 0 0;
+  margin: 0 10px 0 0;
 }
 .hidden_contact_form {
   display: none;
