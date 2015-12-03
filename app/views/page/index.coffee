@@ -5,6 +5,7 @@ Api              = require '../../lib/api'
 redirectToApp    = require '../../lib/redirect-to-app'
 parseQuery       = require '../../lib/parse-query'
 utils            = require '../../lib/utils'
+LoginOverlay     = require '../component/login-overlay'
 
 jstz = jstimezonedetect.jstz
 
@@ -22,6 +23,8 @@ class IndexView extends View
     html = @_videoHtml()
     @$('.video .wrapper').html(html)
     @$('.video .wrapper iframe').load => @trigger('video:load')
+
+    @showLoadingOverlay() if @googleLoginInProgress
 
   _videoHtml: ->
     id = if @attributes.isAprilFoold
@@ -44,6 +47,14 @@ class IndexView extends View
   isAprilFools: ->
     d = new Date()
     d.getMonth() is 3 and d.getDate() <= 8
+
+  showLoadingOverlay: ->
+    @loginOverlay = new LoginOverlay()
+    @loginOverlay.render()
+
+  googleLoginFinished: ->
+    @googleLoginInProgress = false
+    @loginOverlay.close()
 
   initialize: ->
     @on('show', => @onShow())
@@ -107,10 +118,14 @@ class IndexView extends View
 
     else if query.state in ['login', 'login_remember']
       remember = query.state is 'login_remember'
+      @googleLoginInProgress = true
       api
         .user.completeGoogleLogin query.code, remember
-        .then redirectToApp
-        .catch (err) ->
+        .then =>
+          @googleLoginFinished()
+          redirectToApp()
+        .catch (err) =>
+          @googleLoginFinished()
           if err.status is 403
             showAlert "Failed to login with Google.", "Are you sure this is the right account?", 'error'
           else
