@@ -436,12 +436,12 @@ module.exports =
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
-  'airport-hacks':
+  'best-airport-tips':
     title: 'Awesome airport hacks to make flying suck less'
-    template: 'airport-hacks'
+    template: 'best-airport-tips'
     meta: [{
       name: 'description'
-      content: 'Get actionable insights about your employee time management. Filter reports, share the view-only access to clients or export it all to Excel.'
+      content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
       },{
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
