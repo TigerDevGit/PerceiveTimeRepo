@@ -437,7 +437,7 @@ module.exports =
     }]
 
   'airport-hacks':
-    title: 'Toggl | Airport Hacks'
+    title: 'Awesome airport hacks to make flying suck less'
     template: 'airport-hacks'
     meta: [{
       name: 'description'
