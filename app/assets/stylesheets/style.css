@@ -3565,6 +3565,7 @@ p.larger {
   color: #fff;
   font-weight: 700;
   font-size: 24px;
+  margin-top: 0;
 }
 
 .nprogress-spinner {
