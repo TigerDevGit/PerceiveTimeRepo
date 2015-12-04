@@ -3559,3 +3559,15 @@ p.larger {
     font-size: 16px;
   }
 }
+
+.loading-overlay__content {
+  background: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.nprogress-spinner {
+  display: inline-block;
+  margin-right: 5px;
+}
