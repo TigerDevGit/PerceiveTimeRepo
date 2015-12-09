@@ -3566,7 +3566,7 @@ p.larger {
 /*
 Airport Hacks page
 */
-#airport-hacks {
+.airport-hacks {
   background: #fff;
 }
 
@@ -3600,10 +3600,6 @@ Airport Hacks page
   }
 }
 
-
-.airport-hacks {
-
-}
 
 .ah__head {
   background: #F2F2F2;
