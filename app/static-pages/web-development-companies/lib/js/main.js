@@ -125,7 +125,7 @@ $(window).scroll(function(){
 
 
 function pricingChange(value){
-  $('.pricing_form--year').text( value * 49 );
+  $('.pricing_form--year').text( value * 5 );
   $('.pricing_form--month').text( value * 59 );
 }
 
