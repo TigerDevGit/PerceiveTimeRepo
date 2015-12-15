@@ -3,7 +3,7 @@ API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
-jstz               = require('jstimezonedetect').jstz
+jstz               = require('jstimezonedetect')
 _                  = require 'lodash'
 
 class SignupView extends View
