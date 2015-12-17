@@ -444,5 +444,5 @@ module.exports =
       content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://www.toggl.com/images/share-img/fb-share-airport-tips.jpg'
     }]
