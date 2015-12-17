@@ -446,3 +446,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'kanban-time-tracking':
+    title: 'Kanban Time - How to Account for Time in Agile Project Development'
+    template: 'kanban-time-tracking'
+    meta: [{
+      name: 'description'
+      content: 'Ever broke your budget because the client just kept coming back with that "one more thing"? This is why even agile teams need to track their time.'
+      },{
+      property: 'og-image'
+      content: 'fb-share-kanban-time-tracking.jpg'
+    }]
