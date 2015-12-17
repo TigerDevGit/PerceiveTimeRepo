@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $.clickyConfigureAllGoals(100857897);
 
   // open Form
   $('body').on('click', '.show_contact_form', function(){
