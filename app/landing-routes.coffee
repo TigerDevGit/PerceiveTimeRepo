@@ -457,3 +457,14 @@ module.exports =
       property: 'og-image'
       content: 'fb-share-kanban-time-tracking.jpg'
     }]
+
+  '20-best-tools-for-digital-nomads':
+    title: '20 Best Tools for Digital Nomads in 2016'
+    template: 'best-digital-nomad-tools-2016'
+    meta: [{
+      name: 'description'
+      content: 'What are the hottest tools for digital nomads and remote workers in 2016? This infographic will bring you up to speed with the latest and the greatest.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-digital-nomad-tools.jpg'
+    }]
