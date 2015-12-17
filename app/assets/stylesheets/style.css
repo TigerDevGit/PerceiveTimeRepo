@@ -3785,6 +3785,15 @@ Airport Hacks page
   }
 }
 
+.ah__cta--auto-width {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.ah__cta--auto-width .cta-button {
+  padding-left: 22px;
+  padding-right: 22px;
+  width: auto;
+}
 
 .ah__discover {
   background: #F6F6F6 url(../images/landing-pages/triangle-pattern.jpg) no-repeat center center;
