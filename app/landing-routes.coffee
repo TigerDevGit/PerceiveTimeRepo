@@ -490,3 +490,14 @@ module.exports =
       property: 'og-image'
       content: 'https://toggl.com/images/share-img/fb-share-office-productivity-tips.jpg'
     }]
+
+  'zendesk-timer-toggl':
+    title: 'Zendesk timer integration for Toggl'
+    template: 'zendesk'
+    meta: [{
+      name: 'description'
+      content: 'Track the time that you spend working inside Zendesk. This simple Chrome extension integrates Toggl time tracking with Zendesk.'
+      },{
+      property: 'og-image'
+      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+    }]
