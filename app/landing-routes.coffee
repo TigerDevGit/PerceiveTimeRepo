@@ -468,3 +468,14 @@ module.exports =
       property: 'og-image'
       content: 'https://www.toggl.com/images/share-img/fb-share-digital-nomad-tools.jpg'
     }]
+
+  'pivotal-tracker-time-tracking':
+    title: 'Time tracking integration with Pivotal Tracker'
+    template: 'pivotal-tracker-time-tracking'
+    meta: [{
+      name: 'description'
+      content: 'Track the time you spend on your Pivotal Tracker tickets without switching apps. Managing time spent on your list with this Chrome extension is quick and simple.'
+      },{
+      property: 'og-image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
