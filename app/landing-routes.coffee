@@ -499,5 +499,16 @@ module.exports =
       content: 'Track the time that you spend working inside Zendesk. This simple Chrome extension integrates Toggl time tracking with Zendesk.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
+
+  'toggl-developer-challenge':
+    title: 'Toggl timer developer challenge 2016'
+    template: 'toggl-developer-challenge'
+    meta: [{
+      name: 'description'
+      content: 'Put our timer in your favourite app, win prizes & eternal glory!'
+      },{
+      property: 'og-image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
