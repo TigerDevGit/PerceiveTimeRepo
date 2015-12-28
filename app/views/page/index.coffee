@@ -7,8 +7,6 @@ parseQuery       = require '../../lib/parse-query'
 utils            = require '../../lib/utils'
 LoginOverlay     = require '../component/login-overlay'
 
-jstz = jstimezonedetect.jstz
-
 class IndexView extends View
   template: 'page/index'
   hooks: ['frontvideo', 'timer']
