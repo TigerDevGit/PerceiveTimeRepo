@@ -1,5 +1,5 @@
 showAlert        = require '../../lib/show-alert'
-jstimezonedetect = require 'jstimezonedetect'
+jstz             = require 'jstimezonedetect'
 View             = require '../../view'
 Api              = require '../../lib/api'
 redirectToApp    = require '../../lib/redirect-to-app'
