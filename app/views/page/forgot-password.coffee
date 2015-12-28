@@ -3,7 +3,7 @@ formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 $                  = require 'jquery'
 _                  = require 'lodash'
-jstz               = require('jstimezonedetect').jstz
+jstz               = require('jstimezonedetect')
 
 class ForgotPasswordView extends View
   template: 'page/forgot-password'
