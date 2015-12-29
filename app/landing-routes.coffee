@@ -378,7 +378,7 @@ module.exports =
       content: 'This is a tutorial on how to create a simple Excel timesheet with protected formulas that you can easily share with your employees.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
   'pomodoro-timer-toggl':
@@ -389,7 +389,7 @@ module.exports =
       content: 'With the Toggl Button Chrome extension, you can integrate your Pomodoro technique with the powerful Toggl time tracking tool!'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
   'how-to-calculate-billable-hours':
@@ -400,7 +400,7 @@ module.exports =
       content: 'Calculating billable hours can be time consuming, especially if you need to factor in different rates. With Toggl, this process can be easily automated.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
   'media-coverage':
@@ -411,7 +411,7 @@ module.exports =
       content: 'Toggl time management system has been mentioned in all the biggest media outlets along with top productivity blogs.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
   'time-reports':
@@ -422,7 +422,7 @@ module.exports =
       content: 'Get actionable insights about your employee time management. Filter reports, share the view-only access to clients or export it all to Excel.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
   'best-software-development-management-tools-2016':
@@ -444,7 +444,7 @@ module.exports =
       content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-airport-tips.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-airport-tips.jpg'
     }]
 
   'kanban-time-tracking':
@@ -455,7 +455,7 @@ module.exports =
       content: 'Ever broke your budget because the client just kept coming back with that "one more thing"? This is why even agile teams need to track their time.'
       },{
       property: 'og-image'
-      content: 'fb-share-kanban-time-tracking.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-kanban-time-tracking.jpg'
     }]
 
   '20-best-tools-for-digital-nomads':
@@ -466,7 +466,7 @@ module.exports =
       content: 'What are the hottest tools for digital nomads and remote workers in 2016? This infographic will bring you up to speed with the latest and the greatest.'
       },{
       property: 'og-image'
-      content: 'https://www.toggl.com/images/share-img/fb-share-digital-nomad-tools.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-digital-nomad-tools.jpg'
     }]
 
   'pivotal-tracker-time-tracking':
