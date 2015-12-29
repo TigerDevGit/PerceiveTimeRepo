@@ -479,3 +479,14 @@ module.exports =
       property: 'og-image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'office-productivity-tips':
+    title: 'The Story of Frank - A Visual Guide to a Shorter Workday (Infographic)'
+    template: 'office-productivity-tips'
+    meta: [{
+      name: 'description'
+      content: 'Follow Frank, our imaginary office guinea pig, as we give tips on how to finish your work quicker (no Franks were harmed in the making of this infographic).'
+      },{
+      property: 'og-image'
+      content: 'https://toggl.com/images/share-img/fb-share-office-productivity-tips.jpg'
+    }]
