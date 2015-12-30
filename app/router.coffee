@@ -33,7 +33,7 @@ Router = class Router extends Backbone.Router
       'legal/terms(/)': 'showTos'
       'forgot-password(/)': -> renderPage require './views/page/forgot-password'
       'unsubscribe/:type/:token(/)': 'showUnsubscribe'
-      'reset_password/:token': 'showResetPassword'
+      'reset_password(/:token)': 'showResetPassword'
       'signup(/)(/:invitationCode)': 'showSignup'
       'login(/)': 'showLogin'
       'pricing(/)': 'showPricing'
@@ -48,6 +48,7 @@ Router = class Router extends Backbone.Router
   showResetPassword: (token) ->
     ResetPassword = require './views/page/reset-password'
     renderPage ResetPassword, { token }
+    @navigate 'reset_password'
 
   showPricing: ->
     Pricing = require './views/page/pricing'
