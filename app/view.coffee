@@ -69,6 +69,13 @@ class View extends Backbone.View
     for metaOpts in @meta
       tag = $ '<meta/>', _.extend metaOpts, class: CUSTOM_META_CLASS
       $('head').prepend tag
+    address = window.location.href
+    if _.includes(address, 'www.')
+      $('[rel=canonical]').remove()
+      tag = $('<meta/>', rel: 'canonical', href: address.replace('www.', ''))
+      $('head').append tag
+    else
+      $('[rel=canonical]').remove()
 
   scrollToAnchor: ->
     hash = location.hash
