@@ -2,7 +2,6 @@ Backbone = require 'backbone'
 $ = require 'jquery'
 _ = require 'lodash'
 API = require './lib/api'
-Obm = require './lib/obm'
 parseQuery = require './lib/parse-query'
 redirectToApp = require './lib/redirect-to-app'
 
@@ -54,35 +53,10 @@ Router = class Router extends Backbone.Router
     Pricing = require './views/page/pricing'
     renderPage Pricing
 
-  getObmData: ->
-    new API('TogglNext', null, null, '/api/v9')
-    .experiments.obmData()
-    .then @showOverview
-    .catch (err) -> @showOverview(null)
-
-  showOverview: (obmData) ->
-    # Don't show `Overview` page to mobile users, it is meant to be only for
-    # viewing on a laptop/pc. Logicale: mobile screen is small for showing this
-    # kind of info.
-    if redirectToApp.hasMobileApp()
-      return redirectToApp()
-
-    userState = require './lib/user-state-model'
-
-    if data = userState.get('data') and obmData
-      obm = new Obm(data: obmData, api: new API('TogglNext', data.api_token))
-      if obm.isIncluded(79)
-        ObmU79Overview = require './views/page/obmu79-overview'
-        renderPage(ObmU79Overview, obm: obm)
-        return
-
-    # no overview unless obm 79 included group
-    redirectToApp()
-
   showSignup: (invitationCode) ->
     Signup = require './views/page/signup'
     page = renderPage Signup, { invitationCode }
-    @listenTo page, 'login:success', @getObmData
+    @listenTo page, 'login:success', redirectToApp
 
   showTos: (qs) ->
     { simple } = parseQuery(qs)
