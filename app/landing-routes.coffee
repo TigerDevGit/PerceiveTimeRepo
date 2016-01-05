@@ -22,7 +22,7 @@
 #  tag for some OG image it would look like this:
 # ```
 #   meta: [{
-#     property: 'og-image'
+#     property: 'og:image'
 #     content: 'https://media0.giphy.com/media/jA8TT03Sj2pXO/200_s.gif'
 #   }]
 # ```
@@ -36,7 +36,7 @@ module.exports =
       name: 'description'
       content: 'Analyize your time usage by tracking daily activites on your iPhone. All the data is synced to the cloud and can be exported as online timesheet.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/photos/toggl-iphone-timesheet.jpg'
     }]
 
@@ -47,7 +47,7 @@ module.exports =
       name: 'description'
       content: 'Analyize your time usage by tracking daily activites on your Android phone. All the data is synced to the cloud and can be exported as online timesheet.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -58,7 +58,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on Trello tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -69,7 +69,7 @@ module.exports =
       name: 'description'
       content: 'Set up projects and track them in real time. Then analyze your work time profitability and productivity with the help of different Toggl reports, graphs and dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -80,7 +80,7 @@ module.exports =
       name: 'description'
       content: 'Analyize project time usage by tracking daily activites with the whole team. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -91,7 +91,7 @@ module.exports =
       name: 'description'
       content: 'Analyize the time usage of your employees. Very simple setup and easy real time tracking. All the data is synced to the cloud and can be exported as online timesheets.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -102,7 +102,7 @@ module.exports =
       name: 'description'
       content: 'Directly track time spent on calendar events and export timesheets from Toggl. Managing work time with Google Calendar and Toggl is really quick and easy with this simple Chrome extension.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -113,7 +113,7 @@ module.exports =
       name: 'description'
       content: 'Analyize the time usage of your employees. Use timer or add time logs manually. All the data is synced to the cloud and generated into useful time reports and graphs.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -124,7 +124,7 @@ module.exports =
       name: 'description'
       content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -135,7 +135,7 @@ module.exports =
       name: 'description'
       content: 'Analyize your project time usage by tracking daily tasks and see how much time each customer takes out of your day. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -146,7 +146,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on client tasks, calls, meetings and e-mails. Automatic rounding option, different billable rates and powerful reports make it the best time tracking software for lawyers and attorneys.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -157,7 +157,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on client tasks, calls, meetings and e-mails. Different billable rates and reports sharing make it the best time tracking software for freelancers.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -168,7 +168,7 @@ module.exports =
       name: 'description'
       content: 'Track and analyize your work hours without the time-wasting spreasheet filling. Use timer or add time logs manually. All the data is synced to the cloud and generated into useful time reports and pretty graphs.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -179,7 +179,7 @@ module.exports =
       name: 'description'
       content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -190,7 +190,7 @@ module.exports =
       name: 'description'
       content: 'Analyize task time usage by tracking daily activites on the web and with Android or iPhone app. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -201,7 +201,7 @@ module.exports =
       name: 'description'
       content: 'Analyize the time usage of your employees. Very simple setup and easy real time tracking. All the data is synced to the cloud and can be exported as online timesheets.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -212,7 +212,7 @@ module.exports =
       name: 'description'
       content: 'Analyize work time usage by tracking daily activites. All the data is synced to the cloud and can be exported as online timesheet or viewed on different dashboards in the web version.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -223,7 +223,7 @@ module.exports =
       name: 'description'
       content: 'Victory shall be ours'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -234,7 +234,7 @@ module.exports =
       name: 'description'
       content: 'Comprehensive overview of the best free time management tools to use in 2016. Most of these productivity boosting tools are cloud based.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -245,7 +245,7 @@ module.exports =
       name: 'description'
       content: 'Are you having difficulty getting your employees to track their work hours? Here\'s a guide on how to motivate them to fill in their timesheets.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -256,7 +256,7 @@ module.exports =
       name: 'description'
       content: 'Quick step-by-step guide on setting up the Google Calendar - Toggl time tracker integration with the help of Toggl Button extension.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -267,7 +267,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on Salesforce tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -278,7 +278,7 @@ module.exports =
       name: 'description'
       content: 'Under federal law there is no practical difference between a part-time and a full-time employee. Use this guide to understand obligations that come with hiring a part-time employee.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -289,7 +289,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on Asana tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -300,7 +300,7 @@ module.exports =
       name: 'description'
       content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your timesheet information into actionable insight.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -311,7 +311,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on your Todoist list items and export the logs directly to Toggl. Managing time spent on your to-do list with this simple Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -322,7 +322,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -333,7 +333,7 @@ module.exports =
       name: 'description'
       content: 'Track time spent on your JIRA tasks and export the logs directly to Toggl. Managing time spent on your task list with this free Chrome extension is really quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -344,7 +344,7 @@ module.exports =
       name: 'description'
       content: 'If you want to make sure your team is organised and efficient when working on collaborative efforts, you absolutely need to monitor how they\'re using their time.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -355,7 +355,7 @@ module.exports =
       name: 'description'
       content: 'Track the time you spend on your emails right from inside your Gmail inbox. With this Toggl-Gmail integration it is free, quick and easy.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -366,7 +366,7 @@ module.exports =
       name: 'description'
       content: 'Track the time you spend on your Toodledo tasks without switching apps. Managing time spent on your list with this simple Chrome extension is quick and simple.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -377,7 +377,7 @@ module.exports =
       name: 'description'
       content: 'This is a tutorial on how to create a simple Excel timesheet with protected formulas that you can easily share with your employees.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -388,7 +388,7 @@ module.exports =
       name: 'description'
       content: 'With the Toggl Button Chrome extension, you can integrate your Pomodoro technique with the powerful Toggl time tracking tool!'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -399,7 +399,7 @@ module.exports =
       name: 'description'
       content: 'Calculating billable hours can be time consuming, especially if you need to factor in different rates. With Toggl, this process can be easily automated.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -410,7 +410,7 @@ module.exports =
       name: 'description'
       content: 'Toggl time management system has been mentioned in all the biggest media outlets along with top productivity blogs.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -421,7 +421,7 @@ module.exports =
       name: 'description'
       content: 'Get actionable insights about your employee time management. Filter reports, share the view-only access to clients or export it all to Excel.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -432,7 +432,7 @@ module.exports =
       name: 'description'
       content: 'Are you using the right tools with your agile team setup? Here is a list of killer development management tools you cannot miss going into 2016.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -443,7 +443,7 @@ module.exports =
       name: 'description'
       content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-airport-tips.jpg'
     }]
 
@@ -454,7 +454,7 @@ module.exports =
       name: 'description'
       content: 'Ever broke your budget because the client just kept coming back with that "one more thing"? This is why even agile teams need to track their time.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-kanban-time-tracking.jpg'
     }]
 
@@ -465,7 +465,7 @@ module.exports =
       name: 'description'
       content: 'What are the hottest tools for digital nomads and remote workers in 2016? This infographic will bring you up to speed with the latest and the greatest.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-digital-nomad-tools.jpg'
     }]
 
@@ -476,7 +476,7 @@ module.exports =
       name: 'description'
       content: 'Track the time you spend on your Pivotal Tracker tickets without switching apps. Managing time spent on your list with this Chrome extension is quick and simple.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -487,7 +487,7 @@ module.exports =
       name: 'description'
       content: 'Follow Frank, our imaginary office guinea pig, as we give tips on how to finish your work quicker (no Franks were harmed in the making of this infographic).'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-office-productivity-tips.jpg'
     }]
 
@@ -498,7 +498,7 @@ module.exports =
       name: 'description'
       content: 'Track the time that you spend working inside Zendesk. This simple Chrome extension integrates Toggl time tracking with Zendesk.'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
 
@@ -509,6 +509,6 @@ module.exports =
       name: 'description'
       content: 'Put our timer inside your favourite app, win iPad, swag & eternal glory!'
       },{
-      property: 'og-image'
+      property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-developer-challenge.jpg'
     }]
