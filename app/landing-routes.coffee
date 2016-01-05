@@ -503,12 +503,12 @@ module.exports =
     }]
 
   'toggl-developer-challenge':
-    title: 'Toggl timer developer challenge 2016'
+    title: 'The Epic Toggl Timer Developer Challenge 2016'
     template: 'toggl-developer-challenge'
     meta: [{
       name: 'description'
-      content: 'Put our timer in your favourite app, win prizes & eternal glory!'
+      content: 'Put our timer inside your favourite app, win iPad, swag & eternal glory!'
       },{
       property: 'og-image'
-      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-developer-challenge.jpg'
     }]
