@@ -68,7 +68,7 @@ class View extends Backbone.View
     $(".#{CUSTOM_META_CLASS}").remove()
     for metaOpts in @meta
       tag = $ '<meta/>', _.extend metaOpts, class: CUSTOM_META_CLASS
-      $('head').append tag
+      $('head').prepend tag
 
   scrollToAnchor: ->
     hash = location.hash
