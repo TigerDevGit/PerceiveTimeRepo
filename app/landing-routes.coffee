@@ -512,3 +512,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-developer-challenge.jpg'
     }]
+
+  'developer-methods-infographic':
+    title: 'Software Development Methods Explained Using Cars'
+    template: 'developer-methods-infographic'
+    meta: [{
+      name: 'description'
+      content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-airport-tips.jpg'
+    }]
