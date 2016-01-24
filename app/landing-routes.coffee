@@ -514,12 +514,12 @@ module.exports =
     }]
 
   'developer-methods-infographic':
-    title: 'Software Development Methods Explained Using Cars'
+    title: 'Software Development Methods Explained With Cars (Infographic)'
     template: 'developer-methods-infographic'
     meta: [{
       name: 'description'
-      content: 'Airports can be a real time sink, especially if you\'re travelling for work. Here are our top tricks for making the flying experience a lot easier and faster.'
+      content: 'An epic visual guide into how software development agencies work, and how clients will never understand them.'
       },{
       property: 'og:image'
-      content: 'https://toggl.com/images/share-img/fb-share-airport-tips.jpg'
+      content: 'https://toggl.com/images/share-img/fb-share-developer-methods-infographic.jpg'
     }]
