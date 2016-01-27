@@ -316,11 +316,11 @@ module.exports =
     }]
 
   'wunderlist-time-tracking':
-    title: 'Time tracking Chrome extension for Wunderlist'
+    title: 'Time tracking integration for Wunderlist in Chrome'
     template: 'wunderlist'
     meta: [{
       name: 'description'
-      content: 'Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
+      content: 'Get an online work timer into your Wunderlist account. Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
