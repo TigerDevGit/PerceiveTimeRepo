@@ -140,7 +140,7 @@ module.exports =
     }]
 
   'best-time-keeping-software-lawyers':
-    title: 'Toggl - Best Time Keeping Software For Lawyers'
+    title: 'Toggl - Best Time Tracking Software For Lawyers'
     template: 'lawyers'
     meta: [{
       name: 'description'
