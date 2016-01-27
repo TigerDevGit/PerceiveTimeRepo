@@ -331,7 +331,7 @@ module.exports =
     template: 'jira'
     meta: [{
       name: 'description'
-      content: 'Track time spent on your JIRA tasks and export the logs directly to Toggl. Managing time spent on your task list with this free Chrome extension is really quick and easy.'
+      content: 'Integrate time tracking into JIRA with this simple Chrome timer extension. The Chrome plugin is free and puts a light-weight online timer into JIRA.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
