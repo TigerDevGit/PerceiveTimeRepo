@@ -426,11 +426,11 @@ module.exports =
     }]
 
   'best-software-development-management-tools-2016':
-    title: 'Best Tools for Software Development Teams in 2016'
+    title: 'Best Productivity Tools for Software Development Teams in 2016'
     template: 'best-software-development-management-tools-2016'
     meta: [{
       name: 'description'
-      content: 'Are you using the right tools with your agile team setup? Here is a list of killer development management tools you cannot miss going into 2016.'
+      content: 'Are you using the right productivity tools with your agile team setup? Here is a list of killer software development management tools you cannot miss going into 2016.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
