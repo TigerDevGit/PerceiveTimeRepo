@@ -151,7 +151,7 @@ module.exports =
     }]
 
   'best-time-reporting-software-freelancers':
-    title: 'Toggl - Best Time Reporting Software For Freelancers'
+    title: 'Toggl - Best Free Time Tracking Software For Freelancers'
     template: 'freelancers'
     meta: [{
       name: 'description'
