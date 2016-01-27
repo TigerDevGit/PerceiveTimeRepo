@@ -294,11 +294,11 @@ module.exports =
     }]
 
   'reporting-timesheet-data':
-    title: 'How to turn your timesheets into powerful reports'
+    title: 'How to turn your office team timesheets into powerful reports'
     template: 'reporting-timesheet-data'
     meta: [{
       name: 'description'
-      content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your timesheet information into actionable insight.'
+      content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your office team timesheet information into actionable insight.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
