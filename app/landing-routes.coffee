@@ -195,11 +195,11 @@ module.exports =
     }]
 
   'company-productivity-analysis-web-app':
-    title: 'Toggl - Company Productivity Analysis Through Time Tracking'
+    title: 'Toggl - Employee Productivity Tracker'
     template: 'company-productivity'
     meta: [{
       name: 'description'
-      content: 'Analyize the time usage of your employees. Very simple setup and easy real time tracking. All the data is synced to the cloud and can be exported as online timesheets.'
+      content: 'Analyize the time usage and productivity of your employees. Simple online timer and great visual reports. All the data is synced to the cloud and can be exported as online timesheets.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
