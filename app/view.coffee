@@ -46,6 +46,7 @@ class View extends Backbone.View
     @preRender?()
     data = _.extend @model.toJSON(), @attributes
     @changeMetaTags()
+    @updateCanonicalTag()
     @$el.html templates[@template] data
     document.title = @title if @title?
     @bindHooks()
@@ -69,13 +70,16 @@ class View extends Backbone.View
     for metaOpts in @meta
       tag = $ '<meta/>', _.extend metaOpts, class: CUSTOM_META_CLASS
       $('head').prepend tag
+
+  updateCanonicalTag: ->
     address = window.location.href
-    if _.includes(address, 'www.')
-      $('[rel=canonical]').remove()
-      tag = $('<meta/>', rel: 'canonical', href: address.replace('www.', ''))
-      $('head').append tag
-    else
-      $('[rel=canonical]').remove()
+    address = address.replace('www.', '') # remove www
+    address = address.replace(/\?.*/, '') # remove url query
+    if _.endsWith(address, '/')
+      address = address.slice(0, -1) # remove trailing slash
+    $('[rel=canonical]').remove()
+    tag = $('<meta/>', rel: 'canonical', href: address)
+    $('head').prepend tag
 
   scrollToAnchor: ->
     hash = location.hash
