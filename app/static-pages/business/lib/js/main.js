@@ -75,15 +75,15 @@ function smoothScroll(){
         $('.pricing__section').addClass('active_pricing');
         setTimeout(function(){
           $('.pricing__section').removeClass('active_pricing');
-        }, 1000);
+        }, 150);
       } else if ( elementClick == '#section_more' ){
         $('.pricing__section').addClass('active_more');
         setTimeout(function(){
           $('.pricing__section').removeClass('active_more');
-        }, 1000);
+        }, 150);
         setTimeout(function(){
           $('.pricing__section').removeClass('active_index')
-        }, 1150);
+        }, 300);
       }
     });
 

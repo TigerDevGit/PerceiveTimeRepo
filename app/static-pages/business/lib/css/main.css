@@ -697,11 +697,11 @@ __________________________*/
   background: #2CC1E6;
   z-index: 1;
   box-shadow: 0 0 0 0 #2CC1E6;
-  -webkit-transition: all 150ms linear;
-  -moz-transition: all 150ms linear;
-  -ms-transition: all 150ms linear;
-  -o-transition: all 150ms linear;
-  transition: all 150ms linear;
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -ms-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  transition: all 100ms linear;
 }
 .pricing__section:before {
   content: "";
@@ -715,11 +715,11 @@ __________________________*/
   background: #18A8CC;
   z-index: 1;
   box-shadow: 0 0 0 0 #18A8CC;
-  -webkit-transition: all 150ms linear;
-  -moz-transition: all 150ms linear;
-  -ms-transition: all 150ms linear;
-  -o-transition: all 150ms linear;
-  transition: all 150ms linear;
+  -webkit-transition: all 100ms linear;
+  -moz-transition: all 100ms linear;
+  -ms-transition: all 100ms linear;
+  -o-transition: all 100ms linear;
+  transition: all 100ms linear;
 }
 .pricing__section.active_pricing:after {
   box-shadow: 0 0 0 35px #2CC1E6;
@@ -796,10 +796,35 @@ __________________________*/
 .pricing__section--ul a {
   font-size: 20px;
   line-height: 40px;
-  text-decoration: underline;
+  text-decoration: none;
   color: #fff;
   font-family: 'DINProLight_13935';
   font-weight: 400;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.pricing__section--ul a:before {
+  content: "";
+  width: auto;
+  height: 1px;
+  background: #fff;
+  position: absolute;
+  bottom: 7px;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.pricing__section--ul a:hover:before {
+  right: 100%;
+}
+
+.pricing__section .btn__signup:hover {
+  background: #00667F;
 }
 
 @media screen and (max-width: 1240px) {
