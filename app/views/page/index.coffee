@@ -120,7 +120,7 @@ class IndexView extends View
       api
         .user.completeGoogleLogin query.code, remember
         .then =>
-          @googleLoginFinished()
+          @loginOverlay.updateMessage 'Logging in.'
           redirectToApp()
         .catch (err) =>
           @googleLoginFinished()
