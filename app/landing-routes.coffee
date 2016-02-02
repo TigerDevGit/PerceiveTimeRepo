@@ -140,7 +140,7 @@ module.exports =
     }]
 
   'best-time-keeping-software-lawyers':
-    title: 'Toggl - Best Time Keeping Software For Lawyers'
+    title: 'Toggl - Best Time Tracking Software For Lawyers'
     template: 'lawyers'
     meta: [{
       name: 'description'
@@ -151,7 +151,7 @@ module.exports =
     }]
 
   'best-time-reporting-software-freelancers':
-    title: 'Toggl - Best Time Reporting Software For Freelancers'
+    title: 'Toggl - Best Free Time Tracking Software For Freelancers'
     template: 'freelancers'
     meta: [{
       name: 'description'
@@ -162,11 +162,11 @@ module.exports =
     }]
 
   'corporate-timesheet-alternative-application':
-    title: 'Toggl - The Best Alternative To Corporate Timesheets'
+    title: 'Toggl - The Best Timesheets Alternative System'
     template: 'timesheet-alternative'
     meta: [{
       name: 'description'
-      content: 'Track and analyize your work hours without the time-wasting spreasheet filling. Use timer or add time logs manually. All the data is synced to the cloud and generated into useful time reports and pretty graphs.'
+      content: 'Track and analyize your work hours in real time. Use the online timer with the whole team and all the data is synced to the cloud. Toggl is the best timesheets alternative.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -195,11 +195,11 @@ module.exports =
     }]
 
   'company-productivity-analysis-web-app':
-    title: 'Toggl - Company Productivity Analysis Through Time Tracking'
+    title: 'Toggl - Employee Productivity Tracker'
     template: 'company-productivity'
     meta: [{
       name: 'description'
-      content: 'Analyize the time usage of your employees. Very simple setup and easy real time tracking. All the data is synced to the cloud and can be exported as online timesheets.'
+      content: 'Analyize the time usage and productivity of your employees. Simple online timer and great visual reports. All the data is synced to the cloud and can be exported as online timesheets.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -239,11 +239,11 @@ module.exports =
     }]
 
   'motivate-employee-time-tracking':
-    title: 'How to Motivate Your Employees to Track Time'
+    title: 'How to Motivate Employees to Track Time and Improve Productivity'
     template: 'motivate-employee-time-tracking'
     meta: [{
       name: 'description'
-      content: 'Are you having difficulty getting your employees to track their work hours? Here\'s a guide on how to motivate them to fill in their timesheets.'
+      content: 'Are you having difficulty getting your employees to track their work hours and productivity? Here\'s a guide on how to motivate them to fill in their timesheets.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -294,11 +294,11 @@ module.exports =
     }]
 
   'reporting-timesheet-data':
-    title: 'How to turn your timesheets into powerful reports'
+    title: 'How to turn your office team timesheets into powerful reports'
     template: 'reporting-timesheet-data'
     meta: [{
       name: 'description'
-      content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your timesheet information into actionable insight.'
+      content: 'Data is only valuable when you know how to use it. Here\'s a guide into turning your office team timesheet information into actionable insight.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -316,11 +316,11 @@ module.exports =
     }]
 
   'wunderlist-time-tracking':
-    title: 'Time tracking Chrome extension for Wunderlist'
+    title: 'Time tracking integration for Wunderlist in Chrome'
     template: 'wunderlist'
     meta: [{
       name: 'description'
-      content: 'Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
+      content: 'Get an online work timer into your Wunderlist account. Track time spent on Wunderlist tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -331,7 +331,7 @@ module.exports =
     template: 'jira'
     meta: [{
       name: 'description'
-      content: 'Track time spent on your JIRA tasks and export the logs directly to Toggl. Managing time spent on your task list with this free Chrome extension is really quick and easy.'
+      content: 'Integrate time tracking into JIRA with this simple Chrome timer extension. The Chrome plugin is free and puts a light-weight online timer into JIRA.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -426,11 +426,11 @@ module.exports =
     }]
 
   'best-software-development-management-tools-2016':
-    title: 'Best Tools for Software Development Teams in 2016'
+    title: 'Best Productivity Tools for Software Development Teams in 2016'
     template: 'best-software-development-management-tools-2016'
     meta: [{
       name: 'description'
-      content: 'Are you using the right tools with your agile team setup? Here is a list of killer development management tools you cannot miss going into 2016.'
+      content: 'Are you using the right productivity tools with your agile team setup? Here is a list of killer software development management tools you cannot miss going into 2016.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
