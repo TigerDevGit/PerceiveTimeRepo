@@ -512,3 +512,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-developer-challenge.jpg'
     }]
+
+  'developer-methods-infographic':
+    title: 'Software Development Methods Explained With Cars (Infographic)'
+    template: 'developer-methods-infographic'
+    meta: [{
+      name: 'description'
+      content: 'An epic visual guide into how software development agencies work, and what kind of problems they face daily.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-developer-methods-infographic.jpg'
+    }]
