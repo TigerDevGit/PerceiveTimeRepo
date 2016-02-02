@@ -228,11 +228,11 @@ module.exports =
     }]
 
   'best-productivity-tools-2016':
-    title: 'Must-have Tools to Increase Productivity in 2016'
+    title: 'Best Productivity Tools and Apps in 2016'
     template: 'best-productivity-tools-2016'
     meta: [{
       name: 'description'
-      content: 'Comprehensive overview of the best free time management tools to use in 2016. Most of these productivity boosting tools are cloud based.'
+      content: 'Comprehensive overview of the best free online productivity tools and apps to use in 2016. Most of these are cloud based.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
@@ -287,7 +287,7 @@ module.exports =
     template: 'asana'
     meta: [{
       name: 'description'
-      content: 'Track time spent on Asana tasks and export timesheets in Toggl. Managing work time with this simple Chrome extension is really quick and easy.'
+      content: 'Track time spent on Asana tasks and export timesheets in Toggl. Just get the free Chrome timer extension and start tracking your productivity.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
