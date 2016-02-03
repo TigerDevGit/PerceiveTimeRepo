@@ -523,3 +523,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-developer-methods-infographic.jpg'
     }]
+    
+  'agile-development-best-tools':
+    title: 'Using cloud tools in agile development'
+    template: 'agile-development-best-tools'
+    meta: [{
+      name: 'description'
+      content: 'Cloud based B2B tools are the future - here\'s how to use Toggl, Trello & GitHub to manage agile development projects.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
