@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "id": "london",
-      "location": "London, United Kingdom",
-      "who": "Alari",
-      "date": "9th February",
-      "description": "We love London and can't help but visit every once in a while to meet our lovely fans there. On February 9th, Alari is flying over to catch up with you and gather ideas for perfecting Toggl. Let him know if you have time for a cup of tea and a good chat.",
-      "img": "images/alari.jpg"
-    },
-    {
       "id": "amsterdam",
       "location": "Amsterdam, The Netherlands",
       "who": "Melissa",
