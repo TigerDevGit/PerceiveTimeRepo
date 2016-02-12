@@ -8,7 +8,7 @@ isSaneBrowser = ->
 
 GROUP_TITLE = "Stay awhile and listen"
 TITLE = "   What are you waiting for? Join us!"
-TITLE_CSS = "background-image: url('https://toggl.com/app/images/logo-big.png');
+TITLE_CSS = "background-image: url('/app/images/logo-big.png');
              background-repeat: no-repeat;
              background-size: 45px 45px;
              font-size: 40px;
