@@ -1,7 +1,7 @@
 {
   "meetings": [
     {
-      "id": "amsterdam",
+      "id": "toggl-amsterdam",
       "location": "Amsterdam, The Netherlands",
       "who": "Melissa",
       "date": "29th February - 1st March",
@@ -15,6 +15,14 @@
       "date": "14th - 15th March",
       "description": "Have you ever tried tracking your time with the Toggl Desktop application? Or maybe you're a fan of the Toggl Button? Indrek is the mastermind behind these tools and he's coming to Madrid to hear your thoughts on taking time tracking to the next level. Seize the opportunity and share your vision!",
       "img": "images/indrek.jpg"
+    },
+    {
+      "id": "teamweek-amsterdam",
+      "location": "Amsterdam, The Netherlands",
+      "who": "Laura",
+      "date": "15th - 17th March",
+      "description": "Have you heard about our amazing project management tool Teamweek? If you have, it's likely thanks to Laura. If not, you’re really missing out. Either way, she's visiting Amsterdam to share Teamweek tips and tricks and get your feedback.",
+      "img": "images/laura.jpg"
     }
   ],
   "vacation_til": null
