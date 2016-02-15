@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  $.clickyConfigureAllGoals(100857897);
 
   integrationCarousel();
   smoothScroll();
