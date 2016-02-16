@@ -15,6 +15,14 @@
       "date": "29th February - 1st March",
       "description": "Melissa works day in and day out on fine-tuning Toggl's features, so that your life would be as simple as possible. If you have any tips about making time tracking even smoother, catch her in Amsterdam and share your ideas.",
       "img": "images/melissa.jpg"
+    },
+    {
+      "id": "madrid",
+      "location": "Madrid, Spain",
+      "who": "Indrek",
+      "date": "14th - 15th March",
+      "description": "Have you ever tried tracking your time with the Toggl Desktop application? Or maybe you're a fan of the Toggl Button? Indrek is the mastermind behind these tools and he's coming to Madrid to hear your thoughts on taking time tracking to the next level. Seize the opportunity and share your vision!",
+      "img": "images/indrek.jpg"
     }
   ],
   "vacation_til": null
