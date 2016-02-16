@@ -73,6 +73,7 @@
     "grunt-modernizr": "^0.6.0",
     "grunt-replace": "^0.8.0",
     "grunt-rev": "^0.1.0",
+    "grunt-shell": "^1.1.2",
     "grunt-usemin": "^3.0.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.1.0",

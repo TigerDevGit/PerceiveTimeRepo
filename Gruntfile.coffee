@@ -229,6 +229,10 @@ module.exports = (grunt) ->
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/assets/stylesheets/style.css"
         tasks: [ "build:serve" ]
+      shell:
+        options: livereload: LIVERELOAD_PORT
+        files: "<%= yeoman.app %>/../data/meetings.json"
+        tasks: [ "shell:renderMeetPage" ]
 
     coffee:
       dist:
@@ -367,6 +371,10 @@ module.exports = (grunt) ->
             '#/pricing'
           ].concat _.map(require('./app/landing-routes'), (params, path) -> "#/#{path}")
 
+    shell:
+      renderMeetPage:
+        command: './bin/render-meet-page'
+
   grunt.registerTask "serve", [
     'build:serve'
     'configureProxies:server'
@@ -385,6 +393,7 @@ module.exports = (grunt) ->
     "modernizr"
     "copy:statics"
     "copy:dist"
+    "shell:renderMeetPage"
     "replace:distVersion"
   ]
 
