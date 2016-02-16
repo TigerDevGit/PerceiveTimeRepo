@@ -7,6 +7,14 @@
       "date": "9th February",
       "description": "We love London and can't help but visit every once in a while to meet our lovely fans there. On February 9th, Alari is flying over to catch up with you and gather ideas for perfecting Toggl. Let him know if you have time for a cup of tea and a good chat.",
       "img": "images/alari.jpg"
+    },
+    {
+      "id": "amsterdam",
+      "location": "Amsterdam, The Netherlands",
+      "who": "Melissa",
+      "date": "29th February - 1st March",
+      "description": "Melissa works day in and day out on fine-tuning Toggl's features, so that your life would be as simple as possible. If you have any tips about making time tracking even smoother, catch her in Amsterdam and share your ideas.",
+      "img": "images/melissa.jpg"
     }
   ],
   "vacation_til": null
