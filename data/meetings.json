@@ -1,0 +1,37 @@
+{
+  "meetings": [
+    {
+      "id": "toggl-amsterdam",
+      "location": "Amsterdam, The Netherlands",
+      "who": "Melissa",
+      "date": "29th February - 1st March",
+      "description": "Melissa works day in and day out on fine-tuning Toggl's features, so that your life would be as simple as possible. If you have any tips about making time tracking even smoother, catch her in Amsterdam and share your ideas.",
+      "img": "images/melissa.jpg"
+    },
+    {
+      "id": "madrid",
+      "location": "Madrid, Spain",
+      "who": "Indrek",
+      "date": "14th - 15th March",
+      "description": "Have you ever tried tracking your time with the Toggl Desktop application? Or maybe you're a fan of the Toggl Button? Indrek is the mastermind behind these tools and he's coming to Madrid to hear your thoughts on taking time tracking to the next level. Seize the opportunity and share your vision!",
+      "img": "images/indrek.jpg"
+    },
+    {
+      "id": "teamweek-amsterdam",
+      "location": "Amsterdam, The Netherlands",
+      "who": "Laura",
+      "date": "15th - 17th March",
+      "description": "Have you heard about our amazing project management tool Teamweek? If you have, it's likely thanks to Laura. If not, you’re really missing out. Either way, she's visiting Amsterdam to share Teamweek tips and tricks and get your feedback.",
+      "img": "images/laura.jpg"
+    },
+    {
+      "id": "los-angeles",
+      "location": "Los Angeles, CA",
+      "who": "Tiina",
+      "date": "28th - 30th March",
+      "description": "We can't get enough of the sun and positive vibes of the City of Angels! This time our customer support star Tiina is coming over to hear first-hand how you are tracking your time with Toggl and what it means for your productivity. Let her know if you're up for a cup of coffee.",
+      "img": "images/tiina.jpg"
+    }
+  ],
+  "vacation_til": null
+}
