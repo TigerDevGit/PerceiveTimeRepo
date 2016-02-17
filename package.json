@@ -1,7 +1,7 @@
 {
   "name": "toggl-next-website",
   "private": true,
-  "version": "1.22.4",
+  "version": "1.22.5",
   "scripts": {
     "test": "gulp test"
   },
