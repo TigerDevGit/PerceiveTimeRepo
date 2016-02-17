@@ -1161,6 +1161,31 @@ img.scroll-revealed {
   }
 }
 
+.sexy-reports-link:hover {
+  color: #ce0009;
+}
+
+.sexy-reports-link:after {
+  content: url('../images/cta-button-arrow-red.svg?1');
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -3px;
+  width: 16px;
+  height: 14px;
+}
+
+.sexy-reports-link:hover:after {
+  -webkit-filter: saturate(0.8);
+  filter: saturate(0.8);
+}
+
+@media screen and (max-width: 580px) {
+  .sexy-reports-link:after {
+    margin-top: -1px;
+  }
+}
+
 .content-section__centered-block {
   position: absolute;
   background: white;
