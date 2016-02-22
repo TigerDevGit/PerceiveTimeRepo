@@ -266,6 +266,7 @@
 
 
 .mc__landing--news {
+    margin-top: 45px;
 
 }
 .mc__landing--news_item {
@@ -295,7 +296,7 @@
 }
 .mc__landing--news_content p {
   color: #4c4c4c;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 28px;
   margin-bottom: 22px;
