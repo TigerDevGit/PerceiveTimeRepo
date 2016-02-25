@@ -9,7 +9,7 @@ _                 = require 'lodash'
 
 timerStart = Date.now()
 
-API_HOST = "https://next.toggl.com" || process.env.API_HOST
+API_HOST = "https://toggl.space" || process.env.API_HOST
 API_HOST_USES_SSL = API_HOST.indexOf("https") == 0
 LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
 
@@ -57,6 +57,7 @@ module.exports = (grunt) ->
             context: "/api/v8/"
             host: API_HOST['https://'.length..]
             https: API_HOST_USES_SSL
+            secure: false
             protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
             port: if API_HOST_USES_SSL then 443 else 80
           }
@@ -64,6 +65,7 @@ module.exports = (grunt) ->
             context: "/api/v9/"
             host: API_HOST['https://'.length..]
             https: API_HOST_USES_SSL
+            secure: false
             protocol: if API_HOST_USES_SSL then 'https:' else 'http:'
             port: if API_HOST_USES_SSL then 443 else 80
           }
