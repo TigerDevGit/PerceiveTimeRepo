@@ -2049,10 +2049,12 @@ img.scroll-revealed {
        url('../fonts/DINProBold_13934.svg#DINProBold_13934') format('svg');
 }
 
+#pricing {
+  background: #EEE url(../images/landing-pages/bg_pricing_sm.jpg) no-repeat left 50% top -600px;
+}
 .pricing {
   padding-top: 30px;
-  background: #EEE url(../images/landing-pages/bg_pricing_sm.jpg) no-repeat center bottom;
-  background-size: 100% auto;
+  background: transparent;
 }
 
 .pricing__heading {
@@ -2347,6 +2349,9 @@ img.scroll-revealed {
 
 
 @media(min-width: 480px){
+  #pricing {
+    background: #EEE url(../images/landing-pages/bg_pricing_md.jpg) no-repeat left 50% top -1300px;
+  }
   .pricing__box {
     padding-bottom: 46px;
   }
@@ -2428,10 +2433,12 @@ img.scroll-revealed {
 }
 
 @media(min-width: 768px){
-  .pricing {
-    padding-top: 30px;
+  #pricing {
     background: #EEE url(../images/landing-pages/bg_pricing.jpg) no-repeat center bottom;
     background-size: 100% auto;
+  }
+  .pricing {
+    padding-top: 30px;
   }
   .pricing__col {
     float: left;
