@@ -2276,9 +2276,6 @@ img.scroll-revealed {
 .__plan__pro .pricing__features--label {
   background: #8C0007;
 }
-.__plan__pro .pricing__text {
-  color: #fff;
-}
 .__plan__pro .pricing__box--btn:hover {
   background-color: #A60007;
 }
@@ -2430,6 +2427,10 @@ img.scroll-revealed {
     text-align: center;
     font-weight: 600;
   }
+
+  .__plan__pro .pricing__text {
+	  color: #fff;
+	}
 }
 
 @media(min-width: 768px){
