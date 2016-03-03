@@ -10,10 +10,10 @@ LoginOverlay     = require '../component/login-overlay'
 class IndexView extends View
   template: 'page/index'
   hooks: ['frontvideo', 'timer']
-  title: 'Toggl - Free Time Tracking Software & App'
+  title: 'Toggl - Time Tracker & Employee Timesheet Software'
   meta: [
     name: 'description'
-    content: 'Get better at time management, increase small business revenues or easily manage employee timesheets. Best cloud based multi-platform timer.'
+    content: 'Best time tracking system for a small business. A simple online timer with a powerful timesheet calculator. Syncs with iOS & Android app.'
   ]
 
   onShow: ->
