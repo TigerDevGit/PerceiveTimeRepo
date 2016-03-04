@@ -69,7 +69,8 @@ class View extends Backbone.View
 
   updateCanonicalTag: ->
     address = window.location.href
-    address = address.replace('www.', '') # remove www
+    # force https, remove www, subdomain and force toggl.com domain
+    address = address.replace(/^.*toggl(\.[A-z]+)+(\:\d+)?\//, 'https://toggl.com/')
     address = address.replace(/\?.*/, '') # remove url query
     if _.endsWith(address, '/')
       address = address.slice(0, -1) # remove trailing slash
