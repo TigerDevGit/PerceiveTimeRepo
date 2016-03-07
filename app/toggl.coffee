@@ -6,12 +6,11 @@ _        = require 'lodash'
 # Set-up Bugsnag
 environment = do ->
   host = document.location.host
-  if _.startsWith(host, 'next.toggl.com') or
-     _.startsWith(host, 'fubar.toggl.com')
+  if _.startsWith(host, 'alpha.toggl.space') or
+     _.startsWith(host, 'beta.toggl.space')
     "staging"
   else if _.startsWith(host, 'www.toggl.com') or
-          _.startsWith(host, 'toggl.com') or
-          _.startsWith(host, 'new.toggl.com')
+          _.startsWith(host, 'toggl.com')
     "production"
   else "development"
 
