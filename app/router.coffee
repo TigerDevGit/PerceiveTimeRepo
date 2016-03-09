@@ -37,6 +37,7 @@ Router = class Router extends Backbone.Router
       'login(/)': 'showLogin'
       'pricing(/)': 'showPricing'
       'business(/)': -> window.location = '/business' # hack to redirect to static page
+      'feature-list(/)': -> window.open('/feature-list') # hack to redirect to static page as a _blank target
     }, _.mapValues require('./landing-routes'), (params) ->
       -> renderPage require('./views/page/landing'), params
 
