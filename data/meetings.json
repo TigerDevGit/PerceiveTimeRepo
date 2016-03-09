@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "id": "toggl-amsterdam",
-      "location": "Amsterdam, The Netherlands",
-      "who": "Melissa",
-      "date": "29th February - 1st March",
-      "description": "Melissa works day in and day out on fine-tuning Toggl's features, so that your life would be as simple as possible. If you have any tips about making time tracking even smoother, catch her in Amsterdam and share your ideas.",
-      "img": "images/melissa.jpg"
-    },
-    {
       "id": "madrid",
       "location": "Madrid, Spain",
       "who": "Indrek",
