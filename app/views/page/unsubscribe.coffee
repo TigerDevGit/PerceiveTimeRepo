@@ -26,7 +26,7 @@ class UnsubscribeView extends View
     @submitButton = @$('.js-unsubscribe')
     @errorMessage = @$('.js-error')
 
-  showError: (err) ->
+  showError: (err = "We couldn't automatically unsubscribe you. Please contact support.") ->
     if err.indexOf('Error') is -1
       err = 'Error: ' + err
     @errorMessage.text(err)
@@ -50,6 +50,7 @@ class UnsubscribeView extends View
 
     jqhr = $.post "/api/v9/me/#{@type}/#{@token}", =>
       @errorMessage.hide()
+      @submitButton.hide()
       @updateStatus('done')
       @description.text("You're no longer subscribed to the #{@readableType}")
     jqhr.fail (err) =>

@@ -602,6 +602,10 @@ a {
   transform: translateX(-50%) translateY(-50%);
 }
 
+.hero--unsubscribe {
+  min-height: 450px;
+}
+
 .hero--unsubscribe .unsubscribe-error {
   background: #f30c16;
   color: white;
