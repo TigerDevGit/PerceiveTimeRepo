@@ -186,7 +186,7 @@ video::-webkit-media-controls {
   transition: background-color linear 200ms, color linear 200ms, border-color linear 200ms;
 }
 
-.cta-button:hover {
+.cta-button:hover, .cta-button:focus {
   background: #ce0009;
   border-color: #ce0009;
   color: white;
