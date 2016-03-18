@@ -17,6 +17,14 @@
       "img": "images/tiina.jpg"
     },
     {
+      "id": "vienna",
+      "location": "Vienna, Austria",
+      "who": "Robert",
+      "date": "4th-5th April",
+      "description": "Besides assisting Toggl users, Robert is a big fan of robotics, dogs and traveling. He'll soon be exploring Vienna to get to know togglers out there and learn what you think about tracking time for productivity. Let him know if you're up for a cup of coffee and a little chat.",
+      "img": "images/robert.jpg"
+    },
+    {
       "id": "tel-aviv",
       "location": "Tel Aviv, Israel",
       "who": "Küllike & Heidi",
