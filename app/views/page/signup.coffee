@@ -46,6 +46,10 @@ class SignupView extends View
 
   googleSignup: (e) ->
     e.preventDefault()
+
+    @data = formData $(@$el)
+    return @showAgreeToTermsError() unless @data.agreeToTerms
+
     @errorMessage.hide()
     @api.user.initGoogleSignup()
 
@@ -57,6 +61,9 @@ class SignupView extends View
 
     @errorMessage.hide()
     @data = formData $(@$el)
+
+    return @showAgreeToTermsError() unless @data.agreeToTerms
+
     @data.timezone = jstz.determine()?.name()
 
     signupError = (err) =>
@@ -70,6 +77,10 @@ class SignupView extends View
         (=> @updateStatus 'done'),
         (=> @updateStatus 'done')
       )
+
+  showAgreeToTermsError: ->
+    @showError 'You need to agree to our terms of service to continue.'
+    @updateStatus 'done'
 
   login: =>
     loginSuccess = =>

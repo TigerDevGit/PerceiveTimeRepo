@@ -19,6 +19,13 @@
     <div class="signup-form__field">
       <input name="password" type="password" placeholder="{{#unless isInvitation}}Password{{else}}Choose your password{{/unless}}">
     </div>
+      <label>
+        <input name="agreeToTerms" type="checkbox" checked="checked" />
+        I agree to the
+      </label>
+      <a href="#/legal/terms" target="_blank">terms of service</a>
+    <div>
+    </div>
     <div class="signup-form__submit">
       <button type="submit" class="cta-button cta-button--filled js-ripple-button">{{ buttonLabel }}</button>
     </div>
