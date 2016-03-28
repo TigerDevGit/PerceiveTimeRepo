@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "id": "teamweek-amsterdam",
-      "location": "Amsterdam, The Netherlands",
-      "who": "Laura",
-      "date": "15th - 17th March",
-      "description": "Have you heard about our amazing project management tool Teamweek? If you have, it's likely thanks to Laura. If not, you’re really missing out. Either way, she's visiting Amsterdam to share Teamweek tips and tricks and get your feedback.",
-      "img": "images/laura.jpg"
-    },
-    {
       "id": "los-angeles",
       "location": "Los Angeles, CA",
       "who": "Tiina",
