@@ -129,8 +129,8 @@ $(window).scroll(function(){
 
 
 function pricingChange(value){
-  $('.pricing_form--year').text( value * 5 );
-  $('.pricing_form--month').text( value * 59 );
+  $('.pricing_form--year').text( value * 9 );
+  $('.pricing_form--month').text( value * 10 );
 }
 
 function isNumeric(n) {
