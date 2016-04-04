@@ -43,8 +43,9 @@ class IndexView extends View
       redirectToApp()
 
   isAprilFools: ->
-    d = new Date()
-    d.getMonth() is 3 and d.getDate() <= 8
+    return false
+    # d = new Date()
+    # d.getMonth() is 3 and d.getDate() <= 8
 
   showLoadingOverlay: ->
     @loginOverlay = new LoginOverlay()
