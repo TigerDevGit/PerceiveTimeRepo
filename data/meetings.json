@@ -1,14 +1,6 @@
 {
   "meetings": [
     {
-      "id": "los-angeles",
-      "location": "Los Angeles, CA",
-      "who": "Tiina",
-      "date": "28th - 30th March",
-      "description": "We can't get enough of the sun and positive vibes of the City of Angels! This time our customer support star Tiina is coming over to hear first-hand how you are tracking your time with Toggl and what it means for your productivity. Let her know if you're up for a cup of coffee.",
-      "img": "images/tiina.jpg"
-    },
-    {
       "id": "vienna",
       "location": "Vienna, Austria",
       "who": "Robert",
