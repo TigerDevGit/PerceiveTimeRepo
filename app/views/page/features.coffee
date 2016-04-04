@@ -2,10 +2,10 @@ View = require '../../view'
 
 class FeaturesView extends View
   template: 'page/features'
-  title: 'Toggl - Features Online Timer & Timesheet Export'
+  title: 'Toggl Features: calculate work hours & billable hours, employee timesheets'
   meta: [
     name: 'description'
-    content: 'Track project hours or general time usage. Analyze business profitability, personal productivity or keep track of employee timesheets.'
+    content: 'Best time management tool for calculating employee work hours or billable client hours. Useful timer app for both freelancers and small businesses.'
   ]
   hooks: ['timer', 'piechart', 'reveal']
 

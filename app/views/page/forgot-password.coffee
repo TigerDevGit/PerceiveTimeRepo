@@ -6,7 +6,7 @@ _                  = require 'lodash'
 
 class ForgotPasswordView extends View
   template: 'page/forgot-password'
-  title: 'Forgot password — Toggl, The Simplest Time Tracker'
+  title: 'Forgot Toggl password?'
 
   events:
     'submit': 'forgotPassword'

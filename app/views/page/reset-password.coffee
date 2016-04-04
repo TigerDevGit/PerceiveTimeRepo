@@ -9,7 +9,7 @@ showAlert     = require '../../lib/show-alert'
 
 class ResetPasswordView extends View
   template: 'page/reset-password'
-  title: 'Reset your password — Toggl, The Simplest Time Tracker'
+  title: 'Reset your Toggl password'
 
   initialize: ({@token}) -> super
 

@@ -8,10 +8,10 @@ _                  = require 'lodash'
 
 class SignupView extends View
   template: 'page/signup'
-  title: 'Toggl - Sign up, Track Time & Analyze Profitability'
+  title: 'Toggl Signup: track your work hours!'
   meta: [
     name: 'description'
-    content: 'Track project hours or general time usage. Analyze business profitability, personal productivity or keep track of employee timesheets.'
+    content: 'Start now - use the timer app and calculate work hours. Analyze business profitability, personal productivity or keep track of employee timesheets.'
   ]
 
   events:
