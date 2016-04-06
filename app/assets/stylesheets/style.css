@@ -1378,6 +1378,10 @@ img.scroll-revealed {
   margin: 0 auto;
 }
 
+.premium .signup-form {
+  max-width: 340px !important;
+}
+
 .signup-form__info, .signup-form__error {
   display: none;
   color: white;
@@ -2069,6 +2073,15 @@ img.scroll-revealed {
   margin: 0;
   letter-spacing: -0.05em;
 }
+.pricing__subheading {
+  font-size: 20px;
+  line-height: 24px;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  font-weight: normal;
+  margin: 3px 0 41px 0;
+}
 
 .pricing__container {
   padding: 0 15px 20px 15px;
@@ -2366,7 +2379,7 @@ img.scroll-revealed {
     padding: 51px 0 0 0;
   }
   .pricing__box--title span {
-    font-size: 24px;
+    font-size: 22px;
     line-height: 26px;
     padding-top: 7px;
   }
@@ -2477,7 +2490,7 @@ img.scroll-revealed {
     width: 25%;
   }
   .pricing__heading {
-    padding: 126px 0 51px 0;
+    padding: 126px 0 0 0;
   }
 
   .pricing__box--title {

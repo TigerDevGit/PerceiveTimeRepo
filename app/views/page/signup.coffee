@@ -27,16 +27,29 @@ class SignupView extends View
   initialize: ({@invitationCode}) ->
     super
     @api = new API('TogglNext', null, null)
+    @isPremium = false
     if @invitationCode
-      $(document.body).addClass('body--white')
-      @attributes = {
-        title: 'Welcome to Toggl!'
-        caption: 'Take charge of your time. Track down your hours and learn to work smarter, not harder.'
-        isInvitation: true
-        showOAuth: false
-        hideNav: true
-        buttonLabel: "Join the team"
-      }
+      console.log("We got invite code", @invitationCode, _.includes ['pro_plus', 'business', 'pro'], @invitationCode)
+      if _.includes ['pro_plus', 'business', 'pro'], @invitationCode
+        console.log("Yes this is it")
+        @isPremium = true
+        $(document.body).addClass('premium')
+        @attributes = {
+          title: 'Get Started Now!'
+          caption: ''
+          showOAuth: true
+          buttonLabel: 'Sign up with free trial'
+        }
+      else
+        $(document.body).addClass('body--white')
+        @attributes = {
+          title: 'Welcome to Toggl!'
+          caption: 'Take charge of your time. Track down your hours and learn to work smarter, not harder.'
+          isInvitation: true
+          showOAuth: false
+          hideNav: true
+          buttonLabel: "Join the team"
+        }
 
   onRemove: ->
     $(document.body).removeClass('body--white')
@@ -84,7 +97,11 @@ class SignupView extends View
 
   login: =>
     loginSuccess = =>
-      @trigger 'login:success'
+      if @isPremium
+        linkSuffix = @invitationCode is 'pro_plus' and 'featureselection' or 'periodselection'
+        document.location = '/app/subscription/' + @invitationCode + '/' + linkSuffix
+      else
+        @trigger 'login:success'
 
     loginError = (err) =>
       @showError err?.responseText or 'Failed to log-in<br />'+
@@ -98,7 +115,7 @@ class SignupView extends View
   postRender: ->
     @errorMessage = @$ '.signup-form__error'
     @submitButton = @$ '.signup-form__submit button'
-    if @invitationCode
+    if @invitationCode and not @isPremium
       @api.invitation.get(@invitationCode)
         .then (invite) =>
           return unless invite
