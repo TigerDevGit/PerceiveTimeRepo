@@ -375,7 +375,7 @@ module.exports = (grunt) ->
 
     shell:
       renderMeetPage:
-        command: './bin/render-meet-page'
+        command: 'node ./bin/render-meet-page'
 
   grunt.registerTask "serve", [
     'build:serve'
