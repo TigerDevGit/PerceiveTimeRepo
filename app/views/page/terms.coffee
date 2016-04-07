@@ -2,7 +2,7 @@ View = require '../../view'
 
 class TermsView extends View
   template: 'page/terms'
-  title: 'Terms of Service — Toggl, The Simplest Time Tracker'
+  title: 'Toggl Terms of Service: safe and secure time tracker'
   
   initialize: ({ simple }) ->
     super

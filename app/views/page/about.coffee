@@ -4,10 +4,10 @@ $ = require 'jquery'
 
 class AboutView extends View
   template: 'page/about'
-  title: 'Toggl - Team Behind the Best Time Tracker'
+  title: 'Toggl Team: join us, we are hiring for flexible remote jobs'
   meta: [
     name: 'description'
-    content: 'Get better overview of the productive and awesome people behind Toggl - the best free time tracking tool in the cloud. Check it out!'
+    content: 'Get to know the productive and awesome people behind Toggl time tracker - and apply for one of our remote job positions!'
   ]
 
   postRender: ->

@@ -2,7 +2,7 @@ View = require '../../view'
 
 class PrivacyView extends View
   template: 'page/privacy'
-  title: 'Privacy Policy — Toggl, The Simplest Time Tracker'
+  title: 'Toggl Privacy: safe and secure time management tool'
 
   initialize: ({ simple }) ->
     super
