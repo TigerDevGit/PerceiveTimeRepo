@@ -374,12 +374,6 @@ function attachToVideo(view) {
     resize(view);
   }
 
-  function handleVideoForceStart(event) {
-    event.preventDefault();
-    detect_autoplay();
-    setVideoMode(AUTOMATIC);
-  }
-
   function onDisposed() {
     running = false;
     view.off('remove pre-render', onDisposed);
@@ -425,7 +419,6 @@ function attachToVideo(view) {
 
 
   view.$('.video-mute-button').on('click', handleMuteButtonClick);
-  view.$('.video-force-start').on('click', handleVideoForceStart);
   view.$('.video-pause-button').on('click', handlePauseButtonClick);
   view.$('.video-play-button').on('click', handlePlayButtonClick);
 
