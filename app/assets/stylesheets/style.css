@@ -796,7 +796,7 @@ h1.hero-timer-heading {
   font-weight: 700;
   width: 770px;
   letter-spacing: 3px;
-  font-size: 82px;
+  font-size: 72px;
 }
 
 @media (max-width: 800px) {
@@ -3706,7 +3706,7 @@ p.larger {
 }
 
 .hero__manual-video {
-  background: url('../images/bg-suit.jpg') center no-repeat;
+  background: url('../images/bg-football-team.jpg') center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;
@@ -3717,10 +3717,13 @@ p.larger {
   font-weight: 100;
 }
 
-.video-force-start .seen-btn {
-  position: absolute;
-  top: -18px;
-  right: -55px;
+.manual-time-start a:after {
+  content: ' ';
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-image: url('../images/cta-button-arrow-white.svg?1');
+  background-size: 11px 11px;
 }
 
 .seen-wrapper {
