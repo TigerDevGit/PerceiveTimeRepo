@@ -1,4 +1,4 @@
-ModalView          = require './modal'
+View               = require '../../view'
 API                = require '../../lib/api'
 formData           = require '../../lib/form-data'
 pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
@@ -14,8 +14,8 @@ isTogglLink = (str) ->
     return true
   /^(https?:\/\/)?(www\.)?([^.]+\.)?toggl\.com/.exec(str)?
 
-class LoginPopup extends ModalView
-  template: 'component/login'
+class LoginPage extends View
+  template: 'page/login-page'
 
   initialize: (options) ->
     @returnTo = options?.returnTo
@@ -36,11 +36,11 @@ class LoginPopup extends ModalView
     else redirectToApp()
 
   showError: (msg) ->
-    @errorMessage.html(msg).show() unless @announcementMessage.is(':visible')
+    @errorMessage.html(msg).css('visibility', 'visible');
 
   submitLogin: (data) ->
     loginErr = (err) =>
-      @showError err?.responseText || 'Couldn\'t log you in. Please try again!'
+      @showError err?.responseText || 'The email/password combination used was not found on the system.'
 
     return if @isPending()
     @updateStatus 'pending'
@@ -63,7 +63,7 @@ class LoginPopup extends ModalView
 
   startSubmit: (e) =>
     e.preventDefault()
-    @errorMessage.hide()
+    @errorMessage?.css('visibility', 'hidden');
 
   showAnnouncement: ->
     @siteOptionsModel = require('../../lib/site-options-model')()
@@ -73,40 +73,26 @@ class LoginPopup extends ModalView
   renderAccouncement: ->
     return if not @siteOptionsModel.get('loginForm')
     onOff = !!@siteOptionsModel.get('loginForm').showAnnouncement
-    @errorMessage.hide() if onOff
+    @errorMessage.css('visibility', 'hidden') if onOff
     @announcementMessage.toggle onOff
     @announcementMessage.html @siteOptionsModel.get('loginForm').announcement
 
   # Then bind hooks appropriately.
   postRender: ->
-    super()
-    @errorMessage = @modal.find('.login-form__error.default')
-    @announcementMessage = @modal.find('.login-form__error.announcement')
-    @form = @modal.find('.login-form')
-    @submitButton = @modal.find('.login-form__submit button')
-
-    setTimeout =>
-      @form.find('input[name=email]').select()
+    @errorMessage = @$ '.login__page--error'
+    @form = @$ '.login__page--form'
+    @submitButton = @$ '.login__page--submit button'
+    @googleButton = @$ '.__google_login'
 
     @form.on 'submit', (e) =>
+      e.preventDefault()
       @startSubmit e
       @submitLogin(formData @form)
 
-    $('.js-forgot-password', @modal).on 'click', =>
-      @remove()
-
-    $('.login-form__oauth__google', @modal).on 'click', (e) =>
+    @googleButton.on 'click', (e) =>
       @startSubmit e
       @googleLogin()
 
-    # If the router navigates away from the current route destroy the modal
-    # This fixes history after navigating to `/login`.
-    router = require('../../toggl').router
-    @listenTo router, 'route', (r) => if r != 'showLogin' then @trigger 'teardown'
+_.extend(LoginPage.prototype, pendingButtonMixin)
 
-    @modal.find('.login-form__info').show() if @expired
-    @showAnnouncement()
-
-_.extend(LoginPopup.prototype, pendingButtonMixin)
-
-module.exports = LoginPopup
+module.exports = LoginPage
