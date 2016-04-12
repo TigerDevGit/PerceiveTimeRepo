@@ -3518,7 +3518,7 @@ img.scroll-revealed {
     width:48.2%
   }
 
-  .padded {
+  .padded, .tools_row .col:nth-child(2n + 1) {
     padding:0 8px
   }
 }
@@ -3533,7 +3533,7 @@ img.scroll-revealed {
     width:100%
   }
 
-  .padded {
+  .padded, .tools_row .col:nth-child(2n + 1){
     padding:0
   }
 }
