@@ -27,7 +27,7 @@ class IndexView extends View
   _videoHtml: ->
     id = if @attributes.isAprilFoold
       123713375
-    else 120347656
+    else 161429334
 
     return "<iframe src=\"https://player.vimeo.com/video/#{id}?api=1&autoplay=0&loop=1&color=ffffff&title=0&byline=0&portrait=0\"\
                     frameborder=\"0\"\

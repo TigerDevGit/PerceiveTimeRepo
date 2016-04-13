@@ -7,7 +7,7 @@ var $      = require('jquery'),
 require('jquery.cookie');
 require('./froogaloop.js');
 
-var COOKIE_VAL = 'SEEN_VIDEO';
+var COOKIE_VAL = 'SEEN_KIDS_VIDEO';
 
 function incrementSeenCount () {
   var current = +$.cookie(COOKIE_VAL) || 0;
@@ -43,54 +43,80 @@ function attachToVideo(view) {
           time: 0
         },
         {
-          time: 5.12,
+          time: 0.01,
           firstHeadingText: 'Track',
-          secondHeadingText: 'great effort'
+          secondHeadingText: 'tax returns',
+          timerTime: 0.00,
+          timerVisible: true
         },
         {
-          time: 14.28,
-          secondHeadingText: 'board meetings'
+          time: 4.16,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'live testing',
+          timerTime: 8.00,
+          timerVisible: true
         },
         {
-          time: 19.12,
-          secondHeadingText: 'textile manufacturing'
+          time: 8.64,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'creative process',
+          timerTime: 27.00,
+          timerVisible: true
         },
         {
-          time: 23.4,
-          secondHeadingText: 'wobbling matter'
+          time: 13.64,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'load testing',
+          timerTime: 0.00,
+          timerVisible: true
         },
         {
-          time: 27.72,
-          secondHeadingText: 'patience'
+          time: 18.64,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'intern hours',
+          timerTime: 19.00,
+          timerVisible: true
         },
         {
-          time: 31.48,
-          secondHeadingText: 'time in the doghouse'
+          time: 23.52,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'budget negotiations',
+          timerTime: 5.00,
+          timerVisible: true
         },
         {
-          time: 37.92,
-          secondHeadingText: 'your holiday'
+          time: 28.24,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'legal fees',
+          timerTime: 0.00,
+          timerVisible: true
         },
         {
-          time: 41.36,
-          secondHeadingText: 'lunch'
+          time: 33.24,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'client feedback',
+          timerTime: 0.00,
+          timerVisible: true
         },
         {
-          time: 44.84,
-          secondHeadingText: 'running late'
+          time: 38.24,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'PHP refactoring',
+          timerTime: 2.00,
+          timerVisible: true
         },
         {
-          time: 49.48,
-          firstHeadingText: '',
-          secondHeadingText: 'Track anything'
+          time: 43.44,
+          firstHeadingText: 'Track',
+          secondHeadingText: 'board meetings',
+          timerTime: 45.00,
+          timerVisible: true
         },
         {
-          time: 51.08
-        },
-        {
-          time: 58.32,
-          firstHeadingText: '',
-          secondHeadingText: ''
+          time: 46.30,
+          firstHeadingText: 'Work is hard',
+          secondHeadingText: 'Toggl is easy',
+          timerVisible: false
         }
       ],
       lastBreakpoint = 0,
@@ -149,29 +175,6 @@ function attachToVideo(view) {
     ];
   }
 
-  function throttle(fn, threshhold, scope) {
-    threshhold || (threshhold = 250);
-    var last,
-        deferTimer;
-    return function () {
-      var context = scope || this;
-
-      var now = +new Date(),
-          args = arguments;
-      if (last && now < last + threshhold) {
-        // hold on to it
-        clearTimeout(deferTimer);
-        deferTimer = setTimeout(function () {
-          last = now;
-          fn.apply(context, args);
-        }, threshhold);
-      } else {
-        last = now;
-        fn.apply(context, args);
-      }
-    };
-  }
-
   function hideTimer() {
     view.$('.hero-timer').css({'display': 'none', 'opacity': 0});
   }
@@ -203,38 +206,62 @@ function attachToVideo(view) {
     raf(updateTimer);
   }
 
-  function loop(data) {
-    if (!running) {
+  var lastLoopTime = null;
+
+  function loop() {
+    var threshold = 50; // run max once every 50ms or so
+    var now = new Date().getTime();
+
+    if (lastLoopTime && now < lastLoopTime + threshold) {
+      // Not yet time to run! Reschedule self for later.
+      raf(loop);
       return;
     }
 
-    lastRunningTime = data.seconds;
+    // Otherwise...
+    lastLoopTime = now;
 
-    if (data.seconds > 0) {
-      view.$('.js-play-pause-controls').show();
+    if (paused || !running) {
+      raf(loop);
+      return;
     }
 
-    if (!paused) {
-      updateTimerHeadings(data.seconds);
-    }
+    player.api('getCurrentTime', function(seconds) {
+      if (seconds > 0) {
+        view.$('.js-play-pause-controls').show();
+      }
+      if (!paused) {
+        updateTimerHeadings(seconds);
+      }
+      // Schedule next loop() call.
+      raf(loop);
+    });
   }
 
   function updateTimerHeadings(currentTime) {
     var firstHeadingText,
         secondHeadingText,
-        currentBreakpoint = lastBreakpoint,
-        twoFramesBeforeNextBreakpoint = false;
+        timerTime = null,
+        timerVisible,
+        currentBreakpoint = lastBreakpoint;
 
-    if (breakpoints.length > currentBreakpoint+1 && currentTime > breakpoints[currentBreakpoint+1].time) {
+    var adjust = function(breakpointTime) {
+      // We adjust the given text times to be slightly early.
+      // This lets us run updateTimerHeadings at a low framerate, and things work pretty well.
+      // (It feels better than being one frame early or late now and again.)
+      var t = breakpointTime - 0.1;
+      return (t > 0) ? t : breakpointTime;
+    }
+
+    if (breakpoints.length > currentBreakpoint+1 && currentTime > adjust(breakpoints[currentBreakpoint+1].time)) {
       // next breakpoint
       currentBreakpoint = currentBreakpoint + 1;
 
       firstHeadingText = breakpoints[currentBreakpoint].firstHeadingText;
       secondHeadingText = breakpoints[currentBreakpoint].secondHeadingText;
-    } else if (breakpoints.length > currentBreakpoint+1 && currentTime > breakpoints[currentBreakpoint+1].time-0.08) {
-      // two seconds before next breakpoint
-      twoFramesBeforeNextBreakpoint = true;
-    } else if (breakpoints.length == currentBreakpoint+1 && currentTime < breakpoints[currentBreakpoint].time) {
+      timerTime = breakpoints[currentBreakpoint].timerTime;
+      timerVisible = breakpoints[currentBreakpoint].timerVisible;
+    } else if (breakpoints.length == currentBreakpoint+1 && currentTime < adjust(breakpoints[currentBreakpoint].time)) {
       // video restarted
       currentBreakpoint = 0;
     }
@@ -263,26 +290,14 @@ function attachToVideo(view) {
             referenceDelta = 0;
         }
       } else {
-        switch (currentBreakpoint) {
-          case 1:
-            showTimer();
-            referenceTime = new Date().getTime();
-          break;
-          case 8:
-            referenceTime = new Date().getTime()-31080;
-          break;
-          case 10:
-            referenceTime = undefined;
-          break;
-          case 11:
-            referenceTime = new Date().getTime();
-          break;
-          case 12:
-            hideTimer();
-            referenceTime = undefined;
-          break;
-          default:
-            referenceTime = new Date().getTime();
+        if (timerTime != null) {
+          referenceTime = new Date().getTime() - (timerTime * 1000);
+        }
+        if (timerVisible === true) {
+          showTimer();
+        }
+        if (timerVisible === false) {
+          hideTimer();
         }
       }
 
@@ -293,16 +308,8 @@ function attachToVideo(view) {
       firstTimerHeading.textContent = firstHeadingText;
     }
 
-    if (twoFramesBeforeNextBreakpoint && (currentBreakpoint != 10 || view.isAprilFools())) {
-      secondTimerHeading.textContent = '';
-      hideTimer();
-    } else {
-      if (typeof secondHeadingText != 'undefined') {
-        secondTimerHeading.textContent = secondHeadingText;
-      }
-      if (lastBreakpoint && currentBreakpoint != 12) {
-        showTimer();
-      }
+    if (typeof secondHeadingText != 'undefined') {
+      secondTimerHeading.textContent = secondHeadingText;
     }
   }
 
@@ -354,7 +361,11 @@ function attachToVideo(view) {
     } else {
       player.api('setVolume', 0);
       player.api('play');
-      player.addEvent('playProgress', throttle(loop, 1000/30));
+
+      // Thinking at e.g. 20 FPS works fine.
+      // No longer using playProgress event as that was only triggering 2 to 4 times per sec.
+      raf(loop);
+
       raf(updateTimer);
     }
   }
