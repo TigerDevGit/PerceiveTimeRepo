@@ -58,6 +58,11 @@ Router = class Router extends Backbone.Router
     page = renderPage Signup, { invitationCode }
     @listenTo page, 'login:success', redirectToApp
 
+  showLogin: ->
+    Login = require './views/page/login'
+    page = renderPage Login, { }
+    @listenTo page, 'login:success', redirectToApp
+
   showTos: (qs) ->
     { simple } = parseQuery(qs)
     TermsPage = require './views/page/terms'
@@ -67,21 +72,5 @@ Router = class Router extends Backbone.Router
     { simple } = parseQuery qs
     PrivacyPage = require './views/page/privacy'
     renderPage PrivacyPage, { simple }
-
-  showLogin: (qs) ->
-    query = parseQuery(qs)
-    indexView = renderPage require './views/page/index'
-
-    renderLogin = ->
-      LoginPopup = require './views/component/login'
-      new LoginPopup(returnTo: query.return_to, expired: query.expired).render()
-
-    # Wait until the indexView's model 'change' event gets triggered (which
-    # relies on an /api/v9/me/logged request to be emitted). If it's not
-    # pending, just render (it won't be pending if a user goes from '/login' to
-    # another page then back in history - then `change` would never be emitted)
-    if indexView.model.get 'pending'
-      @listenToOnce indexView.model, 'change', renderLogin
-    else renderLogin()
 
 module.exports = Router
