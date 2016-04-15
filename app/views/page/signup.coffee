@@ -29,9 +29,7 @@ class SignupView extends View
     @api = new API('TogglNext', null, null)
     @isPremium = false
     if @invitationCode
-      console.log("We got invite code", @invitationCode, _.includes ['pro_plus', 'business', 'pro'], @invitationCode)
       if _.includes ['pro_plus', 'business', 'pro'], @invitationCode
-        console.log("Yes this is it")
         @isPremium = true
         $(document.body).addClass('premium')
         @attributes = {
