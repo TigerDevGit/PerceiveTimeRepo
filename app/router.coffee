@@ -20,7 +20,7 @@ Router = class Router extends Backbone.Router
 
   initialize: ->
     @on 'route', ->
-      $(document.body).attr id: Backbone.history.fragment
+      $(document.body).attr id: document.location.pathname.replace(/^\/+|\/+$/g, '')
 
   routes: ->
     _.extend {
