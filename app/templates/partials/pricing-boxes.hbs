@@ -1,70 +1,126 @@
 <section class="pricing" id="pricing">
-  <h1>Be Efficient. Be Smart. <em>Get Toggl.</em></h1>
-  <div class="pricing__blocks">
-    <a href="/business" class="pricing__block pricing__block--business">
-      <div class="pricing__block--header">
-        <h2>Business</h2>
-        <div class="pricing__block--label">Click to see details</div>
-        <span>The complete time management package</span>
-      </div>
-      <div class="pricing__block--body">
-        <ul>
-          <li>Send team reminders</li>
-          <li>Schedule reports</li>
-          <li>Lock timesheets</li>
-          <li>Run time audits</li>
-          <li>Priority support</li>
-          <li class="_bold">+ Everything in PRO</li>
-        </ul>
-        <div class="pricing__block--price">
-          <span>$49</span>
-          user/month, billed annually<br/>
-          $59 billed monthly
+  <h1 class="pricing__heading">Pricing</h1>
+  <h3 class="pricing__subheading">All plans come with a 30-day free trial</h3>
+  <div class="pricing__container cf">
+    <div class="pricing__col">
+      <div class="pricing__box">
+        <h2 class="pricing__box--title">
+          business
+          <span>Complete team management</span>
+        </h2>
+        <div class="pricing__box--price">
+          $49
         </div>
-      </div>
-    </a>
-    <a href="http://support.toggl.com/category/pro-plan-subscription/" target="_blank" class="pricing__block pricing__block--pro">
-      <div class="pricing__block--header">
-        <h2>Pro</h2>
-        <span>A flexible team tracker</span>
-      </div>
-      <div class="pricing__block--body">
-        <ul>
-          <li>Unlimited team size</li>
-          <li>Billable rates</li>
-          <li>Time estimates</li>
-          <li>Sub-projects</li>
-          <li>Sharing reports</li>
-          <li class="_bold">+ Everything in FREE</li>
-        </ul>
-        <div class="pricing__block--price">
-          <span>$9</span>
-          user/month, billed annually<br/>
-          $10 billed monthly
+        <div class="pricing__box--desc">
+          per user per month,<br>billed annually*
         </div>
+        <a href="/signup/business" class="pricing__box--btn">
+          Sign up <span>&rsaquo;</span>
+        </a>
       </div>
-    </a>
-    <a href="http://support.toggl.com/tracking-time/" target="_blank" class="pricing__block pricing__block--free">
-      <div class="pricing__block--header">
-        <h2>Free</h2>
-        <span>Your basic productivity tool</span>
+      <input type="checkbox" class="pricing__check" id="pricing__check_1">
+      <label class="pricing__features--label" for="pricing__check_1">
+        <span><i>+</i>expand features</span>
+        <span><i>-</i>hide features</span>
+      </label>
+      <ul class="pricing__features--list">
+        <li>Tracking reminders</li>
+        <li>Scheduled reports</li>
+        <li>Locking timesheets</li>
+        <li>Adding time for team</li>
+        <li>Priority support</li>
+        <li>Everything in Toggl Pro</li>
+      </ul>
+      <div class="pricing__text">
+        *$59 per user per month <span>when billed monthly</span>
       </div>
-      <div class="pricing__block--body">
-        <ul>
-          <li>Teams up to 5</li>
-          <li>Tracking time</li>
-          <li>Extra apps</li>
-          <li>Reporting</li>
-          <li>Unlimited projects</li>
-        </ul>
-        <div class="pricing__block--price">
-          Free
+    </div>
+    <div class="pricing__col __plan__pro__plus">
+      <div class="pricing__box">
+        <h2 class="pricing__box--title">
+          pro PLUS
+          <span>Power up your team</span>
+        </h2>
+        <div class="pricing__box--price">
+          $18
         </div>
+        <div class="pricing__box--desc">
+          per user per month,<br>billed annually*
+        </div>
+        <a href="/signup/pro_plus" class="pricing__box--btn">
+          Sign up <span>&rsaquo;</span>
+        </a>
       </div>
-    </a>
+      <input type="checkbox" class="pricing__check" id="pricing__check_2">
+      <label class="pricing__features--label" for="pricing__check_2">
+        <span><i>+</i>expand features</span>
+        <span><i>-</i>hide features</span>
+      </label>
+      <ul class="pricing__features--list">
+        <li>One feature from Toggl Business</li>
+        <li>Everything in Toggl Pro</li>
+      </ul>
+      <div class="pricing__text">
+        *$20 per user per month <span>when billed monthly</span>
+      </div>
+    </div>
+    <div class="pricing__col __plan__pro __popular__choice">
+      <div class="pricing__box">
+        <h2 class="pricing__box--title">
+          pro
+          <span>A flexible team tracker</span>
+        </h2>
+        <div class="pricing__box--price">
+          $9
+        </div>
+        <div class="pricing__box--desc">
+          per user per month,<br>billed annually*
+        </div>
+        <a href="/signup/pro" class="pricing__box--btn">
+          Sign up <span>&rsaquo;</span>
+        </a>
+      </div>
+      <input type="checkbox" class="pricing__check" id="pricing__check_3">
+      <label class="pricing__features--label" for="pricing__check_3">
+        <span><i>+</i>expand features</span>
+        <span><i>-</i>hide features</span>
+      </label>
+      <ul class="pricing__features--list">
+        <li>Unlimited team size</li>
+        <li>Billable rates</li>
+        <li>Time estimates</li>
+        <li>Sub-projects</li>
+        <li>Sharing reports</li>
+        <li>Everything in Free plan</li>
+      </ul>
+      <div class="pricing__text">
+        *$10 per user per month <span>when billed monthly</span>
+      </div>
+    </div>
+    <div class="pricing__col __plan__free">
+      <div class="pricing__box">
+        <h2 class="pricing__box--title">
+          free
+          <span>Your basic productivity tool</span>
+        </h2>
+        <a href="https://toggl.com/signup" class="pricing__box--btn">
+          Sign up <span>&rsaquo;</span>
+        </a>
+      </div>
+      <input type="checkbox" class="pricing__check" id="pricing__check_4">
+      <label class="pricing__features--label" for="pricing__check_4">
+        <span><i>+</i>expand features</span>
+        <span><i>-</i>hide features</span>
+      </label>
+      <ul class="pricing__features--list">
+        <li>Tracking time</li>
+        <li>Basic reporting</li>
+        <li>Teams up to 5</li>
+        <li>Desktop and mobile apps</li>
+        <li>Unlimited projects</li>
+      </ul>
+    </div>
+
+
   </div>
-  <div class="pricing__button">
-    <a class="cta-button cta-button--empty js-ripple-button" href="/signup">sign me up for a free account</a>
-  </div>
-  <div class="pricing__footnote">You can upgrade once you have created your free toggl account.</div>
 </section>
