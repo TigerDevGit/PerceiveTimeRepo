@@ -31,9 +31,10 @@ class SignupView extends View
     if @invitationCode
       if _.includes ['pro_plus', 'business', 'pro'], @invitationCode
         @isPremium = true
+        @pageTitle = @invitationCode.replace('_', ' ')
         $(document.body).addClass('premium')
         @attributes = {
-          title: 'Get Started Now!'
+          title: 'Toggl ' + @pageTitle
           caption: ''
           showOAuth: true
           buttonLabel: 'Sign up with free trial'
