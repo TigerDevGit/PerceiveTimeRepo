@@ -534,7 +534,7 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-developer-methods-infographic.jpg'
     }]
-    
+
   'agile-development-best-tools':
     title: 'Using cloud tools in agile development'
     template: 'agile-development-best-tools'
@@ -552,6 +552,17 @@ module.exports =
     meta: [{
       name: 'description'
       content: 'Timesheets can give you tons of valuable business intelligence - but only if your team remembers to fill in their hours. Toggl can help them with this.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
+
+  'locking-timesheets':
+    title: 'Locking your timesheets with Toggl Pro Plus'
+    template: 'locking-timesheets'
+    meta: [{
+      name: 'description'
+      content: 'With Toggl Pro Plus you can now lock your employees\' timesheets to make sure your data doesn\'t accidentally get changed after you\'ve sent out your reports.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
