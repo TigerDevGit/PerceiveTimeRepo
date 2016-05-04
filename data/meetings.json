@@ -1,46 +1,6 @@
 {
   "meetings": [
     {
-      "id": "new-york",
-      "location": "New York, NY",
-      "who": "Marit",
-      "date": "12th-15th April",
-      "description": "Besides the time tracker, we've also crafted the simplest and most beautiful project management tool Teamweek. Product lead Marit is heading to New York to hear how you use Teamweek to manage your people and get stuff done.",
-      "img": "images/marit.jpg"
-    },
-    {
-      "id": "san-francisco",
-      "location": "San Francisco, CA",
-      "who": "Mart",
-      "date": "13th-15th April",
-      "description": "As an anthropologist-turned-marketer, Mart knows that you can’t build a good product without knowing the people who use it. That’s why he’ll be coming to San Francisco to hear about how Toggl is making your lives better, and how we can make Toggl better for you.",
-      "img": "images/mart.jpg"
-    },
-    {
-      "id": "montreal",
-      "location": "Montreal, Canada",
-      "who": "Margus",
-      "date": "25th-27th April",
-      "description": "Margus leads the team that holds your Toggl data secure and our servers running. He'll be in Montreal to learn how time tracking helps your business. Hopefully he also finds some Québec's special maple syrup to bring back to the office.",
-      "img": "images/margus.jpg"
-    },
-    {
-      "id": "washington-dc",
-      "location": "Washington, DC",
-      "who": "Küllike",
-      "date": "25th-27th April",
-      "description": "Ever wondered how we make decisions about making Toggl more user-friendly? No, we don't look for inspiration from the stars. The truth is Küllike spends countless hours comparing and testing numerous solutions to find ones that best meet your needs. She'll be in Washington, DC to get your suggestions for what to try next.",
-      "img": "images/kyllike.jpg"
-    },
-    {
-      "id": "chicago",
-      "location": "Chicago, IL",
-      "who": "Kadri",
-      "date": "25th-27th April",
-      "description": "When it comes to positive and patient people you won't find a better example than our customer support star Kadri. She's traveling to Chicago to hear how Toggl has improved your productivity and which developments you wish to see in the future.",
-      "img": "images/kadri.jpg"
-    },
-    {
       "id": "manchester-and-london",
       "location": "Manchester & London, UK",
       "who": "Triin",
