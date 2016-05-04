@@ -534,4 +534,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
-
+    
+  'timesheet-reminders':
+    title: 'Setting timesheet reminders with Toggl Pro Plus'
+    template: 'timesheet-reminders'
+    meta: [{
+      name: 'description'
+      content: 'Timesheets can give you tons of valuable business intelligence - but only if your team remembers to fill in their hours. Toggl can help them with this.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
