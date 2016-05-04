@@ -501,6 +501,17 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+    
+  'scheduled-timesheet-reports':
+    title: 'Sharing your timesheet data with Toggl Pro Plus'
+    template: 'scheduled-timesheet-reports'
+    meta: [{
+      name: 'description'
+      content: 'Data is king - those who know how to use it best will rule the business world. Learn how to easily share your time tracking records with Toggl Pro Plus.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
 
   'toggl-developer-challenge':
     title: 'The Epic Toggl Timer Developer Challenge 2016'
