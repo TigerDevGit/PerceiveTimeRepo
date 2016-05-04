@@ -501,7 +501,7 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
-    
+
   'scheduled-timesheet-reports':
     title: 'Sharing your timesheet data with Toggl Pro Plus'
     template: 'scheduled-timesheet-reports'
@@ -545,7 +545,7 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
-    
+
   'timesheet-reminders':
     title: 'Setting timesheet reminders with Toggl Pro Plus'
     template: 'timesheet-reminders'
