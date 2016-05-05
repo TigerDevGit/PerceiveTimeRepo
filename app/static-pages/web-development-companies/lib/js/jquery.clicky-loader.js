@@ -23,7 +23,7 @@ $.extend({
     if (!goalsConfigured) {
       $.clickyInit(token);
 
-      $('body').on('click', '[data-clicky-goal]', function(e) {
+      $('body').on('click', '[data-custom-analytics-event]', function(e) {
         var goal = $(e.currentTarget).data('clicky-goal');
         var avoidQueue = true;
         return $.clickyGoal(goal, null, avoidQueue);
