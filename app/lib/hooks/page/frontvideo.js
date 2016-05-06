@@ -397,6 +397,13 @@ function attachToVideo(view) {
       togglePausePlayButtons(true);
       paused = false;
     });
+    var startedPlaying = false;
+    player.addEvent('playProgress', function () {
+      if(!startedPlaying) {
+        video.style.visibility = 'visible';
+        startedPlaying = true;
+      }
+    });
 
     player.addEvent('pause', function () {
       togglePausePlayButtons(false);

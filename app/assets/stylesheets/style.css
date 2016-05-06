@@ -443,6 +443,8 @@ a {
   transform-origin: 50% 0;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  background: transparent url('../images/video-placeholder.jpg') scroll no-repeat center center;
+  background-size: cover;
 }
 .aprilfools.hero__background .video {
   overflow: hidden;
@@ -4561,8 +4563,8 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  -webkit-border-radius: 0; 
-  -moz-border-radius: 0; 
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
