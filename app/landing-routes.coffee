@@ -567,3 +567,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'worst-client-types-infographic':
+    title: 'Locking your timesheets with Toggl Pro Plus'
+    template: 'worst-client-types-infographic'
+    meta: [{
+      name: 'description'
+      content: 'With Toggl Pro Plus you can now lock your employees\' timesheets to make sure your data doesn\'t accidentally get changed after you\'ve sent out your reports.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
+    }]
