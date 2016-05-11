@@ -111,12 +111,6 @@ function attachToVideo(view) {
           secondHeadingText: 'board meetings',
           timerTime: 45.00,
           timerVisible: true
-        },
-        {
-          time: 46.30,
-          firstHeadingText: 'Work is hard',
-          secondHeadingText: 'Toggl is easy',
-          timerVisible: false
         }
       ],
       lastBreakpoint = 0,
