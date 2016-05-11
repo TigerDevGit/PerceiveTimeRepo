@@ -68,7 +68,7 @@
                         <a href="/login">Log in</a>
                     </li>
                     <li class="last">
-                        <a href="/signup" data-clicky-goal="Webdev landing menu bar signup click">Try for free</a>
+                        <a href="/signup" data-custom-analytics-event="Webdev landing menu bar signup click">Try for free</a>
                     </li>
                 </ul>
             </nav>
@@ -96,7 +96,7 @@
 
                     <h2 class="home_subtitle">Get valuable business intelligence.<br>Plan internal resources more efficiently and grow your business.</h2>
 
-                    <a href="/signup" class="button_red" data-clicky-goal="Webdev landing main CTA signup click">GET STARTED WITH A FREE ACCOUNT</a>
+                    <a href="/signup" class="button_red" data-custom-analytics-event="Webdev landing main CTA signup click">GET STARTED WITH A FREE ACCOUNT</a>
 
                     <small>30-day free trial for all new Pro subscribers</small>
 
@@ -504,9 +504,9 @@
                         </div>
                     </div>
 
-                    <a href="/signup" class="button_red" data-clicky-goal="Webdev landing pricing calculator signup click">TRY PRO PLAN FOR FREE NOW</a>
+                    <a href="/signup" class="button_red" data-custom-analytics-event="Webdev landing pricing calculator signup click">TRY PRO PLAN FOR FREE NOW</a>
 
-                    <h3 class="subtitle"><small>Or check out <a href="/business" target="_blank" data-clicky-goal="Webdev landing Business upsell click">Toggl Business</a></small></h3>
+                    <h3 class="subtitle"><small>Or check out <a href="/business" target="_blank" data-custom-analytics-event="Webdev landing Business upsell click">Toggl Business</a></small></h3>
 
                 </div>
                 <!--end row -->
@@ -654,7 +654,7 @@
                 <div class="row">
                     <div class="twelvecol align_center">
                         <br>
-                        <a class="button_red" href="/signup" data-clicky-goal="Webdev landing bottom signup CTA click">GET STARTED WITH A FREE ACCOUNT</a>
+                        <a class="button_red" href="/signup" data-custom-analytics-event="Webdev landing bottom signup CTA click">GET STARTED WITH A FREE ACCOUNT</a>
                     </div>
                 </div>
 
@@ -742,20 +742,18 @@
 
     <script src="lib/js/main.js"></script>
 
-    <!-- Piwik -->
-    <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="//toggltesting.piwikpro.com/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', 1]);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-        </script>
-    <noscript><p><img src="//toggltesting.piwikpro.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
-    <!-- End Piwik Code -->
+    <!-- Start of Woopra Code -->
+    <script>
+    (function(){
+            var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
+    })("woopra");
+
+    woopra.config({
+        domain: 'toggl.com'
+    });
+    woopra.track();
+    </script>
+    <!-- End of Woopra Code -->
+
 </body>
 </html>

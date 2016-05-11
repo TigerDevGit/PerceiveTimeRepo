@@ -13,7 +13,7 @@ $(document).on 'click', DATA_KEY, (e) ->
   type  = action[1]
   clicky.log url, title, type
 
-DATA_GOAL_KEY = '[data-clicky-goal]'
+DATA_GOAL_KEY = '[data-custom-analytics-event]'
 $(document).on 'click', DATA_GOAL_KEY, (e) ->
-  goal = $(e.currentTarget).closest(DATA_GOAL_KEY).data('clicky-goal')
+  goal = $(e.currentTarget).closest(DATA_GOAL_KEY).data('custom-analytics-event')
   clicky.goal(goal)
