@@ -4742,3 +4742,14 @@ html {
     margin-top: 35%;
   }
 }
+
+.hero--forgot-password .hero__content h1 {
+  font-size: 48px;
+  text-transform: none;
+}
+
+.forgot-password-form .cta-button {
+  height: 45px;
+  font-size: 15px;
+  padding: 14px 0;
+}
