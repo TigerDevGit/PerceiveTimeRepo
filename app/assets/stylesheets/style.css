@@ -443,8 +443,6 @@ a {
   transform-origin: 50% 0;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  background: transparent url('../images/video-placeholder.jpg') scroll no-repeat center center;
-  background-size: cover;
 }
 .aprilfools.hero__background .video {
   overflow: hidden;
@@ -4451,6 +4449,53 @@ Airport Hacks page
   background: #EDEDED;
 }
 
+
+.ah__subtitle--low {
+  font-family: 'DIN Next', sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000000;
+  text-transform: uppercase;
+  padding: 17px 0 12px 0;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+.ah__contents {
+  margin-bottom: 40px;
+}
+.ah__contents li {
+  font-size: 18px;
+  line-height: 30px;
+}
+.ah__contents a {
+  font-family: 'DIN Next', sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.ah__img--left,
+.ah__img--right {
+  display: block;
+  max-width: 50%;
+  margin: 30px;
+}
+.ah__img--left {
+  float: left;
+  margin-left: 0;
+}
+.ah__img--right {
+  float: right;
+  margin-right: 0;
+}
+.ah__img--left img,
+.ah__img--right img {
+  display: block;
+  max-width: 100%;
+}
+
+
+
+
 html {
   min-height: 100%;
 }
@@ -4563,8 +4608,8 @@ html {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
+  -webkit-border-radius: 0; 
+  -moz-border-radius: 0; 
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
