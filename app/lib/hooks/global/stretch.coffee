@@ -12,8 +12,6 @@ module.exports = ->
     height = window.innerHeight
     heightify = (selector) -> $(selector).css 'height', height
 
-    if width < 1450
-      heightify '.hero--front'
-    if width < 500
-      heightify '.hero--features'
-      heightify '.fixed-vackground'
+    heightify '.hero--front'
+    heightify '.hero--features'
+    heightify '.fixed-vackground'

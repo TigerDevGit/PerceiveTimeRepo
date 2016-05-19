@@ -440,40 +440,35 @@ function attachToVideo(view) {
 
 function resize(view) {
   var $windowHeight = $(window).height();
+  var $windowWidth = $(window).width();
   var $videoHeight = view.$(".video").outerHeight();
+  var windowRatio = $windowHeight / $windowWidth;
+  var videoRatio;
   if(view.isAprilFools()) {
-    var $windowWidth = $(window).width();
-    if($windowWidth > 1450) {
-      $windowHeight = 805;
-    }
-    var videoRatio = 281/500;
-    var windowRatio = $windowHeight / $windowWidth;
-    var videoHeight = $windowWidth * videoRatio;
-    if(windowRatio > videoRatio) {
-      var videoWidth = ($windowHeight*1.07) / videoRatio;
-      view.$('.video .wrapper').css({
-        'width': videoWidth + 'px',
-        'height': '107%',
-        'left': '50%',
-        "-webkit-transform" : "translateX(-50%)",
-        "transform" : "translateX(-50%)"
-      });
-    } else {
-      view.$('.video .wrapper').css({
-        'width': '100%',
-        'height': videoHeight + 'px',
-        'left': 0,
-        "-webkit-transform" : "translateX(0)",
-        "transform" : "translateX(0)"
-      });
-    }
+    videoRatio = 281/500;
   } else {
-    var $scale = $windowHeight / $videoHeight * 1.01;
-    if ($videoHeight <= $windowHeight) {
-      view.$(".video").css({
-        "-webkit-transform" : "scale("+$scale+") translateY(-50%)",
-        "transform" : "scale("+$scale+") translateY(-50%)"
-      });
-    }
+    videoRatio = 540/960;
+  }
+  // Using coefficients 1.15 and 1.03 here to hide the player controls
+  if(windowRatio > videoRatio) {
+    var videoWidth = ($windowHeight*1.15) / videoRatio;
+    view.$('.video .wrapper').css({
+      'width': videoWidth + 'px',
+      'height': $windowHeight * 1.15 + 'px',
+      'top': '50%',
+      'left': '50%',
+      "-webkit-transform" : "translateX(-50%) translateY(-50%)",
+      "transform" : "translateX(-50%) translateY(-50%)"
+    });
+  } else {
+    var videoHeight = $windowWidth * 1.12 * videoRatio;
+    view.$('.video .wrapper').css({
+      'width': '112%',
+      'height': videoHeight + 'px',
+      'top': '50%',
+      'left': '50%',
+      "-webkit-transform" : "translateX(-50%) translateY(-50%)",
+      "transform" : "translateX(-50%) translateY(-50%)"
+    });
   }
 }

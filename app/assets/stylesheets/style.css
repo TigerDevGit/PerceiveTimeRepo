@@ -435,9 +435,9 @@ a {
   display: block;
   left: 0px;
   overflow: hidden;
-  padding-bottom: 45%;
   position: absolute;
   top: 50%;
+  height: 100%;
   width: 100%;
   -webkit-transform-origin: 50% 0;
   transform-origin: 50% 0;
@@ -932,19 +932,17 @@ h1.hero-timer-heading {
 .video-suspended .hero-timer {
   display: none;
 }
-@media screen and (max-width: 1450px) {
-  .hero--front .hero__content--stretched {
-    height: 100%;
-  }
+.hero--front .hero__content--stretched {
+  height: 100%;
+}
 
-  .hero--front .hero__content--centered {
-    padding: 0;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    transform: translateY(-50%);
-  }
+.hero--front .hero__content--centered {
+  padding: 0;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
 }
 @media screen and (max-width: 1024px) {
   .hero__content h1 {
