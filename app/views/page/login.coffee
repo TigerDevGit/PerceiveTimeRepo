@@ -93,6 +93,9 @@ class LoginPage extends View
       @startSubmit e
       @googleLogin()
 
+    emailInput = @$ 'input[name="email"]', @form
+    setTimeout (-> emailInput.focus()), 0
+
 _.extend(LoginPage.prototype, pendingButtonMixin)
 
 module.exports = LoginPage
