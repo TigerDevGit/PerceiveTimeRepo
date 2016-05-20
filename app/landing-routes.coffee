@@ -569,11 +569,11 @@ module.exports =
     }]
 
   'worst-client-types-infographic':
-    title: 'Locking your timesheets with Toggl Pro Plus'
+    title: 'Terrible clients explained with pirates (infographic)'
     template: 'worst-client-types-infographic'
     meta: [{
       name: 'description'
-      content: 'With Toggl Pro Plus you can now lock your employees\' timesheets to make sure your data doesn\'t accidentally get changed after you\'ve sent out your reports.'
+      content: 'When it comes to wasting your time, these clients are the worst offenders. See what sneaky tactics they use, and how you can defend your business and time.'
       },{
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
