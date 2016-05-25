@@ -6,3 +6,4 @@ ssh_secrets.json
 Gemfile.lock
 vendor
 .bundle
+.idea/
