@@ -22,7 +22,7 @@ pendingButtonMixin =
         $submitButton.css('height', '')
         $submitButton.text(@submitButtonOriginalText)
         $submitButton.removeClass('disabled pending cta-button--no-arrow')
-        $submitButton.removeProp('disabled')
+        $submitButton.prop('disabled', '')
         $submitButton.blur()
 
 exports = module.exports = pendingButtonMixin

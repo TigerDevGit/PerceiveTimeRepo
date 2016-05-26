@@ -44,8 +44,13 @@ class ResetPasswordView extends View
     @hideError()
     data = formData(@$el.find 'form')
     data.user_id = @user_id
+
+    if not data.password?.length
+      @showError 'Please enter a new password for your account'
+      return
+
     match = data.password is data.passwordConfirm
-    if not data.password?.length or not match
+    if  not match
       @showError 'Passwords do not match'
       return
 
