@@ -39,6 +39,13 @@ new API('TogglNext', null, null, userState.endpoint)
   sessionStorage?.clear() if err.status is 403
   userState.set logged: false, pending: false
 
+# Retrieve geolocation information
+new API('TogglNext', null, null, userState.endpoint)
+.request 'GET', userState.locationPath, dataType: 'json'
+.then (location) ->
+  (userState.set location: location) if location
+
+
 # Start the router
 Router = require './router'
 router = exports.router = new Router

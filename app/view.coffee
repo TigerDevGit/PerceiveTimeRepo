@@ -28,6 +28,7 @@ class View extends Backbone.View
   initialize: ->
     @meta ?= DEFAULT_META_TAGS
     @listenTo @model, 'change:logged', @updateLogged
+    @listenTo @model, 'change:location', @updateFooterGeolocation
 
   remove: ->
     # There's no View::triggerMethod without Marionette
@@ -49,7 +50,13 @@ class View extends Backbone.View
     @postRender?()
     @scrollToAnchor()
     @updateLogged @model, @model.get('logged')
+    @updateFooterGeolocation()
     return this
+
+  updateFooterGeolocation: ->
+    location = @model.getBestLocation()
+    return unless location
+    @$('#footer-togglers').html("Most productive togglers are in #{location}!")
 
   updateLogged: (model, logged) ->
     if logged
