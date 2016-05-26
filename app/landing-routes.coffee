@@ -567,3 +567,14 @@ module.exports =
       property: 'og:image'
       content: 'https://toggl.com/images/share-img/fb-share-img.jpg'
     }]
+
+  'worst-client-types-infographic':
+    title: 'Terrible clients explained with pirates (infographic)'
+    template: 'worst-client-types-infographic'
+    meta: [{
+      name: 'description'
+      content: 'When it comes to wasting your time, these clients are the worst offenders. See what sneaky tactics they use, and how you can defend your business and time.'
+      },{
+      property: 'og:image'
+      content: 'https://toggl.com/images/share-img/fb-share-terrible-clients.jpg'
+    }]
