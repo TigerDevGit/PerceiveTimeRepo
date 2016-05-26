@@ -216,9 +216,16 @@ module.exports = (grunt) ->
         files: [
           "<%= yeoman.app %>/{,**/}*.js",
           "<%= yeoman.app %>/assets/{,**/}*",
-          "<%= yeoman.app %>/static-pages/**/*",
         ]
-        tasks: [ "copy" ]
+        tasks: [ "build:serve" ]
+      copyStatics:
+        options: livereload: LIVERELOAD_PORT
+        files: [
+          "<%= yeoman.app %>/static-templates/**/*",
+          "<%= yeoman.app %>/static-pages/**/*",
+          "<%= yeoman.app %>/../data/meetings.json",
+        ]
+        tasks: [ "copy", "processhtml" ]
       coffee:
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/{,**/}*.coffee"
@@ -231,10 +238,6 @@ module.exports = (grunt) ->
         options: livereload: LIVERELOAD_PORT
         files: "<%= yeoman.app %>/assets/stylesheets/style.css"
         tasks: [ "build:serve" ]
-      shell:
-        options: livereload: LIVERELOAD_PORT
-        files: "<%= yeoman.app %>/../data/meetings.json"
-        tasks: [ "shell:renderMeetPage" ]
 
     coffee:
       dist:
@@ -373,9 +376,21 @@ module.exports = (grunt) ->
             '#/pricing'
           ].concat _.map(require('./app/landing-routes'), (params, path) -> "#/#{path}")
 
-    shell:
-      renderMeetPage:
-        command: 'node ./bin/render-meet-page'
+    processhtml:
+      options:
+        commentMarker: 'processhtml'
+        includeBase: "<%= yeoman.app %>/static-templates"
+      meet:
+        options:
+          data: require('./data/meetings.json')
+        files:
+          "<%= yeoman.dist %>/meet/index.html": "<%= yeoman.dist %>/meet/index.html"
+      statics:
+        expand: true
+        flatten: false
+        cwd: "<%= yeoman.dist %>"
+        src: "**/index.html"
+        dest: "<%= yeoman.dist %>"
 
   grunt.registerTask "serve", [
     'build:serve'
@@ -395,8 +410,8 @@ module.exports = (grunt) ->
     "modernizr"
     "copy:statics"
     "copy:dist"
-    "shell:renderMeetPage"
     "replace:distVersion"
+    "processhtml"
   ]
 
   grunt.registerTask "build", [

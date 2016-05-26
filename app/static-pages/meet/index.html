@@ -43,46 +43,48 @@
 
                     <div class="grid-holder cfx">
 
-                    {{#each meetings}}
-                        <div class="grid grid-{{left_or_right @index}}"><img src="{{img}}" alt="{{who}}" /></div>
-                        <div class="grid grid-{{left_or_right @index}}" id="{{id}}">
-                            <div class="inner">
-                                <div class="row">
-                                    <div class="content">
-                                        <h2><a href="#{{id}}">{{location}}</a></h2>
-                                        <h3>{{date}}</h3>
-                                        <p>{{description}}</p>
-                                        <br/>
-                                        <div class="request-meeting">
-                                            <a href="javascript:void(0)" target="_blank" class="btn">Request meeting</a>
-                                        </div>
-                                        <div class="request-specifics" style="display:none">
-                                            <form data-location="{{id}}">
-                                                <input type="text" placeholder="Your email">
-                                                <input type="submit" href="javascript:void(0)" class="btn" value="Send"></input>
-                                            </form>
-                                        </div>
-                                        <div class="request-done" style="display:none">
-                                            Thank you, we’ll email you with more details later. Looking forward to meeting you!
-                                        </div>
-                                        <div class="request-failed" style="display:none">
-                                            Unfortunately something broke when trying to send the data to our team. Please  <a href="mailto:meet@toggl.com">drop us an email</a> manually!
+                    <!-- processhtml:template -->
+                    <% if (meetings && meetings.length) { %>
+                        <% meetings.forEach(function(meeting, index) { %>
+                            <div class="grid grid-<%= (index % 2) ? 'left' : 'right' %>"><img src="<%= meeting.img %>" alt="<%= meeting.who %>" /></div>
+                            <div class="grid grid-<%= (index % 2) ? 'left' : 'right' %>" id="<%= meeting.id %>">
+                                <div class="inner">
+                                    <div class="row">
+                                        <div class="content">
+                                            <h2><a href="#<%= meeting.id %>"><%= meeting.location %></a></h2>
+                                            <h3><%= meeting.date %></h3>
+                                            <p><%= meeting.description %></p>
+                                            <br/>
+                                            <div class="request-meeting">
+                                                <a href="javascript:void(0)" target="_blank" class="btn">Request meeting</a>
+                                            </div>
+                                            <div class="request-specifics" style="display:none">
+                                                <form data-location="<%= meeting.id %>">
+                                                    <input type="text" placeholder="Your email">
+                                                    <input type="submit" href="javascript:void(0)" class="btn" value="Send"></input>
+                                                </form>
+                                            </div>
+                                            <div class="request-done" style="display:none">
+                                                Thank you, we’ll email you with more details later. Looking forward to meeting you!
+                                            </div>
+                                            <div class="request-failed" style="display:none">
+                                                Unfortunately something broke when trying to send the data to our team. Please  <a href="mailto:meet@toggl.com">drop us an email</a> manually!
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    {{else}}
+                        <% }) %>
+                    <% } else if (vacation) { %>
                         <div class="grid grid-right"><img src="images/vacation.jpg" alt="We are on vacation!" /></div>
                         <div class="grid grid-right">
                             <div class="inner">
                                 <div class="row">
                                     <div class="content">
                                         <h2>Vacation</h2>
-                                        <h3>{{vacation.title}}</h3>
+                                        <h3><%= vacation.title %></h3>
                                         <p>
-                                          {{vacation.text}}
+                                          <%= vacation.text %>
                                         </p>
                                         <p>
                                             Drop us an email at
@@ -93,8 +95,9 @@
                                 </div>
                             </div>
                         </div>
+                    <% } %>
+                    <!-- /processhtml -->
 
-                    {{/each}}
                     </div> <!-- //grid-holder -->
 
                     <div id="bottom">
@@ -129,33 +132,11 @@
     })();
   </script>
 
-  <!-- Start of Woopra Code -->
-  <script>
-  (function(){
-          var t,i,e,n=window,o=document,a=arguments,s="script",r=["config","track","identify","visit","push","call","trackForm","trackClick"],c=function(){var t,i=this;for(i._e=[],t=0;r.length>t;t++)(function(t){i[t]=function(){return i._e.push([t].concat(Array.prototype.slice.call(arguments,0))),i}})(r[t])};for(n._w=n._w||{},t=0;a.length>t;t++)n._w[a[t]]=n[a[t]]=n[a[t]]||new c;i=o.createElement(s),i.async=1,i.src="//static.woopra.com/js/w.js",e=o.getElementsByTagName(s)[0],e.parentNode.insertBefore(i,e)
-  })("woopra");
+  <!-- processhtml:include custom-analytics.html -->
+  <!-- /processhtml -->
 
-  woopra.config({
-      domain: 'toggl.com'
-  });
-  woopra.track();
-  </script>
-  <!-- End of Woopra Code -->
-
-  <!-- Google Code for Remarketing Tag -->
-  <script type="text/javascript">
-  /* <![CDATA[ */
-  var google_conversion_id = 956548435;
-  var google_custom_params = window.google_tag_params;
-  var google_remarketing_only = true;
-  /* ]]> */
-  </script>
-  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-  </script>
-  <noscript>
-  <div style="display:inline;">
-  <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/956548435/?value=0&amp;guid=ON&amp;script=0"/>
-  </div>
+  <!-- processhtml:include google-remarketing.html -->
+  <!-- /processhtml -->
 
   </body>
 </html>
