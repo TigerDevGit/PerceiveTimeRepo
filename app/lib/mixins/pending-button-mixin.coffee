@@ -7,23 +7,22 @@ pendingButtonMixin =
 
   updateStatus: (status) ->
     $submitButton = @submitButton
-    if @submitButtonTimeout
-      clearTimeout(@submitButtonTimeout)
 
     switch status
       when 'pending'
         loader = @loader = @loader or document.createElement('div')
 
         @submitButtonOriginalText = $submitButton.text()
-        onTimeout = ->
-          loader.className = 'loader'
-          $submitButton.css('height', $submitButton.outerHeight())
-          $submitButton.html(loader)
-          $submitButton.addClass('disabled pending cta-button--no-arrow')
-        @submitButtonTimeout = setTimeout(onTimeout, 300)
+        loader.className = 'loader'
+        $submitButton.css('height', $submitButton.outerHeight())
+        $submitButton.html(loader)
+        $submitButton.addClass('disabled pending cta-button--no-arrow')
+        $submitButton.prop('disabled', 'disabled')
       else
         $submitButton.css('height', '')
         $submitButton.text(@submitButtonOriginalText)
         $submitButton.removeClass('disabled pending cta-button--no-arrow')
+        $submitButton.prop('disabled', '')
+        $submitButton.blur()
 
 exports = module.exports = pendingButtonMixin

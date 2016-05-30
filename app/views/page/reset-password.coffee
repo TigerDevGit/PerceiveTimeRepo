@@ -1,10 +1,11 @@
-View          = require '../../view'
-API           = require '../../lib/api'
-formData      = require '../../lib/form-data'
-redirectToApp = require '../../lib/redirect-to-app'
-$             = require 'jquery'
-_             = require 'lodash'
-showAlert     = require '../../lib/show-alert'
+View               = require '../../view'
+API                = require '../../lib/api'
+formData           = require '../../lib/form-data'
+redirectToApp      = require '../../lib/redirect-to-app'
+$                  = require 'jquery'
+_                  = require 'lodash'
+showAlert          = require '../../lib/show-alert'
+pendingButtonMixin = require '../../lib/mixins/pending-button-mixin'
 
 
 class ResetPasswordView extends View
@@ -43,10 +44,17 @@ class ResetPasswordView extends View
     @hideError()
     data = formData(@$el.find 'form')
     data.user_id = @user_id
+
+    if not data.password?.length
+      @showError 'Please enter a new password for your account'
+      return
+
     match = data.password is data.passwordConfirm
-    if not data.password?.length or not match
+    if  not match
       @showError 'Passwords do not match'
       return
+
+    @updateStatus('pending')
 
     $.ajax '/api/v9/me/lost_passwords/confirm',
       type: 'POST'
@@ -55,6 +63,7 @@ class ResetPasswordView extends View
       dataType: "json"
       success: @loginUser
       error: @resetError
+      complete: => @updateStatus('done')
 
   showRedirectAlert: (seconds, callback) ->
     showAlert {
@@ -92,5 +101,8 @@ class ResetPasswordView extends View
     setTimeout => @$el.find("[name=password]").select()
     @errorMessage = $ '.signup-form__error', @$el
     @$el.find('#reset_code').val @token
+    @submitButton = @$ '.signup-form__submit button'
+
+_.extend(ResetPasswordView.prototype, pendingButtonMixin)
 
 module.exports = ResetPasswordView
