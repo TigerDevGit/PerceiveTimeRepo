@@ -79,8 +79,11 @@ class SignupView extends View
     @data.timezone = jstz.determine()?.name()
 
     signupError = (err) =>
-      @showError err?.responseText or 'Failed to sign up.<br />'+
-        'Please check your e-mail and password and make sure you\'re online.'
+      if /invitation/.test(err?.responseText)
+        document.location = '/signup/user-has-invitation'
+      else
+        @showError err?.responseText or 'Failed to sign up.<br />'+
+          'Please check your e-mail and password and make sure you\'re online.'
 
     @api.user.signup @data
       .then @login, signupError

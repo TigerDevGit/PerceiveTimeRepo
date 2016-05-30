@@ -33,6 +33,7 @@ Router = class Router extends Backbone.Router
       'forgot-password(/)': -> renderPage require './views/page/forgot-password'
       'unsubscribe/:type/:token(/)': 'showUnsubscribe'
       'reset_password(/:token)': 'showResetPassword'
+      'signup/user-has-invitation': 'showUserHasInvitation'
       'signup(/)(/:invitationCode)': 'showSignup'
       'login(/)': 'showLogin'
       'pricing(/)': 'showPricing'
@@ -58,6 +59,10 @@ Router = class Router extends Backbone.Router
     Signup = require './views/page/signup'
     page = renderPage Signup, { invitationCode }
     @listenTo page, 'login:success', redirectToApp
+
+  showUserHasInvitation: ->
+    UserHasInvitation = require './views/page/user-has-invitation'
+    renderPage UserHasInvitation
 
   showLogin: ->
     Login = require './views/page/login'
