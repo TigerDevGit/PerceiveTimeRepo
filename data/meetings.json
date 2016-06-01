@@ -1,13 +1,8 @@
 {
   "meetings": [
-    {
-      "id": "minneapolis",
-      "location": "Minneapolis, MN",
-      "who": "Elise",
-      "date": "23rd-25th May",
-      "description": "Elise is the product lead for Toggl Business and can answer pretty much any question you have about toggling. She is heading to the midwest to meet with you in Minneapolis on May 23rd-25th. Seize the opportunity and let her know you want to chat!",
-      "img": "images/elise.jpg"
-    }
   ],
-  "vacation": null
+  "vacation": {
+    "title": "Until September",
+    "text": "Great to see you! We won't be visiting togglers during the summer (read: we're on vacation), but we'll be back in September with lots of destinations."
+  }
 }
