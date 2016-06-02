@@ -23,6 +23,9 @@ Router = class Router extends Backbone.Router
       $(document.body).attr id: document.location.pathname.replace(/^\/+|\/+$/g, '')
 
   routes: ->
+    landingRoutes = {}
+    _.each require('./landing-routes'), (value, key) ->
+      landingRoutes[key + '/'] = value
     _.extend {
       '(/)': -> renderPage require './views/page/index'
       'features(/)': -> renderPage require './views/page/features'
@@ -39,7 +42,7 @@ Router = class Router extends Backbone.Router
       'pricing(/)': 'showPricing'
       'business(/)': -> window.location = '/business' # hack to redirect to static page
       'feature-list(/)': -> window.location = '/feature-list' # hack to redirect to static
-    }, _.mapValues require('./landing-routes'), (params) ->
+    }, _.mapValues landingRoutes, (params) ->
       -> renderPage require('./views/page/landing'), params
 
   showUnsubscribe: (type, token) ->
