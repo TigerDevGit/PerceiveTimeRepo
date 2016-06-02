@@ -391,6 +391,15 @@ module.exports = (grunt) ->
         cwd: "<%= yeoman.dist %>"
         src: "**/index.html"
         dest: "<%= yeoman.dist %>"
+    shell:
+      symlinkLandingPages:
+        command: ->
+          paths = Object.keys require ('./app/landing-routes')
+          cmds = _.map paths, (path) ->
+            "mkdir <%= yeoman.dist %>/#{path}
+            && ln -s ../index.html <%= yeoman.dist %>/#{path}/index.html
+            && ln -s ../index.html.gz <%= yeoman.dist %>/#{path}/index.html.gz"
+          cmds.join(';')
 
   grunt.registerTask "serve", [
     'build:serve'
@@ -425,6 +434,7 @@ module.exports = (grunt) ->
     "usemin"
     "htmlmin"
     "compress"
+    "shell:symlinkLandingPages"
     # "htmlSnapshot"
   ]
 
