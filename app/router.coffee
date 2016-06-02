@@ -25,7 +25,7 @@ Router = class Router extends Backbone.Router
   routes: ->
     landingRoutes = {}
     _.each require('./landing-routes'), (value, key) ->
-      landingRoutes[key + '/'] = value
+      landingRoutes[key + '(/)'] = value
     _.extend {
       '(/)': -> renderPage require './views/page/index'
       'features(/)': -> renderPage require './views/page/features'
