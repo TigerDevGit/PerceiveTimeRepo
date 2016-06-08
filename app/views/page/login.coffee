@@ -52,14 +52,12 @@ class LoginPage extends View
 
     new API('TogglNext', null, null)
       .auth.session data.email, data.password, data.remember_me
-      .then @redirectToApp, loginErr
-      .catch loginErr
-      .then(
-        (=> @updateStatus 'done'),
-        (=>
-          @listenTo(@model, 'change', @render)
-          @updateStatus 'done')
+      .then @redirectToApp
+      .catch(=>
+        loginErr()
+        @listenTo @model, 'change', @render
       )
+      .then(=> @updateStatus 'done')
 
   startSubmit: (e) =>
     e.preventDefault()
