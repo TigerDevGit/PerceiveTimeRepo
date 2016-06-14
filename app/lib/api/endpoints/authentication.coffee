@@ -26,7 +26,8 @@ module.exports = (api) ->
           logged: true
           data: args[0]?.data
         })
-        @saveToSessionStorage(args[0]?.data)
+        try
+          @saveToSessionStorage(args[0]?.data)
         api.auth = null
         Promise.resolve args...
 
