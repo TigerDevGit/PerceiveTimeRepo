@@ -9,9 +9,12 @@ _                 = require 'lodash'
 
 timerStart = Date.now()
 
+STAGING = process.env.STAGING || (process.env.NODE_ENV is 'staging') || false
 API_HOST = "https://toggl.space" || process.env.API_HOST
 API_HOST_USES_SSL = API_HOST.indexOf("https") == 0
 LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
+LARGE_ASSET_BASEURL_STAGING = 'https://assets.toggl.space'
+LARGE_ASSET_BASEURL_PROD = 'https://assets.toggl.com'
 
 module.exports = (grunt) ->
   # load all grunt tasks
@@ -120,8 +123,15 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "<%= yeoman.dist %>"
-          src: "**/*.{png,jpg,jpeg}"
+          src: "**/*.{png,jpg,jpeg,gif}"
           dest: "<%= yeoman.dist %>"
+        ]
+      distLargeAssets:
+        files: [
+          expand: true
+          cwd: "dist-assets/"
+          src: "**/*.{png,jpg,jpeg,gif}"
+          dest: "dist-assets/"
         ]
 
     compress:
@@ -177,6 +187,18 @@ module.exports = (grunt) ->
         src: '**/*'
         dest: "<%= yeoman.dist %>/"
 
+      serveLargeAssets:
+        expand: true
+        cwd: "<%= yeoman.app %>/large-assets"
+        src: '**/*'
+        dest: "<%= yeoman.dist %>/large-assets"
+
+      distLargeAssets:
+        expand: true
+        cwd: "<%= yeoman.app %>/large-assets"
+        src: '**/*'
+        dest: "dist-assets/"
+
     autoprefixer:
       notFound:
         expand: true
@@ -208,6 +230,34 @@ module.exports = (grunt) ->
             'dist/index.html'
           ]
           dest: 'dist/'
+        ]
+      stagingAssets:
+        options:
+          patterns: [
+            match: /\/large-assets/g,
+            replacement: LARGE_ASSET_BASEURL_STAGING
+          ]
+        files: [
+          flatten: true
+          expand: true
+          src: [
+            "<%= yeoman.dist %>/javascripts/*.js"
+          ]
+          dest: 'dist/javascripts/'
+        ]
+      prodAssets:
+        options:
+          patterns: [
+            match: /\/large-assets/g,
+            replacement: LARGE_ASSET_BASEURL_PROD
+          ]
+        files: [
+          flatten: true
+          expand: true
+          src: [
+            "<%= yeoman.dist %>/javascripts/*.js"
+          ]
+          dest: 'dist/javascripts/'
         ]
 
     watch:
@@ -401,8 +451,14 @@ module.exports = (grunt) ->
             && ln -s ../index.html.gz <%= yeoman.dist %>/#{path}/index.html.gz"
           cmds.join(';')
 
+  grunt.registerTask "build:largeAssets", [
+    'copy:distLargeAssets'
+    'imagemin:distLargeAssets'
+    ]
+
   grunt.registerTask "serve", [
     'build:serve'
+    "copy:serveLargeAssets"
     'configureProxies:server'
     'connect:server'
     'watch'
@@ -423,20 +479,29 @@ module.exports = (grunt) ->
     "processhtml"
   ]
 
-  grunt.registerTask "build", [
-    "build:serve"
-    "useminPrepare"
-    "concat"
-    "uglify"
-    "imagemin"
-    "cssmin"
-    "rev"
-    "usemin"
-    "htmlmin"
-    "compress"
-    "shell:symlinkLandingPages"
-    # "htmlSnapshot"
-  ]
+  buildTaskFactory = (staging = false) ->
+    distAssetsTask = if staging or STAGING
+      'replace:stagingAssets'
+    else
+      'replace:prodAssets'
+    [
+      "build:serve"
+      "useminPrepare"
+      "concat"
+      "uglify"
+      "imagemin"
+      "cssmin"
+      "rev"
+      "usemin"
+      distAssetsTask
+      "htmlmin"
+      "compress"
+      "shell:symlinkLandingPages"
+      # "htmlSnapshot"
+    ]
+
+  grunt.registerTask "build", buildTaskFactory(false)
+  grunt.registerTask "build:staging", buildTaskFactory(true)
 
   grunt.registerTask "build:nosnapshot", [
     "build:serve"
