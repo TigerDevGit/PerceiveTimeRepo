@@ -5,6 +5,9 @@ connectLiveReload = require 'connect-livereload'
 matchdep          = require 'matchdep'
 request           = require 'request'
 _                 = require 'lodash'
+glob              = require 'glob'
+moment            = require 'moment'
+execSync          = require('child_process').execSync
 {proxyRequest}    = require 'grunt-connect-proxy/lib/utils'
 
 timerStart = Date.now()
@@ -12,6 +15,61 @@ timerStart = Date.now()
 API_HOST = "https://toggl.space" || process.env.API_HOST
 API_HOST_USES_SSL = API_HOST.indexOf("https") == 0
 LIVERELOAD_PORT = 35730 || process.env.LIVERELOAD_PORT
+
+getFileLastMod = (fileName) ->
+  isoDate = execSync "git log -1 --format=\"%aI\" -- #{fileName}"
+  isoDate = _.trim isoDate.toString()
+  return moment(isoDate).toDate()
+
+getMainPagesSitemapData = (appDir) ->
+  include = ['index', 'features', 'pricing', 'about', 'tools', 'terms', 'privacy']
+  priorities = { 'index': '1', 'features': '0.8', 'pricing': '0.8' }
+  prefix = { 'terms': 'legal/', 'privacy': 'legal/' }
+
+  mainPages = _.map glob.sync("#{appDir}/templates/page/*.hbs"), (fileName) ->
+    loc = fileName.split('/templates/page/')[1].replace('.hbs', '')
+    priority = priorities[loc] or '0.6'
+    return { loc: loc, lastmod: getFileLastMod(fileName), priority }
+  mainPages = _.filter mainPages, (page) -> page.loc in include
+  mainPages.forEach (page) -> page.loc = (prefix[page.loc] or '') + page.loc
+
+  indexPage = _.find mainPages, { loc: 'index' }
+  indexPage.loc = ''
+
+  return mainPages
+
+getStaticPagesSitemapData = (appDir) ->
+  ignore = ['not-found/', 'email-cancelled/', 'under-maintenance/']
+
+  staticPages = _.map glob.sync("#{appDir}/static-pages/**/index.html"), (fileName) ->
+    loc = fileName.split('/static-pages/')[1].replace('/index.html', '') + '/'
+    return { loc: loc, lastmod: getFileLastMod(fileName), priority: '0.6' }
+  staticPages = _.reject staticPages, (page) -> page.loc in ignore
+
+  meetPage = _.find staticPages, { loc: 'meet/' }
+  meetJsonModified = getFileLastMod("#{appDir}/../data/meetings.json")
+  meetPage.lastmod = meetJsonModified if meetJsonModified > meetPage.lastmod
+
+  return staticPages
+
+getLandingPagesSitemapData = (appDir) ->
+  landingRoutes = require('./app/landing-routes')
+  landingPages = _.map landingRoutes, (route, routeName) ->
+    fileName = "#{appDir}/templates/page/landing/#{route.template}.hbs"
+    return { loc: routeName, lastmod: getFileLastMod(fileName), priority: '0.6' }
+  return landingPages
+
+getSitemapData = (appDir) ->
+  mainPages = getMainPagesSitemapData(appDir)
+  staticPages = getStaticPagesSitemapData(appDir)
+  landingPages = getLandingPagesSitemapData(appDir)
+
+  pages = _.union mainPages, staticPages, landingPages
+  pages.sort (a, b) ->
+    return a.lastmod - b.lastmod if a.priority is b.priority
+    return b.priority - a.priority
+
+  return { pages, moment }
 
 module.exports = (grunt) ->
   # load all grunt tasks
@@ -391,6 +449,11 @@ module.exports = (grunt) ->
         cwd: "<%= yeoman.dist %>"
         src: "**/index.html"
         dest: "<%= yeoman.dist %>"
+      sitemap:
+        options:
+          data: getSitemapData(yeomanConfig.app)
+        files:
+          "<%= yeoman.dist %>/sitemap.xml": "<%= yeoman.dist %>/sitemap.xml"
     shell:
       symlinkLandingPages:
         command: ->
