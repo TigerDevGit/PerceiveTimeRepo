@@ -50,7 +50,6 @@ new API('TogglNext', null, null, userState.endpoint)
 Router = require './router'
 router = exports.router = new Router
 Backbone.history.start { pushState: true }
-router.on 'route', => woopra?.track()
 
 # Also listen for link clicks in the page for links that begin with
 # a slash, for internal navigation.
